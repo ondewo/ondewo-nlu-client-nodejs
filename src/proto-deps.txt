@@ -1,0 +1,6 @@
+google/api/annotations.proto
+google/longrunning/operations.proto
+google/type/latlng.proto
+google/api/http.proto
+google/protobuf/struct.proto
+google/rpc/status.proto
