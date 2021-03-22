@@ -1,13 +1,13 @@
 {
   "name": "@ondewo/nlu-client-nodejs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Ondewo natural language understanding client library for nodejs as a commonjs module",
   "main": "public-api.js",
   "typings": "public-api.d.ts",
   "scripts": {
     "start": "npm run build",
     "prebuild": "mv ondewo-nlu-api/googleapis/google ondewo-nlu-api/google",
-    "build": "git submodule update --init --recursive && docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
+    "build": "git submodule update --init --recursive --remote && docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
     "postbuild": "mv ondewo-nlu-api/google ondewo-nlu-api/googleapis/google",
     "predebug": "mv ondewo-nlu-api/googleapis/google ondewo-nlu-api/google",
     "debug": "docker run -it --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler"
