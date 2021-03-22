@@ -95,6 +95,17 @@ function deserialize_ondewo_nlu_CreateIntentRequest(buffer_arg) {
   return ondewo_nlu_intent_pb.CreateIntentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_CreateTrainingPhraseRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_intent_pb.CreateTrainingPhraseRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.CreateTrainingPhraseRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_CreateTrainingPhraseRequest(buffer_arg) {
+  return ondewo_nlu_intent_pb.CreateTrainingPhraseRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_DeleteIntentRequest(arg) {
   if (!(arg instanceof ondewo_nlu_intent_pb.DeleteIntentRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.DeleteIntentRequest');
@@ -104,6 +115,17 @@ function serialize_ondewo_nlu_DeleteIntentRequest(arg) {
 
 function deserialize_ondewo_nlu_DeleteIntentRequest(buffer_arg) {
   return ondewo_nlu_intent_pb.DeleteIntentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_DeleteTrainingPhraseRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.DeleteTrainingPhraseRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_DeleteTrainingPhraseRequest(buffer_arg) {
+  return ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_GetIntentRequest(arg) {
@@ -117,6 +139,17 @@ function deserialize_ondewo_nlu_GetIntentRequest(buffer_arg) {
   return ondewo_nlu_intent_pb.GetIntentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_GetTrainingPhraseRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_intent_pb.GetTrainingPhraseRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.GetTrainingPhraseRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetTrainingPhraseRequest(buffer_arg) {
+  return ondewo_nlu_intent_pb.GetTrainingPhraseRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_Intent(arg) {
   if (!(arg instanceof ondewo_nlu_intent_pb.Intent)) {
     throw new Error('Expected argument of type ondewo.nlu.Intent');
@@ -126,6 +159,17 @@ function serialize_ondewo_nlu_Intent(arg) {
 
 function deserialize_ondewo_nlu_Intent(buffer_arg) {
   return ondewo_nlu_intent_pb.Intent.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_Intent_TrainingPhrase(arg) {
+  if (!(arg instanceof ondewo_nlu_intent_pb.Intent.TrainingPhrase)) {
+    throw new Error('Expected argument of type ondewo.nlu.Intent.TrainingPhrase');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_Intent_TrainingPhrase(buffer_arg) {
+  return ondewo_nlu_intent_pb.Intent.TrainingPhrase.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_ListIntentsRequest(arg) {
@@ -159,6 +203,17 @@ function serialize_ondewo_nlu_UpdateIntentRequest(arg) {
 
 function deserialize_ondewo_nlu_UpdateIntentRequest(buffer_arg) {
   return ondewo_nlu_intent_pb.UpdateIntentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_UpdateTrainingPhraseRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.UpdateTrainingPhraseRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_UpdateTrainingPhraseRequest(buffer_arg) {
+  return ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
@@ -281,6 +336,54 @@ batchDeleteIntents: {
     requestDeserialize: deserialize_ondewo_nlu_BatchDeleteIntentsRequest,
     responseSerialize: serialize_google_longrunning_Operation,
     responseDeserialize: deserialize_google_longrunning_Operation,
+  },
+  // Creates a training phrase for a specified intent (of a specific intent).
+createTrainingPhrase: {
+    path: '/ondewo.nlu.Intents/CreateTrainingPhrase',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest,
+    responseType: ondewo_nlu_intent_pb.Intent.TrainingPhrase,
+    requestSerialize: serialize_ondewo_nlu_CreateTrainingPhraseRequest,
+    requestDeserialize: deserialize_ondewo_nlu_CreateTrainingPhraseRequest,
+    responseSerialize: serialize_ondewo_nlu_Intent_TrainingPhrase,
+    responseDeserialize: deserialize_ondewo_nlu_Intent_TrainingPhrase,
+  },
+  // Retrieve a specific training phrase (of a specific intent).
+getTrainingPhrase: {
+    path: '/ondewo.nlu.Intents/GetTrainingPhrase',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_intent_pb.GetTrainingPhraseRequest,
+    responseType: ondewo_nlu_intent_pb.Intent.TrainingPhrase,
+    requestSerialize: serialize_ondewo_nlu_GetTrainingPhraseRequest,
+    requestDeserialize: deserialize_ondewo_nlu_GetTrainingPhraseRequest,
+    responseSerialize: serialize_ondewo_nlu_Intent_TrainingPhrase,
+    responseDeserialize: deserialize_ondewo_nlu_Intent_TrainingPhrase,
+  },
+  // Update a specific training phrase (of a specific intent).
+updateTrainingPhrase: {
+    path: '/ondewo.nlu.Intents/UpdateTrainingPhrase',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest,
+    responseType: ondewo_nlu_intent_pb.Intent.TrainingPhrase,
+    requestSerialize: serialize_ondewo_nlu_UpdateTrainingPhraseRequest,
+    requestDeserialize: deserialize_ondewo_nlu_UpdateTrainingPhraseRequest,
+    responseSerialize: serialize_ondewo_nlu_Intent_TrainingPhrase,
+    responseDeserialize: deserialize_ondewo_nlu_Intent_TrainingPhrase,
+  },
+  // Delete a specific training phrase (of a specific intent).
+deleteTrainingPhrase: {
+    path: '/ondewo.nlu.Intents/DeleteTrainingPhrase',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_ondewo_nlu_DeleteTrainingPhraseRequest,
+    requestDeserialize: deserialize_ondewo_nlu_DeleteTrainingPhraseRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

@@ -1297,6 +1297,104 @@ export namespace IntentSorting {
 
 }
 
+export class CreateTrainingPhraseRequest extends jspb.Message { 
+    getIntentName(): string;
+    setIntentName(value: string): CreateTrainingPhraseRequest;
+
+    hasTrainingPhrase(): boolean;
+    clearTrainingPhrase(): void;
+    getTrainingPhrase(): Intent.TrainingPhrase | undefined;
+    setTrainingPhrase(value?: Intent.TrainingPhrase): CreateTrainingPhraseRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateTrainingPhraseRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateTrainingPhraseRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateTrainingPhraseRequest): CreateTrainingPhraseRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateTrainingPhraseRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateTrainingPhraseRequest;
+    static deserializeBinaryFromReader(message: CreateTrainingPhraseRequest, reader: jspb.BinaryReader): CreateTrainingPhraseRequest;
+}
+
+export namespace CreateTrainingPhraseRequest {
+    export type AsObject = {
+        intentName: string,
+        trainingPhrase?: Intent.TrainingPhrase.AsObject,
+        languageCode: string,
+    }
+}
+
+export class GetTrainingPhraseRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetTrainingPhraseRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetTrainingPhraseRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetTrainingPhraseRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetTrainingPhraseRequest): GetTrainingPhraseRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetTrainingPhraseRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetTrainingPhraseRequest;
+    static deserializeBinaryFromReader(message: GetTrainingPhraseRequest, reader: jspb.BinaryReader): GetTrainingPhraseRequest;
+}
+
+export namespace GetTrainingPhraseRequest {
+    export type AsObject = {
+        name: string,
+        languageCode: string,
+    }
+}
+
+export class UpdateTrainingPhraseRequest extends jspb.Message { 
+
+    hasTrainingPhrase(): boolean;
+    clearTrainingPhrase(): void;
+    getTrainingPhrase(): Intent.TrainingPhrase | undefined;
+    setTrainingPhrase(value?: Intent.TrainingPhrase): UpdateTrainingPhraseRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateTrainingPhraseRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateTrainingPhraseRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateTrainingPhraseRequest): UpdateTrainingPhraseRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateTrainingPhraseRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateTrainingPhraseRequest;
+    static deserializeBinaryFromReader(message: UpdateTrainingPhraseRequest, reader: jspb.BinaryReader): UpdateTrainingPhraseRequest;
+}
+
+export namespace UpdateTrainingPhraseRequest {
+    export type AsObject = {
+        trainingPhrase?: Intent.TrainingPhrase.AsObject,
+        languageCode: string,
+    }
+}
+
+export class DeleteTrainingPhraseRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteTrainingPhraseRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteTrainingPhraseRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteTrainingPhraseRequest): DeleteTrainingPhraseRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteTrainingPhraseRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteTrainingPhraseRequest;
+    static deserializeBinaryFromReader(message: DeleteTrainingPhraseRequest, reader: jspb.BinaryReader): DeleteTrainingPhraseRequest;
+}
+
+export namespace DeleteTrainingPhraseRequest {
+    export type AsObject = {
+        name: string,
+    }
+}
+
 export enum IntentView {
     INTENT_VIEW_UNSPECIFIED = 0,
     INTENT_VIEW_FULL = 1,

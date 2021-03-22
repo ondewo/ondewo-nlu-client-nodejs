@@ -21,6 +21,10 @@ interface IIntentsService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
     deleteIntent: IIntentsService_IDeleteIntent;
     batchUpdateIntents: IIntentsService_IBatchUpdateIntents;
     batchDeleteIntents: IIntentsService_IBatchDeleteIntents;
+    createTrainingPhrase: IIntentsService_ICreateTrainingPhrase;
+    getTrainingPhrase: IIntentsService_IGetTrainingPhrase;
+    updateTrainingPhrase: IIntentsService_IUpdateTrainingPhrase;
+    deleteTrainingPhrase: IIntentsService_IDeleteTrainingPhrase;
 }
 
 interface IIntentsService_IListIntents extends grpc.MethodDefinition<ondewo_nlu_intent_pb.ListIntentsRequest, ondewo_nlu_intent_pb.ListIntentsResponse> {
@@ -86,6 +90,42 @@ interface IIntentsService_IBatchDeleteIntents extends grpc.MethodDefinition<onde
     responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
     responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
 }
+interface IIntentsService_ICreateTrainingPhrase extends grpc.MethodDefinition<ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase> {
+    path: "/ondewo.nlu.Intents/CreateTrainingPhrase";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_intent_pb.CreateTrainingPhraseRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.CreateTrainingPhraseRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+}
+interface IIntentsService_IGetTrainingPhrase extends grpc.MethodDefinition<ondewo_nlu_intent_pb.GetTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase> {
+    path: "/ondewo.nlu.Intents/GetTrainingPhrase";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_intent_pb.GetTrainingPhraseRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.GetTrainingPhraseRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+}
+interface IIntentsService_IUpdateTrainingPhrase extends grpc.MethodDefinition<ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase> {
+    path: "/ondewo.nlu.Intents/UpdateTrainingPhrase";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+}
+interface IIntentsService_IDeleteTrainingPhrase extends grpc.MethodDefinition<ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, google_protobuf_empty_pb.Empty> {
+    path: "/ondewo.nlu.Intents/DeleteTrainingPhrase";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest>;
+    responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
+    responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
+}
 
 export const IntentsService: IIntentsService;
 
@@ -97,6 +137,10 @@ export interface IIntentsServer {
     deleteIntent: grpc.handleUnaryCall<ondewo_nlu_intent_pb.DeleteIntentRequest, google_protobuf_empty_pb.Empty>;
     batchUpdateIntents: grpc.handleUnaryCall<ondewo_nlu_intent_pb.BatchUpdateIntentsRequest, google_longrunning_operations_pb.Operation>;
     batchDeleteIntents: grpc.handleUnaryCall<ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, google_longrunning_operations_pb.Operation>;
+    createTrainingPhrase: grpc.handleUnaryCall<ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    getTrainingPhrase: grpc.handleUnaryCall<ondewo_nlu_intent_pb.GetTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    updateTrainingPhrase: grpc.handleUnaryCall<ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, ondewo_nlu_intent_pb.Intent.TrainingPhrase>;
+    deleteTrainingPhrase: grpc.handleUnaryCall<ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, google_protobuf_empty_pb.Empty>;
 }
 
 export interface IIntentsClient {
@@ -121,6 +165,18 @@ export interface IIntentsClient {
     batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
 }
 
 export class IntentsClient extends grpc.Client implements IIntentsClient {
@@ -146,4 +202,16 @@ export class IntentsClient extends grpc.Client implements IIntentsClient {
     public batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     public batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     public batchDeleteIntents(request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public createTrainingPhrase(request: ondewo_nlu_intent_pb.CreateTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public getTrainingPhrase(request: ondewo_nlu_intent_pb.GetTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public updateTrainingPhrase(request: ondewo_nlu_intent_pb.UpdateTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.Intent.TrainingPhrase) => void): grpc.ClientUnaryCall;
+    public deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteTrainingPhrase(request: ondewo_nlu_intent_pb.DeleteTrainingPhraseRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
 }
