@@ -1,7 +1,7 @@
 # Release History
 *****************
 
-## Release 1.1.0 - First public release  ONDEWO NLU Node.js Client 1.1.0
+## Release ONDEWO NLU Node.js Client 1.1.0
 
 ### New Features
  * Added first public release
