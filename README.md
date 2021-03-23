@@ -1,4 +1,11 @@
-# Ondewo NLU Client Node.js
+<p align="center">
+    <a href="https://www.ondewo.com">
+      <img alt="ONDEWO Logo" src="https://raw.githubusercontent.com/ondewo/ondewo-logos/master/github/ondewo_logo_github_2.png"/>
+    </a>
+  <h1 align="center">
+    Ondewo NLU Client Node.js
+  </h1>
+</p>
 
 This package contains a grpc client used to access and communicate the ondewo nlu api.
 It was also configured as npm package, so it can be easily added to any Node.js project.
