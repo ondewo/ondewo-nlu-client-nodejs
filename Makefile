@@ -165,6 +165,8 @@ build: check_out_correct_submodule_versions build_compiler update_package npm_ru
 	do \
 		sudo chown `whoami`:`whoami` $$f && echo $$f; \
 	done
+	cp src/README.md .
+	cp src/RELEASE.md .
 	make remove_npm_script
 	make create_npm_package
 	make install_dependencies
