@@ -2,6 +2,7 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
@@ -16,20 +17,26 @@ var global = Function('return this')();
 
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 goog.object.extend(proto, google_api_annotations_pb);
-var google_longrunning_operations_pb = require('../../google/longrunning/operations_pb.js');
-goog.object.extend(proto, google_longrunning_operations_pb);
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 goog.object.extend(proto, google_protobuf_struct_pb);
+var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
+goog.object.extend(proto, google_protobuf_any_pb);
 var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 goog.object.extend(proto, ondewo_nlu_common_pb);
+var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');
+goog.object.extend(proto, ondewo_nlu_intent_pb);
 var ondewo_nlu_user_pb = require('../../ondewo/nlu/user_pb.js');
 goog.object.extend(proto, ondewo_nlu_user_pb);
 var ondewo_nlu_project_role_pb = require('../../ondewo/nlu/project_role_pb.js');
 goog.object.extend(proto, ondewo_nlu_project_role_pb);
+var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
+goog.object.extend(proto, ondewo_nlu_operations_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 goog.exportSymbol('proto.ondewo.nlu.AddUserToProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Agent', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AgentOfUserWithOwner', null, global);
@@ -40,19 +47,29 @@ goog.exportSymbol('proto.ondewo.nlu.AgentView', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AgentWithOwner', null, global);
 goog.exportSymbol('proto.ondewo.nlu.BuildCacheRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.CreateAgentRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.CustomPlatformInfo', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteAgentRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteResourcesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ExportAgentRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ExportAgentResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ExportAgentResponse.AgentCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ExportBenchmarkAgentRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ExportBenchmarkAgentResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ExportResourcesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ExportResourcesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FullTextSearchRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FullTextSearchRequest.QueryType', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FullTextSearchResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAgentRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAgentStatisticsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAgentStatisticsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetModelStatusesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetModelStatusesResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetPlatformInfoResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetPlatformMappingRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ImportAgentRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ImportAgentRequest.AgentCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.InitiationProtocol', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListAgentsOfUserResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListAgentsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListAgentsResponse', null, global);
@@ -60,8 +77,11 @@ goog.exportSymbol('proto.ondewo.nlu.ListProjectPermissionsRequest', null, global
 goog.exportSymbol('proto.ondewo.nlu.ListProjectPermissionsResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListUsersInProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListUsersInProjectResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ModelStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ModelStatus.StatusName', null, global);
 goog.exportSymbol('proto.ondewo.nlu.OptimizeRankingMatchRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.OptimizeRankingMatchResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.PlatformMapping', null, global);
 goog.exportSymbol('proto.ondewo.nlu.RankingMatchOptimizationConfig', null, global);
 goog.exportSymbol('proto.ondewo.nlu.RemoveUserFromProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ReportFormat', null, global);
@@ -366,6 +386,48 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.ondewo.nlu.ExportAgentResponse.displayName = 'proto.ondewo.nlu.ExportAgentResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ExportBenchmarkAgentRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ExportBenchmarkAgentRequest.displayName = 'proto.ondewo.nlu.ExportBenchmarkAgentRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ExportBenchmarkAgentResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ExportBenchmarkAgentResponse.displayName = 'proto.ondewo.nlu.ExportBenchmarkAgentResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -807,6 +869,174 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.ondewo.nlu.ExportResourcesResponse.displayName = 'proto.ondewo.nlu.ExportResourcesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetModelStatusesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetModelStatusesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetModelStatusesRequest.displayName = 'proto.ondewo.nlu.GetModelStatusesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ModelStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ModelStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ModelStatus.displayName = 'proto.ondewo.nlu.ModelStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetModelStatusesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.GetModelStatusesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.GetModelStatusesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetModelStatusesResponse.displayName = 'proto.ondewo.nlu.GetModelStatusesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.CustomPlatformInfo = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.CustomPlatformInfo, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.CustomPlatformInfo.displayName = 'proto.ondewo.nlu.CustomPlatformInfo';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetPlatformMappingRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetPlatformMappingRequest.displayName = 'proto.ondewo.nlu.GetPlatformMappingRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.PlatformMapping = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.PlatformMapping.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.PlatformMapping, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.PlatformMapping.displayName = 'proto.ondewo.nlu.PlatformMapping';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FullTextSearchRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.FullTextSearchRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FullTextSearchRequest.displayName = 'proto.ondewo.nlu.FullTextSearchRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FullTextSearchResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.FullTextSearchResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FullTextSearchResponse.displayName = 'proto.ondewo.nlu.FullTextSearchResponse';
 }
 
 /**
@@ -2986,7 +3216,8 @@ proto.ondewo.nlu.TrainAgentRequest.prototype.toObject = function(opt_includeInst
 proto.ondewo.nlu.TrainAgentRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    branch: jspb.Message.getFieldWithDefault(msg, 2, "")
+    branch: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    initiationProtocol: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3031,6 +3262,10 @@ proto.ondewo.nlu.TrainAgentRequest.deserializeBinaryFromReader = function(msg, r
       var value = /** @type {string} */ (reader.readString());
       msg.setBranch(value);
       break;
+    case 3:
+      var value = /** @type {!proto.ondewo.nlu.InitiationProtocol} */ (reader.readEnum());
+      msg.setInitiationProtocol(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3074,6 +3309,13 @@ proto.ondewo.nlu.TrainAgentRequest.serializeBinaryToWriter = function(message, w
       f
     );
   }
+  f = message.getInitiationProtocol();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3110,6 +3352,24 @@ proto.ondewo.nlu.TrainAgentRequest.prototype.getBranch = function() {
  */
 proto.ondewo.nlu.TrainAgentRequest.prototype.setBranch = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional InitiationProtocol initiation_protocol = 3;
+ * @return {!proto.ondewo.nlu.InitiationProtocol}
+ */
+proto.ondewo.nlu.TrainAgentRequest.prototype.getInitiationProtocol = function() {
+  return /** @type {!proto.ondewo.nlu.InitiationProtocol} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.InitiationProtocol} value
+ * @return {!proto.ondewo.nlu.TrainAgentRequest} returns this
+ */
+proto.ondewo.nlu.TrainAgentRequest.prototype.setInitiationProtocol = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
@@ -3306,7 +3566,8 @@ proto.ondewo.nlu.ExportAgentRequest.prototype.toObject = function(opt_includeIns
 proto.ondewo.nlu.ExportAgentRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    agentUri: jspb.Message.getFieldWithDefault(msg, 2, "")
+    agentUri: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    compressionLevel: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -3351,6 +3612,10 @@ proto.ondewo.nlu.ExportAgentRequest.deserializeBinaryFromReader = function(msg, 
       var value = /** @type {string} */ (reader.readString());
       msg.setAgentUri(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCompressionLevel(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3394,6 +3659,13 @@ proto.ondewo.nlu.ExportAgentRequest.serializeBinaryToWriter = function(message, 
       f
     );
   }
+  f = message.getCompressionLevel();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -3430,6 +3702,24 @@ proto.ondewo.nlu.ExportAgentRequest.prototype.getAgentUri = function() {
  */
 proto.ondewo.nlu.ExportAgentRequest.prototype.setAgentUri = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 compression_level = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.ExportAgentRequest.prototype.getCompressionLevel = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ExportAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportAgentRequest.prototype.setCompressionLevel = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -3677,6 +3967,443 @@ proto.ondewo.nlu.ExportAgentResponse.prototype.clearAgentContent = function() {
 proto.ondewo.nlu.ExportAgentResponse.prototype.hasAgentContent = function() {
   return jspb.Message.getField(this, 2) != null;
 };
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ExportBenchmarkAgentRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    compressionLevel: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    testSize: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
+    trainSize: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
+    randomState: jspb.Message.getFieldWithDefault(msg, 5, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ExportBenchmarkAgentRequest;
+  return proto.ondewo.nlu.ExportBenchmarkAgentRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCompressionLevel(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setTestSize(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setTrainSize(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setRandomState(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ExportBenchmarkAgentRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getCompressionLevel();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getTestSize();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      3,
+      f
+    );
+  }
+  f = message.getTrainSize();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      4,
+      f
+    );
+  }
+  f = message.getRandomState();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int32 compression_level = 2;
+ * @return {number}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.getCompressionLevel = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.setCompressionLevel = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional float test_size = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.getTestSize = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.setTestSize = function(value) {
+  return jspb.Message.setProto3FloatField(this, 3, value);
+};
+
+
+/**
+ * optional float train_size = 4;
+ * @return {number}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.getTrainSize = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.setTrainSize = function(value) {
+  return jspb.Message.setProto3FloatField(this, 4, value);
+};
+
+
+/**
+ * optional int32 random_state = 5;
+ * @return {number}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.getRandomState = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentRequest} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentRequest.prototype.setRandomState = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ExportBenchmarkAgentResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    agentContent: msg.getAgentContent_asB64(),
+    trainingPhrasesMap: (f = msg.getTrainingPhrasesMap()) ? f.toObject(includeInstance, proto.ondewo.nlu.ListTrainingPhrasesResponse.toObject) : []
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentResponse}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ExportBenchmarkAgentResponse;
+  return proto.ondewo.nlu.ExportBenchmarkAgentResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentResponse}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setAgentContent(value);
+      break;
+    case 2:
+      var value = msg.getTrainingPhrasesMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.ondewo.nlu.ListTrainingPhrasesResponse.deserializeBinaryFromReader, "", new proto.ondewo.nlu.ListTrainingPhrasesResponse());
+         });
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ExportBenchmarkAgentResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ExportBenchmarkAgentResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getAgentContent_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      1,
+      f
+    );
+  }
+  f = message.getTrainingPhrasesMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.ondewo.nlu.ListTrainingPhrasesResponse.serializeBinaryToWriter);
+  }
+};
+
+
+/**
+ * optional bytes agent_content = 1;
+ * @return {!(string|Uint8Array)}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.getAgentContent = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * optional bytes agent_content = 1;
+ * This is a type-conversion wrapper around `getAgentContent()`
+ * @return {string}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.getAgentContent_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getAgentContent()));
+};
+
+
+/**
+ * optional bytes agent_content = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getAgentContent()`
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.getAgentContent_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getAgentContent()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentResponse} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.setAgentContent = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * map<string, ListTrainingPhrasesResponse> training_phrases = 2;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,!proto.ondewo.nlu.ListTrainingPhrasesResponse>}
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.getTrainingPhrasesMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,!proto.ondewo.nlu.ListTrainingPhrasesResponse>} */ (
+      jspb.Message.getMapField(this, 2, opt_noLazyCreate,
+      proto.ondewo.nlu.ListTrainingPhrasesResponse));
+};
+
+
+/**
+ * Clears values from the map. The map will be non-null.
+ * @return {!proto.ondewo.nlu.ExportBenchmarkAgentResponse} returns this
+ */
+proto.ondewo.nlu.ExportBenchmarkAgentResponse.prototype.clearTrainingPhrasesMap = function() {
+  this.getTrainingPhrasesMap().clear();
+  return this;};
 
 
 
@@ -8113,6 +8840,1610 @@ proto.ondewo.nlu.ExportResourcesResponse.prototype.setResourceFile = function(va
 };
 
 
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetModelStatusesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetModelStatusesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    cacheVersion: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    modelName: jspb.Message.getFieldWithDefault(msg, 4, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetModelStatusesRequest;
+  return proto.ondewo.nlu.GetModelStatusesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetModelStatusesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCacheVersion(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setModelName(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetModelStatusesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetModelStatusesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getCacheVersion();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getModelName();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest} returns this
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int32 cache_version = 2;
+ * @return {number}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.getCacheVersion = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest} returns this
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.setCacheVersion = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string language_code = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest} returns this
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string model_name = 4;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.getModelName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetModelStatusesRequest} returns this
+ */
+proto.ondewo.nlu.GetModelStatusesRequest.prototype.setModelName = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ModelStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ModelStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ModelStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    cacheVersion: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    modelName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    statusSetTime: (f = msg.getStatusSetTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    config: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 6, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ModelStatus}
+ */
+proto.ondewo.nlu.ModelStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ModelStatus;
+  return proto.ondewo.nlu.ModelStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ModelStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ModelStatus}
+ */
+proto.ondewo.nlu.ModelStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCacheVersion(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setModelName(value);
+      break;
+    case 4:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setStatusSetTime(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConfig(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.ondewo.nlu.ModelStatus.StatusName} */ (reader.readEnum());
+      msg.setStatus(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ModelStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ModelStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ModelStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getCacheVersion();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getModelName();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getStatusSetTime();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getConfig();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getStatus();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.ModelStatus.StatusName = {
+  UNKNOWN: 0,
+  INITIALIZING: 1,
+  INITIALIZED: 2,
+  LOADING_DATA: 3,
+  TRAINING: 4,
+  TESTING: 5,
+  TRAINED: 6
+};
+
+/**
+ * optional int32 cache_version = 1;
+ * @return {number}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getCacheVersion = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.setCacheVersion = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string model_name = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getModelName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.setModelName = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp status_set_time = 4;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getStatusSetTime = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+*/
+proto.ondewo.nlu.ModelStatus.prototype.setStatusSetTime = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.clearStatusSetTime = function() {
+  return this.setStatusSetTime(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.hasStatusSetTime = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional string config = 5;
+ * @return {string}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getConfig = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.setConfig = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional StatusName status = 6;
+ * @return {!proto.ondewo.nlu.ModelStatus.StatusName}
+ */
+proto.ondewo.nlu.ModelStatus.prototype.getStatus = function() {
+  return /** @type {!proto.ondewo.nlu.ModelStatus.StatusName} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.ModelStatus.StatusName} value
+ * @return {!proto.ondewo.nlu.ModelStatus} returns this
+ */
+proto.ondewo.nlu.ModelStatus.prototype.setStatus = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetModelStatusesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetModelStatusesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    modelStatusesList: jspb.Message.toObjectList(msg.getModelStatusesList(),
+    proto.ondewo.nlu.ModelStatus.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetModelStatusesResponse}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetModelStatusesResponse;
+  return proto.ondewo.nlu.GetModelStatusesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetModelStatusesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetModelStatusesResponse}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.ModelStatus;
+      reader.readMessage(value,proto.ondewo.nlu.ModelStatus.deserializeBinaryFromReader);
+      msg.addModelStatuses(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetModelStatusesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetModelStatusesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getModelStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.ModelStatus.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated ModelStatus model_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.ModelStatus>}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.getModelStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.ModelStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.ModelStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.ModelStatus>} value
+ * @return {!proto.ondewo.nlu.GetModelStatusesResponse} returns this
+*/
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.setModelStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.ModelStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.ModelStatus}
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.addModelStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.ModelStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetModelStatusesResponse} returns this
+ */
+proto.ondewo.nlu.GetModelStatusesResponse.prototype.clearModelStatusesList = function() {
+  return this.setModelStatusesList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.CustomPlatformInfo.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.CustomPlatformInfo} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.CustomPlatformInfo.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    platform: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    displayName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    position: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.CustomPlatformInfo;
+  return proto.ondewo.nlu.CustomPlatformInfo.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.CustomPlatformInfo} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {!proto.ondewo.nlu.Intent.Message.Platform} */ (reader.readEnum());
+      msg.setPlatform(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDisplayName(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setPosition(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.CustomPlatformInfo.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.CustomPlatformInfo} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.CustomPlatformInfo.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getPlatform();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      1,
+      f
+    );
+  }
+  f = message.getDisplayName();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPosition();
+  if (f !== 0) {
+    writer.writeUint32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional Intent.Message.Platform platform = 1;
+ * @return {!proto.ondewo.nlu.Intent.Message.Platform}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getPlatform = function() {
+  return /** @type {!proto.ondewo.nlu.Intent.Message.Platform} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.Message.Platform} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setPlatform = function(value) {
+  return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional string display_name = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getDisplayName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setDisplayName = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional uint32 position = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getPosition = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setPosition = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetPlatformMappingRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetPlatformMappingRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetPlatformMappingRequest}
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetPlatformMappingRequest;
+  return proto.ondewo.nlu.GetPlatformMappingRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetPlatformMappingRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetPlatformMappingRequest}
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetPlatformMappingRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetPlatformMappingRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetPlatformMappingRequest} returns this
+ */
+proto.ondewo.nlu.GetPlatformMappingRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.PlatformMapping.repeatedFields_ = [2];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.PlatformMapping.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.PlatformMapping} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.PlatformMapping.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    platformInfoList: jspb.Message.toObjectList(msg.getPlatformInfoList(),
+    proto.ondewo.nlu.CustomPlatformInfo.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.PlatformMapping}
+ */
+proto.ondewo.nlu.PlatformMapping.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.PlatformMapping;
+  return proto.ondewo.nlu.PlatformMapping.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.PlatformMapping} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.PlatformMapping}
+ */
+proto.ondewo.nlu.PlatformMapping.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.CustomPlatformInfo;
+      reader.readMessage(value,proto.ondewo.nlu.CustomPlatformInfo.deserializeBinaryFromReader);
+      msg.addPlatformInfo(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.PlatformMapping.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.PlatformMapping} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.PlatformMapping.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPlatformInfoList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      2,
+      f,
+      proto.ondewo.nlu.CustomPlatformInfo.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.PlatformMapping} returns this
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated CustomPlatformInfo platform_info = 2;
+ * @return {!Array<!proto.ondewo.nlu.CustomPlatformInfo>}
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.getPlatformInfoList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.CustomPlatformInfo>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.CustomPlatformInfo, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.CustomPlatformInfo>} value
+ * @return {!proto.ondewo.nlu.PlatformMapping} returns this
+*/
+proto.ondewo.nlu.PlatformMapping.prototype.setPlatformInfoList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.CustomPlatformInfo=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo}
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.addPlatformInfo = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 2, opt_value, proto.ondewo.nlu.CustomPlatformInfo, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.PlatformMapping} returns this
+ */
+proto.ondewo.nlu.PlatformMapping.prototype.clearPlatformInfoList = function() {
+  return this.setPlatformInfoList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FullTextSearchRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FullTextSearchRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FullTextSearchRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    queryType: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    term: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 5, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FullTextSearchRequest;
+  return proto.ondewo.nlu.FullTextSearchRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FullTextSearchRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {!proto.ondewo.nlu.FullTextSearchRequest.QueryType} */ (reader.readEnum());
+      msg.setQueryType(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTerm(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FullTextSearchRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FullTextSearchRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FullTextSearchRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getQueryType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      3,
+      f
+    );
+  }
+  f = message.getTerm();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.QueryType = {
+  ALL: 0,
+  ONDEWOENTITYQUERY: 1,
+  ONDEWOENTITYTYPEQUERY: 2,
+  ONDEWOENTITYSYNONYMQUERY: 3,
+  ONDEWOINTENTQUERY: 4,
+  ONDEWOINTENTCONTEXTINQUERY: 5,
+  ONDEWOINTENTCONTEXTOUTQUERY: 6,
+  ONDEWOINTENTUSERSAYSQUERY: 7,
+  ONDEWOINTENTTAGSQUERY: 8,
+  ONDEWOINTENTPARAMETERSQUERY: 9,
+  ONDEWOINTENTRESPONSEQUERY: 10
+};
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest} returns this
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest} returns this
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional QueryType query_type = 3;
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest.QueryType}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.getQueryType = function() {
+  return /** @type {!proto.ondewo.nlu.FullTextSearchRequest.QueryType} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FullTextSearchRequest.QueryType} value
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest} returns this
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.setQueryType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional string term = 4;
+ * @return {string}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.getTerm = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest} returns this
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.setTerm = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string page_token = 5;
+ * @return {string}
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.FullTextSearchRequest} returns this
+ */
+proto.ondewo.nlu.FullTextSearchRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FullTextSearchResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FullTextSearchResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FullTextSearchResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FullTextSearchResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMap: (f = msg.getResponseMap()) ? f.toObject(includeInstance, proto.google.protobuf.Any.toObject) : []
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FullTextSearchResponse}
+ */
+proto.ondewo.nlu.FullTextSearchResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FullTextSearchResponse;
+  return proto.ondewo.nlu.FullTextSearchResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FullTextSearchResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FullTextSearchResponse}
+ */
+proto.ondewo.nlu.FullTextSearchResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = msg.getResponseMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readMessage, proto.google.protobuf.Any.deserializeBinaryFromReader, "", new proto.google.protobuf.Any());
+         });
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FullTextSearchResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FullTextSearchResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FullTextSearchResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FullTextSearchResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(1, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeMessage, proto.google.protobuf.Any.serializeBinaryToWriter);
+  }
+};
+
+
+/**
+ * map<string, google.protobuf.Any> response = 1;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,!proto.google.protobuf.Any>}
+ */
+proto.ondewo.nlu.FullTextSearchResponse.prototype.getResponseMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,!proto.google.protobuf.Any>} */ (
+      jspb.Message.getMapField(this, 1, opt_noLazyCreate,
+      proto.google.protobuf.Any));
+};
+
+
+/**
+ * Clears values from the map. The map will be non-null.
+ * @return {!proto.ondewo.nlu.FullTextSearchResponse} returns this
+ */
+proto.ondewo.nlu.FullTextSearchResponse.prototype.clearResponseMap = function() {
+  this.getResponseMap().clear();
+  return this;};
+
+
 /**
  * @enum {number}
  */
@@ -8120,6 +10451,15 @@ proto.ondewo.nlu.AgentView = {
   AGENT_VIEW_UNSPECIFIED: 0,
   AGENT_VIEW_FULL: 1,
   AGENT_VIEW_SHALLOW: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.InitiationProtocol = {
+  AS_SOON_AS_POSSIBLE: 0,
+  WHEN_TRAINED: 1,
+  NEVER: 2
 };
 
 /**

@@ -6,6 +6,7 @@
 
 import * as jspb from "google-protobuf";
 import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
+import * as ondewo_nlu_entity_type_pb from "../../ondewo/nlu/entity_type_pb";
 
 export class ExtractEntitiesRequest extends jspb.Message { 
     getParent(): string;
@@ -14,6 +15,8 @@ export class ExtractEntitiesRequest extends jspb.Message {
     setText(value: string): ExtractEntitiesRequest;
     getLanguageCode(): string;
     setLanguageCode(value: string): ExtractEntitiesRequest;
+    getIntentName(): string;
+    setIntentName(value: string): ExtractEntitiesRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ExtractEntitiesRequest.AsObject;
@@ -30,14 +33,118 @@ export namespace ExtractEntitiesRequest {
         parent: string,
         text: string,
         languageCode: string,
+        intentName: string,
+    }
+}
+
+export class ExtractEntitiesFuzzyRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ExtractEntitiesFuzzyRequest;
+    getText(): string;
+    setText(value: string): ExtractEntitiesFuzzyRequest;
+    clearPotentialEntitiesList(): void;
+    getPotentialEntitiesList(): Array<EntityTypeFuzzyNerConfig>;
+    setPotentialEntitiesList(value: Array<EntityTypeFuzzyNerConfig>): ExtractEntitiesFuzzyRequest;
+    addPotentialEntities(value?: EntityTypeFuzzyNerConfig, index?: number): EntityTypeFuzzyNerConfig;
+    getMinimalScore(): number;
+    setMinimalScore(value: number): ExtractEntitiesFuzzyRequest;
+    getAllowOverlaps(): boolean;
+    setAllowOverlaps(value: boolean): ExtractEntitiesFuzzyRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ExtractEntitiesFuzzyRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ExtractEntitiesFuzzyRequest): ExtractEntitiesFuzzyRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ExtractEntitiesFuzzyRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ExtractEntitiesFuzzyRequest;
+    static deserializeBinaryFromReader(message: ExtractEntitiesFuzzyRequest, reader: jspb.BinaryReader): ExtractEntitiesFuzzyRequest;
+}
+
+export namespace ExtractEntitiesFuzzyRequest {
+    export type AsObject = {
+        parent: string,
+        text: string,
+        potentialEntitiesList: Array<EntityTypeFuzzyNerConfig.AsObject>,
+        minimalScore: number,
+        allowOverlaps: boolean,
+    }
+}
+
+export class EntityTypeFuzzyNerConfig extends jspb.Message { 
+
+    hasEntityType(): boolean;
+    clearEntityType(): void;
+    getEntityType(): ondewo_nlu_entity_type_pb.EntityType | undefined;
+    setEntityType(value?: ondewo_nlu_entity_type_pb.EntityType): EntityTypeFuzzyNerConfig;
+    getMinimalScore(): number;
+    setMinimalScore(value: number): EntityTypeFuzzyNerConfig;
+    clearEntityValuesList(): void;
+    getEntityValuesList(): Array<string>;
+    setEntityValuesList(value: Array<string>): EntityTypeFuzzyNerConfig;
+    addEntityValues(value: string, index?: number): string;
+    getAlgorithm(): EntityTypeFuzzyNerConfig.FuzzyNerAlgorithm;
+    setAlgorithm(value: EntityTypeFuzzyNerConfig.FuzzyNerAlgorithm): EntityTypeFuzzyNerConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EntityTypeFuzzyNerConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: EntityTypeFuzzyNerConfig): EntityTypeFuzzyNerConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EntityTypeFuzzyNerConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EntityTypeFuzzyNerConfig;
+    static deserializeBinaryFromReader(message: EntityTypeFuzzyNerConfig, reader: jspb.BinaryReader): EntityTypeFuzzyNerConfig;
+}
+
+export namespace EntityTypeFuzzyNerConfig {
+    export type AsObject = {
+        entityType?: ondewo_nlu_entity_type_pb.EntityType.AsObject,
+        minimalScore: number,
+        entityValuesList: Array<string>,
+        algorithm: EntityTypeFuzzyNerConfig.FuzzyNerAlgorithm,
+    }
+
+    export enum FuzzyNerAlgorithm {
+    PREFILTER_LEVENSHTEIN = 0,
+    LOCAL_MAXIMUM = 1,
+    }
+
+}
+
+export class EntityDetected extends jspb.Message { 
+
+    hasEntity(): boolean;
+    clearEntity(): void;
+    getEntity(): ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity | undefined;
+    setEntity(value?: ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity): EntityDetected;
+    getExtractionMethod(): string;
+    setExtractionMethod(value: string): EntityDetected;
+    getScore(): number;
+    setScore(value: number): EntityDetected;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EntityDetected.AsObject;
+    static toObject(includeInstance: boolean, msg: EntityDetected): EntityDetected.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EntityDetected, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EntityDetected;
+    static deserializeBinaryFromReader(message: EntityDetected, reader: jspb.BinaryReader): EntityDetected;
+}
+
+export namespace EntityDetected {
+    export type AsObject = {
+        entity?: ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity.AsObject,
+        extractionMethod: string,
+        score: number,
     }
 }
 
 export class ExtractEntitiesResponse extends jspb.Message { 
-    clearEntitiesList(): void;
-    getEntitiesList(): Array<ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity>;
-    setEntitiesList(value: Array<ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity>): ExtractEntitiesResponse;
-    addEntities(value?: ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity, index?: number): ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity;
+    clearEntitiesDetectedList(): void;
+    getEntitiesDetectedList(): Array<EntityDetected>;
+    setEntitiesDetectedList(value: Array<EntityDetected>): ExtractEntitiesResponse;
+    addEntitiesDetected(value?: EntityDetected, index?: number): EntityDetected;
     getText(): string;
     setText(value: string): ExtractEntitiesResponse;
 
@@ -53,7 +160,7 @@ export class ExtractEntitiesResponse extends jspb.Message {
 
 export namespace ExtractEntitiesResponse {
     export type AsObject = {
-        entitiesList: Array<ondewo_nlu_intent_pb.Intent.TrainingPhrase.Entity.AsObject>,
+        entitiesDetectedList: Array<EntityDetected.AsObject>,
         text: string,
     }
 }
@@ -464,11 +571,6 @@ export class DataEnrichmentConfig extends jspb.Message {
     getGloveEnrichment(): GloVeEnrichmentConfig | undefined;
     setGloveEnrichment(value?: GloVeEnrichmentConfig): DataEnrichmentConfig;
 
-    hasFasttextEnrichment(): boolean;
-    clearFasttextEnrichment(): void;
-    getFasttextEnrichment(): FastTextEnrichmentConfig | undefined;
-    setFasttextEnrichment(value?: FastTextEnrichmentConfig): DataEnrichmentConfig;
-
     hasBertEnrichment(): boolean;
     clearBertEnrichment(): void;
     getBertEnrichment(): BertAugEnrichmentConfig | undefined;
@@ -497,7 +599,6 @@ export namespace DataEnrichmentConfig {
         wordNetEnrichment?: WordNetAugEnrichmentConfig.AsObject,
         gpt2Enrichment?: GPT2EnrichmentConfig.AsObject,
         gloveEnrichment?: GloVeEnrichmentConfig.AsObject,
-        fasttextEnrichment?: FastTextEnrichmentConfig.AsObject,
         bertEnrichment?: BertAugEnrichmentConfig.AsObject,
         xlnetEnrichment?: XLNetAugEnrichmentConfig.AsObject,
     }
@@ -548,32 +649,6 @@ export class ThesaurusEnrichmentConfig extends jspb.Message {
 }
 
 export namespace ThesaurusEnrichmentConfig {
-    export type AsObject = {
-        isActive: boolean,
-        enrichmentFactor: number,
-        executionOrder: number,
-    }
-}
-
-export class FastTextEnrichmentConfig extends jspb.Message { 
-    getIsActive(): boolean;
-    setIsActive(value: boolean): FastTextEnrichmentConfig;
-    getEnrichmentFactor(): number;
-    setEnrichmentFactor(value: number): FastTextEnrichmentConfig;
-    getExecutionOrder(): number;
-    setExecutionOrder(value: number): FastTextEnrichmentConfig;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): FastTextEnrichmentConfig.AsObject;
-    static toObject(includeInstance: boolean, msg: FastTextEnrichmentConfig): FastTextEnrichmentConfig.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: FastTextEnrichmentConfig, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): FastTextEnrichmentConfig;
-    static deserializeBinaryFromReader(message: FastTextEnrichmentConfig, reader: jspb.BinaryReader): FastTextEnrichmentConfig;
-}
-
-export namespace FastTextEnrichmentConfig {
     export type AsObject = {
         isActive: boolean,
         enrichmentFactor: number,
@@ -735,4 +810,129 @@ export namespace XLNetAugEnrichmentConfig {
         enrichmentFactor: number,
         executionOrder: number,
     }
+}
+
+export class ClassifyIntentsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ClassifyIntentsRequest;
+    getText(): string;
+    setText(value: string): ClassifyIntentsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ClassifyIntentsRequest;
+    getActiveContexts(): boolean;
+    setActiveContexts(value: boolean): ClassifyIntentsRequest;
+    clearContextNamesList(): void;
+    getContextNamesList(): Array<string>;
+    setContextNamesList(value: Array<string>): ClassifyIntentsRequest;
+    addContextNames(value: string, index?: number): string;
+    getMode(): Mode;
+    setMode(value: Mode): ClassifyIntentsRequest;
+    clearAlgorithmsList(): void;
+    getAlgorithmsList(): Array<IntentAlgorithms>;
+    setAlgorithmsList(value: Array<IntentAlgorithms>): ClassifyIntentsRequest;
+    addAlgorithms(value: IntentAlgorithms, index?: number): IntentAlgorithms;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ClassifyIntentsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ClassifyIntentsRequest): ClassifyIntentsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ClassifyIntentsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ClassifyIntentsRequest;
+    static deserializeBinaryFromReader(message: ClassifyIntentsRequest, reader: jspb.BinaryReader): ClassifyIntentsRequest;
+}
+
+export namespace ClassifyIntentsRequest {
+    export type AsObject = {
+        parent: string,
+        text: string,
+        languageCode: string,
+        activeContexts: boolean,
+        contextNamesList: Array<string>,
+        mode: Mode,
+        algorithmsList: Array<IntentAlgorithms>,
+    }
+}
+
+export class IntentClassified extends jspb.Message { 
+    getIntentName(): string;
+    setIntentName(value: string): IntentClassified;
+    getIntentDisplayName(): string;
+    setIntentDisplayName(value: string): IntentClassified;
+    getClassifier(): string;
+    setClassifier(value: string): IntentClassified;
+    getScore(): number;
+    setScore(value: number): IntentClassified;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): IntentClassified.AsObject;
+    static toObject(includeInstance: boolean, msg: IntentClassified): IntentClassified.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: IntentClassified, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): IntentClassified;
+    static deserializeBinaryFromReader(message: IntentClassified, reader: jspb.BinaryReader): IntentClassified;
+}
+
+export namespace IntentClassified {
+    export type AsObject = {
+        intentName: string,
+        intentDisplayName: string,
+        classifier: string,
+        score: number,
+    }
+}
+
+export class ClassifyIntentsResponse extends jspb.Message { 
+    clearIntentsClassifiedList(): void;
+    getIntentsClassifiedList(): Array<IntentClassified>;
+    setIntentsClassifiedList(value: Array<IntentClassified>): ClassifyIntentsResponse;
+    addIntentsClassified(value?: IntentClassified, index?: number): IntentClassified;
+    getText(): string;
+    setText(value: string): ClassifyIntentsResponse;
+    getActiveContexts(): boolean;
+    setActiveContexts(value: boolean): ClassifyIntentsResponse;
+    clearContextNamesList(): void;
+    getContextNamesList(): Array<string>;
+    setContextNamesList(value: Array<string>): ClassifyIntentsResponse;
+    addContextNames(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ClassifyIntentsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ClassifyIntentsResponse): ClassifyIntentsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ClassifyIntentsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ClassifyIntentsResponse;
+    static deserializeBinaryFromReader(message: ClassifyIntentsResponse, reader: jspb.BinaryReader): ClassifyIntentsResponse;
+}
+
+export namespace ClassifyIntentsResponse {
+    export type AsObject = {
+        intentsClassifiedList: Array<IntentClassified.AsObject>,
+        text: string,
+        activeContexts: boolean,
+        contextNamesList: Array<string>,
+    }
+}
+
+export enum Mode {
+    UNSPECIFIED = 0,
+    EXCLUSIVE = 1,
+    INCLUSIVE = 2,
+}
+
+export enum IntentAlgorithms {
+    ONDEWOINTENTEXACTCONTEXTDETECTOR = 0,
+    ONDEWOINTENTEXACTMATCH = 1,
+    ONDEWOINTENTNAMEDEXACTMATCH = 2,
+    ONDEWOINTENTSIMILARITYMATCH = 3,
+    ONDEWOINTENTNAMEDSIMILARITYMATCH = 4,
+    ONDEWOINTENTBERTCLASSIFIER = 7,
+    ONDEWOINTENTMETACLASSIFIER = 8,
+    INTENTEXITDETECTOR = 10,
+    ONDEWOINTENTRANKINGMATCH = 11,
+    ONDEWOWEIGHTEDENSEMBLE = 13,
+    ONDEWOINTENTEXITDETECTOR = 14,
+    ONDEWOINTENTPARAMETERMATCH = 15,
 }

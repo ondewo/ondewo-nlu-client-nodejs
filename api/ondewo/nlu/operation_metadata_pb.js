@@ -2,6 +2,7 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
@@ -93,7 +94,8 @@ proto.ondewo.nlu.OperationMetadata.toObject = function(includeInstance, msg) {
     operationType: jspb.Message.getFieldWithDefault(msg, 12, 0),
     hostName: jspb.Message.getFieldWithDefault(msg, 13, ""),
     numReruns: jspb.Message.getFieldWithDefault(msg, 14, 0),
-    maxNumReruns: jspb.Message.getFieldWithDefault(msg, 15, 0)
+    maxNumReruns: jspb.Message.getFieldWithDefault(msg, 15, 0),
+    description: jspb.Message.getFieldWithDefault(msg, 16, "")
   };
 
   if (includeInstance) {
@@ -192,6 +194,10 @@ proto.ondewo.nlu.OperationMetadata.deserializeBinaryFromReader = function(msg, r
     case 15:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxNumReruns(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
       break;
     default:
       reader.skipField();
@@ -330,6 +336,13 @@ proto.ondewo.nlu.OperationMetadata.serializeBinaryToWriter = function(message, w
       f
     );
   }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
 };
 
 
@@ -356,7 +369,8 @@ proto.ondewo.nlu.OperationMetadata.OperationType = {
   DELETE_AGENT: 4,
   RESTORE_AGENT: 5,
   BUILD_AGENT_CACHE: 6,
-  TRAIN_AGENT: 7
+  TRAIN_AGENT: 7,
+  EXPORT_BENCHMARK_AGENT: 8
 };
 
 /**
@@ -702,6 +716,24 @@ proto.ondewo.nlu.OperationMetadata.prototype.getMaxNumReruns = function() {
  */
 proto.ondewo.nlu.OperationMetadata.prototype.setMaxNumReruns = function(value) {
   return jspb.Message.setProto3IntField(this, 15, value);
+};
+
+
+/**
+ * optional string description = 16;
+ * @return {string}
+ */
+proto.ondewo.nlu.OperationMetadata.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.OperationMetadata} returns this
+ */
+proto.ondewo.nlu.OperationMetadata.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 16, value);
 };
 
 

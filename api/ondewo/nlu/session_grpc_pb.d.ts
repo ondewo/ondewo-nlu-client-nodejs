@@ -19,6 +19,7 @@ interface ISessionsService extends grpc.ServiceDefinition<grpc.UntypedServiceImp
     streamingDetectIntent: ISessionsService_IStreamingDetectIntent;
     listSessions: ISessionsService_IListSessions;
     getSession: ISessionsService_IGetSession;
+    createSession: ISessionsService_ICreateSession;
     trackSessionStep: ISessionsService_ITrackSessionStep;
     deleteSession: ISessionsService_IDeleteSession;
     listSessionLabels: ISessionsService_IListSessionLabels;
@@ -63,6 +64,15 @@ interface ISessionsService_IGetSession extends grpc.MethodDefinition<ondewo_nlu_
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_session_pb.GetSessionRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.GetSessionRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
+}
+interface ISessionsService_ICreateSession extends grpc.MethodDefinition<ondewo_nlu_session_pb.CreateSessionRequest, ondewo_nlu_session_pb.Session> {
+    path: "/ondewo.nlu.Sessions/CreateSession";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_session_pb.CreateSessionRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.CreateSessionRequest>;
     responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
     responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
 }
@@ -155,6 +165,7 @@ export interface ISessionsServer {
     streamingDetectIntent: grpc.handleBidiStreamingCall<ondewo_nlu_session_pb.StreamingDetectIntentRequest, ondewo_nlu_session_pb.StreamingDetectIntentResponse>;
     listSessions: grpc.handleUnaryCall<ondewo_nlu_session_pb.ListSessionsRequest, ondewo_nlu_session_pb.ListSessionsResponse>;
     getSession: grpc.handleUnaryCall<ondewo_nlu_session_pb.GetSessionRequest, ondewo_nlu_session_pb.Session>;
+    createSession: grpc.handleUnaryCall<ondewo_nlu_session_pb.CreateSessionRequest, ondewo_nlu_session_pb.Session>;
     trackSessionStep: grpc.handleUnaryCall<ondewo_nlu_session_pb.TrackSessionStepRequest, ondewo_nlu_session_pb.Session>;
     deleteSession: grpc.handleUnaryCall<ondewo_nlu_session_pb.DeleteSessionRequest, google_protobuf_empty_pb.Empty>;
     listSessionLabels: grpc.handleUnaryCall<ondewo_nlu_session_pb.ListSessionLabelsRequest, ondewo_nlu_session_pb.ListSessionLabelsResponse>;
@@ -179,6 +190,9 @@ export interface ISessionsClient {
     getSession(request: ondewo_nlu_session_pb.GetSessionRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     getSession(request: ondewo_nlu_session_pb.GetSessionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     getSession(request: ondewo_nlu_session_pb.GetSessionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
@@ -221,6 +235,9 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
     public getSession(request: ondewo_nlu_session_pb.GetSessionRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     public getSession(request: ondewo_nlu_session_pb.GetSessionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     public getSession(request: ondewo_nlu_session_pb.GetSessionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    public createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    public createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
+    public createSession(request: ondewo_nlu_session_pb.CreateSessionRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     public trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     public trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;
     public trackSessionStep(request: ondewo_nlu_session_pb.TrackSessionStepRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void): grpc.ClientUnaryCall;

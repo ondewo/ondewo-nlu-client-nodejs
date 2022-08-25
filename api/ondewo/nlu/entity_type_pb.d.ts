@@ -5,10 +5,10 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as google_longrunning_operations_pb from "../../google/longrunning/operations_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as google_protobuf_field_mask_pb from "google-protobuf/google/protobuf/field_mask_pb";
 import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
+import * as ondewo_nlu_operations_pb from "../../ondewo/nlu/operations_pb";
 
 export class EntityType extends jspb.Message { 
     getName(): string;
@@ -69,6 +69,8 @@ export namespace EntityType {
         setDisplayName(value: string): Entity;
         getSynonymCount(): number;
         setSynonymCount(value: number): Entity;
+        getLanguageCode(): string;
+        setLanguageCode(value: string): Entity;
 
         serializeBinary(): Uint8Array;
         toObject(includeInstance?: boolean): Entity.AsObject;
@@ -87,6 +89,7 @@ export namespace EntityType {
             name: string,
             displayName: string,
             synonymCount: number,
+            languageCode: string,
         }
     }
 
@@ -179,6 +182,8 @@ export class GetEntityTypeRequest extends jspb.Message {
     setLanguageCode(value: string): GetEntityTypeRequest;
     getPageToken(): string;
     setPageToken(value: string): GetEntityTypeRequest;
+    getEntityTypeView(): EntityTypeView;
+    setEntityTypeView(value: EntityTypeView): GetEntityTypeRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): GetEntityTypeRequest.AsObject;
@@ -195,6 +200,7 @@ export namespace GetEntityTypeRequest {
         name: string,
         languageCode: string,
         pageToken: string,
+        entityTypeView: EntityTypeView,
     }
 }
 
@@ -208,6 +214,8 @@ export class CreateEntityTypeRequest extends jspb.Message {
     setEntityType(value?: EntityType): CreateEntityTypeRequest;
     getLanguageCode(): string;
     setLanguageCode(value: string): CreateEntityTypeRequest;
+    getEntityTypeView(): EntityTypeView;
+    setEntityTypeView(value: EntityTypeView): CreateEntityTypeRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CreateEntityTypeRequest.AsObject;
@@ -224,6 +232,7 @@ export namespace CreateEntityTypeRequest {
         parent: string,
         entityType?: EntityType.AsObject,
         languageCode: string,
+        entityTypeView: EntityTypeView,
     }
 }
 
@@ -240,6 +249,8 @@ export class UpdateEntityTypeRequest extends jspb.Message {
     clearUpdateMask(): void;
     getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateEntityTypeRequest;
+    getEntityTypeView(): EntityTypeView;
+    setEntityTypeView(value: EntityTypeView): UpdateEntityTypeRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): UpdateEntityTypeRequest.AsObject;
@@ -256,6 +267,7 @@ export namespace UpdateEntityTypeRequest {
         entityType?: EntityType.AsObject,
         languageCode: string,
         updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        entityTypeView: EntityTypeView,
     }
 }
 
@@ -376,96 +388,6 @@ export namespace BatchDeleteEntityTypesRequest {
     }
 }
 
-export class BatchCreateEntitiesRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): BatchCreateEntitiesRequest;
-    clearEntitiesList(): void;
-    getEntitiesList(): Array<EntityType.Entity>;
-    setEntitiesList(value: Array<EntityType.Entity>): BatchCreateEntitiesRequest;
-    addEntities(value?: EntityType.Entity, index?: number): EntityType.Entity;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): BatchCreateEntitiesRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): BatchCreateEntitiesRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: BatchCreateEntitiesRequest): BatchCreateEntitiesRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: BatchCreateEntitiesRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): BatchCreateEntitiesRequest;
-    static deserializeBinaryFromReader(message: BatchCreateEntitiesRequest, reader: jspb.BinaryReader): BatchCreateEntitiesRequest;
-}
-
-export namespace BatchCreateEntitiesRequest {
-    export type AsObject = {
-        parent: string,
-        entitiesList: Array<EntityType.Entity.AsObject>,
-        languageCode: string,
-    }
-}
-
-export class BatchUpdateEntitiesRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): BatchUpdateEntitiesRequest;
-    clearEntitiesList(): void;
-    getEntitiesList(): Array<EntityType.Entity>;
-    setEntitiesList(value: Array<EntityType.Entity>): BatchUpdateEntitiesRequest;
-    addEntities(value?: EntityType.Entity, index?: number): EntityType.Entity;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): BatchUpdateEntitiesRequest;
-
-    hasUpdateMask(): boolean;
-    clearUpdateMask(): void;
-    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
-    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): BatchUpdateEntitiesRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): BatchUpdateEntitiesRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: BatchUpdateEntitiesRequest): BatchUpdateEntitiesRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: BatchUpdateEntitiesRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): BatchUpdateEntitiesRequest;
-    static deserializeBinaryFromReader(message: BatchUpdateEntitiesRequest, reader: jspb.BinaryReader): BatchUpdateEntitiesRequest;
-}
-
-export namespace BatchUpdateEntitiesRequest {
-    export type AsObject = {
-        parent: string,
-        entitiesList: Array<EntityType.Entity.AsObject>,
-        languageCode: string,
-        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
-    }
-}
-
-export class BatchDeleteEntitiesRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): BatchDeleteEntitiesRequest;
-    clearEntityValuesList(): void;
-    getEntityValuesList(): Array<string>;
-    setEntityValuesList(value: Array<string>): BatchDeleteEntitiesRequest;
-    addEntityValues(value: string, index?: number): string;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): BatchDeleteEntitiesRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): BatchDeleteEntitiesRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: BatchDeleteEntitiesRequest): BatchDeleteEntitiesRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: BatchDeleteEntitiesRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): BatchDeleteEntitiesRequest;
-    static deserializeBinaryFromReader(message: BatchDeleteEntitiesRequest, reader: jspb.BinaryReader): BatchDeleteEntitiesRequest;
-}
-
-export namespace BatchDeleteEntitiesRequest {
-    export type AsObject = {
-        parent: string,
-        entityValuesList: Array<string>,
-        languageCode: string,
-    }
-}
-
 export class EntityTypeBatch extends jspb.Message { 
     clearEntityTypesList(): void;
     getEntityTypesList(): Array<EntityType>;
@@ -517,6 +439,343 @@ export namespace EntityTypeSorting {
     SORT_ENTITY_TYPE_BY_LAST_UPDATED = 3,
     SORT_ENTITY_TYPE_BY_ENTITY_VALUE_COUNT = 4,
     SORT_ENTITY_TYPE_BY_SYNONYM_COUNT = 5,
+    }
+
+}
+
+export class BatchEntitiesResponse extends jspb.Message { 
+    clearEntityStatusesList(): void;
+    getEntityStatusesList(): Array<BatchEntitiesResponse.EntityStatus>;
+    setEntityStatusesList(value: Array<BatchEntitiesResponse.EntityStatus>): BatchEntitiesResponse;
+    addEntityStatuses(value?: BatchEntitiesResponse.EntityStatus, index?: number): BatchEntitiesResponse.EntityStatus;
+    getHasErrors(): boolean;
+    setHasErrors(value: boolean): BatchEntitiesResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchEntitiesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchEntitiesResponse): BatchEntitiesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchEntitiesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchEntitiesResponse;
+    static deserializeBinaryFromReader(message: BatchEntitiesResponse, reader: jspb.BinaryReader): BatchEntitiesResponse;
+}
+
+export namespace BatchEntitiesResponse {
+    export type AsObject = {
+        entityStatusesList: Array<BatchEntitiesResponse.EntityStatus.AsObject>,
+        hasErrors: boolean,
+    }
+
+
+    export class EntityStatus extends jspb.Message { 
+
+        hasEntity(): boolean;
+        clearEntity(): void;
+        getEntity(): EntityType.Entity | undefined;
+        setEntity(value?: EntityType.Entity): EntityStatus;
+
+        hasErrorMessage(): boolean;
+        clearErrorMessage(): void;
+        getErrorMessage(): string;
+        setErrorMessage(value: string): EntityStatus;
+
+        getEntityOrStatusCase(): EntityStatus.EntityOrStatusCase;
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): EntityStatus.AsObject;
+        static toObject(includeInstance: boolean, msg: EntityStatus): EntityStatus.AsObject;
+        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: EntityStatus, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): EntityStatus;
+        static deserializeBinaryFromReader(message: EntityStatus, reader: jspb.BinaryReader): EntityStatus;
+    }
+
+    export namespace EntityStatus {
+        export type AsObject = {
+            entity?: EntityType.Entity.AsObject,
+            errorMessage: string,
+        }
+
+        export enum EntityOrStatusCase {
+            ENTITY_OR_STATUS_NOT_SET = 0,
+            ENTITY = 1,
+            ERROR_MESSAGE = 2,
+        }
+
+    }
+
+}
+
+export class BatchCreateEntitiesRequest extends jspb.Message { 
+    clearCreateEntityRequestsList(): void;
+    getCreateEntityRequestsList(): Array<BatchCreateEntitiesRequest.CreateEntityRequest>;
+    setCreateEntityRequestsList(value: Array<BatchCreateEntitiesRequest.CreateEntityRequest>): BatchCreateEntitiesRequest;
+    addCreateEntityRequests(value?: BatchCreateEntitiesRequest.CreateEntityRequest, index?: number): BatchCreateEntitiesRequest.CreateEntityRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchCreateEntitiesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchCreateEntitiesRequest): BatchCreateEntitiesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchCreateEntitiesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchCreateEntitiesRequest;
+    static deserializeBinaryFromReader(message: BatchCreateEntitiesRequest, reader: jspb.BinaryReader): BatchCreateEntitiesRequest;
+}
+
+export namespace BatchCreateEntitiesRequest {
+    export type AsObject = {
+        createEntityRequestsList: Array<BatchCreateEntitiesRequest.CreateEntityRequest.AsObject>,
+    }
+
+
+    export class CreateEntityRequest extends jspb.Message { 
+        getEntityTypeName(): string;
+        setEntityTypeName(value: string): CreateEntityRequest;
+
+        hasEntity(): boolean;
+        clearEntity(): void;
+        getEntity(): EntityType.Entity | undefined;
+        setEntity(value?: EntityType.Entity): CreateEntityRequest;
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): CreateEntityRequest.AsObject;
+        static toObject(includeInstance: boolean, msg: CreateEntityRequest): CreateEntityRequest.AsObject;
+        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: CreateEntityRequest, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): CreateEntityRequest;
+        static deserializeBinaryFromReader(message: CreateEntityRequest, reader: jspb.BinaryReader): CreateEntityRequest;
+    }
+
+    export namespace CreateEntityRequest {
+        export type AsObject = {
+            entityTypeName: string,
+            entity?: EntityType.Entity.AsObject,
+        }
+    }
+
+}
+
+export class BatchUpdateEntitiesRequest extends jspb.Message { 
+    clearEntitiesList(): void;
+    getEntitiesList(): Array<EntityType.Entity>;
+    setEntitiesList(value: Array<EntityType.Entity>): BatchUpdateEntitiesRequest;
+    addEntities(value?: EntityType.Entity, index?: number): EntityType.Entity;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchUpdateEntitiesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchUpdateEntitiesRequest): BatchUpdateEntitiesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchUpdateEntitiesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchUpdateEntitiesRequest;
+    static deserializeBinaryFromReader(message: BatchUpdateEntitiesRequest, reader: jspb.BinaryReader): BatchUpdateEntitiesRequest;
+}
+
+export namespace BatchUpdateEntitiesRequest {
+    export type AsObject = {
+        entitiesList: Array<EntityType.Entity.AsObject>,
+    }
+}
+
+export class BatchGetEntitiesRequest extends jspb.Message { 
+    clearNamesList(): void;
+    getNamesList(): Array<string>;
+    setNamesList(value: Array<string>): BatchGetEntitiesRequest;
+    addNames(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchGetEntitiesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchGetEntitiesRequest): BatchGetEntitiesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchGetEntitiesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchGetEntitiesRequest;
+    static deserializeBinaryFromReader(message: BatchGetEntitiesRequest, reader: jspb.BinaryReader): BatchGetEntitiesRequest;
+}
+
+export namespace BatchGetEntitiesRequest {
+    export type AsObject = {
+        namesList: Array<string>,
+    }
+}
+
+export class BatchDeleteEntitiesRequest extends jspb.Message { 
+    clearNamesList(): void;
+    getNamesList(): Array<string>;
+    setNamesList(value: Array<string>): BatchDeleteEntitiesRequest;
+    addNames(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchDeleteEntitiesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchDeleteEntitiesRequest): BatchDeleteEntitiesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchDeleteEntitiesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchDeleteEntitiesRequest;
+    static deserializeBinaryFromReader(message: BatchDeleteEntitiesRequest, reader: jspb.BinaryReader): BatchDeleteEntitiesRequest;
+}
+
+export namespace BatchDeleteEntitiesRequest {
+    export type AsObject = {
+        namesList: Array<string>,
+    }
+}
+
+export class BatchDeleteEntitiesResponse extends jspb.Message { 
+    clearDeleteStatusesList(): void;
+    getDeleteStatusesList(): Array<BatchDeleteEntitiesResponse.DeleteEntityStatus>;
+    setDeleteStatusesList(value: Array<BatchDeleteEntitiesResponse.DeleteEntityStatus>): BatchDeleteEntitiesResponse;
+    addDeleteStatuses(value?: BatchDeleteEntitiesResponse.DeleteEntityStatus, index?: number): BatchDeleteEntitiesResponse.DeleteEntityStatus;
+    getHasErrors(): boolean;
+    setHasErrors(value: boolean): BatchDeleteEntitiesResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): BatchDeleteEntitiesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: BatchDeleteEntitiesResponse): BatchDeleteEntitiesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: BatchDeleteEntitiesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): BatchDeleteEntitiesResponse;
+    static deserializeBinaryFromReader(message: BatchDeleteEntitiesResponse, reader: jspb.BinaryReader): BatchDeleteEntitiesResponse;
+}
+
+export namespace BatchDeleteEntitiesResponse {
+    export type AsObject = {
+        deleteStatusesList: Array<BatchDeleteEntitiesResponse.DeleteEntityStatus.AsObject>,
+        hasErrors: boolean,
+    }
+
+
+    export class DeleteEntityStatus extends jspb.Message { 
+
+        hasSuccessfullyDeleted(): boolean;
+        clearSuccessfullyDeleted(): void;
+        getSuccessfullyDeleted(): google_protobuf_empty_pb.Empty | undefined;
+        setSuccessfullyDeleted(value?: google_protobuf_empty_pb.Empty): DeleteEntityStatus;
+
+        hasErrorMessage(): boolean;
+        clearErrorMessage(): void;
+        getErrorMessage(): string;
+        setErrorMessage(value: string): DeleteEntityStatus;
+
+        getDeleteStatusCase(): DeleteEntityStatus.DeleteStatusCase;
+
+        serializeBinary(): Uint8Array;
+        toObject(includeInstance?: boolean): DeleteEntityStatus.AsObject;
+        static toObject(includeInstance: boolean, msg: DeleteEntityStatus): DeleteEntityStatus.AsObject;
+        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+        static serializeBinaryToWriter(message: DeleteEntityStatus, writer: jspb.BinaryWriter): void;
+        static deserializeBinary(bytes: Uint8Array): DeleteEntityStatus;
+        static deserializeBinaryFromReader(message: DeleteEntityStatus, reader: jspb.BinaryReader): DeleteEntityStatus;
+    }
+
+    export namespace DeleteEntityStatus {
+        export type AsObject = {
+            successfullyDeleted?: google_protobuf_empty_pb.Empty.AsObject,
+            errorMessage: string,
+        }
+
+        export enum DeleteStatusCase {
+            DELETE_STATUS_NOT_SET = 0,
+            SUCCESSFULLY_DELETED = 1,
+            ERROR_MESSAGE = 2,
+        }
+
+    }
+
+}
+
+export class ListEntitiesRequest extends jspb.Message { 
+    getEntityTypeName(): string;
+    setEntityTypeName(value: string): ListEntitiesRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListEntitiesRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListEntitiesRequest;
+
+    hasSortByField(): boolean;
+    clearSortByField(): void;
+    getSortByField(): EntityValueSorting | undefined;
+    setSortByField(value?: EntityValueSorting): ListEntitiesRequest;
+    getSearchByPattern(): string;
+    setSearchByPattern(value: string): ListEntitiesRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListEntitiesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListEntitiesRequest): ListEntitiesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListEntitiesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListEntitiesRequest;
+    static deserializeBinaryFromReader(message: ListEntitiesRequest, reader: jspb.BinaryReader): ListEntitiesRequest;
+}
+
+export namespace ListEntitiesRequest {
+    export type AsObject = {
+        entityTypeName: string,
+        languageCode: string,
+        pageToken: string,
+        sortByField?: EntityValueSorting.AsObject,
+        searchByPattern: string,
+    }
+}
+
+export class ListEntitiesResponse extends jspb.Message { 
+    clearEntitiesList(): void;
+    getEntitiesList(): Array<EntityType.Entity>;
+    setEntitiesList(value: Array<EntityType.Entity>): ListEntitiesResponse;
+    addEntities(value?: EntityType.Entity, index?: number): EntityType.Entity;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListEntitiesResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListEntitiesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListEntitiesResponse): ListEntitiesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListEntitiesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListEntitiesResponse;
+    static deserializeBinaryFromReader(message: ListEntitiesResponse, reader: jspb.BinaryReader): ListEntitiesResponse;
+}
+
+export namespace ListEntitiesResponse {
+    export type AsObject = {
+        entitiesList: Array<EntityType.Entity.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class EntityValueSorting extends jspb.Message { 
+    getSortingField(): EntityValueSorting.EntityValueSortingField;
+    setSortingField(value: EntityValueSorting.EntityValueSortingField): EntityValueSorting;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): EntityValueSorting;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): EntityValueSorting.AsObject;
+    static toObject(includeInstance: boolean, msg: EntityValueSorting): EntityValueSorting.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: EntityValueSorting, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): EntityValueSorting;
+    static deserializeBinaryFromReader(message: EntityValueSorting, reader: jspb.BinaryReader): EntityValueSorting;
+}
+
+export namespace EntityValueSorting {
+    export type AsObject = {
+        sortingField: EntityValueSorting.EntityValueSortingField,
+        sortingMode: ondewo_nlu_common_pb.SortingMode,
+    }
+
+    export enum EntityValueSortingField {
+    NO_ENTITY_VALUE_SORTING = 0,
+    SORT_ENTITY_VALUE_BY_DISPLAY_NAME = 1,
+    SORT_ENTITY_VALUE_BY_VALUE = 2,
+    SORT_ENTITY_VALUE_BY_SYNONYM_COUNT = 3,
     }
 
 }

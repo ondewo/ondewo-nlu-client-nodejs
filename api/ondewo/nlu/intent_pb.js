@@ -2,6 +2,7 @@
 /**
  * @fileoverview
  * @enhanceable
+ * @suppress {missingRequire} reports error on implicit type usages.
  * @suppress {messageConventions} JS Compiler reports an error if a variable or
  *     field starts with 'MSG_' and isn't a translatable message.
  * @public
@@ -20,24 +21,57 @@ var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js');
 goog.object.extend(proto, ondewo_nlu_context_pb);
 var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 goog.object.extend(proto, ondewo_nlu_common_pb);
-var google_longrunning_operations_pb = require('../../google/longrunning/operations_pb.js');
-goog.object.extend(proto, google_longrunning_operations_pb);
+var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
+goog.object.extend(proto, ondewo_nlu_operations_pb);
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 goog.object.extend(proto, google_protobuf_empty_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 goog.object.extend(proto, google_protobuf_struct_pb);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateParametersRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateResponseMessagesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.BatchDeleteIntentsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteParametersRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteParametersResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.DeleteStatusCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteResponseMessagesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteResponseMessagesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.DeleteStatusCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.DeleteStatusCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchGetParametersRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchGetResponseMessagesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchGetTrainingPhrasesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchParametersStatusResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.PhraseOrStatusCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchResponseMessagesStatusResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.PhraseOrStatusCase', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.BatchUpdateIntentsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.BatchUpdateIntentsRequest.IntentBatchCase', null, global);
 goog.exportSymbol('proto.ondewo.nlu.BatchUpdateIntentsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchUpdateParametersRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchUpdateResponseMessagesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.CreateIntentRequest', null, global);
-goog.exportSymbol('proto.ondewo.nlu.CreateTrainingPhraseRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteIntentRequest', null, global);
-goog.exportSymbol('proto.ondewo.nlu.DeleteTrainingPhraseRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetAllIntentTagsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetIntentRequest', null, global);
-goog.exportSymbol('proto.ondewo.nlu.GetTrainingPhraseRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetIntentTagsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetIntentTagsResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.FollowupIntentInfo', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.IntentStatus', null, global);
@@ -66,6 +100,7 @@ goog.exportSymbol('proto.ondewo.nlu.Intent.Message.Suggestions', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.Message.Text', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.Message.Video', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.Parameter', null, global);
+goog.exportSymbol('proto.ondewo.nlu.Intent.Parameter.Prompt', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.TrainingPhrase', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.TrainingPhrase.Entity', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Intent.TrainingPhrase.Type', null, global);
@@ -74,11 +109,21 @@ goog.exportSymbol('proto.ondewo.nlu.IntentBatch', null, global);
 goog.exportSymbol('proto.ondewo.nlu.IntentCategory', null, global);
 goog.exportSymbol('proto.ondewo.nlu.IntentSorting', null, global);
 goog.exportSymbol('proto.ondewo.nlu.IntentSorting.IntentSortingField', null, global);
+goog.exportSymbol('proto.ondewo.nlu.IntentTagRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.IntentView', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListIntentsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListIntentsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListParametersRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListParametersResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListResponseMessagesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListResponseMessagesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListTrainingPhrasesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListTrainingPhrasesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.TrainingPhraseStatus', null, global);
+goog.exportSymbol('proto.ondewo.nlu.TrainingPhraseStatus.PhraseOrStatusCase', null, global);
 goog.exportSymbol('proto.ondewo.nlu.UpdateIntentRequest', null, global);
-goog.exportSymbol('proto.ondewo.nlu.UpdateTrainingPhraseRequest', null, global);
 /**
  * Generated by JsPbCodeGenerator.
  * @param {Array=} opt_data Optional initial data array, typically from a
@@ -162,6 +207,27 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.ondewo.nlu.Intent.Parameter.displayName = 'proto.ondewo.nlu.Intent.Parameter';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.Intent.Parameter.Prompt, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.Intent.Parameter.Prompt.displayName = 'proto.ondewo.nlu.Intent.Parameter.Prompt';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -657,7 +723,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.ondewo.nlu.ListIntentsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListIntentsRequest.repeatedFields_, null);
 };
 goog.inherits(proto.ondewo.nlu.ListIntentsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -887,16 +953,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.ondewo.nlu.IntentTagRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.IntentTagRequest.repeatedFields_, null);
 };
-goog.inherits(proto.ondewo.nlu.CreateTrainingPhraseRequest, jspb.Message);
+goog.inherits(proto.ondewo.nlu.IntentTagRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.ondewo.nlu.CreateTrainingPhraseRequest.displayName = 'proto.ondewo.nlu.CreateTrainingPhraseRequest';
+  proto.ondewo.nlu.IntentTagRequest.displayName = 'proto.ondewo.nlu.IntentTagRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -908,16 +974,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.ondewo.nlu.GetTrainingPhraseRequest = function(opt_data) {
+proto.ondewo.nlu.GetIntentTagsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.ondewo.nlu.GetTrainingPhraseRequest, jspb.Message);
+goog.inherits(proto.ondewo.nlu.GetIntentTagsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.ondewo.nlu.GetTrainingPhraseRequest.displayName = 'proto.ondewo.nlu.GetTrainingPhraseRequest';
+  proto.ondewo.nlu.GetIntentTagsRequest.displayName = 'proto.ondewo.nlu.GetIntentTagsRequest';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -929,16 +995,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.ondewo.nlu.GetIntentTagsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.GetIntentTagsResponse.repeatedFields_, null);
 };
-goog.inherits(proto.ondewo.nlu.UpdateTrainingPhraseRequest, jspb.Message);
+goog.inherits(proto.ondewo.nlu.GetIntentTagsResponse, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.ondewo.nlu.UpdateTrainingPhraseRequest.displayName = 'proto.ondewo.nlu.UpdateTrainingPhraseRequest';
+  proto.ondewo.nlu.GetIntentTagsResponse.displayName = 'proto.ondewo.nlu.GetIntentTagsResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -950,16 +1016,751 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest = function(opt_data) {
+proto.ondewo.nlu.GetAllIntentTagsRequest = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.ondewo.nlu.DeleteTrainingPhraseRequest, jspb.Message);
+goog.inherits(proto.ondewo.nlu.GetAllIntentTagsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.ondewo.nlu.DeleteTrainingPhraseRequest.displayName = 'proto.ondewo.nlu.DeleteTrainingPhraseRequest';
+  proto.ondewo.nlu.GetAllIntentTagsRequest.displayName = 'proto.ondewo.nlu.GetAllIntentTagsRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.displayName = 'proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.TrainingPhraseStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.TrainingPhraseStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.TrainingPhraseStatus.displayName = 'proto.ondewo.nlu.TrainingPhraseStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.displayName = 'proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.displayName = 'proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.displayName = 'proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchGetTrainingPhrasesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.displayName = 'proto.ondewo.nlu.BatchGetTrainingPhrasesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.displayName = 'proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.displayName = 'proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.displayName = 'proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListTrainingPhrasesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListTrainingPhrasesRequest.displayName = 'proto.ondewo.nlu.ListTrainingPhrasesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListTrainingPhrasesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListTrainingPhrasesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListTrainingPhrasesResponse.displayName = 'proto.ondewo.nlu.ListTrainingPhrasesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchResponseMessagesStatusResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchResponseMessagesStatusResponse.displayName = 'proto.ondewo.nlu.BatchResponseMessagesStatusResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.displayName = 'proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchCreateResponseMessagesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateResponseMessagesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateResponseMessagesRequest.displayName = 'proto.ondewo.nlu.BatchCreateResponseMessagesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.displayName = 'proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchUpdateResponseMessagesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.displayName = 'proto.ondewo.nlu.BatchUpdateResponseMessagesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchGetResponseMessagesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchGetResponseMessagesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchGetResponseMessagesRequest.displayName = 'proto.ondewo.nlu.BatchGetResponseMessagesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteResponseMessagesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.displayName = 'proto.ondewo.nlu.BatchDeleteResponseMessagesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteResponseMessagesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.displayName = 'proto.ondewo.nlu.BatchDeleteResponseMessagesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.displayName = 'proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListResponseMessagesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListResponseMessagesRequest.displayName = 'proto.ondewo.nlu.ListResponseMessagesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListResponseMessagesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListResponseMessagesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListResponseMessagesResponse.displayName = 'proto.ondewo.nlu.ListResponseMessagesResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchParametersStatusResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchParametersStatusResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchParametersStatusResponse.displayName = 'proto.ondewo.nlu.BatchParametersStatusResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.displayName = 'proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchCreateParametersRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateParametersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateParametersRequest.displayName = 'proto.ondewo.nlu.BatchCreateParametersRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.displayName = 'proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchUpdateParametersRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchUpdateParametersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchUpdateParametersRequest.displayName = 'proto.ondewo.nlu.BatchUpdateParametersRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchGetParametersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchGetParametersRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchGetParametersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchGetParametersRequest.displayName = 'proto.ondewo.nlu.BatchGetParametersRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteParametersRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteParametersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteParametersRequest.displayName = 'proto.ondewo.nlu.BatchDeleteParametersRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.BatchDeleteParametersResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteParametersResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteParametersResponse.displayName = 'proto.ondewo.nlu.BatchDeleteParametersResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_);
+};
+goog.inherits(proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.displayName = 'proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListParametersRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListParametersRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListParametersRequest.displayName = 'proto.ondewo.nlu.ListParametersRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListParametersResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListParametersResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListParametersResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListParametersResponse.displayName = 'proto.ondewo.nlu.ListParametersResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.displayName = 'proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.displayName = 'proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse';
 }
 
 /**
@@ -967,7 +1768,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.ondewo.nlu.Intent.repeatedFields_ = [7,8,9,11,13,14,15,18];
+proto.ondewo.nlu.Intent.repeatedFields_ = [7,8,9,11,13,14,15,18,38];
 
 
 
@@ -1028,7 +1829,10 @@ proto.ondewo.nlu.Intent.toObject = function(includeInstance, msg) {
     isStartOfDeviation: jspb.Message.getBooleanFieldWithDefault(msg, 32, false),
     isEndOfDeviation: jspb.Message.getBooleanFieldWithDefault(msg, 33, false),
     trainingPhraseCount: jspb.Message.getFieldWithDefault(msg, 34, 0),
-    status: jspb.Message.getFieldWithDefault(msg, 35, 0)
+    status: jspb.Message.getFieldWithDefault(msg, 35, 0),
+    startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    endDate: (f = msg.getEndDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 38)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1167,6 +1971,20 @@ proto.ondewo.nlu.Intent.deserializeBinaryFromReader = function(msg, reader) {
     case 35:
       var value = /** @type {!proto.ondewo.nlu.Intent.IntentStatus} */ (reader.readEnum());
       msg.setStatus(value);
+      break;
+    case 36:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setStartDate(value);
+      break;
+    case 37:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setEndDate(value);
+      break;
+    case 38:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTags(value);
       break;
     default:
       reader.skipField();
@@ -1370,6 +2188,29 @@ proto.ondewo.nlu.Intent.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getStartDate();
+  if (f != null) {
+    writer.writeMessage(
+      36,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getEndDate();
+  if (f != null) {
+    writer.writeMessage(
+      37,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      38,
+      f
+    );
+  }
 };
 
 
@@ -1434,7 +2275,8 @@ proto.ondewo.nlu.Intent.TrainingPhrase.toObject = function(includeInstance, msg)
     text: jspb.Message.getFieldWithDefault(msg, 3, ""),
     entitiesList: jspb.Message.toObjectList(msg.getEntitiesList(),
     proto.ondewo.nlu.Intent.TrainingPhrase.Entity.toObject, includeInstance),
-    timesAddedCount: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    timesAddedCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 6, "")
   };
 
   if (includeInstance) {
@@ -1491,6 +2333,10 @@ proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader = function(ms
     case 5:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setTimesAddedCount(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
       break;
     default:
       reader.skipField();
@@ -1554,6 +2400,13 @@ proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter = function(messag
   if (f !== 0) {
     writer.writeInt32(
       5,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
       f
     );
   }
@@ -2019,6 +2872,24 @@ proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setTimesAddedCount = function(v
 };
 
 
+/**
+ * optional string language_code = 6;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
 
 /**
  * List of repeated fields within this message type.
@@ -2065,7 +2936,8 @@ proto.ondewo.nlu.Intent.Parameter.toObject = function(includeInstance, msg) {
     entityTypeName: jspb.Message.getFieldWithDefault(msg, 5, ""),
     entityTypeDisplayName: jspb.Message.getFieldWithDefault(msg, 6, ""),
     mandatory: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
-    promptsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    promptsList: jspb.Message.toObjectList(msg.getPromptsList(),
+    proto.ondewo.nlu.Intent.Parameter.Prompt.toObject, includeInstance),
     isList: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
@@ -2132,7 +3004,8 @@ proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader = function(msg, re
       msg.setMandatory(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new proto.ondewo.nlu.Intent.Parameter.Prompt;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Parameter.Prompt.deserializeBinaryFromReader);
       msg.addPrompts(value);
       break;
     case 9:
@@ -2219,9 +3092,10 @@ proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter = function(message, wr
   }
   f = message.getPromptsList();
   if (f.length > 0) {
-    writer.writeRepeatedString(
+    writer.writeRepeatedMessage(
       8,
-      f
+      f,
+      proto.ondewo.nlu.Intent.Parameter.Prompt.serializeBinaryToWriter
     );
   }
   f = message.getIsList();
@@ -2231,6 +3105,196 @@ proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter = function(message, wr
       f
     );
   }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.Intent.Parameter.Prompt.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.Intent.Parameter.Prompt} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    text: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.Intent.Parameter.Prompt;
+  return proto.ondewo.nlu.Intent.Parameter.Prompt.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.Intent.Parameter.Prompt} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setText(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.Intent.Parameter.Prompt.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.Intent.Parameter.Prompt} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getText();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string text = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getText = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setText = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string language_code = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2361,30 +3425,31 @@ proto.ondewo.nlu.Intent.Parameter.prototype.setMandatory = function(value) {
 
 
 /**
- * repeated string prompts = 8;
- * @return {!Array<string>}
+ * repeated Prompt prompts = 8;
+ * @return {!Array<!proto.ondewo.nlu.Intent.Parameter.Prompt>}
  */
 proto.ondewo.nlu.Intent.Parameter.prototype.getPromptsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.Parameter.Prompt>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.Parameter.Prompt, 8));
 };
 
 
 /**
- * @param {!Array<string>} value
+ * @param {!Array<!proto.ondewo.nlu.Intent.Parameter.Prompt>} value
  * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
- */
+*/
 proto.ondewo.nlu.Intent.Parameter.prototype.setPromptsList = function(value) {
-  return jspb.Message.setField(this, 8, value || []);
+  return jspb.Message.setRepeatedWrapperField(this, 8, value);
 };
 
 
 /**
- * @param {string} value
+ * @param {!proto.ondewo.nlu.Intent.Parameter.Prompt=} opt_value
  * @param {number=} opt_index
- * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt}
  */
-proto.ondewo.nlu.Intent.Parameter.prototype.addPrompts = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+proto.ondewo.nlu.Intent.Parameter.prototype.addPrompts = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.ondewo.nlu.Intent.Parameter.Prompt, opt_index);
 };
 
 
@@ -2485,6 +3550,8 @@ proto.ondewo.nlu.Intent.Message.prototype.toObject = function(opt_includeInstanc
  */
 proto.ondewo.nlu.Intent.Message.toObject = function(includeInstance, msg) {
   var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 17, ""),
     text: (f = msg.getText()) && proto.ondewo.nlu.Intent.Message.Text.toObject(includeInstance, f),
     image: (f = msg.getImage()) && proto.ondewo.nlu.Intent.Message.Image.toObject(includeInstance, f),
     quickReplies: (f = msg.getQuickReplies()) && proto.ondewo.nlu.Intent.Message.QuickReplies.toObject(includeInstance, f),
@@ -2499,7 +3566,8 @@ proto.ondewo.nlu.Intent.Message.toObject = function(includeInstance, msg) {
     htmlText: (f = msg.getHtmlText()) && proto.ondewo.nlu.Intent.Message.HTMLText.toObject(includeInstance, f),
     video: (f = msg.getVideo()) && proto.ondewo.nlu.Intent.Message.Video.toObject(includeInstance, f),
     audio: (f = msg.getAudio()) && proto.ondewo.nlu.Intent.Message.Audio.toObject(includeInstance, f),
-    platform: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    platform: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    isPrompt: jspb.Message.getBooleanFieldWithDefault(msg, 18, false)
   };
 
   if (includeInstance) {
@@ -2536,6 +3604,14 @@ proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader = function(msg, read
     }
     var field = reader.getFieldNumber();
     switch (field) {
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 17:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
     case 1:
       var value = new proto.ondewo.nlu.Intent.Message.Text;
       reader.readMessage(value,proto.ondewo.nlu.Intent.Message.Text.deserializeBinaryFromReader);
@@ -2610,6 +3686,10 @@ proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader = function(msg, read
       var value = /** @type {!proto.ondewo.nlu.Intent.Message.Platform} */ (reader.readEnum());
       msg.setPlatform(value);
       break;
+    case 18:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsPrompt(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -2639,6 +3719,20 @@ proto.ondewo.nlu.Intent.Message.prototype.serializeBinary = function() {
  */
 proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      17,
+      f
+    );
+  }
   f = message.getText();
   if (f != null) {
     writer.writeMessage(
@@ -2758,6 +3852,13 @@ proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter = function(message, writ
       f
     );
   }
+  f = message.getIsPrompt();
+  if (f) {
+    writer.writeBool(
+      18,
+      f
+    );
+  }
 };
 
 
@@ -2773,7 +3874,27 @@ proto.ondewo.nlu.Intent.Message.Platform = {
   SKYPE: 5,
   LINE: 6,
   VIBER: 7,
-  ACTIONS_ON_GOOGLE: 8
+  ACTIONS_ON_GOOGLE: 8,
+  PLACEHOLDER_1: 9,
+  PLACEHOLDER_2: 10,
+  PLACEHOLDER_3: 11,
+  PLACEHOLDER_4: 12,
+  PLACEHOLDER_5: 13,
+  PLACEHOLDER_6: 14,
+  PLACEHOLDER_7: 15,
+  PLACEHOLDER_8: 16,
+  PLACEHOLDER_9: 17,
+  PLACEHOLDER_10: 18,
+  PLACEHOLDER_11: 19,
+  PLACEHOLDER_12: 20,
+  PLACEHOLDER_13: 21,
+  PLACEHOLDER_14: 22,
+  PLACEHOLDER_15: 23,
+  PLACEHOLDER_16: 24,
+  PLACEHOLDER_17: 25,
+  PLACEHOLDER_18: 26,
+  PLACEHOLDER_19: 27,
+  PLACEHOLDER_20: 28
 };
 
 
@@ -6637,6 +7758,42 @@ proto.ondewo.nlu.Intent.Message.SelectItemInfo.prototype.clearSynonymsList = fun
 
 
 /**
+ * optional string name = 16;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional string language_code = 17;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 17, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 17, value);
+};
+
+
+/**
  * optional Text text = 1;
  * @return {?proto.ondewo.nlu.Intent.Message.Text}
  */
@@ -7169,6 +8326,24 @@ proto.ondewo.nlu.Intent.Message.prototype.getPlatform = function() {
  */
 proto.ondewo.nlu.Intent.Message.prototype.setPlatform = function(value) {
   return jspb.Message.setProto3EnumField(this, 6, value);
+};
+
+
+/**
+ * optional bool is_prompt = 18;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getIsPrompt = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 18, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setIsPrompt = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 18, value);
 };
 
 
@@ -7921,6 +9096,124 @@ proto.ondewo.nlu.Intent.prototype.setStatus = function(value) {
 };
 
 
+/**
+ * optional google.protobuf.Timestamp start_date = 36;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.prototype.getStartDate = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 36));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+*/
+proto.ondewo.nlu.Intent.prototype.setStartDate = function(value) {
+  return jspb.Message.setWrapperField(this, 36, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.clearStartDate = function() {
+  return this.setStartDate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.prototype.hasStartDate = function() {
+  return jspb.Message.getField(this, 36) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp end_date = 37;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.prototype.getEndDate = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 37));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+*/
+proto.ondewo.nlu.Intent.prototype.setEndDate = function(value) {
+  return jspb.Message.setWrapperField(this, 37, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.clearEndDate = function() {
+  return this.setEndDate(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.prototype.hasEndDate = function() {
+  return jspb.Message.getField(this, 37) != null;
+};
+
+
+/**
+ * repeated string tags = 38;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.Intent.prototype.getTagsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 38));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.setTagsList = function(value) {
+  return jspb.Message.setField(this, 38, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.addTags = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 38, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.clearTagsList = function() {
+  return this.setTagsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListIntentsRequest.repeatedFields_ = [8];
 
 
 
@@ -7958,7 +9251,8 @@ proto.ondewo.nlu.ListIntentsRequest.toObject = function(includeInstance, msg) {
     intentView: jspb.Message.getFieldWithDefault(msg, 3, 0),
     pageToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
     filterByCategory: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    sortByField: (f = msg.getSortByField()) && proto.ondewo.nlu.IntentSorting.toObject(includeInstance, f)
+    sortByField: (f = msg.getSortByField()) && proto.ondewo.nlu.IntentSorting.toObject(includeInstance, f),
+    filterByTagsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -8019,6 +9313,10 @@ proto.ondewo.nlu.ListIntentsRequest.deserializeBinaryFromReader = function(msg, 
       var value = new proto.ondewo.nlu.IntentSorting;
       reader.readMessage(value,proto.ondewo.nlu.IntentSorting.deserializeBinaryFromReader);
       msg.setSortByField(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addFilterByTags(value);
       break;
     default:
       reader.skipField();
@@ -8090,6 +9388,13 @@ proto.ondewo.nlu.ListIntentsRequest.serializeBinaryToWriter = function(message, 
       7,
       f,
       proto.ondewo.nlu.IntentSorting.serializeBinaryToWriter
+    );
+  }
+  f = message.getFilterByTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      8,
+      f
     );
   }
 };
@@ -8219,6 +9524,43 @@ proto.ondewo.nlu.ListIntentsRequest.prototype.clearSortByField = function() {
  */
 proto.ondewo.nlu.ListIntentsRequest.prototype.hasSortByField = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * repeated string filter_by_tags = 8;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.ListIntentsRequest.prototype.getFilterByTagsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.ListIntentsRequest} returns this
+ */
+proto.ondewo.nlu.ListIntentsRequest.prototype.setFilterByTagsList = function(value) {
+  return jspb.Message.setField(this, 8, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.ListIntentsRequest} returns this
+ */
+proto.ondewo.nlu.ListIntentsRequest.prototype.addFilterByTags = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListIntentsRequest} returns this
+ */
+proto.ondewo.nlu.ListIntentsRequest.prototype.clearFilterByTagsList = function() {
+  return this.setFilterByTagsList([]);
 };
 
 
@@ -10273,7 +11615,9 @@ proto.ondewo.nlu.IntentSorting.IntentSortingField = {
   SORT_INTENT_BY_NAME: 1,
   SORT_INTENT_BY_CREATION_DATE: 2,
   SORT_INTENT_BY_LAST_UPDATED: 3,
-  SORT_INTENT_BY_USERSAYS_COUNT: 4
+  SORT_INTENT_BY_USERSAYS_COUNT: 4,
+  SORT_INTENT_BY_START_DATE: 5,
+  SORT_INTENT_BY_END_DATE: 6
 };
 
 /**
@@ -10313,6 +11657,13 @@ proto.ondewo.nlu.IntentSorting.prototype.setSortingMode = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.IntentTagRequest.repeatedFields_ = [2];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -10328,8 +11679,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.ondewo.nlu.CreateTrainingPhraseRequest.toObject(opt_includeInstance, this);
+proto.ondewo.nlu.IntentTagRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.IntentTagRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -10338,15 +11689,14 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.toObject = function(opt_i
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.ondewo.nlu.CreateTrainingPhraseRequest} msg The msg instance to transform.
+ * @param {!proto.ondewo.nlu.IntentTagRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.toObject = function(includeInstance, msg) {
+proto.ondewo.nlu.IntentTagRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    trainingPhrase: (f = msg.getTrainingPhrase()) && proto.ondewo.nlu.Intent.TrainingPhrase.toObject(includeInstance, f),
-    languageCode: jspb.Message.getFieldWithDefault(msg, 3, "")
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -10360,23 +11710,1315 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.toObject = function(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.IntentTagRequest}
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.deserializeBinary = function(bytes) {
+proto.ondewo.nlu.IntentTagRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.ondewo.nlu.CreateTrainingPhraseRequest;
-  return proto.ondewo.nlu.CreateTrainingPhraseRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.ondewo.nlu.IntentTagRequest;
+  return proto.ondewo.nlu.IntentTagRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.ondewo.nlu.CreateTrainingPhraseRequest} msg The message object to deserialize into.
+ * @param {!proto.ondewo.nlu.IntentTagRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.IntentTagRequest}
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.ondewo.nlu.IntentTagRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTags(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.IntentTagRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.IntentTagRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.IntentTagRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.IntentTagRequest} returns this
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * repeated string tags = 2;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.getTagsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.IntentTagRequest} returns this
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.setTagsList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.IntentTagRequest} returns this
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.addTags = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.IntentTagRequest} returns this
+ */
+proto.ondewo.nlu.IntentTagRequest.prototype.clearTagsList = function() {
+  return this.setTagsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetIntentTagsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetIntentTagsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetIntentTagsRequest}
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetIntentTagsRequest;
+  return proto.ondewo.nlu.GetIntentTagsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetIntentTagsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetIntentTagsRequest}
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetIntentTagsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetIntentTagsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetIntentTagsRequest} returns this
+ */
+proto.ondewo.nlu.GetIntentTagsRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetIntentTagsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetIntentTagsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentTagsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetIntentTagsResponse}
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetIntentTagsResponse;
+  return proto.ondewo.nlu.GetIntentTagsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetIntentTagsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetIntentTagsResponse}
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addIntentTags(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetIntentTagsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetIntentTagsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentTagsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string intent_tags = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.getIntentTagsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetIntentTagsResponse} returns this
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.setIntentTagsList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetIntentTagsResponse} returns this
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.addIntentTags = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetIntentTagsResponse} returns this
+ */
+proto.ondewo.nlu.GetIntentTagsResponse.prototype.clearIntentTagsList = function() {
+  return this.setIntentTagsList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetAllIntentTagsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetAllIntentTagsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetAllIntentTagsRequest}
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetAllIntentTagsRequest;
+  return proto.ondewo.nlu.GetAllIntentTagsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetAllIntentTagsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetAllIntentTagsRequest}
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetAllIntentTagsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetAllIntentTagsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetAllIntentTagsRequest} returns this
+ */
+proto.ondewo.nlu.GetAllIntentTagsRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trainingPhrasesList: jspb.Message.toObjectList(msg.getTrainingPhrasesList(),
+    proto.ondewo.nlu.Intent.TrainingPhrase.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest;
+  return proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.TrainingPhrase;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader);
+      msg.addTrainingPhrases(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrainingPhrasesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Intent.TrainingPhrase training_phrases = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.getTrainingPhrasesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>} value
+ * @return {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest} returns this
+*/
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.setTrainingPhrasesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.TrainingPhrase=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase}
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.addTrainingPhrases = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.TrainingPhrase, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchUpdateTrainingPhrasesRequest.prototype.clearTrainingPhrasesList = function() {
+  return this.setTrainingPhrasesList([]);
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.PhraseOrStatusCase = {
+  PHRASE_OR_STATUS_NOT_SET: 0,
+  TRAINING_PHRASE: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.TrainingPhraseStatus.PhraseOrStatusCase}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.getPhraseOrStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.TrainingPhraseStatus.PhraseOrStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.TrainingPhraseStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.TrainingPhraseStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trainingPhrase: (f = msg.getTrainingPhrase()) && proto.ondewo.nlu.Intent.TrainingPhrase.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.TrainingPhraseStatus;
+  return proto.ondewo.nlu.TrainingPhraseStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.TrainingPhraseStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.TrainingPhrase;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader);
+      msg.setTrainingPhrase(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.TrainingPhraseStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.TrainingPhraseStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrainingPhrase();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional Intent.TrainingPhrase training_phrase = 1;
+ * @return {?proto.ondewo.nlu.Intent.TrainingPhrase}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.getTrainingPhrase = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.TrainingPhrase} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 1));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.TrainingPhrase|undefined} value
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus} returns this
+*/
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.setTrainingPhrase = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.clearTrainingPhrase = function() {
+  return this.setTrainingPhrase(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.hasTrainingPhrase = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string error_message = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.getErrorMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.TrainingPhraseStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.TrainingPhraseStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trainingPhraseStatusesList: jspb.Message.toObjectList(msg.getTrainingPhraseStatusesList(),
+    proto.ondewo.nlu.TrainingPhraseStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse;
+  return proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.TrainingPhraseStatus;
+      reader.readMessage(value,proto.ondewo.nlu.TrainingPhraseStatus.deserializeBinaryFromReader);
+      msg.addTrainingPhraseStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrainingPhraseStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.TrainingPhraseStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated TrainingPhraseStatus training_phrase_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.TrainingPhraseStatus>}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.getTrainingPhraseStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.TrainingPhraseStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.TrainingPhraseStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.TrainingPhraseStatus>} value
+ * @return {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} returns this
+*/
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.setTrainingPhraseStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.TrainingPhraseStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.TrainingPhraseStatus}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.addTrainingPhraseStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.TrainingPhraseStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.clearTrainingPhraseStatusesList = function() {
+  return this.setTrainingPhraseStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchTrainingPhrasesStatusResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trainingPhraseRequestsList: jspb.Message.toObjectList(msg.getTrainingPhraseRequestsList(),
+    proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest;
+  return proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest;
+      reader.readMessage(value,proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.deserializeBinaryFromReader);
+      msg.addTrainingPhraseRequests(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrainingPhraseRequestsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    trainingPhrase: (f = msg.getTrainingPhrase()) && proto.ondewo.nlu.Intent.TrainingPhrase.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest;
+  return proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -10392,10 +13034,6 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.deserializeBinaryFromReader = funct
       reader.readMessage(value,proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader);
       msg.setTrainingPhrase(value);
       break;
-    case 3:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLanguageCode(value);
-      break;
     default:
       reader.skipField();
       break;
@@ -10409,9 +13047,9 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.serializeBinary = function() {
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.ondewo.nlu.CreateTrainingPhraseRequest.serializeBinaryToWriter(this, writer);
+  proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -10419,11 +13057,11 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.ondewo.nlu.CreateTrainingPhraseRequest} message
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.serializeBinaryToWriter = function(message, writer) {
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getIntentName();
   if (f.length > 0) {
@@ -10440,7 +13078,956 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.serializeBinaryToWriter = function(
       proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter
     );
   }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional Intent.TrainingPhrase training_phrase = 2;
+ * @return {?proto.ondewo.nlu.Intent.TrainingPhrase}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.getTrainingPhrase = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.TrainingPhrase} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.TrainingPhrase|undefined} value
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.setTrainingPhrase = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.clearTrainingPhrase = function() {
+  return this.setTrainingPhrase(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest.prototype.hasTrainingPhrase = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated CreateTrainingPhraseRequest training_phrase_requests = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest>}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.getTrainingPhraseRequestsList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest>} value
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.setTrainingPhraseRequestsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest}
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.addTrainingPhraseRequests = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.CreateTrainingPhraseRequest, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateTrainingPhrasesRequest.prototype.clearTrainingPhraseRequestsList = function() {
+  return this.setTrainingPhraseRequestsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchGetTrainingPhrasesRequest;
+  return proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchGetTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetTrainingPhrasesRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest;
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    deleteStatusesList: jspb.Message.toObjectList(msg.getDeleteStatusesList(),
+    proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse;
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus;
+      reader.readMessage(value,proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.deserializeBinaryFromReader);
+      msg.addDeleteStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDeleteStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.DeleteStatusCase = {
+  DELETE_STATUS_NOT_SET: 0,
+  SUCCESSFULLY_DELETED: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.DeleteStatusCase}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.getDeleteStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.DeleteStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    successfullyDeleted: (f = msg.getSuccessfullyDeleted()) && google_protobuf_empty_pb.Empty.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus;
+  return proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_protobuf_empty_pb.Empty;
+      reader.readMessage(value,google_protobuf_empty_pb.Empty.deserializeBinaryFromReader);
+      msg.setSuccessfullyDeleted(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSuccessfullyDeleted();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_protobuf_empty_pb.Empty.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional google.protobuf.Empty successfully_deleted = 1;
+ * @return {?proto.google.protobuf.Empty}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.getSuccessfullyDeleted = function() {
+  return /** @type{?proto.google.protobuf.Empty} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_empty_pb.Empty, 1));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Empty|undefined} value
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} returns this
+*/
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.setSuccessfullyDeleted = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.clearSuccessfullyDeleted = function() {
+  return this.setSuccessfullyDeleted(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.hasSuccessfullyDeleted = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string error_message = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.getErrorMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated DeleteTrainingPhraseStatus delete_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus>}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.getDeleteStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} returns this
+*/
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.setDeleteStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.addDeleteStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.DeleteTrainingPhraseStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.clearDeleteStatusesList = function() {
+  return this.setDeleteStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteTrainingPhrasesResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListTrainingPhrasesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListTrainingPhrasesRequest;
+  return proto.ondewo.nlu.ListTrainingPhrasesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesRequest}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListTrainingPhrasesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
   f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPageToken();
   if (f.length > 0) {
     writer.writeString(
       3,
@@ -10454,213 +14041,16 @@ proto.ondewo.nlu.CreateTrainingPhraseRequest.serializeBinaryToWriter = function(
  * optional string intent_name = 1;
  * @return {string}
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.getIntentName = function() {
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.getIntentName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest} returns this
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesRequest} returns this
  */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.setIntentName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
-};
-
-
-/**
- * optional Intent.TrainingPhrase training_phrase = 2;
- * @return {?proto.ondewo.nlu.Intent.TrainingPhrase}
- */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.getTrainingPhrase = function() {
-  return /** @type{?proto.ondewo.nlu.Intent.TrainingPhrase} */ (
-    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 2));
-};
-
-
-/**
- * @param {?proto.ondewo.nlu.Intent.TrainingPhrase|undefined} value
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest} returns this
-*/
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.setTrainingPhrase = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest} returns this
- */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.clearTrainingPhrase = function() {
-  return this.setTrainingPhrase(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.hasTrainingPhrase = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional string language_code = 3;
- * @return {string}
- */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.getLanguageCode = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.ondewo.nlu.CreateTrainingPhraseRequest} returns this
- */
-proto.ondewo.nlu.CreateTrainingPhraseRequest.prototype.setLanguageCode = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
-};
-
-
-
-
-
-if (jspb.Message.GENERATE_TO_OBJECT) {
-/**
- * Creates an object representation of this proto.
- * Field names that are reserved in JavaScript and will be renamed to pb_name.
- * Optional fields that are not set will be set to undefined.
- * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
- * For the list of reserved names please see:
- *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
- * @param {boolean=} opt_includeInstance Deprecated. whether to include the
- *     JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @return {!Object}
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.ondewo.nlu.GetTrainingPhraseRequest.toObject(opt_includeInstance, this);
-};
-
-
-/**
- * Static version of the {@see toObject} method.
- * @param {boolean|undefined} includeInstance Deprecated. Whether to include
- *     the JSPB instance for transitional soy proto support:
- *     http://goto/soy-param-migration
- * @param {!proto.ondewo.nlu.GetTrainingPhraseRequest} msg The msg instance to transform.
- * @return {!Object}
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.toObject = function(includeInstance, msg) {
-  var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    languageCode: jspb.Message.getFieldWithDefault(msg, 2, "")
-  };
-
-  if (includeInstance) {
-    obj.$jspbMessageInstance = msg;
-  }
-  return obj;
-};
-}
-
-
-/**
- * Deserializes binary data (in protobuf wire format).
- * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.ondewo.nlu.GetTrainingPhraseRequest}
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.deserializeBinary = function(bytes) {
-  var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.ondewo.nlu.GetTrainingPhraseRequest;
-  return proto.ondewo.nlu.GetTrainingPhraseRequest.deserializeBinaryFromReader(msg, reader);
-};
-
-
-/**
- * Deserializes binary data (in protobuf wire format) from the
- * given reader into the given message object.
- * @param {!proto.ondewo.nlu.GetTrainingPhraseRequest} msg The message object to deserialize into.
- * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.ondewo.nlu.GetTrainingPhraseRequest}
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.deserializeBinaryFromReader = function(msg, reader) {
-  while (reader.nextField()) {
-    if (reader.isEndGroup()) {
-      break;
-    }
-    var field = reader.getFieldNumber();
-    switch (field) {
-    case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
-      break;
-    case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setLanguageCode(value);
-      break;
-    default:
-      reader.skipField();
-      break;
-    }
-  }
-  return msg;
-};
-
-
-/**
- * Serializes the message to binary data (in protobuf wire format).
- * @return {!Uint8Array}
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.serializeBinary = function() {
-  var writer = new jspb.BinaryWriter();
-  proto.ondewo.nlu.GetTrainingPhraseRequest.serializeBinaryToWriter(this, writer);
-  return writer.getResultBuffer();
-};
-
-
-/**
- * Serializes the given message to binary data (in protobuf wire
- * format), writing to the given BinaryWriter.
- * @param {!proto.ondewo.nlu.GetTrainingPhraseRequest} message
- * @param {!jspb.BinaryWriter} writer
- * @suppress {unusedLocalVariables} f is only used for nested messages
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.serializeBinaryToWriter = function(message, writer) {
-  var f = undefined;
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
-      1,
-      f
-    );
-  }
-  f = message.getLanguageCode();
-  if (f.length > 0) {
-    writer.writeString(
-      2,
-      f
-    );
-  }
-};
-
-
-/**
- * optional string name = 1;
- * @return {string}
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.ondewo.nlu.GetTrainingPhraseRequest} returns this
- */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.setName = function(value) {
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.setIntentName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -10669,20 +14059,45 @@ proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.setName = function(value) {
  * optional string language_code = 2;
  * @return {string}
  */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.getLanguageCode = function() {
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.getLanguageCode = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.ondewo.nlu.GetTrainingPhraseRequest} returns this
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesRequest} returns this
  */
-proto.ondewo.nlu.GetTrainingPhraseRequest.prototype.setLanguageCode = function(value) {
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.setLanguageCode = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
+/**
+ * optional string page_token = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse.repeatedFields_ = [1];
 
 
 
@@ -10699,8 +14114,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.ondewo.nlu.UpdateTrainingPhraseRequest.toObject(opt_includeInstance, this);
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListTrainingPhrasesResponse.toObject(opt_includeInstance, this);
 };
 
 
@@ -10709,14 +14124,15 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.toObject = function(opt_i
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} msg The msg instance to transform.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesResponse} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.toObject = function(includeInstance, msg) {
+proto.ondewo.nlu.ListTrainingPhrasesResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    trainingPhrase: (f = msg.getTrainingPhrase()) && proto.ondewo.nlu.Intent.TrainingPhrase.toObject(includeInstance, f),
-    languageCode: jspb.Message.getFieldWithDefault(msg, 2, "")
+    trainingPhrasesList: jspb.Message.toObjectList(msg.getTrainingPhrasesList(),
+    proto.ondewo.nlu.Intent.TrainingPhrase.toObject, includeInstance),
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -10730,23 +14146,23 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.toObject = function(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.ondewo.nlu.UpdateTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesResponse}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.deserializeBinary = function(bytes) {
+proto.ondewo.nlu.ListTrainingPhrasesResponse.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.ondewo.nlu.UpdateTrainingPhraseRequest;
-  return proto.ondewo.nlu.UpdateTrainingPhraseRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.ondewo.nlu.ListTrainingPhrasesResponse;
+  return proto.ondewo.nlu.ListTrainingPhrasesResponse.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} msg The message object to deserialize into.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesResponse} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.ondewo.nlu.UpdateTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesResponse}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.ondewo.nlu.ListTrainingPhrasesResponse.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -10756,11 +14172,11 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.deserializeBinaryFromReader = funct
     case 1:
       var value = new proto.ondewo.nlu.Intent.TrainingPhrase;
       reader.readMessage(value,proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader);
-      msg.setTrainingPhrase(value);
+      msg.addTrainingPhrases(value);
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setLanguageCode(value);
+      msg.setNextPageToken(value);
       break;
     default:
       reader.skipField();
@@ -10775,9 +14191,9 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.serializeBinary = function() {
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.ondewo.nlu.UpdateTrainingPhraseRequest.serializeBinaryToWriter(this, writer);
+  proto.ondewo.nlu.ListTrainingPhrasesResponse.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -10785,21 +14201,21 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} message
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesResponse} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.serializeBinaryToWriter = function(message, writer) {
+proto.ondewo.nlu.ListTrainingPhrasesResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTrainingPhrase();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getTrainingPhrasesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
       1,
       f,
       proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter
     );
   }
-  f = message.getLanguageCode();
+  f = message.getNextPageToken();
   if (f.length > 0) {
     writer.writeString(
       2,
@@ -10810,30 +14226,372 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.serializeBinaryToWriter = function(
 
 
 /**
- * optional Intent.TrainingPhrase training_phrase = 1;
- * @return {?proto.ondewo.nlu.Intent.TrainingPhrase}
+ * repeated Intent.TrainingPhrase training_phrases = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.getTrainingPhrase = function() {
-  return /** @type{?proto.ondewo.nlu.Intent.TrainingPhrase} */ (
-    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 1));
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.getTrainingPhrasesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.TrainingPhrase, 1));
 };
 
 
 /**
- * @param {?proto.ondewo.nlu.Intent.TrainingPhrase|undefined} value
- * @return {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} returns this
+ * @param {!Array<!proto.ondewo.nlu.Intent.TrainingPhrase>} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesResponse} returns this
 */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.setTrainingPhrase = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.setTrainingPhrasesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.TrainingPhrase=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.addTrainingPhrases = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.TrainingPhrase, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.clearTrainingPhrasesList = function() {
+  return this.setTrainingPhrasesList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchResponseMessagesStatusResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMessageStatusesList: jspb.Message.toObjectList(msg.getResponseMessageStatusesList(),
+    proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchResponseMessagesStatusResponse;
+  return proto.ondewo.nlu.BatchResponseMessagesStatusResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus;
+      reader.readMessage(value,proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.deserializeBinaryFromReader);
+      msg.addResponseMessageStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchResponseMessagesStatusResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMessageStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.PhraseOrStatusCase = {
+  PHRASE_OR_STATUS_NOT_SET: 0,
+  RESPONSE_MESSAGE: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.PhraseOrStatusCase}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.getPhraseOrStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.PhraseOrStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMessage: (f = msg.getResponseMessage()) && proto.ondewo.nlu.Intent.Message.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus;
+  return proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Message;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader);
+      msg.setResponseMessage(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMessage();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional Intent.Message response_message = 1;
+ * @return {?proto.ondewo.nlu.Intent.Message}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.getResponseMessage = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.Message} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.Message, 1));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.Message|undefined} value
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} returns this
+*/
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.setResponseMessage = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_[0], value);
 };
 
 
 /**
  * Clears the message field making it undefined.
- * @return {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} returns this
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} returns this
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.clearTrainingPhrase = function() {
-  return this.setTrainingPhrase(undefined);
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.clearResponseMessage = function() {
+  return this.setResponseMessage(undefined);
 };
 
 
@@ -10841,26 +14599,222 @@ proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.clearTrainingPhrase = fun
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.hasTrainingPhrase = function() {
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.hasResponseMessage = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 
 
 /**
- * optional string language_code = 2;
+ * optional string error_message = 2;
  * @return {string}
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.getLanguageCode = function() {
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.getErrorMessage = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.ondewo.nlu.UpdateTrainingPhraseRequest} returns this
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} returns this
  */
-proto.ondewo.nlu.UpdateTrainingPhraseRequest.prototype.setLanguageCode = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus} returns this
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated ResponseMessageStatus response_message_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus>}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.getResponseMessageStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus>} value
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} returns this
+*/
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.setResponseMessageStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.addResponseMessageStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchResponseMessagesStatusResponse.ResponseMessageStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.clearResponseMessageStatusesList = function() {
+  return this.setResponseMessageStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchResponseMessagesStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchResponseMessagesStatusResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateResponseMessagesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMessageRequestsList: jspb.Message.toObjectList(msg.getResponseMessageRequestsList(),
+    proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchCreateResponseMessagesRequest;
+  return proto.ondewo.nlu.BatchCreateResponseMessagesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest;
+      reader.readMessage(value,proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.deserializeBinaryFromReader);
+      msg.addResponseMessageRequests(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchCreateResponseMessagesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMessageRequestsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -10880,8 +14834,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.toObject = function(opt_includeInstance) {
-  return proto.ondewo.nlu.DeleteTrainingPhraseRequest.toObject(opt_includeInstance, this);
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.toObject(opt_includeInstance, this);
 };
 
 
@@ -10890,13 +14844,14 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.toObject = function(opt_i
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.ondewo.nlu.DeleteTrainingPhraseRequest} msg The msg instance to transform.
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.toObject = function(includeInstance, msg) {
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    responseMessage: (f = msg.getResponseMessage()) && proto.ondewo.nlu.Intent.Message.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -10910,23 +14865,23 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.toObject = function(includeInstance
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.ondewo.nlu.DeleteTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest}
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.deserializeBinary = function(bytes) {
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.ondewo.nlu.DeleteTrainingPhraseRequest;
-  return proto.ondewo.nlu.DeleteTrainingPhraseRequest.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest;
+  return proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.ondewo.nlu.DeleteTrainingPhraseRequest} msg The message object to deserialize into.
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.ondewo.nlu.DeleteTrainingPhraseRequest}
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest}
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.deserializeBinaryFromReader = function(msg, reader) {
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -10935,7 +14890,12 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.deserializeBinaryFromReader = funct
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.Intent.Message;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader);
+      msg.setResponseMessage(value);
       break;
     default:
       reader.skipField();
@@ -10950,9 +14910,9 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.deserializeBinaryFromReader = funct
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.serializeBinary = function() {
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.ondewo.nlu.DeleteTrainingPhraseRequest.serializeBinaryToWriter(this, writer);
+  proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -10960,15 +14920,395 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.serializeBinary = functio
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.ondewo.nlu.DeleteTrainingPhraseRequest} message
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.serializeBinaryToWriter = function(message, writer) {
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getName();
+  f = message.getIntentName();
   if (f.length > 0) {
     writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getResponseMessage();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional Intent.Message response_message = 2;
+ * @return {?proto.ondewo.nlu.Intent.Message}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.getResponseMessage = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.Message} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.Message, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.Message|undefined} value
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.setResponseMessage = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.clearResponseMessage = function() {
+  return this.setResponseMessage(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest.prototype.hasResponseMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated CreateResponseMessageRequest response_message_requests = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest>}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.getResponseMessageRequestsList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest>} value
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.setResponseMessageRequestsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest}
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.addResponseMessageRequests = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchCreateResponseMessagesRequest.CreateResponseMessageRequest, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchCreateResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateResponseMessagesRequest.prototype.clearResponseMessageRequestsList = function() {
+  return this.setResponseMessageRequestsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMessagesList: jspb.Message.toObjectList(msg.getResponseMessagesList(),
+    proto.ondewo.nlu.Intent.Message.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchUpdateResponseMessagesRequest;
+  return proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Message;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader);
+      msg.addResponseMessages(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMessagesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Intent.Message response_messages = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.Message>}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.getResponseMessagesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.Message>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.Message, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.Intent.Message>} value
+ * @return {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest} returns this
+*/
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.setResponseMessagesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.Message=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.Message}
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.addResponseMessages = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.Message, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchUpdateResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchUpdateResponseMessagesRequest.prototype.clearResponseMessagesList = function() {
+  return this.setResponseMessagesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchGetResponseMessagesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchGetResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchGetResponseMessagesRequest;
+  return proto.ondewo.nlu.BatchGetResponseMessagesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchGetResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchGetResponseMessagesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
       1,
       f
     );
@@ -10977,20 +15317,3445 @@ proto.ondewo.nlu.DeleteTrainingPhraseRequest.serializeBinaryToWriter = function(
 
 
 /**
- * optional string name = 1;
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchGetResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetResponseMessagesRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteResponseMessagesRequest;
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    deleteStatusesList: jspb.Message.toObjectList(msg.getDeleteStatusesList(),
+    proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteResponseMessagesResponse;
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus;
+      reader.readMessage(value,proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.deserializeBinaryFromReader);
+      msg.addDeleteStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDeleteStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.DeleteStatusCase = {
+  DELETE_STATUS_NOT_SET: 0,
+  SUCCESSFULLY_DELETED: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.DeleteStatusCase}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.getDeleteStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.DeleteStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    successfullyDeleted: (f = msg.getSuccessfullyDeleted()) && google_protobuf_empty_pb.Empty.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus;
+  return proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_protobuf_empty_pb.Empty;
+      reader.readMessage(value,google_protobuf_empty_pb.Empty.deserializeBinaryFromReader);
+      msg.setSuccessfullyDeleted(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSuccessfullyDeleted();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_protobuf_empty_pb.Empty.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional google.protobuf.Empty successfully_deleted = 1;
+ * @return {?proto.google.protobuf.Empty}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.getSuccessfullyDeleted = function() {
+  return /** @type{?proto.google.protobuf.Empty} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_empty_pb.Empty, 1));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Empty|undefined} value
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} returns this
+*/
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.setSuccessfullyDeleted = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.clearSuccessfullyDeleted = function() {
+  return this.setSuccessfullyDeleted(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.hasSuccessfullyDeleted = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string error_message = 2;
  * @return {string}
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.getName = function() {
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.getErrorMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated DeleteResponseMessageStatus delete_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus>}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.getDeleteStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} returns this
+*/
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.setDeleteStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.addDeleteStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.DeleteResponseMessageStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.clearDeleteStatusesList = function() {
+  return this.setDeleteStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchDeleteResponseMessagesResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteResponseMessagesResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListResponseMessagesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListResponseMessagesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListResponseMessagesRequest}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListResponseMessagesRequest;
+  return proto.ondewo.nlu.ListResponseMessagesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListResponseMessagesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListResponseMessagesRequest}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListResponseMessagesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListResponseMessagesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.getIntentName = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.ondewo.nlu.DeleteTrainingPhraseRequest} returns this
+ * @return {!proto.ondewo.nlu.ListResponseMessagesRequest} returns this
  */
-proto.ondewo.nlu.DeleteTrainingPhraseRequest.prototype.setName = function(value) {
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.setIntentName = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string page_token = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListResponseMessagesRequest} returns this
+ */
+proto.ondewo.nlu.ListResponseMessagesRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListResponseMessagesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListResponseMessagesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    responseMessagesList: jspb.Message.toObjectList(msg.getResponseMessagesList(),
+    proto.ondewo.nlu.Intent.Message.toObject, includeInstance),
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListResponseMessagesResponse}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListResponseMessagesResponse;
+  return proto.ondewo.nlu.ListResponseMessagesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListResponseMessagesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListResponseMessagesResponse}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Message;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader);
+      msg.addResponseMessages(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNextPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListResponseMessagesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListResponseMessagesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getResponseMessagesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated Intent.Message response_messages = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.Message>}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.getResponseMessagesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.Message>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.Message, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.Intent.Message>} value
+ * @return {!proto.ondewo.nlu.ListResponseMessagesResponse} returns this
+*/
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.setResponseMessagesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.Message=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.Message}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.addResponseMessages = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.Message, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListResponseMessagesResponse} returns this
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.clearResponseMessagesList = function() {
+  return this.setResponseMessagesList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListResponseMessagesResponse} returns this
+ */
+proto.ondewo.nlu.ListResponseMessagesResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchParametersStatusResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parameterStatusesList: jspb.Message.toObjectList(msg.getParameterStatusesList(),
+    proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchParametersStatusResponse;
+  return proto.ondewo.nlu.BatchParametersStatusResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus;
+      reader.readMessage(value,proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.deserializeBinaryFromReader);
+      msg.addParameterStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchParametersStatusResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParameterStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.PhraseOrStatusCase = {
+  PHRASE_OR_STATUS_NOT_SET: 0,
+  PARAMETER: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.PhraseOrStatusCase}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.getPhraseOrStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.PhraseOrStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parameter: (f = msg.getParameter()) && proto.ondewo.nlu.Intent.Parameter.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus;
+  return proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Parameter;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader);
+      msg.setParameter(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParameter();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional Intent.Parameter parameter = 1;
+ * @return {?proto.ondewo.nlu.Intent.Parameter}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.getParameter = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.Parameter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.Parameter, 1));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.Parameter|undefined} value
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} returns this
+*/
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.setParameter = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.clearParameter = function() {
+  return this.setParameter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.hasParameter = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string error_message = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.getErrorMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated ParameterStatus parameter_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus>}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.getParameterStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus>} value
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse} returns this
+*/
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.setParameterStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.addParameterStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchParametersStatusResponse.ParameterStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.clearParameterStatusesList = function() {
+  return this.setParameterStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchParametersStatusResponse} returns this
+ */
+proto.ondewo.nlu.BatchParametersStatusResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateParametersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parameterRequestsList: jspb.Message.toObjectList(msg.getParameterRequestsList(),
+    proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchCreateParametersRequest;
+  return proto.ondewo.nlu.BatchCreateParametersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest;
+      reader.readMessage(value,proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.deserializeBinaryFromReader);
+      msg.addParameterRequests(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchCreateParametersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParameterRequestsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.serializeBinaryToWriter
+    );
+  }
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    parameter: (f = msg.getParameter()) && proto.ondewo.nlu.Intent.Parameter.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest;
+  return proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.Intent.Parameter;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader);
+      msg.setParameter(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getParameter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional Intent.Parameter parameter = 2;
+ * @return {?proto.ondewo.nlu.Intent.Parameter}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.getParameter = function() {
+  return /** @type{?proto.ondewo.nlu.Intent.Parameter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.Intent.Parameter, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.Intent.Parameter|undefined} value
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.setParameter = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.clearParameter = function() {
+  return this.setParameter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest.prototype.hasParameter = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated CreateParameterRequest parameter_requests = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest>}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.getParameterRequestsList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest>} value
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest} returns this
+*/
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.setParameterRequestsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest}
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.addParameterRequests = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchCreateParametersRequest.CreateParameterRequest, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchCreateParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchCreateParametersRequest.prototype.clearParameterRequestsList = function() {
+  return this.setParameterRequestsList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchUpdateParametersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchUpdateParametersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parametersList: jspb.Message.toObjectList(msg.getParametersList(),
+    proto.ondewo.nlu.Intent.Parameter.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchUpdateParametersRequest}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchUpdateParametersRequest;
+  return proto.ondewo.nlu.BatchUpdateParametersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchUpdateParametersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchUpdateParametersRequest}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Parameter;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader);
+      msg.addParameters(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchUpdateParametersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchUpdateParametersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParametersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated Intent.Parameter parameters = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.Parameter>}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.getParametersList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.Parameter>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.Parameter, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.Intent.Parameter>} value
+ * @return {!proto.ondewo.nlu.BatchUpdateParametersRequest} returns this
+*/
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.setParametersList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.Parameter=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.Parameter}
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.addParameters = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.Parameter, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchUpdateParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchUpdateParametersRequest.prototype.clearParametersList = function() {
+  return this.setParametersList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchGetParametersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchGetParametersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchGetParametersRequest}
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchGetParametersRequest;
+  return proto.ondewo.nlu.BatchGetParametersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchGetParametersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchGetParametersRequest}
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchGetParametersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchGetParametersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchGetParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchGetParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchGetParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchGetParametersRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteParametersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    namesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersRequest}
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteParametersRequest;
+  return proto.ondewo.nlu.BatchDeleteParametersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersRequest}
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addNames(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteParametersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getNamesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string names = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.getNamesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.setNamesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.addNames = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersRequest} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersRequest.prototype.clearNamesList = function() {
+  return this.setNamesList([]);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteParametersResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    deleteStatusesList: jspb.Message.toObjectList(msg.getDeleteStatusesList(),
+    proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.toObject, includeInstance),
+    hasErrors: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteParametersResponse;
+  return proto.ondewo.nlu.BatchDeleteParametersResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus;
+      reader.readMessage(value,proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.deserializeBinaryFromReader);
+      msg.addDeleteStatuses(value);
+      break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasErrors(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteParametersResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getDeleteStatusesList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.serializeBinaryToWriter
+    );
+  }
+  f = message.getHasErrors();
+  if (f) {
+    writer.writeBool(
+      2,
+      f
+    );
+  }
+};
+
+
+
+/**
+ * Oneof group definitions for this message. Each group defines the field
+ * numbers belonging to that group. When of these fields' value is set, all
+ * other fields in the group are cleared. During deserialization, if multiple
+ * fields are encountered for a group, only the last value seen will be kept.
+ * @private {!Array<!Array<number>>}
+ * @const
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_ = [[1,2]];
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.DeleteStatusCase = {
+  DELETE_STATUS_NOT_SET: 0,
+  SUCCESSFULLY_DELETED: 1,
+  ERROR_MESSAGE: 2
+};
+
+/**
+ * @return {proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.DeleteStatusCase}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.getDeleteStatusCase = function() {
+  return /** @type {proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.DeleteStatusCase} */(jspb.Message.computeOneofCase(this, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_[0]));
+};
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    successfullyDeleted: (f = msg.getSuccessfullyDeleted()) && google_protobuf_empty_pb.Empty.toObject(includeInstance, f),
+    errorMessage: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus;
+  return proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_protobuf_empty_pb.Empty;
+      reader.readMessage(value,google_protobuf_empty_pb.Empty.deserializeBinaryFromReader);
+      msg.setSuccessfullyDeleted(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setErrorMessage(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSuccessfullyDeleted();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_protobuf_empty_pb.Empty.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional google.protobuf.Empty successfully_deleted = 1;
+ * @return {?proto.google.protobuf.Empty}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.getSuccessfullyDeleted = function() {
+  return /** @type{?proto.google.protobuf.Empty} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_empty_pb.Empty, 1));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Empty|undefined} value
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} returns this
+*/
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.setSuccessfullyDeleted = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 1, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.clearSuccessfullyDeleted = function() {
+  return this.setSuccessfullyDeleted(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.hasSuccessfullyDeleted = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional string error_message = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.getErrorMessage = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.setErrorMessage = function(value) {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.clearErrorMessage = function() {
+  return jspb.Message.setOneofField(this, 2, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.oneofGroups_[0], undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * repeated DeleteParameterStatus delete_statuses = 1;
+ * @return {!Array<!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus>}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.getDeleteStatusesList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus>} value
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse} returns this
+*/
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.setDeleteStatusesList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.addDeleteStatuses = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.BatchDeleteParametersResponse.DeleteParameterStatus, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.clearDeleteStatusesList = function() {
+  return this.setDeleteStatusesList([]);
+};
+
+
+/**
+ * optional bool has_errors = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.getHasErrors = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.BatchDeleteParametersResponse} returns this
+ */
+proto.ondewo.nlu.BatchDeleteParametersResponse.prototype.setHasErrors = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListParametersRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListParametersRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListParametersRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    intentName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 3, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListParametersRequest}
+ */
+proto.ondewo.nlu.ListParametersRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListParametersRequest;
+  return proto.ondewo.nlu.ListParametersRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListParametersRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListParametersRequest}
+ */
+proto.ondewo.nlu.ListParametersRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIntentName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListParametersRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListParametersRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListParametersRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getIntentName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string intent_name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.getIntentName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListParametersRequest} returns this
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.setIntentName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListParametersRequest} returns this
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string page_token = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListParametersRequest} returns this
+ */
+proto.ondewo.nlu.ListParametersRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListParametersResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListParametersResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListParametersResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListParametersResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parametersList: jspb.Message.toObjectList(msg.getParametersList(),
+    proto.ondewo.nlu.Intent.Parameter.toObject, includeInstance),
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListParametersResponse}
+ */
+proto.ondewo.nlu.ListParametersResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListParametersResponse;
+  return proto.ondewo.nlu.ListParametersResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListParametersResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListParametersResponse}
+ */
+proto.ondewo.nlu.ListParametersResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.Intent.Parameter;
+      reader.readMessage(value,proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader);
+      msg.addParameters(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNextPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListParametersResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListParametersResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListParametersResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParametersList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated Intent.Parameter parameters = 1;
+ * @return {!Array<!proto.ondewo.nlu.Intent.Parameter>}
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.getParametersList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.Intent.Parameter>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.Intent.Parameter, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.Intent.Parameter>} value
+ * @return {!proto.ondewo.nlu.ListParametersResponse} returns this
+*/
+proto.ondewo.nlu.ListParametersResponse.prototype.setParametersList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.Intent.Parameter=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.Intent.Parameter}
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.addParameters = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.Intent.Parameter, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListParametersResponse} returns this
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.clearParametersList = function() {
+  return this.setParametersList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListParametersResponse} returns this
+ */
+proto.ondewo.nlu.ListParametersResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.repeatedFields_ = [3];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    intentIdsList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f,
+    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest;
+  return proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addIntentIds(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getIntentIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      3,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string language_code = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * repeated string intent_ids = 3;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.getIntentIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.setIntentIdsList = function(value) {
+  return jspb.Message.setField(this, 3, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.addIntentIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.clearIntentIdsList = function() {
+  return this.setIntentIdsList([]);
+};
+
+
+/**
+ * optional string page_token = 4;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    trainingPhrasesList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse;
+  return proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addTrainingPhrases(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNextPageToken(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTrainingPhrasesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      1,
+      f
+    );
+  }
+  f = message.getNextPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated string training_phrases = 1;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.getTrainingPhrasesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.setTrainingPhrasesList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.addTrainingPhrases = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.clearTrainingPhrasesList = function() {
+  return this.setTrainingPhrasesList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse} returns this
+ */
+proto.ondewo.nlu.ListTrainingPhrasesofIntentsWithEnrichmentResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -11010,7 +18775,10 @@ proto.ondewo.nlu.IntentView = {
 proto.ondewo.nlu.IntentCategory = {
   ALL_INTENTS: 0,
   DEFAULT_INTENTS: 1,
-  USER_DEFINED_INTENTS: 2
+  USER_DEFINED_INTENTS: 2,
+  DATE_EXPIRED_INTENTS: 3,
+  DATE_ACTIVE_INTENTS: 4,
+  DATE_UPCOMING_INTENTS: 5
 };
 
 goog.object.extend(exports, proto.ondewo.nlu);
