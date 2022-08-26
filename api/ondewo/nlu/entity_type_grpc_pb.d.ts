@@ -6,10 +6,10 @@
 
 import * as grpc from "grpc";
 import * as ondewo_nlu_entity_type_pb from "../../ondewo/nlu/entity_type_pb";
-import * as google_longrunning_operations_pb from "../../google/longrunning/operations_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as google_protobuf_field_mask_pb from "google-protobuf/google/protobuf/field_mask_pb";
 import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
+import * as ondewo_nlu_operations_pb from "../../ondewo/nlu/operations_pb";
 
 interface IEntityTypesService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     listEntityTypes: IEntityTypesService_IListEntityTypes;
@@ -21,7 +21,9 @@ interface IEntityTypesService extends grpc.ServiceDefinition<grpc.UntypedService
     batchDeleteEntityTypes: IEntityTypesService_IBatchDeleteEntityTypes;
     batchCreateEntities: IEntityTypesService_IBatchCreateEntities;
     batchUpdateEntities: IEntityTypesService_IBatchUpdateEntities;
+    batchGetEntities: IEntityTypesService_IBatchGetEntities;
     batchDeleteEntities: IEntityTypesService_IBatchDeleteEntities;
+    listEntities: IEntityTypesService_IListEntities;
 }
 
 interface IEntityTypesService_IListEntityTypes extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.ListEntityTypesRequest, ondewo_nlu_entity_type_pb.ListEntityTypesResponse> {
@@ -69,50 +71,68 @@ interface IEntityTypesService_IDeleteEntityType extends grpc.MethodDefinition<on
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
-interface IEntityTypesService_IBatchUpdateEntityTypes extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, google_longrunning_operations_pb.Operation> {
+interface IEntityTypesService_IBatchUpdateEntityTypes extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, ondewo_nlu_operations_pb.Operation> {
     path: "/ondewo.nlu.EntityTypes/BatchUpdateEntityTypes";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest>;
-    responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
-    responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
+    responseSerialize: grpc.serialize<ondewo_nlu_operations_pb.Operation>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_operations_pb.Operation>;
 }
-interface IEntityTypesService_IBatchDeleteEntityTypes extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, google_longrunning_operations_pb.Operation> {
+interface IEntityTypesService_IBatchDeleteEntityTypes extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, ondewo_nlu_operations_pb.Operation> {
     path: "/ondewo.nlu.EntityTypes/BatchDeleteEntityTypes";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest>;
-    responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
-    responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
+    responseSerialize: grpc.serialize<ondewo_nlu_operations_pb.Operation>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_operations_pb.Operation>;
 }
-interface IEntityTypesService_IBatchCreateEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, google_longrunning_operations_pb.Operation> {
+interface IEntityTypesService_IBatchCreateEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse> {
     path: "/ondewo.nlu.EntityTypes/BatchCreateEntities";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest>;
-    responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
-    responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
+    responseSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
 }
-interface IEntityTypesService_IBatchUpdateEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, google_longrunning_operations_pb.Operation> {
+interface IEntityTypesService_IBatchUpdateEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse> {
     path: "/ondewo.nlu.EntityTypes/BatchUpdateEntities";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest>;
-    responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
-    responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
+    responseSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
 }
-interface IEntityTypesService_IBatchDeleteEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, google_longrunning_operations_pb.Operation> {
+interface IEntityTypesService_IBatchGetEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse> {
+    path: "/ondewo.nlu.EntityTypes/BatchGetEntities";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+}
+interface IEntityTypesService_IBatchDeleteEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse> {
     path: "/ondewo.nlu.EntityTypes/BatchDeleteEntities";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest>;
     requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest>;
-    responseSerialize: grpc.serialize<google_longrunning_operations_pb.Operation>;
-    responseDeserialize: grpc.deserialize<google_longrunning_operations_pb.Operation>;
+    responseSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse>;
+}
+interface IEntityTypesService_IListEntities extends grpc.MethodDefinition<ondewo_nlu_entity_type_pb.ListEntitiesRequest, ondewo_nlu_entity_type_pb.ListEntitiesResponse> {
+    path: "/ondewo.nlu.EntityTypes/ListEntities";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.ListEntitiesRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.ListEntitiesRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_entity_type_pb.ListEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_entity_type_pb.ListEntitiesResponse>;
 }
 
 export const EntityTypesService: IEntityTypesService;
@@ -123,11 +143,13 @@ export interface IEntityTypesServer {
     createEntityType: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.CreateEntityTypeRequest, ondewo_nlu_entity_type_pb.EntityType>;
     updateEntityType: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.UpdateEntityTypeRequest, ondewo_nlu_entity_type_pb.EntityType>;
     deleteEntityType: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, google_protobuf_empty_pb.Empty>;
-    batchUpdateEntityTypes: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, google_longrunning_operations_pb.Operation>;
-    batchDeleteEntityTypes: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, google_longrunning_operations_pb.Operation>;
-    batchCreateEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, google_longrunning_operations_pb.Operation>;
-    batchUpdateEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, google_longrunning_operations_pb.Operation>;
-    batchDeleteEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, google_longrunning_operations_pb.Operation>;
+    batchUpdateEntityTypes: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, ondewo_nlu_operations_pb.Operation>;
+    batchDeleteEntityTypes: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, ondewo_nlu_operations_pb.Operation>;
+    batchCreateEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    batchUpdateEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    batchGetEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, ondewo_nlu_entity_type_pb.BatchEntitiesResponse>;
+    batchDeleteEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse>;
+    listEntities: grpc.handleUnaryCall<ondewo_nlu_entity_type_pb.ListEntitiesRequest, ondewo_nlu_entity_type_pb.ListEntitiesResponse>;
 }
 
 export interface IEntityTypesClient {
@@ -146,21 +168,27 @@ export interface IEntityTypesClient {
     deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
+    listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
+    listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class EntityTypesClient extends grpc.Client implements IEntityTypesClient {
@@ -180,19 +208,25 @@ export class EntityTypesClient extends grpc.Client implements IEntityTypesClient
     public deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteEntityType(request: ondewo_nlu_entity_type_pb.DeleteEntityTypeRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
-    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_longrunning_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntityTypes(request: ondewo_nlu_entity_type_pb.BatchUpdateEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntityTypes(request: ondewo_nlu_entity_type_pb.BatchDeleteEntityTypesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchCreateEntities(request: ondewo_nlu_entity_type_pb.BatchCreateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchUpdateEntities(request: ondewo_nlu_entity_type_pb.BatchUpdateEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchGetEntities(request: ondewo_nlu_entity_type_pb.BatchGetEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public batchDeleteEntities(request: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.BatchDeleteEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public listEntities(request: ondewo_nlu_entity_type_pb.ListEntitiesRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_entity_type_pb.ListEntitiesResponse) => void): grpc.ClientUnaryCall;
 }

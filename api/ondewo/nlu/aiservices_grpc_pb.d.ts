@@ -7,6 +7,7 @@
 import * as grpc from "grpc";
 import * as ondewo_nlu_aiservices_pb from "../../ondewo/nlu/aiservices_pb";
 import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
+import * as ondewo_nlu_entity_type_pb from "../../ondewo/nlu/entity_type_pb";
 
 interface IAiServicesService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     extractEntities: IAiServicesService_IExtractEntities;
@@ -15,6 +16,8 @@ interface IAiServicesService extends grpc.ServiceDefinition<grpc.UntypedServiceI
     getAlternativeSentences: IAiServicesService_IGetAlternativeSentences;
     getAlternativeTrainingPhrases: IAiServicesService_IGetAlternativeTrainingPhrases;
     getSynonyms: IAiServicesService_IGetSynonyms;
+    classifyIntents: IAiServicesService_IClassifyIntents;
+    extractEntitiesFuzzy: IAiServicesService_IExtractEntitiesFuzzy;
 }
 
 interface IAiServicesService_IExtractEntities extends grpc.MethodDefinition<ondewo_nlu_aiservices_pb.ExtractEntitiesRequest, ondewo_nlu_aiservices_pb.ExtractEntitiesResponse> {
@@ -71,6 +74,24 @@ interface IAiServicesService_IGetSynonyms extends grpc.MethodDefinition<ondewo_n
     responseSerialize: grpc.serialize<ondewo_nlu_aiservices_pb.GetSynonymsResponse>;
     responseDeserialize: grpc.deserialize<ondewo_nlu_aiservices_pb.GetSynonymsResponse>;
 }
+interface IAiServicesService_IClassifyIntents extends grpc.MethodDefinition<ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, ondewo_nlu_aiservices_pb.ClassifyIntentsResponse> {
+    path: "/ondewo.nlu.AiServices/ClassifyIntents";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_aiservices_pb.ClassifyIntentsRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_aiservices_pb.ClassifyIntentsRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_aiservices_pb.ClassifyIntentsResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_aiservices_pb.ClassifyIntentsResponse>;
+}
+interface IAiServicesService_IExtractEntitiesFuzzy extends grpc.MethodDefinition<ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, ondewo_nlu_aiservices_pb.ExtractEntitiesResponse> {
+    path: "/ondewo.nlu.AiServices/ExtractEntitiesFuzzy";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_aiservices_pb.ExtractEntitiesResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_aiservices_pb.ExtractEntitiesResponse>;
+}
 
 export const AiServicesService: IAiServicesService;
 
@@ -81,6 +102,8 @@ export interface IAiServicesServer {
     getAlternativeSentences: grpc.handleUnaryCall<ondewo_nlu_aiservices_pb.GetAlternativeSentencesRequest, ondewo_nlu_aiservices_pb.GetAlternativeSentencesResponse>;
     getAlternativeTrainingPhrases: grpc.handleUnaryCall<ondewo_nlu_aiservices_pb.GetAlternativeTrainingPhrasesRequest, ondewo_nlu_aiservices_pb.GetAlternativeTrainingPhrasesResponse>;
     getSynonyms: grpc.handleUnaryCall<ondewo_nlu_aiservices_pb.GetSynonymsRequest, ondewo_nlu_aiservices_pb.GetSynonymsResponse>;
+    classifyIntents: grpc.handleUnaryCall<ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, ondewo_nlu_aiservices_pb.ClassifyIntentsResponse>;
+    extractEntitiesFuzzy: grpc.handleUnaryCall<ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, ondewo_nlu_aiservices_pb.ExtractEntitiesResponse>;
 }
 
 export interface IAiServicesClient {
@@ -102,6 +125,12 @@ export interface IAiServicesClient {
     getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
     getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
     getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
+    classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
+    extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
+    extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class AiServicesClient extends grpc.Client implements IAiServicesClient {
@@ -124,4 +153,10 @@ export class AiServicesClient extends grpc.Client implements IAiServicesClient {
     public getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
     public getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
     public getSynonyms(request: ondewo_nlu_aiservices_pb.GetSynonymsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.GetSynonymsResponse) => void): grpc.ClientUnaryCall;
+    public classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    public classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    public classifyIntents(request: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse) => void): grpc.ClientUnaryCall;
+    public extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
+    public extractEntitiesFuzzy(request: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse) => void): grpc.ClientUnaryCall;
 }

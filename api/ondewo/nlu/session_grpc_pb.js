@@ -63,6 +63,17 @@ function deserialize_ondewo_nlu_AddSessionLabelsRequest(buffer_arg) {
   return ondewo_nlu_session_pb.AddSessionLabelsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_CreateSessionRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_session_pb.CreateSessionRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.CreateSessionRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_CreateSessionRequest(buffer_arg) {
+  return ondewo_nlu_session_pb.CreateSessionRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_CreateSessionReviewRequest(arg) {
   if (!(arg instanceof ondewo_nlu_session_pb.CreateSessionReviewRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.CreateSessionReviewRequest');
@@ -329,6 +340,18 @@ getSession: {
     responseType: ondewo_nlu_session_pb.Session,
     requestSerialize: serialize_ondewo_nlu_GetSessionRequest,
     requestDeserialize: deserialize_ondewo_nlu_GetSessionRequest,
+    responseSerialize: serialize_ondewo_nlu_Session,
+    responseDeserialize: deserialize_ondewo_nlu_Session,
+  },
+  // CreateSession: creates and returns a session(=conversation) from ondewo-kb
+createSession: {
+    path: '/ondewo.nlu.Sessions/CreateSession',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_session_pb.CreateSessionRequest,
+    responseType: ondewo_nlu_session_pb.Session,
+    requestSerialize: serialize_ondewo_nlu_CreateSessionRequest,
+    requestDeserialize: deserialize_ondewo_nlu_CreateSessionRequest,
     responseSerialize: serialize_ondewo_nlu_Session,
     responseDeserialize: deserialize_ondewo_nlu_Session,
   },

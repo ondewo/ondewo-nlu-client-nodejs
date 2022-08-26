@@ -20,6 +20,40 @@ var grpc = require('@grpc/grpc-js');
 var ondewo_nlu_aiservices_pb = require('../../ondewo/nlu/aiservices_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');
+var ondewo_nlu_entity_type_pb = require('../../ondewo/nlu/entity_type_pb.js');
+
+function serialize_ondewo_nlu_ClassifyIntentsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_aiservices_pb.ClassifyIntentsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.ClassifyIntentsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ClassifyIntentsRequest(buffer_arg) {
+  return ondewo_nlu_aiservices_pb.ClassifyIntentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_ClassifyIntentsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_aiservices_pb.ClassifyIntentsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.ClassifyIntentsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ClassifyIntentsResponse(buffer_arg) {
+  return ondewo_nlu_aiservices_pb.ClassifyIntentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_ExtractEntitiesFuzzyRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.ExtractEntitiesFuzzyRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ExtractEntitiesFuzzyRequest(buffer_arg) {
+  return ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_ondewo_nlu_ExtractEntitiesRequest(arg) {
   if (!(arg instanceof ondewo_nlu_aiservices_pb.ExtractEntitiesRequest)) {
@@ -222,6 +256,29 @@ extractEntities: {
     requestDeserialize: deserialize_ondewo_nlu_GetSynonymsRequest,
     responseSerialize: serialize_ondewo_nlu_GetSynonymsResponse,
     responseDeserialize: deserialize_ondewo_nlu_GetSynonymsResponse,
+  },
+  classifyIntents: {
+    path: '/ondewo.nlu.AiServices/ClassifyIntents',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_aiservices_pb.ClassifyIntentsRequest,
+    responseType: ondewo_nlu_aiservices_pb.ClassifyIntentsResponse,
+    requestSerialize: serialize_ondewo_nlu_ClassifyIntentsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_ClassifyIntentsRequest,
+    responseSerialize: serialize_ondewo_nlu_ClassifyIntentsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_ClassifyIntentsResponse,
+  },
+  // Processes a natural language query and returns detected entities
+extractEntitiesFuzzy: {
+    path: '/ondewo.nlu.AiServices/ExtractEntitiesFuzzy',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_aiservices_pb.ExtractEntitiesFuzzyRequest,
+    responseType: ondewo_nlu_aiservices_pb.ExtractEntitiesResponse,
+    requestSerialize: serialize_ondewo_nlu_ExtractEntitiesFuzzyRequest,
+    requestDeserialize: deserialize_ondewo_nlu_ExtractEntitiesFuzzyRequest,
+    responseSerialize: serialize_ondewo_nlu_ExtractEntitiesResponse,
+    responseDeserialize: deserialize_ondewo_nlu_ExtractEntitiesResponse,
   },
 };
 

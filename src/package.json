@@ -1,20 +1,21 @@
 {
-  "name": "@ondewo/nlu-client-nodejs",
-  "version": "1.1.0",
-  "description": "Ondewo natural language understanding client library for nodejs as a commonjs module",
-  "main": "public-api.js",
-  "typings": "public-api.d.ts",
-  "scripts": {
-    "start": "npm run build",
-    "prebuild": "mv ondewo-nlu-api/googleapis/google ondewo-nlu-api/google",
-    "build": "git submodule update --init --recursive --remote && docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
-    "postbuild": "mv ondewo-nlu-api/google ondewo-nlu-api/googleapis/google",
-    "predebug": "mv ondewo-nlu-api/googleapis/google ondewo-nlu-api/google",
-    "debug": "docker run -it --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler"
-  },
-  "author": "Philipp Schweiger @ Ondewo",
-  "license": "Apache-2.0",
-  "dependencies": {
-    "google-protobuf": "^3.15.5"
-  }
+	"name": "@ondewo/nlu-client-nodejs",
+	"version": "2.13.0",
+	"description": "ONDEWO Natural Language Understanding (NLU) Platfrom client library for Nodejs",
+	"main": "public-api.js",
+	"typings": "public-api.d.ts",
+	"scripts": {
+		"start": "npm run build",
+		"build": "docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
+		"predebug": "mv ondewo-nlu-api/googleapis/google ondewo-nlu-api/google",
+		"debug": "docker run -it --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler"
+	},
+	"author": "ONDEWO GmbH <office@ondewo.com>",
+	"license": "Apache-2.0",
+	"dependencies": {
+		"@grpc/grpc-js": "^1.6.10",
+		"@types/node": "^18.7.13",
+		"dotenv": "^16.0.1",
+		"google-protobuf": "^3.15.5"
+	}
 }
