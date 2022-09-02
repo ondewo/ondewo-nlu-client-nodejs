@@ -68,6 +68,15 @@ help: ## Print usage info about help targets
 makefile_chapters: ## Shows all sections of Makefile
 	@echo `cat Makefile| grep "########################################################" -A 1 | grep -v "########################################################"`
 
+check_build: #
+	rm -rf build_check.txt
+	@for proto in `find src/ondewo-nlu-api/ondewo -iname "*.proto*"`; \
+	do \
+		cat $${proto} | grep import | grep "google/" | cut -d "/" -f 3 | cut -d "." -f 1 >> build_check.txt; \
+	done
+	echo "`sort build_check.txt | uniq`" > build_check.txt
+	cat build_check.txt
+
 ########################################################
 #       Repo Specific Make Targets
 ########################################################
