@@ -78,7 +78,8 @@ check_build: #
 	@echo "`sort build_check.txt | uniq`" > build_check.txt
 	@for file in `cat build_check.txt`;\
 	do \
-		find api -iname "*pb*" | (grep -q $${file} || (echo "Missing Proto-Code for $${file}" && exit 1)); \
+		find api -iname "*pb*" | grep -q $${file}; \
+		if test $$? != 0; then  echo "No Proto-Code for $${file}" & exit 1;fi \
 	done
 	@rm -rf build_check.txt
 
