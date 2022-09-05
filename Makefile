@@ -69,13 +69,18 @@ makefile_chapters: ## Shows all sections of Makefile
 	@echo `cat Makefile| grep "########################################################" -A 1 | grep -v "########################################################"`
 
 check_build: #
-	rm -rf build_check.txt
+	@rm -rf build_check.txt
 	@for proto in `find src/ondewo-nlu-api/ondewo -iname "*.proto*"`; \
 	do \
 		cat $${proto} | grep import | grep "google/" | cut -d "/" -f 3 | cut -d "." -f 1 >> build_check.txt; \
+		echo $${proto} | cut -d "/" -f 5 | cut -d "." -f 1 >> build_check.txt; \
 	done
-	echo "`sort build_check.txt | uniq`" > build_check.txt
-	cat build_check.txt
+	@echo "`sort build_check.txt | uniq`" > build_check.txt
+	@for file in `cat build_check.txt`;\
+	do \
+		find api -iname "*pb*" | (grep -q $${file} || (echo "Missing Proto-Code for $${file}" && exit 1)); \
+	done
+	@rm -rf build_check.txt
 
 ########################################################
 #       Repo Specific Make Targets
