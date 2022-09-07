@@ -2,4 +2,3 @@ node_modules
 *.env
 npm
 .vscode
-grpc_cert.txt

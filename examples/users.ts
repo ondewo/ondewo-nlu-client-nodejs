@@ -13,7 +13,7 @@ export class UserService {
 		this.metadata.set('authorization', config.http_token);
 	}
 
-	public login(user_name: string, password: string): Promise<any> {
+	public login(user_name: string, password: string): Promise<grpc.ClientUnaryCall> {
 		const request: LoginRequest = new LoginRequest();
 		request.setPassword(password);
 		request.setUserEmail(user_name);

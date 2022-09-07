@@ -22,7 +22,7 @@ export class NJSClient {
 		this.config = config;
 	}
 
-	private async login(config: ClientConfig): Promise<any> {
+	private async login(config: ClientConfig): Promise<void> {
 		await this.users.login(config.user_name, config.password);
 	}
 
