@@ -1,22 +1,30 @@
+import * as grpc from '@grpc/grpc-js';
 import { LoginRequest, LoginResponse } from '../api/ondewo/nlu/user_pb';
 import { UsersClient } from '../api/ondewo/nlu/user_grpc_pb';
+import { ClientConfig } from './njs-client';
 
 export class UserService {
 	private usersClient: UsersClient;
-
-	public constructor(usersClient: UsersClient) {
-		this.usersClient = usersClient;
+	public nlu_token: string = '';
+	public metadata: grpc.Metadata = new grpc.Metadata();
+	public constructor(config: ClientConfig) {
+		this.usersClient = new UsersClient(`${config.host}:${config.port}`, grpc.credentials.createInsecure());
+		this.metadata.set('cai-token', '');
+		this.metadata.set('authorization', config.http_token);
 	}
 
-	public login(user_name: string, password: string, http_token: string): void {
+	public login(user_name: string, password: string): Promise<any> {
 		const request: LoginRequest = new LoginRequest();
 		request.setPassword(password);
 		request.setUserEmail(user_name);
 
-		this.usersClient.login(request, (error: any, response: LoginResponse) => {
-			console.log('LOGIN:');
-			console.log(error);
-			console.log(response);
+		return new Promise((resolve: any) => {
+			this.usersClient.login(request, (error: grpc.ServiceError, response: LoginResponse) => {
+				if (error) console.log(error);
+				this.nlu_token = response.getAuthToken();
+				this.metadata.set('cai-token', this.nlu_token);
+				resolve(this.nlu_token);
+			});
 		});
 	}
 }
