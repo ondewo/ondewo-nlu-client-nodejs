@@ -61,6 +61,11 @@ TEST:	## Prints some important variables
 	@echo "NPM Name: \t $(NPM_USERNAME)"
 	@echo "NPM Password: \t $(NPM_PASSWORD)"
 
+run_examples:
+	@for example in `find examples -iname "*_*"`; do\
+		npx ts-node $${example};\
+	done
+
 help: ## Print usage info about help targets
 	# (first comment after target starting with double hashes ##)
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' Makefile | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-40s\033[0m %s\n", $$1, $$2}'
