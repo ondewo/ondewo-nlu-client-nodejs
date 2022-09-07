@@ -1,4 +1,11 @@
 # Release History
+
+***************** 
+## Release ONDEWO NLU Nodejs Client 2.14.0 
+ 
+### Improvements 
+ * Tracking API Version 2.14.0 
+
 *****************
 
 ## Release ONDEWO NLU Node.js Client 2.13.0
