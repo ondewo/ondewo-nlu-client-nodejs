@@ -7,6 +7,7 @@ export class ClientConfig {
 	public host: string = '';
 	public port: string = '';
 	public http_token: string = '';
+	public grpc_cert: Buffer | null = null;
 	public user_name: string = '';
 	public password: string = '';
 }
@@ -16,10 +17,19 @@ export class NJSClient {
 	private users: UserService;
 	private config: ClientConfig;
 
-	public constructor(config: ClientConfig) {
-		this.agentsClient = new AgentsClient(`${config.host}:${config.port}`, grpc.credentials.createInsecure());
-		this.users = new UserService(config);
-		this.config = config;
+	public constructor(config: ClientConfig, use_secure_channel: boolean) {
+		if (!use_secure_channel) {
+			this.agentsClient = new AgentsClient(`${config.host}:${config.port}`, grpc.credentials.createInsecure());
+			this.users = new UserService(config, false);
+			this.config = config;
+		} else {
+			this.agentsClient = new AgentsClient(
+				`${config.host}:${config.port}`,
+				grpc.credentials.createSsl(config.grpc_cert)
+			);
+			this.users = new UserService(config, true);
+			this.config = config;
+		}
 	}
 
 	private async login(config: ClientConfig): Promise<void> {
