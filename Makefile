@@ -108,12 +108,12 @@ release: ## Create Github and NPM Release
 	git add package-lock.json
 	git add ${ONDEWO_PROTO_COMPILER_DIR}
 	git status
-# git commit -m "Preparing for Release ${ONDEWO_NLU_VERSION}"
-# git push
-# make publish_npm_via_docker
-# make create_release_branch
-# make create_release_tag
-# make release_to_github_via_docker_image
+	git commit -m "Preparing for Release ${ONDEWO_NLU_VERSION}"
+	git push
+	make publish_npm_via_docker
+	make create_release_branch
+	make create_release_tag
+	make release_to_github_via_docker_image
 	@echo "Finished Release"
 
 
