@@ -102,6 +102,7 @@ release: ## Create Github and NPM Release
 	git status
 	git add api
 	git add Makefile
+	git add src
 	git add RELEASE.md
 	git add package.json
 	git add package-lock.json
