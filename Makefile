@@ -55,6 +55,9 @@ prettier: ## Checks formatting with Prettier - Use PRETTIER_WRITE=-w to also aut
 eslint: ## Checks Code Logic and Typing
 	./node_modules/.bin/eslint .
 
+run_precommit_hooks:
+	.husky/pre-commit
+
 TEST:	## Prints some important variables
 	@echo "Release Notes: \n \n $(CURRENT_RELEASE_NOTES)"
 	@echo "GH Token: \t $(GITHUB_GH_TOKEN)"
@@ -92,10 +95,27 @@ check_build: #
 
 release: ## Create Github and NPM Release
 	@echo "Start Release"
-	make build_and_publish_npm_via_docker
+	make install_precommit_hooks
+	make build
+	make check_build
+	make run_precommit_hooks
+	git status
+	git add api
+	git add Makefile
+	git add src
+	git add RELEASE.md
+	git add package.json
+	git add package-lock.json
+	git add ${ONDEWO_PROTO_COMPILER_DIR}
+	git status
+	git commit -m "Preparing for Release ${ONDEWO_NLU_VERSION}"
+	git push
+	make publish_npm_via_docker
 	make create_release_branch
 	make create_release_tag
 	make release_to_github_via_docker_image
+	@echo "Finished Release"
+
 
 gh_release: build_utils_docker_image release_to_github_via_docker_image ## Builds Utils Image and Releases to Github
 
@@ -135,7 +155,7 @@ release_to_github_via_docker_image:  ## Release to Github via docker
 build_utils_docker_image:  ## Build utils docker image
 	docker build -f Dockerfile.utils -t ${IMAGE_UTILS_NAME} .
 
-build_and_publish_npm_via_docker: build build_utils_docker_image ## Builds Code, Docker-Image and Releases to NPM
+publish_npm_via_docker: build_utils_docker_image ## Docker-Image and Releases to NPM
 	docker run --rm \
 		-e NPM_AUTOMATION_TOKEN=${NPM_AUTOMATION_TOKEN} \
 		${IMAGE_UTILS_NAME} make docker_npm_release

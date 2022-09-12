@@ -1,0 +1,5 @@
+#!/bin/sh
+
+
+make eslint
+make prettier PRETTIER_WRITE=-w
