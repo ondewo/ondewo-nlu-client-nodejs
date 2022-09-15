@@ -2071,8 +2071,8 @@ export namespace FullTextSearchResponseIntentResponse {
 	export class IntentResponseSearchResult extends jspb.Message {
 		getText(): string;
 		setText(value: string): IntentResponseSearchResult;
-		getPlatform(): number;
-		setPlatform(value: number): IntentResponseSearchResult;
+		getPlatform(): string;
+		setPlatform(value: string): IntentResponseSearchResult;
 		getResponseType(): string;
 		setResponseType(value: string): IntentResponseSearchResult;
 		getIntentName(): string;
@@ -2096,7 +2096,7 @@ export namespace FullTextSearchResponseIntentResponse {
 	export namespace IntentResponseSearchResult {
 		export type AsObject = {
 			text: string;
-			platform: number;
+			platform: string;
 			responseType: string;
 			intentName: string;
 			language: string;
@@ -2185,6 +2185,34 @@ export namespace FullTextSearchResponseIntentParameters {
 			language: string;
 		};
 	}
+}
+
+export class ReindexAgentRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): ReindexAgentRequest;
+	getBranchName(): string;
+	setBranchName(value: string): ReindexAgentRequest;
+	clearIndexTypesList(): void;
+	getIndexTypesList(): Array<FullTextSearchRequest.QueryType>;
+	setIndexTypesList(value: Array<FullTextSearchRequest.QueryType>): ReindexAgentRequest;
+	addIndexTypes(value: FullTextSearchRequest.QueryType, index?: number): FullTextSearchRequest.QueryType;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ReindexAgentRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: ReindexAgentRequest): ReindexAgentRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ReindexAgentRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ReindexAgentRequest;
+	static deserializeBinaryFromReader(message: ReindexAgentRequest, reader: jspb.BinaryReader): ReindexAgentRequest;
+}
+
+export namespace ReindexAgentRequest {
+	export type AsObject = {
+		parent: string;
+		branchName: string;
+		indexTypesList: Array<FullTextSearchRequest.QueryType>;
+	};
 }
 
 export enum AgentView {

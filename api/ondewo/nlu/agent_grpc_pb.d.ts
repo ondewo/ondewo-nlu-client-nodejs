@@ -56,6 +56,7 @@ interface IAgentsService extends grpc.ServiceDefinition<grpc.UntypedServiceImple
 	getFullTextSearchIntentTags: IAgentsService_IGetFullTextSearchIntentTags;
 	getFullTextSearchIntentResponse: IAgentsService_IGetFullTextSearchIntentResponse;
 	getFullTextSearchIntentParameters: IAgentsService_IGetFullTextSearchIntentParameters;
+	reindexAgent: IAgentsService_IReindexAgent;
 }
 
 interface IAgentsService_ICreateAgent
@@ -483,6 +484,16 @@ interface IAgentsService_IGetFullTextSearchIntentParameters
 	responseSerialize: grpc.serialize<ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters>;
 }
+interface IAgentsService_IReindexAgent
+	extends grpc.MethodDefinition<ondewo_nlu_agent_pb.ReindexAgentRequest, ondewo_nlu_operations_pb.Operation> {
+	path: '/ondewo.nlu.Agents/ReindexAgent';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_agent_pb.ReindexAgentRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.ReindexAgentRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_operations_pb.Operation>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_operations_pb.Operation>;
+}
 
 export const AgentsService: IAgentsService;
 
@@ -585,6 +596,7 @@ export interface IAgentsServer {
 		ondewo_nlu_agent_pb.FullTextSearchRequest,
 		ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters
 	>;
+	reindexAgent: grpc.handleUnaryCall<ondewo_nlu_agent_pb.ReindexAgentRequest, ondewo_nlu_operations_pb.Operation>;
 }
 
 export interface IAgentsClient {
@@ -1211,6 +1223,21 @@ export interface IAgentsClient {
 			error: grpc.ServiceError | null,
 			response: ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters
 		) => void
+	): grpc.ClientUnaryCall;
+	reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+	): grpc.ClientUnaryCall;
+	reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+	): grpc.ClientUnaryCall;
+	reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
 	): grpc.ClientUnaryCall;
 }
 
@@ -1839,5 +1866,20 @@ export class AgentsClient extends grpc.Client implements IAgentsClient {
 			error: grpc.ServiceError | null,
 			response: ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters
 		) => void
+	): grpc.ClientUnaryCall;
+	public reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+	): grpc.ClientUnaryCall;
+	public reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+	): grpc.ClientUnaryCall;
+	public reindexAgent(
+		request: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
 	): grpc.ClientUnaryCall;
 }

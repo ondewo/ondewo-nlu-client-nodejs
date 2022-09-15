@@ -489,6 +489,17 @@ function deserialize_ondewo_nlu_PlatformMapping(buffer_arg) {
 	return ondewo_nlu_agent_pb.PlatformMapping.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_ReindexAgentRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_agent_pb.ReindexAgentRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.ReindexAgentRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ReindexAgentRequest(buffer_arg) {
+	return ondewo_nlu_agent_pb.ReindexAgentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RemoveUserFromProjectRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_agent_pb.RemoveUserFromProjectRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.RemoveUserFromProjectRequest');
@@ -1205,6 +1216,18 @@ var AgentsService = (exports.AgentsService = {
 		requestDeserialize: deserialize_ondewo_nlu_FullTextSearchRequest,
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentParameters,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentParameters
+	},
+	// Force reindexing Intent and Entity data of Agent
+	reindexAgent: {
+		path: '/ondewo.nlu.Agents/ReindexAgent',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_agent_pb.ReindexAgentRequest,
+		responseType: ondewo_nlu_operations_pb.Operation,
+		requestSerialize: serialize_ondewo_nlu_ReindexAgentRequest,
+		requestDeserialize: deserialize_ondewo_nlu_ReindexAgentRequest,
+		responseSerialize: serialize_ondewo_nlu_Operation,
+		responseDeserialize: deserialize_ondewo_nlu_Operation
 	}
 });
 
