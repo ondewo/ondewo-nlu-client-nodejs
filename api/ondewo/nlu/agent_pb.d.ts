@@ -2218,7 +2218,8 @@ export namespace ReindexAgentRequest {
 export enum AgentView {
 	AGENT_VIEW_UNSPECIFIED = 0,
 	AGENT_VIEW_FULL = 1,
-	AGENT_VIEW_SHALLOW = 2
+	AGENT_VIEW_SHALLOW = 2,
+	AGENT_VIEW_MINIMUM = 3
 }
 
 export enum InitiationProtocol {
