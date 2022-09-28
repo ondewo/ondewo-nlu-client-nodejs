@@ -1499,6 +1499,8 @@ export namespace FullTextSearchResponseEntity {
 		setDisplayName(value: string): EntitySearchResult;
 		getEntityTypeName(): string;
 		setEntityTypeName(value: string): EntitySearchResult;
+		getEntityTypeDisplayName(): string;
+		setEntityTypeDisplayName(value: string): EntitySearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): EntitySearchResult;
 
@@ -1517,6 +1519,7 @@ export namespace FullTextSearchResponseEntity {
 			name: string;
 			displayName: string;
 			entityTypeName: string;
+			entityTypeDisplayName: string;
 			language: string;
 		};
 	}
@@ -1579,8 +1582,12 @@ export namespace FullTextSearchResponseEntitySynonym {
 		setDisplayName(value: string): EntitySynonymSearchResult;
 		getEntityTypeName(): string;
 		setEntityTypeName(value: string): EntitySynonymSearchResult;
+		getEntityTypeDisplayName(): string;
+		setEntityTypeDisplayName(value: string): EntitySynonymSearchResult;
 		getEntityName(): string;
 		setEntityName(value: string): EntitySynonymSearchResult;
+		getEntityDisplayName(): string;
+		setEntityDisplayName(value: string): EntitySynonymSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): EntitySynonymSearchResult;
 
@@ -1602,7 +1609,9 @@ export namespace FullTextSearchResponseEntitySynonym {
 			name: string;
 			displayName: string;
 			entityTypeName: string;
+			entityTypeDisplayName: string;
 			entityName: string;
+			entityDisplayName: string;
 			language: string;
 		};
 	}
@@ -1738,6 +1747,8 @@ export namespace FullTextSearchResponseIntentContextIn {
 		setName(value: string): IntentContextInSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentContextInSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentContextInSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentContextInSearchResult;
 
@@ -1758,6 +1769,7 @@ export namespace FullTextSearchResponseIntentContextIn {
 		export type AsObject = {
 			name: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
@@ -1818,6 +1830,8 @@ export namespace FullTextSearchResponseIntentContextOut {
 		setName(value: string): IntentContextOutSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentContextOutSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentContextOutSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentContextOutSearchResult;
 
@@ -1838,6 +1852,7 @@ export namespace FullTextSearchResponseIntentContextOut {
 		export type AsObject = {
 			name: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
@@ -1906,6 +1921,8 @@ export namespace FullTextSearchResponseIntentUsersays {
 		setType(value: string): IntentUsersaysSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentUsersaysSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentUsersaysSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentUsersaysSearchResult;
 
@@ -1930,6 +1947,7 @@ export namespace FullTextSearchResponseIntentUsersays {
 			textAsEntityValues: string;
 			type: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
@@ -1992,6 +2010,8 @@ export namespace FullTextSearchResponseIntentTags {
 		setText(value: string): IntentTagsSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentTagsSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentTagsSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentTagsSearchResult;
 
@@ -2013,6 +2033,7 @@ export namespace FullTextSearchResponseIntentTags {
 			name: string;
 			text: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
@@ -2077,6 +2098,8 @@ export namespace FullTextSearchResponseIntentResponse {
 		setResponseType(value: string): IntentResponseSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentResponseSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentResponseSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentResponseSearchResult;
 
@@ -2099,6 +2122,7 @@ export namespace FullTextSearchResponseIntentResponse {
 			platform: string;
 			responseType: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
@@ -2161,6 +2185,8 @@ export namespace FullTextSearchResponseIntentParameters {
 		setParameterDisplayName(value: string): IntentParametersSearchResult;
 		getIntentName(): string;
 		setIntentName(value: string): IntentParametersSearchResult;
+		getIntentDisplayName(): string;
+		setIntentDisplayName(value: string): IntentParametersSearchResult;
 		getLanguage(): string;
 		setLanguage(value: string): IntentParametersSearchResult;
 
@@ -2182,6 +2208,7 @@ export namespace FullTextSearchResponseIntentParameters {
 			parameterName: string;
 			parameterDisplayName: string;
 			intentName: string;
+			intentDisplayName: string;
 			language: string;
 		};
 	}
