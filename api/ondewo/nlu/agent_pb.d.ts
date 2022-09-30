@@ -1669,6 +1669,10 @@ export namespace FullTextSearchResponseIntent {
 		setDisplayName(value: string): IntentSearchResult;
 		getDomainName(): string;
 		setDomainName(value: string): IntentSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentSearchResult;
 
@@ -1687,6 +1691,7 @@ export namespace FullTextSearchResponseIntent {
 			name: string;
 			displayName: string;
 			domainName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
@@ -1749,6 +1754,10 @@ export namespace FullTextSearchResponseIntentContextIn {
 		setIntentName(value: string): IntentContextInSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentContextInSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentContextInSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentContextInSearchResult;
 
@@ -1770,6 +1779,7 @@ export namespace FullTextSearchResponseIntentContextIn {
 			name: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
@@ -1832,6 +1842,10 @@ export namespace FullTextSearchResponseIntentContextOut {
 		setIntentName(value: string): IntentContextOutSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentContextOutSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentContextOutSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentContextOutSearchResult;
 
@@ -1853,6 +1867,7 @@ export namespace FullTextSearchResponseIntentContextOut {
 			name: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
@@ -1923,6 +1938,10 @@ export namespace FullTextSearchResponseIntentUsersays {
 		setIntentName(value: string): IntentUsersaysSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentUsersaysSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentUsersaysSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentUsersaysSearchResult;
 
@@ -1948,6 +1967,7 @@ export namespace FullTextSearchResponseIntentUsersays {
 			type: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
@@ -2105,6 +2125,10 @@ export namespace FullTextSearchResponseIntentResponse {
 		setIntentName(value: string): IntentResponseSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentResponseSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentResponseSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentResponseSearchResult;
 
@@ -2128,6 +2152,7 @@ export namespace FullTextSearchResponseIntentResponse {
 			responseType: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
@@ -2192,6 +2217,10 @@ export namespace FullTextSearchResponseIntentParameters {
 		setIntentName(value: string): IntentParametersSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentParametersSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentParametersSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentParametersSearchResult;
 
@@ -2214,6 +2243,7 @@ export namespace FullTextSearchResponseIntentParameters {
 			parameterDisplayName: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
