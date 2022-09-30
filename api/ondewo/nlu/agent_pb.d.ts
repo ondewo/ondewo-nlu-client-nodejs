@@ -2012,6 +2012,10 @@ export namespace FullTextSearchResponseIntentTags {
 		setIntentName(value: string): IntentTagsSearchResult;
 		getIntentDisplayName(): string;
 		setIntentDisplayName(value: string): IntentTagsSearchResult;
+		clearTagsList(): void;
+		getTagsList(): Array<string>;
+		setTagsList(value: Array<string>): IntentTagsSearchResult;
+		addTags(value: string, index?: number): string;
 		getLanguage(): string;
 		setLanguage(value: string): IntentTagsSearchResult;
 
@@ -2034,6 +2038,7 @@ export namespace FullTextSearchResponseIntentTags {
 			text: string;
 			intentName: string;
 			intentDisplayName: string;
+			tagsList: Array<string>;
 			language: string;
 		};
 	}
