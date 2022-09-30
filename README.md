@@ -1,4 +1,4 @@
-<table style="margin-left: 100px">
+<table align="center">
   <tr>
     <td>
       <a href="https://ondewo.com/en/products/natural-language-understanding/">
@@ -6,20 +6,10 @@
       </a>
     </td>
     <td>
-      <ul style="list-style-type: none; margin-right: 30px; margin-top: 20px">
-        <li>
-          <a href="https://twitter.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/ondewo.ai/"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/company/ondewo "><img height="35px" src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
-        </li>
-      </ul>
+      <a href="https://twitter.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733579.png"> </a>
+      <br><a href="https://www.facebook.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+      <br><a href="https://www.instagram.com/ondewo.ai/"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></a>
+      <br><a href="https://www.linkedin.com/company/ondewo "><img height="35px" src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
     </td>
   </tr>
 </table>
