@@ -1,7 +1,30 @@
+<table style="margin-left: 100px">
+  <tr>
+    <td>
+      <a href="https://ondewo.com/en/products/natural-language-understanding/">
+        <img height="150" src="https://raw.githubusercontent.com/ondewo/ondewo-logos/master/ONDEWO_Logo_horizontal_4c_2019/ONDEWO_Logo_4c_horizontal_rgb_2019.svg"/>
+      </a>
+    </td>
+    <td>
+      <ul style="list-style-type: none; margin-right: 30px; margin-top: 20px">
+        <li>
+          <a href="https://twitter.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733579.png"></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/ondewo"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/ondewo.ai/"><img height="35px" src="https://cdn-icons-png.flaticon.com/512/174/174855.png"></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/company/ondewo "><img height="35px" src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"></a>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
 <p align="center">
-  <a href="https://www.ondewo.com">
-    <img alt="ONDEWO Logo" src="https://raw.githubusercontent.com/ondewo/ondewo-logos/master/github/ondewo_logo_github_2.png"/>
-  </a>
   <h1 align="center">
     ONDEWO NLU Client NodeJS
   </h1>
@@ -13,6 +36,8 @@
 ## Overview
 
 `@ondewo/nlu-client-nodejs` is a compiled version of the [ONDEWO NLU API](https://github.com/ondewo/ondewo-nlu-api). Here you can find the NLU API [documentation](https://ondewo.github.io).
+
+ONDEWO APIs use [Protocol Buffers](https://github.com/google/protobuf) version 3 (proto3) as their Interface Definition Language (IDL) to define the API interface and the structure of the payload messages. The same interface definition is used for gRPC versions of the API in all languages.
 
 ## Setup
 
@@ -129,6 +154,5 @@ The release process can be divided into 6 Steps:
 
 > :warning:  The Release Automation checks if the build has created all the proto-code files, but it does not check the code-integrity. Please build and test the generated code prior to starting the release process.
 
-:shipit:
 
 [comment]: <> (END OF GITHUB README)
