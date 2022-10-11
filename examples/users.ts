@@ -27,9 +27,11 @@ export class UserService {
 		return new Promise((resolve: any) => {
 			this.usersClient.login(request, (error: grpc.ServiceError, response: LoginResponse) => {
 				if (error) console.log(error);
-				this.nlu_token = response.getAuthToken();
-				this.metadata.set('cai-token', this.nlu_token);
-				resolve(this.nlu_token);
+				else {
+					this.nlu_token = response.getAuthToken();
+					this.metadata.set('cai-token', this.nlu_token);
+					resolve(this.nlu_token);
+				}
 			});
 		});
 	}
