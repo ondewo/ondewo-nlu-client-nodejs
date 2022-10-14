@@ -23,7 +23,7 @@ console.log(`HOST: ${config_insec.host}:${config_insec.port}`);
 
 const client_insec: NJSClient = new NJSClient(config_insec, false);
 
-//client_insec.listAllAgents(new ListAgentsRequest());
+client_insec.listAllAgents(new ListAgentsRequest());
 
 // SECURE CONNECTION
 
@@ -37,9 +37,8 @@ const config_sec: ClientConfig = {
 };
 
 
-console.log(`HOST: ${config_sec.host}:${config_sec.port}`);
-console.log(config_sec);
+// console.log(`HOST: ${config_sec.host}:${config_sec.port}`);
 
-const client_sec: NJSClient = new NJSClient(config_sec, true);
+// const client_sec: NJSClient = new NJSClient(config_sec, true);
 
-client_sec.listAllAgents(new ListAgentsRequest());
+// client_sec.listAllAgents(new ListAgentsRequest());

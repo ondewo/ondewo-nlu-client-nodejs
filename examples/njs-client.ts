@@ -26,10 +26,8 @@ export class NJSClient {
 			console.log('SECURE CONNECTION::::');
 			this.agentsClient = new AgentsClient(
 				`${config.host}:${config.port}`,
-				grpc.credentials.createSsl(config.grpc_cert),
-				{ token: config.http_token }
+				grpc.credentials.createSsl(config.grpc_cert)
 			);
-			console.log(this.agentsClient);
 			this.users = new UserService(config, true);
 			this.config = config;
 		}
@@ -43,15 +41,15 @@ export class NJSClient {
 		this.login(this.config)
 			.then(() => {
 				console.log('LOGGGING IN::::::');
-				// this.agentsClient.listAllAgents(
-				// 	listAgentsRequest,
-				// 	this.users.metadata,
-				// 	(error: grpc.ServiceError, response: ListAgentsResponse) => {
-				// 		console.log('LIST ALL AGENTS:');
-				// 		if (error) console.log(error);
-				// 		console.log(response.getAgentsWithOwnersList().map((AwO: AgentWithOwner) => AwO.toObject()));
-				// 	}
-				// );
+				this.agentsClient.listAllAgents(
+					listAgentsRequest,
+					this.users.metadata,
+					(error: grpc.ServiceError, response: ListAgentsResponse) => {
+						console.log('LIST ALL AGENTS:');
+						if (error) console.log(error);
+						console.log(response.getAgentsWithOwnersList().map((AwO: AgentWithOwner) => AwO.toObject()));
+					}
+				);
 			})
 			.catch((error: Error) => {
 				console.log(error);

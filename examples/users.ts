@@ -13,7 +13,8 @@ export class UserService {
 			this.metadata.set('cai-token', '');
 			this.metadata.set('authorization', config.http_token);
 		} else {
-			this.usersClient = new UsersClient(`${config.host}:${config.port}`, grpc.credentials.createSsl(config.grpc_cert));
+			const cred: grpc.ChannelCredentials = grpc.credentials.createSsl(config.grpc_cert);
+			this.usersClient = new UsersClient(`${config.host}:${config.port}`, cred);
 			this.metadata.set('cai-token', '');
 			this.metadata.set('authorization', config.http_token);
 		}
@@ -23,11 +24,14 @@ export class UserService {
 		const request: LoginRequest = new LoginRequest();
 		request.setPassword(password);
 		request.setUserEmail(user_name);
+		console.log('USERCLIENT');
+		console.log(this.usersClient);
 
 		return new Promise((resolve: any) => {
-			this.usersClient.login(request, (error: grpc.ServiceError, response: LoginResponse) => {
-				if (error) console.log(error);
-				else {
+			this.usersClient.login(request, this.metadata, (error: grpc.ServiceError, response: LoginResponse) => {
+				if (error) {
+					console.log(error);
+				} else {
 					this.nlu_token = response.getAuthToken();
 					this.metadata.set('cai-token', this.nlu_token);
 					resolve(this.nlu_token);
