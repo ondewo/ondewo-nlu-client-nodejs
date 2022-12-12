@@ -85,6 +85,17 @@ function deserialize_ondewo_nlu_CreateSessionReviewRequest(buffer_arg) {
 	return ondewo_nlu_session_pb.CreateSessionReviewRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_DeleteSessionLabelsRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.DeleteSessionLabelsRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.DeleteSessionLabelsRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_DeleteSessionLabelsRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.DeleteSessionLabelsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_DeleteSessionRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_session_pb.DeleteSessionRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.DeleteSessionRequest');
@@ -151,6 +162,17 @@ function deserialize_ondewo_nlu_GetSessionReviewRequest(buffer_arg) {
 	return ondewo_nlu_session_pb.GetSessionReviewRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_ListSessionLabelsOfAllSessionsRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.ListSessionLabelsOfAllSessionsRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ListSessionLabelsOfAllSessionsRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_ListSessionLabelsRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_session_pb.ListSessionLabelsRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.ListSessionLabelsRequest');
@@ -215,17 +237,6 @@ function serialize_ondewo_nlu_ListSessionsResponse(arg) {
 
 function deserialize_ondewo_nlu_ListSessionsResponse(buffer_arg) {
 	return ondewo_nlu_session_pb.ListSessionsResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RemoveSessionLabelsRequest(arg) {
-	if (!(arg instanceof ondewo_nlu_session_pb.RemoveSessionLabelsRequest)) {
-		throw new Error('Expected argument of type ondewo.nlu.RemoveSessionLabelsRequest');
-	}
-	return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RemoveSessionLabelsRequest(buffer_arg) {
-	return ondewo_nlu_session_pb.RemoveSessionLabelsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_Session(arg) {
@@ -390,6 +401,17 @@ var SessionsService = (exports.SessionsService = {
 		responseSerialize: serialize_ondewo_nlu_ListSessionLabelsResponse,
 		responseDeserialize: deserialize_ondewo_nlu_ListSessionLabelsResponse
 	},
+	listSessionLabelsOfAllSessions: {
+		path: '/ondewo.nlu.Sessions/ListSessionLabelsOfAllSessions',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		responseType: ondewo_nlu_session_pb.ListSessionLabelsResponse,
+		requestSerialize: serialize_ondewo_nlu_ListSessionLabelsOfAllSessionsRequest,
+		requestDeserialize: deserialize_ondewo_nlu_ListSessionLabelsOfAllSessionsRequest,
+		responseSerialize: serialize_ondewo_nlu_ListSessionLabelsResponse,
+		responseDeserialize: deserialize_ondewo_nlu_ListSessionLabelsResponse
+	},
 	addSessionLabels: {
 		path: '/ondewo.nlu.Sessions/AddSessionLabels',
 		requestStream: false,
@@ -401,14 +423,14 @@ var SessionsService = (exports.SessionsService = {
 		responseSerialize: serialize_ondewo_nlu_Session,
 		responseDeserialize: deserialize_ondewo_nlu_Session
 	},
-	removeSessionLabels: {
-		path: '/ondewo.nlu.Sessions/RemoveSessionLabels',
+	deleteSessionLabels: {
+		path: '/ondewo.nlu.Sessions/DeleteSessionLabels',
 		requestStream: false,
 		responseStream: false,
-		requestType: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+		requestType: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		responseType: ondewo_nlu_session_pb.Session,
-		requestSerialize: serialize_ondewo_nlu_RemoveSessionLabelsRequest,
-		requestDeserialize: deserialize_ondewo_nlu_RemoveSessionLabelsRequest,
+		requestSerialize: serialize_ondewo_nlu_DeleteSessionLabelsRequest,
+		requestDeserialize: deserialize_ondewo_nlu_DeleteSessionLabelsRequest,
 		responseSerialize: serialize_ondewo_nlu_Session,
 		responseDeserialize: deserialize_ondewo_nlu_Session
 	},

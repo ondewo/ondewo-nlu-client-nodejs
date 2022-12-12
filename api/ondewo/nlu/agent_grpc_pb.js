@@ -1106,7 +1106,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_PlatformMapping,
 		responseDeserialize: deserialize_ondewo_nlu_PlatformMapping
 	},
-	// Full text search endpoint
+	// Full text search endpoint in entity types
 	getFullTextSearchEntityType: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchEntityType',
 		requestStream: false,
@@ -1118,6 +1118,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseEntityType,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseEntityType
 	},
+	// Full text search endpoint in entities
 	getFullTextSearchEntity: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchEntity',
 		requestStream: false,
@@ -1129,6 +1130,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseEntity,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseEntity
 	},
+	// Full text search endpoint in entity synonyms
 	getFullTextSearchEntitySynonym: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchEntitySynonym',
 		requestStream: false,
@@ -1140,6 +1142,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseEntitySynonym,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseEntitySynonym
 	},
+	// Full text search endpoint in intents
 	getFullTextSearchIntent: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntent',
 		requestStream: false,
@@ -1151,6 +1154,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntent,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntent
 	},
+	// Full text search endpoint in context ins of intents
 	getFullTextSearchIntentContextIn: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentContextIn',
 		requestStream: false,
@@ -1162,6 +1166,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentContextIn,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentContextIn
 	},
+	// Full text search endpoint in context outs of intents
 	getFullTextSearchIntentContextOut: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentContextOut',
 		requestStream: false,
@@ -1173,6 +1178,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentContextOut,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentContextOut
 	},
+	// Full text search endpoint in user says of intents
 	getFullTextSearchIntentUsersays: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentUsersays',
 		requestStream: false,
@@ -1184,6 +1190,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentUsersays,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentUsersays
 	},
+	// Full text search endpoint in tags of intents
 	getFullTextSearchIntentTags: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentTags',
 		requestStream: false,
@@ -1195,6 +1202,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentTags,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentTags
 	},
+	// Full text search endpoint in responses of intents
 	getFullTextSearchIntentResponse: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentResponse',
 		requestStream: false,
@@ -1206,6 +1214,7 @@ var AgentsService = (exports.AgentsService = {
 		responseSerialize: serialize_ondewo_nlu_FullTextSearchResponseIntentResponse,
 		responseDeserialize: deserialize_ondewo_nlu_FullTextSearchResponseIntentResponse
 	},
+	// Full text search endpoint in parameters of intents
 	getFullTextSearchIntentParameters: {
 		path: '/ondewo.nlu.Agents/GetFullTextSearchIntentParameters',
 		requestStream: false,
