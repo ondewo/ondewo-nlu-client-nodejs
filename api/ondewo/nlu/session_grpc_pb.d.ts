@@ -23,8 +23,9 @@ interface ISessionsService extends grpc.ServiceDefinition<grpc.UntypedServiceImp
 	trackSessionStep: ISessionsService_ITrackSessionStep;
 	deleteSession: ISessionsService_IDeleteSession;
 	listSessionLabels: ISessionsService_IListSessionLabels;
+	listSessionLabelsOfAllSessions: ISessionsService_IListSessionLabelsOfAllSessions;
 	addSessionLabels: ISessionsService_IAddSessionLabels;
-	removeSessionLabels: ISessionsService_IRemoveSessionLabels;
+	deleteSessionLabels: ISessionsService_IDeleteSessionLabels;
 	listSessionReviews: ISessionsService_IListSessionReviews;
 	getSessionReview: ISessionsService_IGetSessionReview;
 	getLatestSessionReview: ISessionsService_IGetLatestSessionReview;
@@ -117,6 +118,19 @@ interface ISessionsService_IListSessionLabels
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
 }
+interface ISessionsService_IListSessionLabelsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListSessionLabelsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListSessionLabelsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
+}
 interface ISessionsService_IAddSessionLabels
 	extends grpc.MethodDefinition<ondewo_nlu_session_pb.AddSessionLabelsRequest, ondewo_nlu_session_pb.Session> {
 	path: '/ondewo.nlu.Sessions/AddSessionLabels';
@@ -127,13 +141,13 @@ interface ISessionsService_IAddSessionLabels
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
 }
-interface ISessionsService_IRemoveSessionLabels
-	extends grpc.MethodDefinition<ondewo_nlu_session_pb.RemoveSessionLabelsRequest, ondewo_nlu_session_pb.Session> {
-	path: '/ondewo.nlu.Sessions/RemoveSessionLabels';
+interface ISessionsService_IDeleteSessionLabels
+	extends grpc.MethodDefinition<ondewo_nlu_session_pb.DeleteSessionLabelsRequest, ondewo_nlu_session_pb.Session> {
+	path: '/ondewo.nlu.Sessions/DeleteSessionLabels';
 	requestStream: false;
 	responseStream: false;
-	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.RemoveSessionLabelsRequest>;
-	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.RemoveSessionLabelsRequest>;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.DeleteSessionLabelsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.DeleteSessionLabelsRequest>;
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
 }
@@ -207,9 +221,13 @@ export interface ISessionsServer {
 		ondewo_nlu_session_pb.ListSessionLabelsRequest,
 		ondewo_nlu_session_pb.ListSessionLabelsResponse
 	>;
+	listSessionLabelsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListSessionLabelsResponse
+	>;
 	addSessionLabels: grpc.handleUnaryCall<ondewo_nlu_session_pb.AddSessionLabelsRequest, ondewo_nlu_session_pb.Session>;
-	removeSessionLabels: grpc.handleUnaryCall<
-		ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	deleteSessionLabels: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		ondewo_nlu_session_pb.Session
 	>;
 	listSessionReviews: grpc.handleUnaryCall<
@@ -353,6 +371,21 @@ export interface ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
 	): grpc.ClientUnaryCall;
+	listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
 	addSessionLabels(
 		request: ondewo_nlu_session_pb.AddSessionLabelsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
@@ -368,17 +401,17 @@ export interface ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		metadata: grpc.Metadata,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
@@ -565,6 +598,21 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
 	): grpc.ClientUnaryCall;
+	public listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listSessionLabelsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
 	public addSessionLabels(
 		request: ondewo_nlu_session_pb.AddSessionLabelsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
@@ -580,17 +628,17 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	public removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	public deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	public removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	public deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		metadata: grpc.Metadata,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
-	public removeSessionLabels(
-		request: ondewo_nlu_session_pb.RemoveSessionLabelsRequest,
+	public deleteSessionLabels(
+		request: ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
