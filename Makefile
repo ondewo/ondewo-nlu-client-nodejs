@@ -209,7 +209,7 @@ build: check_out_correct_submodule_versions build_compiler update_package npm_ru
 	@$(eval DELETE_LINES:=$(shell echo ${README_CUT_LINES}| sed -e "s/[[:space:]]/,/"))
 	@sed -i "${DELETE_LINES}d" npm/README.md
 	make install_dependencies
-	rm -rf ${NLU_APIS_DIR}/google
+	# rm -rf ${NLU_APIS_DIR}/google
 
 
 remove_npm_script:
