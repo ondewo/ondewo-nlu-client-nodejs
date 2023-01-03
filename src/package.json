@@ -7,7 +7,7 @@
 	"scripts": {
 		"start": "npm run build",
 		"build": "docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
-		"predebug": "mv ondewo-nlu-api/google ondewo-nlu-api/google",
+		"predebug": "# mv ondewo-nlu-api/google ondewo-nlu-api/google",
 		"debug": "docker run -it --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler"
 	},
 	"author": "ONDEWO GmbH <office@ondewo.com>",
