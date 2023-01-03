@@ -22,8 +22,8 @@ ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/4.2.0
 ONDEWO_PROTO_COMPILER_DIR=ondewo-proto-compiler
 NLU_APIS_DIR=src/ondewo-nlu-api
 NLU_PROTOS_DIR=${NLU_APIS_DIR}/ondewo
-GOOGLE_APIS_DIR=${NLU_APIS_DIR}/googleapis
-GOOGLE_PROTOS_DIR=${GOOGLE_APIS_DIR}/google
+# GOOGLE_APIS_DIR=${NLU_APIS_DIR}/googleapis
+# GOOGLE_PROTOS_DIR=${GOOGLE_APIS_DIR}/google
 GITHUB_GH_TOKEN?=
 NPM_AUTOMATION_TOKEN?=
 IMAGE_UTILS_NAME=ondewo-nlu-client-utils-nodejs:${ONDEWO_NLU_VERSION}
@@ -240,7 +240,7 @@ check_out_correct_submodule_versions: ## Fetches all Submodules and checksout sp
 	git -C ${NLU_APIS_DIR} checkout ${NLU_API_GIT_BRANCH}
 	git -C ${ONDEWO_PROTO_COMPILER_DIR} fetch --all
 	git -C ${ONDEWO_PROTO_COMPILER_DIR} checkout ${ONDEWO_PROTO_COMPILER_GIT_BRANCH}
-	cp -R ${NLU_APIS_DIR}/googleapis/google ${NLU_APIS_DIR}/google
+	# cp -R ${NLU_APIS_DIR}/googleapis/google ${NLU_APIS_DIR}/google
 	@echo "DONE checking out correct submodule versions."
 
 
