@@ -7,6 +7,7 @@
 import * as grpc from 'grpc';
 import * as ondewo_nlu_session_pb from '../../ondewo/nlu/session_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_struct_pb from 'google-protobuf/google/protobuf/struct_pb';
 import * as google_rpc_status_pb from '../../google/rpc/status_pb';
 import * as google_type_latlng_pb from '../../google/type/latlng_pb';

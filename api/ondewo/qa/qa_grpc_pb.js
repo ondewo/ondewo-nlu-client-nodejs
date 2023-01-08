@@ -154,8 +154,7 @@ function deserialize_ondewo_qa_UpdateDatabaseResponse(buffer_arg) {
 	return ondewo_qa_qa_pb.UpdateDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-// ///// Services ///////
-//
+// ///// Question Answering (QA) Services ///////
 var QAService = (exports.QAService = {
 	getAnswer: {
 		path: '/ondewo.qa.QA/GetAnswer',
