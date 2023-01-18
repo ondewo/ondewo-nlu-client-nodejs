@@ -25,6 +25,19 @@ interface ISessionsService extends grpc.ServiceDefinition<grpc.UntypedServiceImp
 	deleteSession: ISessionsService_IDeleteSession;
 	listSessionLabels: ISessionsService_IListSessionLabels;
 	listSessionLabelsOfAllSessions: ISessionsService_IListSessionLabelsOfAllSessions;
+	listLanguageCodesOfAllSessions: ISessionsService_IListLanguageCodesOfAllSessions;
+	listMatchedIntentsOfAllSessions: ISessionsService_IListMatchedIntentsOfAllSessions;
+	listMatchedEntityTypesOfAllSessions: ISessionsService_IListMatchedEntityTypesOfAllSessions;
+	listUserIdsOfAllSessions: ISessionsService_IListUserIdsOfAllSessions;
+	listIdentifiedUserIdsOfAllSessions: ISessionsService_IListIdentifiedUserIdsOfAllSessions;
+	listTagsOfAllSessions: ISessionsService_IListTagsOfAllSessions;
+	listInputContextsOfAllSessions: ISessionsService_IListInputContextsOfAllSessions;
+	listOutputContextsOfAllSessions: ISessionsService_IListOutputContextsOfAllSessions;
+	listPlatformsOfAllSessions: ISessionsService_IListPlatformsOfAllSessions;
+	listAccountIdsOfAllSessions: ISessionsService_IListAccountIdsOfAllSessions;
+	listPropertyIdsOfAllSessions: ISessionsService_IListPropertyIdsOfAllSessions;
+	listDatastreamIdsOfAllSessions: ISessionsService_IListDatastreamIdsOfAllSessions;
+	listOriginIdsOfAllSessions: ISessionsService_IListOriginIdsOfAllSessions;
 	addSessionLabels: ISessionsService_IAddSessionLabels;
 	deleteSessionLabels: ISessionsService_IDeleteSessionLabels;
 	listSessionReviews: ISessionsService_IListSessionReviews;
@@ -132,6 +145,175 @@ interface ISessionsService_IListSessionLabelsOfAllSessions
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionLabelsResponse>;
 }
+interface ISessionsService_IListLanguageCodesOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListLanguageCodesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListLanguageCodesOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListLanguageCodesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListLanguageCodesResponse>;
+}
+interface ISessionsService_IListMatchedIntentsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListMatchedIntentsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListMatchedIntentsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListMatchedIntentsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListMatchedIntentsResponse>;
+}
+interface ISessionsService_IListMatchedEntityTypesOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListMatchedEntityTypesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListMatchedEntityTypesOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListMatchedEntityTypesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListMatchedEntityTypesResponse>;
+}
+interface ISessionsService_IListUserIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListUserIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListUserIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListUserIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListUserIdsResponse>;
+}
+interface ISessionsService_IListIdentifiedUserIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListIdentifiedUserIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse>;
+}
+interface ISessionsService_IListTagsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListTagsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListTagsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListTagsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListTagsResponse>;
+}
+interface ISessionsService_IListInputContextsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListInputContextsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListInputContextsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListInputContextsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListInputContextsResponse>;
+}
+interface ISessionsService_IListOutputContextsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListOutputContextsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListOutputContextsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListOutputContextsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListOutputContextsResponse>;
+}
+interface ISessionsService_IListPlatformsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListPlatformsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListPlatformsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListPlatformsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListPlatformsResponse>;
+}
+interface ISessionsService_IListAccountIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListAccountIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListAccountIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListAccountIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListAccountIdsResponse>;
+}
+interface ISessionsService_IListPropertyIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListPropertyIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListPropertyIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListPropertyIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListPropertyIdsResponse>;
+}
+interface ISessionsService_IListDatastreamIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListDatastreamIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListDatastreamIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListDatastreamIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListDatastreamIdsResponse>;
+}
+interface ISessionsService_IListOriginIdsOfAllSessions
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListOriginIdsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListOriginIdsOfAllSessions';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListOriginIdsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListOriginIdsResponse>;
+}
 interface ISessionsService_IAddSessionLabels
 	extends grpc.MethodDefinition<ondewo_nlu_session_pb.AddSessionLabelsRequest, ondewo_nlu_session_pb.Session> {
 	path: '/ondewo.nlu.Sessions/AddSessionLabels';
@@ -225,6 +407,58 @@ export interface ISessionsServer {
 	listSessionLabelsOfAllSessions: grpc.handleUnaryCall<
 		ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest,
 		ondewo_nlu_session_pb.ListSessionLabelsResponse
+	>;
+	listLanguageCodesOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListLanguageCodesResponse
+	>;
+	listMatchedIntentsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListMatchedIntentsResponse
+	>;
+	listMatchedEntityTypesOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListMatchedEntityTypesResponse
+	>;
+	listUserIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListUserIdsResponse
+	>;
+	listIdentifiedUserIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse
+	>;
+	listTagsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListTagsResponse
+	>;
+	listInputContextsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListInputContextsResponse
+	>;
+	listOutputContextsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListOutputContextsResponse
+	>;
+	listPlatformsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListPlatformsResponse
+	>;
+	listAccountIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListAccountIdsResponse
+	>;
+	listPropertyIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListPropertyIdsResponse
+	>;
+	listDatastreamIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListDatastreamIdsResponse
+	>;
+	listOriginIdsOfAllSessions: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		ondewo_nlu_session_pb.ListOriginIdsResponse
 	>;
 	addSessionLabels: grpc.handleUnaryCall<ondewo_nlu_session_pb.AddSessionLabelsRequest, ondewo_nlu_session_pb.Session>;
 	deleteSessionLabels: grpc.handleUnaryCall<
@@ -386,6 +620,201 @@ export interface ISessionsClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
 	): grpc.ClientUnaryCall;
 	addSessionLabels(
 		request: ondewo_nlu_session_pb.AddSessionLabelsRequest,
@@ -613,6 +1042,201 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionLabelsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listLanguageCodesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListLanguageCodesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListLanguageCodesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedIntentsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedIntentsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedIntentsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listMatchedEntityTypesOfAllSessions(
+		request: ondewo_nlu_session_pb.ListMatchedEntityTypesOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListMatchedEntityTypesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listIdentifiedUserIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListIdentifiedUserIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListIdentifiedUserIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listTagsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListTagsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListTagsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listInputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListInputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListInputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOutputContextsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOutputContextsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOutputContextsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPlatformsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPlatformsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPlatformsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listAccountIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListAccountIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAccountIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listPropertyIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListPropertyIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListPropertyIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listDatastreamIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListDatastreamIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListDatastreamIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listOriginIdsOfAllSessions(
+		request: ondewo_nlu_session_pb.ListOriginIdsOfAllSessionsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListOriginIdsResponse) => void
 	): grpc.ClientUnaryCall;
 	public addSessionLabels(
 		request: ondewo_nlu_session_pb.AddSessionLabelsRequest,
