@@ -5715,7 +5715,9 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 				propertyIdsList: (f = jspb.Message.getRepeatedField(msg, 44)) == null ? undefined : f,
 				datastreamIdsList: (f = jspb.Message.getRepeatedField(msg, 45)) == null ? undefined : f,
 				originIdsList: (f = jspb.Message.getRepeatedField(msg, 46)) == null ? undefined : f,
-				identifiedUserIdsList: (f = jspb.Message.getRepeatedField(msg, 47)) == null ? undefined : f
+				identifiedUserIdsList: (f = jspb.Message.getRepeatedField(msg, 47)) == null ? undefined : f,
+				durationInterval60sRoundedMin: jspb.Message.getFloatingPointFieldWithDefault(msg, 48, 0.0),
+				durationInterval60sRoundedMax: jspb.Message.getFloatingPointFieldWithDefault(msg, 49, 0.0)
 			};
 
 		if (includeInstance) {
@@ -5946,6 +5948,14 @@ proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader = function (msg, read
 				var value = /** @type {string} */ (reader.readString());
 				msg.addIdentifiedUserIds(value);
 				break;
+			case 48:
+				var value = /** @type {number} */ (reader.readFloat());
+				msg.setDurationInterval60sRoundedMin(value);
+				break;
+			case 49:
+				var value = /** @type {number} */ (reader.readFloat());
+				msg.setDurationInterval60sRoundedMax(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -6160,6 +6170,14 @@ proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter = function (message, writ
 	f = message.getIdentifiedUserIdsList();
 	if (f.length > 0) {
 		writer.writeRepeatedString(47, f);
+	}
+	f = message.getDurationInterval60sRoundedMin();
+	if (f !== 0.0) {
+		writer.writeFloat(48, f);
+	}
+	f = message.getDurationInterval60sRoundedMax();
+	if (f !== 0.0) {
+		writer.writeFloat(49, f);
 	}
 };
 
@@ -7179,6 +7197,38 @@ proto.ondewo.nlu.SessionFilter.prototype.clearIdentifiedUserIdsList = function (
 };
 
 /**
+ * optional float duration_interval_60s_rounded_min = 48;
+ * @return {number}
+ */
+proto.ondewo.nlu.SessionFilter.prototype.getDurationInterval60sRoundedMin = function () {
+	return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 48, 0.0));
+};
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.SessionFilter} returns this
+ */
+proto.ondewo.nlu.SessionFilter.prototype.setDurationInterval60sRoundedMin = function (value) {
+	return jspb.Message.setProto3FloatField(this, 48, value);
+};
+
+/**
+ * optional float duration_interval_60s_rounded_max = 49;
+ * @return {number}
+ */
+proto.ondewo.nlu.SessionFilter.prototype.getDurationInterval60sRoundedMax = function () {
+	return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 49, 0.0));
+};
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.SessionFilter} returns this
+ */
+proto.ondewo.nlu.SessionFilter.prototype.setDurationInterval60sRoundedMax = function (value) {
+	return jspb.Message.setProto3FloatField(this, 49, value);
+};
+
+/**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
@@ -7260,7 +7310,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 				propertyIdsList: (f = jspb.Message.getRepeatedField(msg, 28)) == null ? undefined : f,
 				datastreamIdsList: (f = jspb.Message.getRepeatedField(msg, 29)) == null ? undefined : f,
 				originIdsList: (f = jspb.Message.getRepeatedField(msg, 30)) == null ? undefined : f,
-				identifiedUserIdsList: (f = jspb.Message.getRepeatedField(msg, 31)) == null ? undefined : f
+				identifiedUserIdsList: (f = jspb.Message.getRepeatedField(msg, 31)) == null ? undefined : f,
+				durationInterval60sRounded: jspb.Message.getFloatingPointFieldWithDefault(msg, 32, 0.0)
 			};
 
 		if (includeInstance) {
@@ -7427,6 +7478,10 @@ proto.ondewo.nlu.SessionInfo.deserializeBinaryFromReader = function (msg, reader
 				var value = /** @type {string} */ (reader.readString());
 				msg.addIdentifiedUserIds(value);
 				break;
+			case 32:
+				var value = /** @type {number} */ (reader.readFloat());
+				msg.setDurationInterval60sRounded(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -7577,6 +7632,10 @@ proto.ondewo.nlu.SessionInfo.serializeBinaryToWriter = function (message, writer
 	f = message.getIdentifiedUserIdsList();
 	if (f.length > 0) {
 		writer.writeRepeatedString(31, f);
+	}
+	f = message.getDurationInterval60sRounded();
+	if (f !== 0.0) {
+		writer.writeFloat(32, f);
 	}
 };
 
@@ -8480,6 +8539,22 @@ proto.ondewo.nlu.SessionInfo.prototype.addIdentifiedUserIds = function (value, o
  */
 proto.ondewo.nlu.SessionInfo.prototype.clearIdentifiedUserIdsList = function () {
 	return this.setIdentifiedUserIdsList([]);
+};
+
+/**
+ * optional float duration_interval_60s_rounded = 32;
+ * @return {number}
+ */
+proto.ondewo.nlu.SessionInfo.prototype.getDurationInterval60sRounded = function () {
+	return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 32, 0.0));
+};
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.SessionInfo} returns this
+ */
+proto.ondewo.nlu.SessionInfo.prototype.setDurationInterval60sRounded = function (value) {
+	return jspb.Message.setProto3FloatField(this, 32, value);
 };
 
 /**
