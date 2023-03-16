@@ -5783,11 +5783,11 @@ proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader = function (msg, read
 				msg.setMinEntityTypesConfidenceMax(value);
 				break;
 			case 8:
-				var value = /** @type {number} */ (reader.readFloat());
+				var value = /** @type {number} */ (reader.readDouble());
 				msg.setEarliest(value);
 				break;
 			case 9:
-				var value = /** @type {number} */ (reader.readFloat());
+				var value = /** @type {number} */ (reader.readDouble());
 				msg.setLatest(value);
 				break;
 			case 10:
@@ -6013,11 +6013,11 @@ proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter = function (message, writ
 	}
 	f = message.getEarliest();
 	if (f !== 0.0) {
-		writer.writeFloat(8, f);
+		writer.writeDouble(8, f);
 	}
 	f = message.getLatest();
 	if (f !== 0.0) {
-		writer.writeFloat(9, f);
+		writer.writeDouble(9, f);
 	}
 	f = message.getMinNumberTurns();
 	if (f !== 0) {
@@ -6349,7 +6349,7 @@ proto.ondewo.nlu.SessionFilter.prototype.setMinEntityTypesConfidenceMax = functi
 };
 
 /**
- * optional float earliest = 8;
+ * optional double earliest = 8;
  * @return {number}
  */
 proto.ondewo.nlu.SessionFilter.prototype.getEarliest = function () {
@@ -6365,7 +6365,7 @@ proto.ondewo.nlu.SessionFilter.prototype.setEarliest = function (value) {
 };
 
 /**
- * optional float latest = 9;
+ * optional double latest = 9;
  * @return {number}
  */
 proto.ondewo.nlu.SessionFilter.prototype.getLatest = function () {
@@ -7369,11 +7369,11 @@ proto.ondewo.nlu.SessionInfo.deserializeBinaryFromReader = function (msg, reader
 				msg.setMinEntityTypesConfidence(value);
 				break;
 			case 6:
-				var value = /** @type {number} */ (reader.readFloat());
+				var value = /** @type {number} */ (reader.readDouble());
 				msg.setEarliest(value);
 				break;
 			case 7:
-				var value = /** @type {number} */ (reader.readFloat());
+				var value = /** @type {number} */ (reader.readDouble());
 				msg.setLatest(value);
 				break;
 			case 8:
@@ -7531,11 +7531,11 @@ proto.ondewo.nlu.SessionInfo.serializeBinaryToWriter = function (message, writer
 	}
 	f = message.getEarliest();
 	if (f !== 0.0) {
-		writer.writeFloat(6, f);
+		writer.writeDouble(6, f);
 	}
 	f = message.getLatest();
 	if (f !== 0.0) {
-		writer.writeFloat(7, f);
+		writer.writeDouble(7, f);
 	}
 	f = message.getNumberTurns();
 	if (f !== 0) {
@@ -7923,7 +7923,7 @@ proto.ondewo.nlu.SessionInfo.prototype.setMinEntityTypesConfidence = function (v
 };
 
 /**
- * optional float earliest = 6;
+ * optional double earliest = 6;
  * @return {number}
  */
 proto.ondewo.nlu.SessionInfo.prototype.getEarliest = function () {
@@ -7939,7 +7939,7 @@ proto.ondewo.nlu.SessionInfo.prototype.setEarliest = function (value) {
 };
 
 /**
- * optional float latest = 7;
+ * optional double latest = 7;
  * @return {number}
  */
 proto.ondewo.nlu.SessionInfo.prototype.getLatest = function () {
