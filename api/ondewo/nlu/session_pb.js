@@ -37,6 +37,8 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 goog.object.extend(proto, google_protobuf_struct_pb);
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+goog.object.extend(proto, google_protobuf_timestamp_pb);
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 goog.object.extend(proto, google_rpc_status_pb);
 var google_type_latlng_pb = require('../../google/type/latlng_pb.js');
@@ -4766,7 +4768,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 					msg.getContextsList(),
 					ondewo_nlu_context_pb.Context.toObject,
 					includeInstance
-				)
+				),
+				timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
 			};
 
 		if (includeInstance) {
@@ -4820,6 +4823,11 @@ proto.ondewo.nlu.SessionStep.deserializeBinaryFromReader = function (msg, reader
 				reader.readMessage(value, ondewo_nlu_context_pb.Context.deserializeBinaryFromReader);
 				msg.addContexts(value);
 				break;
+			case 5:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setTimestamp(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -4862,6 +4870,10 @@ proto.ondewo.nlu.SessionStep.serializeBinaryToWriter = function (message, writer
 	f = message.getContextsList();
 	if (f.length > 0) {
 		writer.writeRepeatedMessage(4, f, ondewo_nlu_context_pb.Context.serializeBinaryToWriter);
+	}
+	f = message.getTimestamp();
+	if (f != null) {
+		writer.writeMessage(5, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
 	}
 };
 
@@ -4982,6 +4994,40 @@ proto.ondewo.nlu.SessionStep.prototype.addContexts = function (opt_value, opt_in
  */
 proto.ondewo.nlu.SessionStep.prototype.clearContextsList = function () {
 	return this.setContextsList([]);
+};
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.SessionStep.prototype.getTimestamp = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.SessionStep} returns this
+ */
+proto.ondewo.nlu.SessionStep.prototype.setTimestamp = function (value) {
+	return jspb.Message.setWrapperField(this, 5, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionStep} returns this
+ */
+proto.ondewo.nlu.SessionStep.prototype.clearTimestamp = function () {
+	return this.setTimestamp(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionStep.prototype.hasTimestamp = function () {
+	return jspb.Message.getField(this, 5) != null;
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -9722,7 +9768,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 					includeInstance
 				),
 				queryTextOriginal: jspb.Message.getFieldWithDefault(msg, 7, ''),
-				platformsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f
+				platformsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+				timestamp: (f = msg.getTimestamp()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
 			};
 
 		if (includeInstance) {
@@ -9797,6 +9844,11 @@ proto.ondewo.nlu.SessionReviewStep.deserializeBinaryFromReader = function (msg, 
 					msg.addPlatforms(values[i]);
 				}
 				break;
+			case 9:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setTimestamp(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -9855,6 +9907,10 @@ proto.ondewo.nlu.SessionReviewStep.serializeBinaryToWriter = function (message, 
 	f = message.getPlatformsList();
 	if (f.length > 0) {
 		writer.writePackedEnum(8, f);
+	}
+	f = message.getTimestamp();
+	if (f != null) {
+		writer.writeMessage(9, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
 	}
 };
 
@@ -10076,6 +10132,40 @@ proto.ondewo.nlu.SessionReviewStep.prototype.addPlatforms = function (value, opt
  */
 proto.ondewo.nlu.SessionReviewStep.prototype.clearPlatformsList = function () {
 	return this.setPlatformsList([]);
+};
+
+/**
+ * optional google.protobuf.Timestamp timestamp = 9;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.SessionReviewStep.prototype.getTimestamp = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.SessionReviewStep} returns this
+ */
+proto.ondewo.nlu.SessionReviewStep.prototype.setTimestamp = function (value) {
+	return jspb.Message.setWrapperField(this, 9, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionReviewStep} returns this
+ */
+proto.ondewo.nlu.SessionReviewStep.prototype.clearTimestamp = function () {
+	return this.setTimestamp(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionReviewStep.prototype.hasTimestamp = function () {
+	return jspb.Message.getField(this, 9) != null;
 };
 
 /**
