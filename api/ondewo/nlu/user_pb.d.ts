@@ -7,7 +7,9 @@
 import * as jspb from 'google-protobuf';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as ondewo_nlu_project_role_pb from '../../ondewo/nlu/project_role_pb';
+import * as ondewo_nlu_common_pb from '../../ondewo/nlu/common_pb';
 
 export class User extends jspb.Message {
 	getUserId(): string;
@@ -18,6 +20,24 @@ export class User extends jspb.Message {
 	setServerRoleId(value: number): User;
 	getUserEmail(): string;
 	setUserEmail(value: string): User;
+	getUserProfilePicture(): Uint8Array | string;
+	getUserProfilePicture_asU8(): Uint8Array;
+	getUserProfilePicture_asB64(): string;
+	setUserProfilePicture(value: Uint8Array | string): User;
+
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): User;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): User;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): User;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): User;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): User.AsObject;
@@ -35,6 +55,11 @@ export namespace User {
 		displayName: string;
 		serverRoleId: number;
 		userEmail: string;
+		userProfilePicture: Uint8Array | string;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 }
 
@@ -257,6 +282,20 @@ export class ServerRole extends jspb.Message {
 	setPermissionsList(value: Array<string>): ServerRole;
 	addPermissions(value: string, index?: number): string;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): ServerRole;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): ServerRole;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): ServerRole;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): ServerRole;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): ServerRole.AsObject;
 	static toObject(includeInstance: boolean, msg: ServerRole): ServerRole.AsObject;
@@ -272,6 +311,10 @@ export namespace ServerRole {
 		roleId: number;
 		name: string;
 		permissionsList: Array<string>;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 }
 
@@ -537,6 +580,275 @@ export namespace LoginResponse {
 	export type AsObject = {
 		user?: User.AsObject;
 		authToken: string;
+	};
+}
+
+export class GetUserPreferencesRequest extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): GetUserPreferencesRequest;
+	clearKeysList(): void;
+	getKeysList(): Array<string>;
+	setKeysList(value: Array<string>): GetUserPreferencesRequest;
+	addKeys(value: string, index?: number): string;
+	getRegexInclude(): string;
+	setRegexInclude(value: string): GetUserPreferencesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): GetUserPreferencesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: GetUserPreferencesRequest): GetUserPreferencesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: GetUserPreferencesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): GetUserPreferencesRequest;
+	static deserializeBinaryFromReader(
+		message: GetUserPreferencesRequest,
+		reader: jspb.BinaryReader
+	): GetUserPreferencesRequest;
+}
+
+export namespace GetUserPreferencesRequest {
+	export type AsObject = {
+		userName: string;
+		keysList: Array<string>;
+		regexInclude: string;
+	};
+}
+
+export class GetUserPreferencesResponse extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): GetUserPreferencesResponse;
+	clearKeyValuePairsList(): void;
+	getKeyValuePairsList(): Array<ondewo_nlu_common_pb.KeyValuePair>;
+	setKeyValuePairsList(value: Array<ondewo_nlu_common_pb.KeyValuePair>): GetUserPreferencesResponse;
+	addKeyValuePairs(value?: ondewo_nlu_common_pb.KeyValuePair, index?: number): ondewo_nlu_common_pb.KeyValuePair;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): GetUserPreferencesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): GetUserPreferencesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: GetUserPreferencesResponse): GetUserPreferencesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: GetUserPreferencesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): GetUserPreferencesResponse;
+	static deserializeBinaryFromReader(
+		message: GetUserPreferencesResponse,
+		reader: jspb.BinaryReader
+	): GetUserPreferencesResponse;
+}
+
+export namespace GetUserPreferencesResponse {
+	export type AsObject = {
+		userName: string;
+		keyValuePairsList: Array<ondewo_nlu_common_pb.KeyValuePair.AsObject>;
+		errorMessage: string;
+	};
+}
+
+export class SetUserPreferencesRequest extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): SetUserPreferencesRequest;
+	clearKeyValuePairsList(): void;
+	getKeyValuePairsList(): Array<ondewo_nlu_common_pb.KeyValuePair>;
+	setKeyValuePairsList(value: Array<ondewo_nlu_common_pb.KeyValuePair>): SetUserPreferencesRequest;
+	addKeyValuePairs(value?: ondewo_nlu_common_pb.KeyValuePair, index?: number): ondewo_nlu_common_pb.KeyValuePair;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): SetUserPreferencesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: SetUserPreferencesRequest): SetUserPreferencesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: SetUserPreferencesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): SetUserPreferencesRequest;
+	static deserializeBinaryFromReader(
+		message: SetUserPreferencesRequest,
+		reader: jspb.BinaryReader
+	): SetUserPreferencesRequest;
+}
+
+export namespace SetUserPreferencesRequest {
+	export type AsObject = {
+		userName: string;
+		keyValuePairsList: Array<ondewo_nlu_common_pb.KeyValuePair.AsObject>;
+	};
+}
+
+export class SetUserPreferencesResponse extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): SetUserPreferencesResponse;
+	clearKeysList(): void;
+	getKeysList(): Array<string>;
+	setKeysList(value: Array<string>): SetUserPreferencesResponse;
+	addKeys(value: string, index?: number): string;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): SetUserPreferencesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): SetUserPreferencesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: SetUserPreferencesResponse): SetUserPreferencesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: SetUserPreferencesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): SetUserPreferencesResponse;
+	static deserializeBinaryFromReader(
+		message: SetUserPreferencesResponse,
+		reader: jspb.BinaryReader
+	): SetUserPreferencesResponse;
+}
+
+export namespace SetUserPreferencesResponse {
+	export type AsObject = {
+		userName: string;
+		keysList: Array<string>;
+		errorMessage: string;
+	};
+}
+
+export class DeleteUserPreferencesRequest extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): DeleteUserPreferencesRequest;
+	clearKeysList(): void;
+	getKeysList(): Array<string>;
+	setKeysList(value: Array<string>): DeleteUserPreferencesRequest;
+	addKeys(value: string, index?: number): string;
+	getRegexInclude(): string;
+	setRegexInclude(value: string): DeleteUserPreferencesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteUserPreferencesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: DeleteUserPreferencesRequest): DeleteUserPreferencesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteUserPreferencesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteUserPreferencesRequest;
+	static deserializeBinaryFromReader(
+		message: DeleteUserPreferencesRequest,
+		reader: jspb.BinaryReader
+	): DeleteUserPreferencesRequest;
+}
+
+export namespace DeleteUserPreferencesRequest {
+	export type AsObject = {
+		userName: string;
+		keysList: Array<string>;
+		regexInclude: string;
+	};
+}
+
+export class DeleteUserPreferencesResponse extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): DeleteUserPreferencesResponse;
+	clearKeysList(): void;
+	getKeysList(): Array<string>;
+	setKeysList(value: Array<string>): DeleteUserPreferencesResponse;
+	addKeys(value: string, index?: number): string;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): DeleteUserPreferencesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteUserPreferencesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: DeleteUserPreferencesResponse): DeleteUserPreferencesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteUserPreferencesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteUserPreferencesResponse;
+	static deserializeBinaryFromReader(
+		message: DeleteUserPreferencesResponse,
+		reader: jspb.BinaryReader
+	): DeleteUserPreferencesResponse;
+}
+
+export namespace DeleteUserPreferencesResponse {
+	export type AsObject = {
+		userName: string;
+		keysList: Array<string>;
+		errorMessage: string;
+	};
+}
+
+export class DeleteAllUserPreferencesRequest extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): DeleteAllUserPreferencesRequest;
+	getRegexFilter(): string;
+	setRegexFilter(value: string): DeleteAllUserPreferencesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteAllUserPreferencesRequest.AsObject;
+	static toObject(
+		includeInstance: boolean,
+		msg: DeleteAllUserPreferencesRequest
+	): DeleteAllUserPreferencesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteAllUserPreferencesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteAllUserPreferencesRequest;
+	static deserializeBinaryFromReader(
+		message: DeleteAllUserPreferencesRequest,
+		reader: jspb.BinaryReader
+	): DeleteAllUserPreferencesRequest;
+}
+
+export namespace DeleteAllUserPreferencesRequest {
+	export type AsObject = {
+		userName: string;
+		regexFilter: string;
+	};
+}
+
+export class ListUserPreferencesRequest extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): ListUserPreferencesRequest;
+	getRegexFilter(): string;
+	setRegexFilter(value: string): ListUserPreferencesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListUserPreferencesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: ListUserPreferencesRequest): ListUserPreferencesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListUserPreferencesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListUserPreferencesRequest;
+	static deserializeBinaryFromReader(
+		message: ListUserPreferencesRequest,
+		reader: jspb.BinaryReader
+	): ListUserPreferencesRequest;
+}
+
+export namespace ListUserPreferencesRequest {
+	export type AsObject = {
+		userName: string;
+		regexFilter: string;
+	};
+}
+
+export class ListUserPreferencesResponse extends jspb.Message {
+	getUserName(): string;
+	setUserName(value: string): ListUserPreferencesResponse;
+	clearKeyValuePairsList(): void;
+	getKeyValuePairsList(): Array<ondewo_nlu_common_pb.KeyValuePair>;
+	setKeyValuePairsList(value: Array<ondewo_nlu_common_pb.KeyValuePair>): ListUserPreferencesResponse;
+	addKeyValuePairs(value?: ondewo_nlu_common_pb.KeyValuePair, index?: number): ondewo_nlu_common_pb.KeyValuePair;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): ListUserPreferencesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListUserPreferencesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: ListUserPreferencesResponse): ListUserPreferencesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListUserPreferencesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListUserPreferencesResponse;
+	static deserializeBinaryFromReader(
+		message: ListUserPreferencesResponse,
+		reader: jspb.BinaryReader
+	): ListUserPreferencesResponse;
+}
+
+export namespace ListUserPreferencesResponse {
+	export type AsObject = {
+		userName: string;
+		keyValuePairsList: Array<ondewo_nlu_common_pb.KeyValuePair.AsObject>;
+		errorMessage: string;
 	};
 }
 

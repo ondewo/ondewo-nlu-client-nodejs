@@ -7,6 +7,7 @@
 import * as jspb from 'google-protobuf';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 export class Context extends jspb.Message {
 	getName(): string;
@@ -18,6 +19,20 @@ export class Context extends jspb.Message {
 	clearParametersMap(): void;
 	getLifespanTime(): number;
 	setLifespanTime(value: number): Context;
+
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Context;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): Context;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): Context;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): Context;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): Context.AsObject;
@@ -36,6 +51,10 @@ export namespace Context {
 
 		parametersMap: Array<[string, Context.Parameter.AsObject]>;
 		lifespanTime: number;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 
 	export class Parameter extends jspb.Message {
@@ -47,6 +66,20 @@ export namespace Context {
 		setValue(value: string): Parameter;
 		getValueOriginal(): string;
 		setValueOriginal(value: string): Parameter;
+
+		hasCreatedAt(): boolean;
+		clearCreatedAt(): void;
+		getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+		setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Parameter;
+
+		hasModifiedAt(): boolean;
+		clearModifiedAt(): void;
+		getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+		setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): Parameter;
+		getCreatedBy(): string;
+		setCreatedBy(value: string): Parameter;
+		getModifiedBy(): string;
+		setModifiedBy(value: string): Parameter;
 
 		serializeBinary(): Uint8Array;
 		toObject(includeInstance?: boolean): Parameter.AsObject;
@@ -64,6 +97,10 @@ export namespace Context {
 			displayName: string;
 			value: string;
 			valueOriginal: string;
+			createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+			modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+			createdBy: string;
+			modifiedBy: string;
 		};
 	}
 }

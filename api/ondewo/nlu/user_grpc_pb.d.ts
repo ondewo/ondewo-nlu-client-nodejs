@@ -8,7 +8,9 @@ import * as grpc from 'grpc';
 import * as ondewo_nlu_user_pb from '../../ondewo/nlu/user_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
 import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as ondewo_nlu_project_role_pb from '../../ondewo/nlu/project_role_pb';
+import * as ondewo_nlu_common_pb from '../../ondewo/nlu/common_pb';
 
 interface IUsersService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
 	createUser: IUsersService_ICreateUser;
@@ -26,6 +28,13 @@ interface IUsersService extends grpc.ServiceDefinition<grpc.UntypedServiceImplem
 	listServerPermissions: IUsersService_IListServerPermissions;
 	login: IUsersService_ILogin;
 	checkLogin: IUsersService_ICheckLogin;
+	listNotifications: IUsersService_IListNotifications;
+	setNotificationsFlaggedStatus: IUsersService_ISetNotificationsFlaggedStatus;
+	setNotificationsReadStatus: IUsersService_ISetNotificationsReadStatus;
+	getUserPreferences: IUsersService_IGetUserPreferences;
+	setUserPreferences: IUsersService_ISetUserPreferences;
+	deleteUserPreferences: IUsersService_IDeleteUserPreferences;
+	deleteAllUserPreferences: IUsersService_IDeleteAllUserPreferences;
 }
 
 interface IUsersService_ICreateUser
@@ -181,6 +190,97 @@ interface IUsersService_ICheckLogin
 	responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
 	responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
+interface IUsersService_IListNotifications
+	extends grpc.MethodDefinition<
+		ondewo_nlu_common_pb.ListNotificationsRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	> {
+	path: '/ondewo.nlu.Users/ListNotifications';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_common_pb.ListNotificationsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_common_pb.ListNotificationsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+}
+interface IUsersService_ISetNotificationsFlaggedStatus
+	extends grpc.MethodDefinition<
+		ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	> {
+	path: '/ondewo.nlu.Users/SetNotificationsFlaggedStatus';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+}
+interface IUsersService_ISetNotificationsReadStatus
+	extends grpc.MethodDefinition<
+		ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	> {
+	path: '/ondewo.nlu.Users/SetNotificationsReadStatus';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_common_pb.SetNotificationsReadStatusRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_common_pb.SetNotificationsReadStatusRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_common_pb.ListNotificationsResponse>;
+}
+interface IUsersService_IGetUserPreferences
+	extends grpc.MethodDefinition<
+		ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		ondewo_nlu_user_pb.GetUserPreferencesResponse
+	> {
+	path: '/ondewo.nlu.Users/GetUserPreferences';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_user_pb.GetUserPreferencesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_user_pb.GetUserPreferencesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_user_pb.GetUserPreferencesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_user_pb.GetUserPreferencesResponse>;
+}
+interface IUsersService_ISetUserPreferences
+	extends grpc.MethodDefinition<
+		ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		ondewo_nlu_user_pb.SetUserPreferencesResponse
+	> {
+	path: '/ondewo.nlu.Users/SetUserPreferences';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_user_pb.SetUserPreferencesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_user_pb.SetUserPreferencesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_user_pb.SetUserPreferencesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_user_pb.SetUserPreferencesResponse>;
+}
+interface IUsersService_IDeleteUserPreferences
+	extends grpc.MethodDefinition<
+		ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		ondewo_nlu_user_pb.DeleteUserPreferencesResponse
+	> {
+	path: '/ondewo.nlu.Users/DeleteUserPreferences';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_user_pb.DeleteUserPreferencesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_user_pb.DeleteUserPreferencesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_user_pb.DeleteUserPreferencesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_user_pb.DeleteUserPreferencesResponse>;
+}
+interface IUsersService_IDeleteAllUserPreferences
+	extends grpc.MethodDefinition<
+		ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		ondewo_nlu_user_pb.DeleteUserPreferencesResponse
+	> {
+	path: '/ondewo.nlu.Users/DeleteAllUserPreferences';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_user_pb.DeleteUserPreferencesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_user_pb.DeleteUserPreferencesResponse>;
+}
 
 export const UsersService: IUsersService;
 
@@ -206,6 +306,34 @@ export interface IUsersServer {
 	>;
 	login: grpc.handleUnaryCall<ondewo_nlu_user_pb.LoginRequest, ondewo_nlu_user_pb.LoginResponse>;
 	checkLogin: grpc.handleUnaryCall<google_protobuf_empty_pb.Empty, google_protobuf_empty_pb.Empty>;
+	listNotifications: grpc.handleUnaryCall<
+		ondewo_nlu_common_pb.ListNotificationsRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	>;
+	setNotificationsFlaggedStatus: grpc.handleUnaryCall<
+		ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	>;
+	setNotificationsReadStatus: grpc.handleUnaryCall<
+		ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		ondewo_nlu_common_pb.ListNotificationsResponse
+	>;
+	getUserPreferences: grpc.handleUnaryCall<
+		ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		ondewo_nlu_user_pb.GetUserPreferencesResponse
+	>;
+	setUserPreferences: grpc.handleUnaryCall<
+		ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		ondewo_nlu_user_pb.SetUserPreferencesResponse
+	>;
+	deleteUserPreferences: grpc.handleUnaryCall<
+		ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		ondewo_nlu_user_pb.DeleteUserPreferencesResponse
+	>;
+	deleteAllUserPreferences: grpc.handleUnaryCall<
+		ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		ondewo_nlu_user_pb.DeleteUserPreferencesResponse
+	>;
 }
 
 export interface IUsersClient {
@@ -433,6 +561,111 @@ export interface IUsersClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void
+	): grpc.ClientUnaryCall;
+	listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
 	): grpc.ClientUnaryCall;
 }
 
@@ -662,5 +895,110 @@ export class UsersClient extends grpc.Client implements IUsersClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void
+	): grpc.ClientUnaryCall;
+	public listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listNotifications(
+		request: ondewo_nlu_common_pb.ListNotificationsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsFlaggedStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsFlaggedStatusRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public setNotificationsReadStatus(
+		request: ondewo_nlu_common_pb.SetNotificationsReadStatusRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.ListNotificationsResponse) => void
+	): grpc.ClientUnaryCall;
+	public getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public getUserPreferences(
+		request: ondewo_nlu_user_pb.GetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.GetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public setUserPreferences(
+		request: ondewo_nlu_user_pb.SetUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.SetUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAllUserPreferences(
+		request: ondewo_nlu_user_pb.DeleteAllUserPreferencesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_user_pb.DeleteUserPreferencesResponse) => void
 	): grpc.ClientUnaryCall;
 }

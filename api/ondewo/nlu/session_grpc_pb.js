@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Modifications Copyright 2021 ONDEWO GmbH
+// Modifications Copyright 2020-2023 ONDEWO GmbH
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -39,6 +39,7 @@ var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 var google_type_latlng_pb = require('../../google/type/latlng_pb.js');
+var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js');
 var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');
 var ondewo_nlu_entity_type_pb = require('../../ondewo/nlu/entity_type_pb.js');
@@ -54,6 +55,39 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
 	return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_AddAudioFilesRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.AddAudioFilesRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.AddAudioFilesRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_AddAudioFilesRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.AddAudioFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_AddAudioFilesResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.AddAudioFilesResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.AddAudioFilesResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_AddAudioFilesResponse(buffer_arg) {
+	return ondewo_nlu_session_pb.AddAudioFilesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_AddSessionCommentRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.AddSessionCommentRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.AddSessionCommentRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_AddSessionCommentRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.AddSessionCommentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_AddSessionLabelsRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_session_pb.AddSessionLabelsRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.AddSessionLabelsRequest');
@@ -63,6 +97,28 @@ function serialize_ondewo_nlu_AddSessionLabelsRequest(arg) {
 
 function deserialize_ondewo_nlu_AddSessionLabelsRequest(buffer_arg) {
 	return ondewo_nlu_session_pb.AddSessionLabelsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_AudioFileResource(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.AudioFileResource)) {
+		throw new Error('Expected argument of type ondewo.nlu.AudioFileResource');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_AudioFileResource(buffer_arg) {
+	return ondewo_nlu_session_pb.AudioFileResource.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_Comment(arg) {
+	if (!(arg instanceof ondewo_nlu_common_pb.Comment)) {
+		throw new Error('Expected argument of type ondewo.nlu.Comment');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_Comment(buffer_arg) {
+	return ondewo_nlu_common_pb.Comment.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_CreateSessionRequest(arg) {
@@ -85,6 +141,39 @@ function serialize_ondewo_nlu_CreateSessionReviewRequest(arg) {
 
 function deserialize_ondewo_nlu_CreateSessionReviewRequest(buffer_arg) {
 	return ondewo_nlu_session_pb.CreateSessionReviewRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_DeleteAudioFilesRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.DeleteAudioFilesRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.DeleteAudioFilesRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_DeleteAudioFilesRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.DeleteAudioFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_DeleteAudioFilesResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.DeleteAudioFilesResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.DeleteAudioFilesResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_DeleteAudioFilesResponse(buffer_arg) {
+	return ondewo_nlu_session_pb.DeleteAudioFilesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_DeleteSessionCommentsRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.DeleteSessionCommentsRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.DeleteSessionCommentsRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_DeleteSessionCommentsRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.DeleteSessionCommentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_DeleteSessionLabelsRequest(arg) {
@@ -129,6 +218,39 @@ function serialize_ondewo_nlu_DetectIntentResponse(arg) {
 
 function deserialize_ondewo_nlu_DetectIntentResponse(buffer_arg) {
 	return ondewo_nlu_session_pb.DetectIntentResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_GetAudioFileOfSessionRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.GetAudioFileOfSessionRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.GetAudioFileOfSessionRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetAudioFileOfSessionRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.GetAudioFileOfSessionRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_GetAudioFilesRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.GetAudioFilesRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.GetAudioFilesRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetAudioFilesRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.GetAudioFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_GetAudioFilesResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.GetAudioFilesResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.GetAudioFilesResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetAudioFilesResponse(buffer_arg) {
+	return ondewo_nlu_session_pb.GetAudioFilesResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_GetLatestSessionReviewRequest(arg) {
@@ -184,6 +306,28 @@ function serialize_ondewo_nlu_ListAccountIdsResponse(arg) {
 
 function deserialize_ondewo_nlu_ListAccountIdsResponse(buffer_arg) {
 	return ondewo_nlu_session_pb.ListAccountIdsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_ListAudioFilesRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.ListAudioFilesRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.ListAudioFilesRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ListAudioFilesRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.ListAudioFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_ListAudioFilesResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.ListAudioFilesResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.ListAudioFilesResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ListAudioFilesResponse(buffer_arg) {
+	return ondewo_nlu_session_pb.ListAudioFilesResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_ListDatastreamIdsOfAllSessionsRequest(arg) {
@@ -406,6 +550,28 @@ function deserialize_ondewo_nlu_ListPropertyIdsResponse(buffer_arg) {
 	return ondewo_nlu_session_pb.ListPropertyIdsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_ListSessionCommentsRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.ListSessionCommentsRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.ListSessionCommentsRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ListSessionCommentsRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.ListSessionCommentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_ListSessionCommentsResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.ListSessionCommentsResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.ListSessionCommentsResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_ListSessionCommentsResponse(buffer_arg) {
+	return ondewo_nlu_session_pb.ListSessionCommentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_ListSessionLabelsOfAllSessionsRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_session_pb.ListSessionLabelsOfAllSessionsRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.ListSessionLabelsOfAllSessionsRequest');
@@ -580,6 +746,17 @@ function serialize_ondewo_nlu_TrackSessionStepRequest(arg) {
 
 function deserialize_ondewo_nlu_TrackSessionStepRequest(buffer_arg) {
 	return ondewo_nlu_session_pb.TrackSessionStepRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_UpdateSessionCommentsRequest(arg) {
+	if (!(arg instanceof ondewo_nlu_session_pb.UpdateSessionCommentsRequest)) {
+		throw new Error('Expected argument of type ondewo.nlu.UpdateSessionCommentsRequest');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_UpdateSessionCommentsRequest(buffer_arg) {
+	return ondewo_nlu_session_pb.UpdateSessionCommentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 // A session represents an interaction with a user. You retrieve user input
@@ -865,6 +1042,50 @@ var SessionsService = (exports.SessionsService = {
 		responseSerialize: serialize_ondewo_nlu_Session,
 		responseDeserialize: deserialize_ondewo_nlu_Session
 	},
+	addSessionComment: {
+		path: '/ondewo.nlu.Sessions/AddSessionComment',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		responseType: ondewo_nlu_common_pb.Comment,
+		requestSerialize: serialize_ondewo_nlu_AddSessionCommentRequest,
+		requestDeserialize: deserialize_ondewo_nlu_AddSessionCommentRequest,
+		responseSerialize: serialize_ondewo_nlu_Comment,
+		responseDeserialize: deserialize_ondewo_nlu_Comment
+	},
+	deleteSessionComments: {
+		path: '/ondewo.nlu.Sessions/DeleteSessionComments',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		responseType: ondewo_nlu_session_pb.Session,
+		requestSerialize: serialize_ondewo_nlu_DeleteSessionCommentsRequest,
+		requestDeserialize: deserialize_ondewo_nlu_DeleteSessionCommentsRequest,
+		responseSerialize: serialize_ondewo_nlu_Session,
+		responseDeserialize: deserialize_ondewo_nlu_Session
+	},
+	updateSessionComments: {
+		path: '/ondewo.nlu.Sessions/UpdateSessionComments',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		responseType: ondewo_nlu_session_pb.Session,
+		requestSerialize: serialize_ondewo_nlu_UpdateSessionCommentsRequest,
+		requestDeserialize: deserialize_ondewo_nlu_UpdateSessionCommentsRequest,
+		responseSerialize: serialize_ondewo_nlu_Session,
+		responseDeserialize: deserialize_ondewo_nlu_Session
+	},
+	listSessionComments: {
+		path: '/ondewo.nlu.Sessions/ListSessionComments',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		responseType: ondewo_nlu_session_pb.ListSessionCommentsResponse,
+		requestSerialize: serialize_ondewo_nlu_ListSessionCommentsRequest,
+		requestDeserialize: deserialize_ondewo_nlu_ListSessionCommentsRequest,
+		responseSerialize: serialize_ondewo_nlu_ListSessionCommentsResponse,
+		responseDeserialize: deserialize_ondewo_nlu_ListSessionCommentsResponse
+	},
 	// *** SESSION-REVIEW RELATED ENDPOINTS *** //
 	// ListSessionReviews:
 	// returns list of session reviews from ondewo-kb; by default only returns session review IDs
@@ -918,6 +1139,75 @@ var SessionsService = (exports.SessionsService = {
 		requestDeserialize: deserialize_ondewo_nlu_CreateSessionReviewRequest,
 		responseSerialize: serialize_ondewo_nlu_SessionReview,
 		responseDeserialize: deserialize_ondewo_nlu_SessionReview
+	},
+	// RPC to get audio files based on specified criteria.
+	// Retrieves information about audio files associated with specific sessions.
+	// Returns a response containing details of the requested audio files.
+	getAudioFiles: {
+		path: '/ondewo.nlu.Sessions/GetAudioFiles',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		responseType: ondewo_nlu_session_pb.GetAudioFilesResponse,
+		requestSerialize: serialize_ondewo_nlu_GetAudioFilesRequest,
+		requestDeserialize: deserialize_ondewo_nlu_GetAudioFilesRequest,
+		responseSerialize: serialize_ondewo_nlu_GetAudioFilesResponse,
+		responseDeserialize: deserialize_ondewo_nlu_GetAudioFilesResponse
+	},
+	// RPC to add audio files to a session.
+	// Adds new audio files to the specified session, providing details about each file.
+	// Returns a response containing information about the added audio files.
+	addAudioFiles: {
+		path: '/ondewo.nlu.Sessions/AddAudioFiles',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		responseType: ondewo_nlu_session_pb.AddAudioFilesResponse,
+		requestSerialize: serialize_ondewo_nlu_AddAudioFilesRequest,
+		requestDeserialize: deserialize_ondewo_nlu_AddAudioFilesRequest,
+		responseSerialize: serialize_ondewo_nlu_AddAudioFilesResponse,
+		responseDeserialize: deserialize_ondewo_nlu_AddAudioFilesResponse
+	},
+	// RPC to delete specified audio files.
+	// Deletes audio files associated with specific sessions based on unique identifiers.
+	// Returns an empty response indicating the successful deletion of the specified audio files.
+	deleteAudioFiles: {
+		path: '/ondewo.nlu.Sessions/DeleteAudioFiles',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		responseType: ondewo_nlu_session_pb.DeleteAudioFilesResponse,
+		requestSerialize: serialize_ondewo_nlu_DeleteAudioFilesRequest,
+		requestDeserialize: deserialize_ondewo_nlu_DeleteAudioFilesRequest,
+		responseSerialize: serialize_ondewo_nlu_DeleteAudioFilesResponse,
+		responseDeserialize: deserialize_ondewo_nlu_DeleteAudioFilesResponse
+	},
+	// RPC to get a consolidated audio file for a specific session.
+	// Retrieves a single audio file that combines all audio files associated with the specified session.
+	// Returns details of the consolidated audio file.
+	getAudioFileOfSession: {
+		path: '/ondewo.nlu.Sessions/GetAudioFileOfSession',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		responseType: ondewo_nlu_session_pb.AudioFileResource,
+		requestSerialize: serialize_ondewo_nlu_GetAudioFileOfSessionRequest,
+		requestDeserialize: deserialize_ondewo_nlu_GetAudioFileOfSessionRequest,
+		responseSerialize: serialize_ondewo_nlu_AudioFileResource,
+		responseDeserialize: deserialize_ondewo_nlu_AudioFileResource
+	},
+	// RPC to get a list audio files for a specific session.
+	// Retrieves a single audio file that combines all audio files associated with the specified session.
+	listAudioFiles: {
+		path: '/ondewo.nlu.Sessions/ListAudioFiles',
+		requestStream: false,
+		responseStream: false,
+		requestType: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		responseType: ondewo_nlu_session_pb.ListAudioFilesResponse,
+		requestSerialize: serialize_ondewo_nlu_ListAudioFilesRequest,
+		requestDeserialize: deserialize_ondewo_nlu_ListAudioFilesRequest,
+		responseSerialize: serialize_ondewo_nlu_ListAudioFilesResponse,
+		responseDeserialize: deserialize_ondewo_nlu_ListAudioFilesResponse
 	}
 });
 

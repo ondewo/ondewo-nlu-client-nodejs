@@ -2020,7 +2020,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 				status: jspb.Message.getFieldWithDefault(msg, 35, 0),
 				startDate: (f = msg.getStartDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
 				endDate: (f = msg.getEndDate()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-				tagsList: (f = jspb.Message.getRepeatedField(msg, 38)) == null ? undefined : f
+				tagsList: (f = jspb.Message.getRepeatedField(msg, 38)) == null ? undefined : f,
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 41, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 42, '')
 			};
 
 		if (includeInstance) {
@@ -2174,6 +2178,24 @@ proto.ondewo.nlu.Intent.deserializeBinaryFromReader = function (msg, reader) {
 				var value = /** @type {string} */ (reader.readString());
 				msg.addTags(value);
 				break;
+			case 39:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 40:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 41:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 42:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -2309,6 +2331,22 @@ proto.ondewo.nlu.Intent.serializeBinaryToWriter = function (message, writer) {
 	if (f.length > 0) {
 		writer.writeRepeatedString(38, f);
 	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(39, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(40, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(41, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(42, f);
+	}
 };
 
 /**
@@ -2373,7 +2411,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 					includeInstance
 				),
 				timesAddedCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
-				languageCode: jspb.Message.getFieldWithDefault(msg, 6, '')
+				languageCode: jspb.Message.getFieldWithDefault(msg, 6, ''),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 9, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 10, '')
 			};
 
 		if (includeInstance) {
@@ -2433,6 +2475,24 @@ proto.ondewo.nlu.Intent.TrainingPhrase.deserializeBinaryFromReader = function (m
 				var value = /** @type {string} */ (reader.readString());
 				msg.setLanguageCode(value);
 				break;
+			case 7:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 8:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 9:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 10:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -2484,6 +2544,22 @@ proto.ondewo.nlu.Intent.TrainingPhrase.serializeBinaryToWriter = function (messa
 	if (f.length > 0) {
 		writer.writeString(6, f);
 	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(7, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(8, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(9, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(10, f);
+	}
 };
 
 /**
@@ -2531,7 +2607,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 				start: jspb.Message.getFieldWithDefault(msg, 6, 0),
 				end: jspb.Message.getFieldWithDefault(msg, 7, 0),
 				parameterName: jspb.Message.getFieldWithDefault(msg, 8, ''),
-				parameterDisplayName: jspb.Message.getFieldWithDefault(msg, 9, '')
+				parameterDisplayName: jspb.Message.getFieldWithDefault(msg, 9, ''),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 12, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 13, '')
 			};
 
 		if (includeInstance) {
@@ -2598,6 +2678,24 @@ proto.ondewo.nlu.Intent.TrainingPhrase.Entity.deserializeBinaryFromReader = func
 				var value = /** @type {string} */ (reader.readString());
 				msg.setParameterDisplayName(value);
 				break;
+			case 10:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 11:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 12:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 13:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -2656,6 +2754,22 @@ proto.ondewo.nlu.Intent.TrainingPhrase.Entity.serializeBinaryToWriter = function
 	f = message.getParameterDisplayName();
 	if (f.length > 0) {
 		writer.writeString(9, f);
+	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(10, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(11, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(12, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(13, f);
 	}
 };
 
@@ -2788,6 +2902,106 @@ proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.setParameterDisplayName 
 };
 
 /**
+ * optional google.protobuf.Timestamp created_at = 10;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 10)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 10, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 10) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 11, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 11) != null;
+};
+
+/**
+ * optional string created_by = 12;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+/**
+ * optional string modified_by = 13;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase.Entity} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.Entity.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 13, value);
+};
+
+/**
  * optional string name = 1;
  * @return {string}
  */
@@ -2909,6 +3123,106 @@ proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setLanguageCode = function (val
 };
 
 /**
+ * optional google.protobuf.Timestamp created_at = 7;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 7)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 7, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 7) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 8;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 8)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 8, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 8) != null;
+};
+
+/**
+ * optional string created_by = 9;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+/**
+ * optional string modified_by = 10;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.TrainingPhrase} returns this
+ */
+proto.ondewo.nlu.Intent.TrainingPhrase.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+/**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
@@ -2956,7 +3270,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 					proto.ondewo.nlu.Intent.Parameter.Prompt.toObject,
 					includeInstance
 				),
-				isList: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+				isList: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 12, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 13, '')
 			};
 
 		if (includeInstance) {
@@ -3028,6 +3346,24 @@ proto.ondewo.nlu.Intent.Parameter.deserializeBinaryFromReader = function (msg, r
 				var value = /** @type {boolean} */ (reader.readBool());
 				msg.setIsList(value);
 				break;
+			case 10:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 11:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 12:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 13:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -3091,6 +3427,22 @@ proto.ondewo.nlu.Intent.Parameter.serializeBinaryToWriter = function (message, w
 	if (f) {
 		writer.writeBool(9, f);
 	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(10, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(11, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(12, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(13, f);
+	}
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -3124,7 +3476,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 			obj = {
 				name: jspb.Message.getFieldWithDefault(msg, 1, ''),
 				text: jspb.Message.getFieldWithDefault(msg, 2, ''),
-				languageCode: jspb.Message.getFieldWithDefault(msg, 3, '')
+				languageCode: jspb.Message.getFieldWithDefault(msg, 3, ''),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 6, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 7, '')
 			};
 
 		if (includeInstance) {
@@ -3171,6 +3527,24 @@ proto.ondewo.nlu.Intent.Parameter.Prompt.deserializeBinaryFromReader = function 
 				var value = /** @type {string} */ (reader.readString());
 				msg.setLanguageCode(value);
 				break;
+			case 4:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 5:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 6:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 7:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -3209,6 +3583,22 @@ proto.ondewo.nlu.Intent.Parameter.Prompt.serializeBinaryToWriter = function (mes
 	f = message.getLanguageCode();
 	if (f.length > 0) {
 		writer.writeString(3, f);
+	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(4, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(5, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(6, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(7, f);
 	}
 };
 
@@ -3258,6 +3648,106 @@ proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getLanguageCode = function ()
  */
 proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setLanguageCode = function (value) {
 	return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+/**
+ * optional google.protobuf.Timestamp created_at = 4;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 4, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 4) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 5, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 5) != null;
+};
+
+/**
+ * optional string created_by = 6;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+/**
+ * optional string modified_by = 7;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter.Prompt} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.Prompt.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 /**
@@ -3430,6 +3920,106 @@ proto.ondewo.nlu.Intent.Parameter.prototype.setIsList = function (value) {
 };
 
 /**
+ * optional google.protobuf.Timestamp created_at = 10;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 10)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 10, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 10) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 11;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 11)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 11, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 11) != null;
+};
+
+/**
+ * optional string created_by = 12;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+/**
+ * optional string modified_by = 13;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Parameter} returns this
+ */
+proto.ondewo.nlu.Intent.Parameter.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 13, value);
+};
+
+/**
  * Oneof group definitions for this message. Each group defines the field
  * numbers belonging to that group. When of these fields' value is set, all
  * other fields in the group are cleared. During deserialization, if multiple
@@ -3523,7 +4113,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 				video: (f = msg.getVideo()) && proto.ondewo.nlu.Intent.Message.Video.toObject(includeInstance, f),
 				audio: (f = msg.getAudio()) && proto.ondewo.nlu.Intent.Message.Audio.toObject(includeInstance, f),
 				platform: jspb.Message.getFieldWithDefault(msg, 6, 0),
-				isPrompt: jspb.Message.getBooleanFieldWithDefault(msg, 18, false)
+				isPrompt: jspb.Message.getBooleanFieldWithDefault(msg, 18, false),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 21, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 22, '')
 			};
 
 		if (includeInstance) {
@@ -3644,6 +4238,24 @@ proto.ondewo.nlu.Intent.Message.deserializeBinaryFromReader = function (msg, rea
 				var value = /** @type {boolean} */ (reader.readBool());
 				msg.setIsPrompt(value);
 				break;
+			case 19:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 20:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 21:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 22:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -3742,6 +4354,22 @@ proto.ondewo.nlu.Intent.Message.serializeBinaryToWriter = function (message, wri
 	f = message.getIsPrompt();
 	if (f) {
 		writer.writeBool(18, f);
+	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(19, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(20, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(21, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(22, f);
 	}
 };
 
@@ -7814,6 +8442,106 @@ proto.ondewo.nlu.Intent.Message.prototype.setIsPrompt = function (value) {
 	return jspb.Message.setProto3BooleanField(this, 18, value);
 };
 
+/**
+ * optional google.protobuf.Timestamp created_at = 19;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 19)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 19, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 19) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 20;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 20)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 20, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 20) != null;
+};
+
+/**
+ * optional string created_by = 21;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 21, value);
+};
+
+/**
+ * optional string modified_by = 22;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.Message.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 22, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent.Message} returns this
+ */
+proto.ondewo.nlu.Intent.Message.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 22, value);
+};
+
 if (jspb.Message.GENERATE_TO_OBJECT) {
 	/**
 	 * Creates an object representation of this proto.
@@ -8591,6 +9319,106 @@ proto.ondewo.nlu.Intent.prototype.addTags = function (value, opt_index) {
  */
 proto.ondewo.nlu.Intent.prototype.clearTagsList = function () {
 	return this.setTagsList([]);
+};
+
+/**
+ * optional google.protobuf.Timestamp created_at = 39;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 39)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 39, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 39) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 40;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.Intent.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 40)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 40, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.Intent.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 40) != null;
+};
+
+/**
+ * optional string created_by = 41;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 41, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 41, value);
+};
+
+/**
+ * optional string modified_by = 42;
+ * @return {string}
+ */
+proto.ondewo.nlu.Intent.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 42, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.Intent} returns this
+ */
+proto.ondewo.nlu.Intent.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 42, value);
 };
 
 /**

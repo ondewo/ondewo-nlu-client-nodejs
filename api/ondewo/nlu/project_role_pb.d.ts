@@ -5,8 +5,9 @@
 /* eslint-disable */
 
 import * as jspb from 'google-protobuf';
-import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 export class ProjectRole extends jspb.Message {
 	getRoleId(): number;
@@ -17,6 +18,20 @@ export class ProjectRole extends jspb.Message {
 	getPermissionsList(): Array<string>;
 	setPermissionsList(value: Array<string>): ProjectRole;
 	addPermissions(value: string, index?: number): string;
+
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): ProjectRole;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): ProjectRole;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): ProjectRole;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): ProjectRole;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): ProjectRole.AsObject;
@@ -33,6 +48,10 @@ export namespace ProjectRole {
 		roleId: number;
 		name: string;
 		permissionsList: Array<string>;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 }
 

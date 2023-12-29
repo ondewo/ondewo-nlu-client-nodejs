@@ -11,6 +11,7 @@ import * as google_protobuf_struct_pb from 'google-protobuf/google/protobuf/stru
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_rpc_status_pb from '../../google/rpc/status_pb';
 import * as google_type_latlng_pb from '../../google/type/latlng_pb';
+import * as ondewo_nlu_common_pb from '../../ondewo/nlu/common_pb';
 import * as ondewo_nlu_context_pb from '../../ondewo/nlu/context_pb';
 import * as ondewo_nlu_intent_pb from '../../ondewo/nlu/intent_pb';
 import * as ondewo_nlu_entity_type_pb from '../../ondewo/nlu/entity_type_pb';
@@ -124,6 +125,10 @@ export class QueryParameters extends jspb.Message {
 	setOriginId(value: string): QueryParameters;
 	getIdentifiedUserId(): string;
 	setIdentifiedUserId(value: string): QueryParameters;
+	clearTranscriptionsList(): void;
+	getTranscriptionsList(): Array<Transcription>;
+	setTranscriptionsList(value: Array<Transcription>): QueryParameters;
+	addTranscriptions(value?: Transcription, index?: number): Transcription;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): QueryParameters.AsObject;
@@ -149,6 +154,66 @@ export namespace QueryParameters {
 		datastreamId: string;
 		originId: string;
 		identifiedUserId: string;
+		transcriptionsList: Array<Transcription.AsObject>;
+	};
+}
+
+export class Transcription extends jspb.Message {
+	getName(): string;
+	setName(value: string): Transcription;
+	getText(): string;
+	setText(value: string): Transcription;
+	getScore(): number;
+	setScore(value: number): Transcription;
+	getLanguageCode(): string;
+	setLanguageCode(value: string): Transcription;
+	getAudioResourceName(): string;
+	setAudioResourceName(value: string): Transcription;
+	getPipelineId(): string;
+	setPipelineId(value: string): Transcription;
+	getDurationInS(): number;
+	setDurationInS(value: number): Transcription;
+	getTranscriptionType(): TranscriptionType;
+	setTranscriptionType(value: TranscriptionType): Transcription;
+
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Transcription;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): Transcription;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): Transcription;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): Transcription;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): Transcription.AsObject;
+	static toObject(includeInstance: boolean, msg: Transcription): Transcription.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: Transcription, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): Transcription;
+	static deserializeBinaryFromReader(message: Transcription, reader: jspb.BinaryReader): Transcription;
+}
+
+export namespace Transcription {
+	export type AsObject = {
+		name: string;
+		text: string;
+		score: number;
+		languageCode: string;
+		audioResourceName: string;
+		pipelineId: string;
+		durationInS: number;
+		transcriptionType: TranscriptionType;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 }
 
@@ -494,6 +559,20 @@ export class Session extends jspb.Message {
 	getSessionInfo(): SessionInfo | undefined;
 	setSessionInfo(value?: SessionInfo): Session;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Session;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): Session;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): Session;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): Session;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): Session.AsObject;
 	static toObject(includeInstance: boolean, msg: Session): Session.AsObject;
@@ -509,6 +588,10 @@ export namespace Session {
 		name: string;
 		sessionStepsList: Array<SessionStep.AsObject>;
 		sessionInfo?: SessionInfo.AsObject;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 
 	export enum View {
@@ -541,6 +624,24 @@ export class SessionStep extends jspb.Message {
 	getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
 	setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): SessionStep;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionStep;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionStep;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): SessionStep;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): SessionStep;
+	clearAudioFileResourcesList(): void;
+	getAudioFileResourcesList(): Array<AudioFileResource>;
+	setAudioFileResourcesList(value: Array<AudioFileResource>): SessionStep;
+	addAudioFileResources(value?: AudioFileResource, index?: number): AudioFileResource;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): SessionStep.AsObject;
 	static toObject(includeInstance: boolean, msg: SessionStep): SessionStep.AsObject;
@@ -558,6 +659,11 @@ export namespace SessionStep {
 		detectIntentResponse?: DetectIntentResponse.AsObject;
 		contextsList: Array<ondewo_nlu_context_pb.Context.AsObject>;
 		timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
+		audioFileResourcesList: Array<AudioFileResource.AsObject>;
 	};
 }
 
@@ -959,6 +1065,10 @@ export class SessionInfo extends jspb.Message {
 	addIdentifiedUserIds(value: string, index?: number): string;
 	getDurationInterval60sRounded(): number;
 	setDurationInterval60sRounded(value: number): SessionInfo;
+	clearParentCommentList(): void;
+	getParentCommentList(): Array<ondewo_nlu_common_pb.Comment>;
+	setParentCommentList(value: Array<ondewo_nlu_common_pb.Comment>): SessionInfo;
+	addParentComment(value?: ondewo_nlu_common_pb.Comment, index?: number): ondewo_nlu_common_pb.Comment;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): SessionInfo.AsObject;
@@ -1004,6 +1114,7 @@ export namespace SessionInfo {
 		originIdsList: Array<string>;
 		identifiedUserIdsList: Array<string>;
 		durationInterval60sRounded: number;
+		parentCommentList: Array<ondewo_nlu_common_pb.Comment.AsObject>;
 	};
 
 	export class ContextSteps extends jspb.Message {
@@ -1179,6 +1290,20 @@ export class SessionReview extends jspb.Message {
 	setSessionReviewStepsList(value: Array<SessionReviewStep>): SessionReview;
 	addSessionReviewSteps(value?: SessionReviewStep, index?: number): SessionReviewStep;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionReview;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionReview;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): SessionReview;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): SessionReview;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): SessionReview.AsObject;
 	static toObject(includeInstance: boolean, msg: SessionReview): SessionReview.AsObject;
@@ -1193,6 +1318,10 @@ export namespace SessionReview {
 	export type AsObject = {
 		name: string;
 		sessionReviewStepsList: Array<SessionReviewStep.AsObject>;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 
 	export enum View {
@@ -1239,6 +1368,24 @@ export class SessionReviewStep extends jspb.Message {
 	getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
 	setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): SessionReviewStep;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionReviewStep;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionReviewStep;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): SessionReviewStep;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): SessionReviewStep;
+	clearAudioFileResourcesList(): void;
+	getAudioFileResourcesList(): Array<AudioFileResource>;
+	setAudioFileResourcesList(value: Array<AudioFileResource>): SessionReviewStep;
+	addAudioFileResources(value?: AudioFileResource, index?: number): AudioFileResource;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): SessionReviewStep.AsObject;
 	static toObject(includeInstance: boolean, msg: SessionReviewStep): SessionReviewStep.AsObject;
@@ -1260,6 +1407,11 @@ export namespace SessionReviewStep {
 		queryTextOriginal: string;
 		platformsList: Array<ondewo_nlu_intent_pb.Intent.Message.Platform>;
 		timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
+		audioFileResourcesList: Array<AudioFileResource.AsObject>;
 	};
 }
 
@@ -2167,6 +2319,146 @@ export namespace DeleteSessionLabelsRequest {
 	};
 }
 
+export class AddSessionCommentRequest extends jspb.Message {
+	getSessionId(): string;
+	setSessionId(value: string): AddSessionCommentRequest;
+
+	hasComment(): boolean;
+	clearComment(): void;
+	getComment(): ondewo_nlu_common_pb.Comment | undefined;
+	setComment(value?: ondewo_nlu_common_pb.Comment): AddSessionCommentRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): AddSessionCommentRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: AddSessionCommentRequest): AddSessionCommentRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: AddSessionCommentRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): AddSessionCommentRequest;
+	static deserializeBinaryFromReader(
+		message: AddSessionCommentRequest,
+		reader: jspb.BinaryReader
+	): AddSessionCommentRequest;
+}
+
+export namespace AddSessionCommentRequest {
+	export type AsObject = {
+		sessionId: string;
+		comment?: ondewo_nlu_common_pb.Comment.AsObject;
+	};
+}
+
+export class DeleteSessionCommentsRequest extends jspb.Message {
+	getSessionId(): string;
+	setSessionId(value: string): DeleteSessionCommentsRequest;
+	clearCommentNamesList(): void;
+	getCommentNamesList(): Array<string>;
+	setCommentNamesList(value: Array<string>): DeleteSessionCommentsRequest;
+	addCommentNames(value: string, index?: number): string;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteSessionCommentsRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: DeleteSessionCommentsRequest): DeleteSessionCommentsRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteSessionCommentsRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteSessionCommentsRequest;
+	static deserializeBinaryFromReader(
+		message: DeleteSessionCommentsRequest,
+		reader: jspb.BinaryReader
+	): DeleteSessionCommentsRequest;
+}
+
+export namespace DeleteSessionCommentsRequest {
+	export type AsObject = {
+		sessionId: string;
+		commentNamesList: Array<string>;
+	};
+}
+
+export class UpdateSessionCommentsRequest extends jspb.Message {
+	getSessionId(): string;
+	setSessionId(value: string): UpdateSessionCommentsRequest;
+
+	hasComment(): boolean;
+	clearComment(): void;
+	getComment(): ondewo_nlu_common_pb.Comment | undefined;
+	setComment(value?: ondewo_nlu_common_pb.Comment): UpdateSessionCommentsRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): UpdateSessionCommentsRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: UpdateSessionCommentsRequest): UpdateSessionCommentsRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: UpdateSessionCommentsRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): UpdateSessionCommentsRequest;
+	static deserializeBinaryFromReader(
+		message: UpdateSessionCommentsRequest,
+		reader: jspb.BinaryReader
+	): UpdateSessionCommentsRequest;
+}
+
+export namespace UpdateSessionCommentsRequest {
+	export type AsObject = {
+		sessionId: string;
+		comment?: ondewo_nlu_common_pb.Comment.AsObject;
+	};
+}
+
+export class ListSessionCommentsRequest extends jspb.Message {
+	getSessionId(): string;
+	setSessionId(value: string): ListSessionCommentsRequest;
+	getPageToken(): string;
+	setPageToken(value: string): ListSessionCommentsRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListSessionCommentsRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: ListSessionCommentsRequest): ListSessionCommentsRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListSessionCommentsRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListSessionCommentsRequest;
+	static deserializeBinaryFromReader(
+		message: ListSessionCommentsRequest,
+		reader: jspb.BinaryReader
+	): ListSessionCommentsRequest;
+}
+
+export namespace ListSessionCommentsRequest {
+	export type AsObject = {
+		sessionId: string;
+		pageToken: string;
+	};
+}
+
+export class ListSessionCommentsResponse extends jspb.Message {
+	clearCommentList(): void;
+	getCommentList(): Array<ondewo_nlu_common_pb.Comment>;
+	setCommentList(value: Array<ondewo_nlu_common_pb.Comment>): ListSessionCommentsResponse;
+	addComment(value?: ondewo_nlu_common_pb.Comment, index?: number): ondewo_nlu_common_pb.Comment;
+	getPageToken(): string;
+	setPageToken(value: string): ListSessionCommentsResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListSessionCommentsResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: ListSessionCommentsResponse): ListSessionCommentsResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListSessionCommentsResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListSessionCommentsResponse;
+	static deserializeBinaryFromReader(
+		message: ListSessionCommentsResponse,
+		reader: jspb.BinaryReader
+	): ListSessionCommentsResponse;
+}
+
+export namespace ListSessionCommentsResponse {
+	export type AsObject = {
+		commentList: Array<ondewo_nlu_common_pb.Comment.AsObject>;
+		pageToken: string;
+	};
+}
+
 export class ListSessionReviewsRequest extends jspb.Message {
 	getSessionId(): string;
 	setSessionId(value: string): ListSessionReviewsRequest;
@@ -2276,6 +2568,335 @@ export namespace GetLatestSessionReviewRequest {
 	};
 }
 
+export class AudioFileResource extends jspb.Message {
+	getName(): string;
+	setName(value: string): AudioFileResource;
+	getBytes(): Uint8Array | string;
+	getBytes_asU8(): Uint8Array;
+	getBytes_asB64(): string;
+	setBytes(value: Uint8Array | string): AudioFileResource;
+	getLanguage(): string;
+	setLanguage(value: string): AudioFileResource;
+	getDurationInS(): number;
+	setDurationInS(value: number): AudioFileResource;
+	getSampleRate(): number;
+	setSampleRate(value: number): AudioFileResource;
+	getAudioFileResourceType(): AudioFileResourceType;
+	setAudioFileResourceType(value: AudioFileResourceType): AudioFileResource;
+	clearTranscriptionsList(): void;
+	getTranscriptionsList(): Array<Transcription>;
+	setTranscriptionsList(value: Array<Transcription>): AudioFileResource;
+	addTranscriptions(value?: Transcription, index?: number): Transcription;
+
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): AudioFileResource;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): AudioFileResource;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): AudioFileResource;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): AudioFileResource;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): AudioFileResource.AsObject;
+	static toObject(includeInstance: boolean, msg: AudioFileResource): AudioFileResource.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: AudioFileResource, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): AudioFileResource;
+	static deserializeBinaryFromReader(message: AudioFileResource, reader: jspb.BinaryReader): AudioFileResource;
+}
+
+export namespace AudioFileResource {
+	export type AsObject = {
+		name: string;
+		bytes: Uint8Array | string;
+		language: string;
+		durationInS: number;
+		sampleRate: number;
+		audioFileResourceType: AudioFileResourceType;
+		transcriptionsList: Array<Transcription.AsObject>;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
+	};
+}
+
+export class GetAudioFilesRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): GetAudioFilesRequest;
+	clearNamesList(): void;
+	getNamesList(): Array<string>;
+	setNamesList(value: Array<string>): GetAudioFilesRequest;
+	addNames(value: string, index?: number): string;
+	getResourceView(): ResourceView;
+	setResourceView(value: ResourceView): GetAudioFilesRequest;
+	getPageToken(): string;
+	setPageToken(value: string): GetAudioFilesRequest;
+	getSortingMode(): ondewo_nlu_common_pb.SortingMode;
+	setSortingMode(value: ondewo_nlu_common_pb.SortingMode): GetAudioFilesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): GetAudioFilesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: GetAudioFilesRequest): GetAudioFilesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: GetAudioFilesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): GetAudioFilesRequest;
+	static deserializeBinaryFromReader(message: GetAudioFilesRequest, reader: jspb.BinaryReader): GetAudioFilesRequest;
+}
+
+export namespace GetAudioFilesRequest {
+	export type AsObject = {
+		parent: string;
+		namesList: Array<string>;
+		resourceView: ResourceView;
+		pageToken: string;
+		sortingMode: ondewo_nlu_common_pb.SortingMode;
+	};
+}
+
+export class GetAudioFilesResponse extends jspb.Message {
+	clearAudioFilesList(): void;
+	getAudioFilesList(): Array<AudioFileResource>;
+	setAudioFilesList(value: Array<AudioFileResource>): GetAudioFilesResponse;
+	addAudioFiles(value?: AudioFileResource, index?: number): AudioFileResource;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): GetAudioFilesResponse;
+	getNextPageToken(): string;
+	setNextPageToken(value: string): GetAudioFilesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): GetAudioFilesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: GetAudioFilesResponse): GetAudioFilesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: GetAudioFilesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): GetAudioFilesResponse;
+	static deserializeBinaryFromReader(message: GetAudioFilesResponse, reader: jspb.BinaryReader): GetAudioFilesResponse;
+}
+
+export namespace GetAudioFilesResponse {
+	export type AsObject = {
+		audioFilesList: Array<AudioFileResource.AsObject>;
+		errorMessage: string;
+		nextPageToken: string;
+	};
+}
+
+export class AddAudioFilesRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): AddAudioFilesRequest;
+	getSessionId(): string;
+	setSessionId(value: string): AddAudioFilesRequest;
+	clearAudioFileResourcesList(): void;
+	getAudioFileResourcesList(): Array<AudioFileResource>;
+	setAudioFileResourcesList(value: Array<AudioFileResource>): AddAudioFilesRequest;
+	addAudioFileResources(value?: AudioFileResource, index?: number): AudioFileResource;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): AddAudioFilesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: AddAudioFilesRequest): AddAudioFilesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: AddAudioFilesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): AddAudioFilesRequest;
+	static deserializeBinaryFromReader(message: AddAudioFilesRequest, reader: jspb.BinaryReader): AddAudioFilesRequest;
+}
+
+export namespace AddAudioFilesRequest {
+	export type AsObject = {
+		parent: string;
+		sessionId: string;
+		audioFileResourcesList: Array<AudioFileResource.AsObject>;
+	};
+}
+
+export class AddAudioFilesResponse extends jspb.Message {
+	clearAudioFileResourcesList(): void;
+	getAudioFileResourcesList(): Array<AudioFileResource>;
+	setAudioFileResourcesList(value: Array<AudioFileResource>): AddAudioFilesResponse;
+	addAudioFileResources(value?: AudioFileResource, index?: number): AudioFileResource;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): AddAudioFilesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): AddAudioFilesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: AddAudioFilesResponse): AddAudioFilesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: AddAudioFilesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): AddAudioFilesResponse;
+	static deserializeBinaryFromReader(message: AddAudioFilesResponse, reader: jspb.BinaryReader): AddAudioFilesResponse;
+}
+
+export namespace AddAudioFilesResponse {
+	export type AsObject = {
+		audioFileResourcesList: Array<AudioFileResource.AsObject>;
+		errorMessage: string;
+	};
+}
+
+export class DeleteAudioFilesRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): DeleteAudioFilesRequest;
+	clearNamesList(): void;
+	getNamesList(): Array<string>;
+	setNamesList(value: Array<string>): DeleteAudioFilesRequest;
+	addNames(value: string, index?: number): string;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteAudioFilesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: DeleteAudioFilesRequest): DeleteAudioFilesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteAudioFilesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteAudioFilesRequest;
+	static deserializeBinaryFromReader(
+		message: DeleteAudioFilesRequest,
+		reader: jspb.BinaryReader
+	): DeleteAudioFilesRequest;
+}
+
+export namespace DeleteAudioFilesRequest {
+	export type AsObject = {
+		parent: string;
+		namesList: Array<string>;
+	};
+}
+
+export class DeleteAudioFilesResponse extends jspb.Message {
+	clearNamesList(): void;
+	getNamesList(): Array<string>;
+	setNamesList(value: Array<string>): DeleteAudioFilesResponse;
+	addNames(value: string, index?: number): string;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): DeleteAudioFilesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): DeleteAudioFilesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: DeleteAudioFilesResponse): DeleteAudioFilesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: DeleteAudioFilesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): DeleteAudioFilesResponse;
+	static deserializeBinaryFromReader(
+		message: DeleteAudioFilesResponse,
+		reader: jspb.BinaryReader
+	): DeleteAudioFilesResponse;
+}
+
+export namespace DeleteAudioFilesResponse {
+	export type AsObject = {
+		namesList: Array<string>;
+		errorMessage: string;
+	};
+}
+
+export class ListAudioFilesRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): ListAudioFilesRequest;
+	getSessionId(): string;
+	setSessionId(value: string): ListAudioFilesRequest;
+	getResourceView(): ResourceView;
+	setResourceView(value: ResourceView): ListAudioFilesRequest;
+	getPageToken(): string;
+	setPageToken(value: string): ListAudioFilesRequest;
+	getSortingMode(): ondewo_nlu_common_pb.SortingMode;
+	setSortingMode(value: ondewo_nlu_common_pb.SortingMode): ListAudioFilesRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListAudioFilesRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: ListAudioFilesRequest): ListAudioFilesRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListAudioFilesRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListAudioFilesRequest;
+	static deserializeBinaryFromReader(message: ListAudioFilesRequest, reader: jspb.BinaryReader): ListAudioFilesRequest;
+}
+
+export namespace ListAudioFilesRequest {
+	export type AsObject = {
+		parent: string;
+		sessionId: string;
+		resourceView: ResourceView;
+		pageToken: string;
+		sortingMode: ondewo_nlu_common_pb.SortingMode;
+	};
+}
+
+export class ListAudioFilesResponse extends jspb.Message {
+	clearAudioFilesList(): void;
+	getAudioFilesList(): Array<AudioFileResource>;
+	setAudioFilesList(value: Array<AudioFileResource>): ListAudioFilesResponse;
+	addAudioFiles(value?: AudioFileResource, index?: number): AudioFileResource;
+	getNextPageToken(): string;
+	setNextPageToken(value: string): ListAudioFilesResponse;
+	getErrorMessage(): string;
+	setErrorMessage(value: string): ListAudioFilesResponse;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): ListAudioFilesResponse.AsObject;
+	static toObject(includeInstance: boolean, msg: ListAudioFilesResponse): ListAudioFilesResponse.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: ListAudioFilesResponse, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): ListAudioFilesResponse;
+	static deserializeBinaryFromReader(
+		message: ListAudioFilesResponse,
+		reader: jspb.BinaryReader
+	): ListAudioFilesResponse;
+}
+
+export namespace ListAudioFilesResponse {
+	export type AsObject = {
+		audioFilesList: Array<AudioFileResource.AsObject>;
+		nextPageToken: string;
+		errorMessage: string;
+	};
+}
+
+export class GetAudioFileOfSessionRequest extends jspb.Message {
+	getParent(): string;
+	setParent(value: string): GetAudioFileOfSessionRequest;
+	getSessionId(): string;
+	setSessionId(value: string): GetAudioFileOfSessionRequest;
+	getResourceView(): ResourceView;
+	setResourceView(value: ResourceView): GetAudioFileOfSessionRequest;
+
+	serializeBinary(): Uint8Array;
+	toObject(includeInstance?: boolean): GetAudioFileOfSessionRequest.AsObject;
+	static toObject(includeInstance: boolean, msg: GetAudioFileOfSessionRequest): GetAudioFileOfSessionRequest.AsObject;
+	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
+	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
+	static serializeBinaryToWriter(message: GetAudioFileOfSessionRequest, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): GetAudioFileOfSessionRequest;
+	static deserializeBinaryFromReader(
+		message: GetAudioFileOfSessionRequest,
+		reader: jspb.BinaryReader
+	): GetAudioFileOfSessionRequest;
+}
+
+export namespace GetAudioFileOfSessionRequest {
+	export type AsObject = {
+		parent: string;
+		sessionId: string;
+		resourceView: ResourceView;
+	};
+}
+
+export enum TranscriptionType {
+	TRANSCRIPTION_TYPE_UNSPECIFIED = 0,
+	TRANSCRIPTION_TYPE_S2T = 1,
+	TRANSCRIPTION_TYPE_HUMAN = 2
+}
+
 export enum AudioEncoding {
 	AUDIO_ENCODING_UNSPECIFIED = 0,
 	AUDIO_ENCODING_LINEAR_16 = 1,
@@ -2295,4 +2916,18 @@ export enum ComparisonOperator {
 	CONTAINS = 4,
 	STARTS_WITH = 5,
 	ENDS_WITH = 6
+}
+
+export enum ResourceView {
+	RESOURCE_VIEW_UNSPECIFIED = 0,
+	RESOURCE_VIEW_FULL = 1,
+	RESOURCE_VIEW_PARTIAL = 2,
+	RESOURCE_VIEW_MINIMUM = 3
+}
+
+export enum AudioFileResourceType {
+	AUDIO_FILE_RESOURCE_TYPE_UNSPECIFIED = 0,
+	AUDIO_FILE_RESOURCE_TYPE_T2S = 1,
+	AUDIO_FILE_RESOURCE_TYPE_S2T = 2,
+	AUDIO_FILE_RESOURCE_TYPE_S2T_AND_T2S = 3
 }

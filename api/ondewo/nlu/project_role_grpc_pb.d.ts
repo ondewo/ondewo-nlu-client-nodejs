@@ -6,8 +6,9 @@
 
 import * as grpc from 'grpc';
 import * as ondewo_nlu_project_role_pb from '../../ondewo/nlu/project_role_pb';
-import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
 import * as google_protobuf_empty_pb from 'google-protobuf/google/protobuf/empty_pb';
+import * as google_protobuf_field_mask_pb from 'google-protobuf/google/protobuf/field_mask_pb';
+import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 
 interface IProjectRolesService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
 	createProjectRole: IProjectRolesService_ICreateProjectRole;

@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 // Original file comments:
-// Copyright 2021 ONDEWO GmbH
+// Copyright 2020-2023 ONDEWO GmbH
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -154,8 +154,9 @@ function deserialize_ondewo_qa_UpdateDatabaseResponse(buffer_arg) {
 	return ondewo_qa_qa_pb.UpdateDatabaseResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-// ///// Question Answering (QA) Services ///////
+// gRPC service for QA functionalities.
 var QAService = (exports.QAService = {
+	// Retrieves an answer based on the provided request.
 	getAnswer: {
 		path: '/ondewo.qa.QA/GetAnswer',
 		requestStream: false,
@@ -167,6 +168,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_GetAnswerResponse,
 		responseDeserialize: deserialize_ondewo_qa_GetAnswerResponse
 	},
+	// Runs a web scraper job for specified project IDs.
 	runScraper: {
 		path: '/ondewo.qa.QA/RunScraper',
 		requestStream: false,
@@ -178,6 +180,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_RunScraperResponse,
 		responseDeserialize: deserialize_ondewo_qa_RunScraperResponse
 	},
+	// Updates the database for specified project IDs.
 	updateDatabase: {
 		path: '/ondewo.qa.QA/UpdateDatabase',
 		requestStream: false,
@@ -189,6 +192,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_UpdateDatabaseResponse,
 		responseDeserialize: deserialize_ondewo_qa_UpdateDatabaseResponse
 	},
+	// Runs a training job for the QA system.
 	runTraining: {
 		path: '/ondewo.qa.QA/RunTraining',
 		requestStream: false,
@@ -200,6 +204,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_RunTrainingResponse,
 		responseDeserialize: deserialize_ondewo_qa_RunTrainingResponse
 	},
+	// Retrieves the server state for QA.
 	getServerState: {
 		path: '/ondewo.qa.QA/GetServerState',
 		requestStream: false,
@@ -211,6 +216,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_GetServerStateResponse,
 		responseDeserialize: deserialize_ondewo_qa_GetServerStateResponse
 	},
+	// Lists project IDs associated with QA.
 	listProjectIds: {
 		path: '/ondewo.qa.QA/ListProjectIds',
 		requestStream: false,
@@ -222,6 +228,7 @@ var QAService = (exports.QAService = {
 		responseSerialize: serialize_ondewo_qa_ListProjectIdsResponse,
 		responseDeserialize: deserialize_ondewo_qa_ListProjectIdsResponse
 	},
+	// Retrieves the configuration of a specific project.
 	getProjectConfig: {
 		path: '/ondewo.qa.QA/GetProjectConfig',
 		requestStream: false,

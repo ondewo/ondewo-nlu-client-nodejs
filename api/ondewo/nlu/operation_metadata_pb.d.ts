@@ -58,6 +58,20 @@ export class OperationMetadata extends jspb.Message {
 	getLogLimit(): number;
 	setLogLimit(value: number): OperationMetadata;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): OperationMetadata;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): OperationMetadata;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): OperationMetadata;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): OperationMetadata;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): OperationMetadata.AsObject;
 	static toObject(includeInstance: boolean, msg: OperationMetadata): OperationMetadata.AsObject;
@@ -88,6 +102,10 @@ export namespace OperationMetadata {
 		description: string;
 		logList: Array<string>;
 		logLimit: number;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 
 	export enum Status {
@@ -108,6 +126,7 @@ export namespace OperationMetadata {
 		RESTORE_AGENT = 5,
 		BUILD_AGENT_CACHE = 6,
 		TRAIN_AGENT = 7,
-		EXPORT_BENCHMARK_AGENT = 8
+		EXPORT_BENCHMARK_AGENT = 8,
+		INDEX_AGENT = 9
 	}
 }

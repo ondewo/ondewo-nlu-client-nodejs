@@ -12,6 +12,7 @@ import * as google_protobuf_struct_pb from 'google-protobuf/google/protobuf/stru
 import * as google_protobuf_timestamp_pb from 'google-protobuf/google/protobuf/timestamp_pb';
 import * as google_rpc_status_pb from '../../google/rpc/status_pb';
 import * as google_type_latlng_pb from '../../google/type/latlng_pb';
+import * as ondewo_nlu_common_pb from '../../ondewo/nlu/common_pb';
 import * as ondewo_nlu_context_pb from '../../ondewo/nlu/context_pb';
 import * as ondewo_nlu_intent_pb from '../../ondewo/nlu/intent_pb';
 import * as ondewo_nlu_entity_type_pb from '../../ondewo/nlu/entity_type_pb';
@@ -41,10 +42,19 @@ interface ISessionsService extends grpc.ServiceDefinition<grpc.UntypedServiceImp
 	listOriginIdsOfAllSessions: ISessionsService_IListOriginIdsOfAllSessions;
 	addSessionLabels: ISessionsService_IAddSessionLabels;
 	deleteSessionLabels: ISessionsService_IDeleteSessionLabels;
+	addSessionComment: ISessionsService_IAddSessionComment;
+	deleteSessionComments: ISessionsService_IDeleteSessionComments;
+	updateSessionComments: ISessionsService_IUpdateSessionComments;
+	listSessionComments: ISessionsService_IListSessionComments;
 	listSessionReviews: ISessionsService_IListSessionReviews;
 	getSessionReview: ISessionsService_IGetSessionReview;
 	getLatestSessionReview: ISessionsService_IGetLatestSessionReview;
 	createSessionReview: ISessionsService_ICreateSessionReview;
+	getAudioFiles: ISessionsService_IGetAudioFiles;
+	addAudioFiles: ISessionsService_IAddAudioFiles;
+	deleteAudioFiles: ISessionsService_IDeleteAudioFiles;
+	getAudioFileOfSession: ISessionsService_IGetAudioFileOfSession;
+	listAudioFiles: ISessionsService_IListAudioFiles;
 }
 
 interface ISessionsService_IDetectIntent
@@ -335,6 +345,49 @@ interface ISessionsService_IDeleteSessionLabels
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
 }
+interface ISessionsService_IAddSessionComment
+	extends grpc.MethodDefinition<ondewo_nlu_session_pb.AddSessionCommentRequest, ondewo_nlu_common_pb.Comment> {
+	path: '/ondewo.nlu.Sessions/AddSessionComment';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.AddSessionCommentRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.AddSessionCommentRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_common_pb.Comment>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_common_pb.Comment>;
+}
+interface ISessionsService_IDeleteSessionComments
+	extends grpc.MethodDefinition<ondewo_nlu_session_pb.DeleteSessionCommentsRequest, ondewo_nlu_session_pb.Session> {
+	path: '/ondewo.nlu.Sessions/DeleteSessionComments';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.DeleteSessionCommentsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.DeleteSessionCommentsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
+}
+interface ISessionsService_IUpdateSessionComments
+	extends grpc.MethodDefinition<ondewo_nlu_session_pb.UpdateSessionCommentsRequest, ondewo_nlu_session_pb.Session> {
+	path: '/ondewo.nlu.Sessions/UpdateSessionComments';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.UpdateSessionCommentsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.UpdateSessionCommentsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.Session>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.Session>;
+}
+interface ISessionsService_IListSessionComments
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		ondewo_nlu_session_pb.ListSessionCommentsResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListSessionComments';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionCommentsRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionCommentsRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListSessionCommentsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListSessionCommentsResponse>;
+}
 interface ISessionsService_IListSessionReviews
 	extends grpc.MethodDefinition<
 		ondewo_nlu_session_pb.ListSessionReviewsRequest,
@@ -380,6 +433,71 @@ interface ISessionsService_ICreateSessionReview
 	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.CreateSessionReviewRequest>;
 	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.SessionReview>;
 	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.SessionReview>;
+}
+interface ISessionsService_IGetAudioFiles
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.GetAudioFilesRequest,
+		ondewo_nlu_session_pb.GetAudioFilesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/GetAudioFiles';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.GetAudioFilesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.GetAudioFilesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.GetAudioFilesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.GetAudioFilesResponse>;
+}
+interface ISessionsService_IAddAudioFiles
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.AddAudioFilesRequest,
+		ondewo_nlu_session_pb.AddAudioFilesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/AddAudioFiles';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.AddAudioFilesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.AddAudioFilesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.AddAudioFilesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.AddAudioFilesResponse>;
+}
+interface ISessionsService_IDeleteAudioFiles
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		ondewo_nlu_session_pb.DeleteAudioFilesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/DeleteAudioFiles';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.DeleteAudioFilesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.DeleteAudioFilesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.DeleteAudioFilesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.DeleteAudioFilesResponse>;
+}
+interface ISessionsService_IGetAudioFileOfSession
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		ondewo_nlu_session_pb.AudioFileResource
+	> {
+	path: '/ondewo.nlu.Sessions/GetAudioFileOfSession';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.GetAudioFileOfSessionRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.GetAudioFileOfSessionRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.AudioFileResource>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.AudioFileResource>;
+}
+interface ISessionsService_IListAudioFiles
+	extends grpc.MethodDefinition<
+		ondewo_nlu_session_pb.ListAudioFilesRequest,
+		ondewo_nlu_session_pb.ListAudioFilesResponse
+	> {
+	path: '/ondewo.nlu.Sessions/ListAudioFiles';
+	requestStream: false;
+	responseStream: false;
+	requestSerialize: grpc.serialize<ondewo_nlu_session_pb.ListAudioFilesRequest>;
+	requestDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListAudioFilesRequest>;
+	responseSerialize: grpc.serialize<ondewo_nlu_session_pb.ListAudioFilesResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_session_pb.ListAudioFilesResponse>;
 }
 
 export const SessionsService: ISessionsService;
@@ -466,6 +584,19 @@ export interface ISessionsServer {
 		ondewo_nlu_session_pb.DeleteSessionLabelsRequest,
 		ondewo_nlu_session_pb.Session
 	>;
+	addSessionComment: grpc.handleUnaryCall<ondewo_nlu_session_pb.AddSessionCommentRequest, ondewo_nlu_common_pb.Comment>;
+	deleteSessionComments: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		ondewo_nlu_session_pb.Session
+	>;
+	updateSessionComments: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		ondewo_nlu_session_pb.Session
+	>;
+	listSessionComments: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		ondewo_nlu_session_pb.ListSessionCommentsResponse
+	>;
 	listSessionReviews: grpc.handleUnaryCall<
 		ondewo_nlu_session_pb.ListSessionReviewsRequest,
 		ondewo_nlu_session_pb.ListSessionReviewsResponse
@@ -481,6 +612,26 @@ export interface ISessionsServer {
 	createSessionReview: grpc.handleUnaryCall<
 		ondewo_nlu_session_pb.CreateSessionReviewRequest,
 		ondewo_nlu_session_pb.SessionReview
+	>;
+	getAudioFiles: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.GetAudioFilesRequest,
+		ondewo_nlu_session_pb.GetAudioFilesResponse
+	>;
+	addAudioFiles: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.AddAudioFilesRequest,
+		ondewo_nlu_session_pb.AddAudioFilesResponse
+	>;
+	deleteAudioFiles: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		ondewo_nlu_session_pb.DeleteAudioFilesResponse
+	>;
+	getAudioFileOfSession: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		ondewo_nlu_session_pb.AudioFileResource
+	>;
+	listAudioFiles: grpc.handleUnaryCall<
+		ondewo_nlu_session_pb.ListAudioFilesRequest,
+		ondewo_nlu_session_pb.ListAudioFilesResponse
 	>;
 }
 
@@ -847,6 +998,66 @@ export interface ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
+	addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
+	listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
+	listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
 	listSessionReviews(
 		request: ondewo_nlu_session_pb.ListSessionReviewsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionReviewsResponse) => void
@@ -906,6 +1117,81 @@ export interface ISessionsClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.SessionReview) => void
+	): grpc.ClientUnaryCall;
+	getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
 	): grpc.ClientUnaryCall;
 }
 
@@ -1269,6 +1555,66 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
 	): grpc.ClientUnaryCall;
+	public addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	public addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	public addSessionComment(
+		request: ondewo_nlu_session_pb.AddSessionCommentRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_common_pb.Comment) => void
+	): grpc.ClientUnaryCall;
+	public deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public deleteSessionComments(
+		request: ondewo_nlu_session_pb.DeleteSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public updateSessionComments(
+		request: ondewo_nlu_session_pb.UpdateSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.Session) => void
+	): grpc.ClientUnaryCall;
+	public listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
+	public listSessionComments(
+		request: ondewo_nlu_session_pb.ListSessionCommentsRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionCommentsResponse) => void
+	): grpc.ClientUnaryCall;
 	public listSessionReviews(
 		request: ondewo_nlu_session_pb.ListSessionReviewsRequest,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListSessionReviewsResponse) => void
@@ -1328,5 +1674,80 @@ export class SessionsClient extends grpc.Client implements ISessionsClient {
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
 		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.SessionReview) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFiles(
+		request: ondewo_nlu_session_pb.GetAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.GetAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public addAudioFiles(
+		request: ondewo_nlu_session_pb.AddAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AddAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public deleteAudioFiles(
+		request: ondewo_nlu_session_pb.DeleteAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.DeleteAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	public getAudioFileOfSession(
+		request: ondewo_nlu_session_pb.GetAudioFileOfSessionRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.AudioFileResource) => void
+	): grpc.ClientUnaryCall;
+	public listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		metadata: grpc.Metadata,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
+	): grpc.ClientUnaryCall;
+	public listAudioFiles(
+		request: ondewo_nlu_session_pb.ListAudioFilesRequest,
+		metadata: grpc.Metadata,
+		options: Partial<grpc.CallOptions>,
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_session_pb.ListAudioFilesResponse) => void
 	): grpc.ClientUnaryCall;
 }

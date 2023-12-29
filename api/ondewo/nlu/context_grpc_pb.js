@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// Modifications Copyright 2021 ONDEWO GmbH
+// Modifications Copyright 2020-2023 ONDEWO GmbH
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
 	if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
