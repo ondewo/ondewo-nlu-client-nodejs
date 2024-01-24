@@ -239,6 +239,17 @@ function deserialize_ondewo_nlu_BatchUpdateIntentsRequest(buffer_arg) {
 	return ondewo_nlu_intent_pb.BatchUpdateIntentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_BatchUpdateIntentsResponse(arg) {
+	if (!(arg instanceof ondewo_nlu_intent_pb.BatchUpdateIntentsResponse)) {
+		throw new Error('Expected argument of type ondewo.nlu.BatchUpdateIntentsResponse');
+	}
+	return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_BatchUpdateIntentsResponse(buffer_arg) {
+	return ondewo_nlu_intent_pb.BatchUpdateIntentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_BatchUpdateParametersRequest(arg) {
 	if (!(arg instanceof ondewo_nlu_intent_pb.BatchUpdateParametersRequest)) {
 		throw new Error('Expected argument of type ondewo.nlu.BatchUpdateParametersRequest');
@@ -596,11 +607,11 @@ var IntentsService = (exports.IntentsService = {
 		requestStream: false,
 		responseStream: false,
 		requestType: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
-		responseType: ondewo_nlu_operations_pb.Operation,
+		responseType: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse,
 		requestSerialize: serialize_ondewo_nlu_BatchUpdateIntentsRequest,
 		requestDeserialize: deserialize_ondewo_nlu_BatchUpdateIntentsRequest,
-		responseSerialize: serialize_ondewo_nlu_Operation,
-		responseDeserialize: deserialize_ondewo_nlu_Operation
+		responseSerialize: serialize_ondewo_nlu_BatchUpdateIntentsResponse,
+		responseDeserialize: deserialize_ondewo_nlu_BatchUpdateIntentsResponse
 	},
 	// Deletes intents in the specified agent.
 	//

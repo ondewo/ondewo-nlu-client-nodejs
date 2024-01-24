@@ -95,14 +95,17 @@ interface IIntentsService_IDeleteIntent
 	responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
 interface IIntentsService_IBatchUpdateIntents
-	extends grpc.MethodDefinition<ondewo_nlu_intent_pb.BatchUpdateIntentsRequest, ondewo_nlu_operations_pb.Operation> {
+	extends grpc.MethodDefinition<
+		ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
+		ondewo_nlu_intent_pb.BatchUpdateIntentsResponse
+	> {
 	path: '/ondewo.nlu.Intents/BatchUpdateIntents';
 	requestStream: false;
 	responseStream: false;
 	requestSerialize: grpc.serialize<ondewo_nlu_intent_pb.BatchUpdateIntentsRequest>;
 	requestDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.BatchUpdateIntentsRequest>;
-	responseSerialize: grpc.serialize<ondewo_nlu_operations_pb.Operation>;
-	responseDeserialize: grpc.deserialize<ondewo_nlu_operations_pb.Operation>;
+	responseSerialize: grpc.serialize<ondewo_nlu_intent_pb.BatchUpdateIntentsResponse>;
+	responseDeserialize: grpc.deserialize<ondewo_nlu_intent_pb.BatchUpdateIntentsResponse>;
 }
 interface IIntentsService_IBatchDeleteIntents
 	extends grpc.MethodDefinition<ondewo_nlu_intent_pb.BatchDeleteIntentsRequest, ondewo_nlu_operations_pb.Operation> {
@@ -376,7 +379,7 @@ export interface IIntentsServer {
 	deleteIntent: grpc.handleUnaryCall<ondewo_nlu_intent_pb.DeleteIntentRequest, google_protobuf_empty_pb.Empty>;
 	batchUpdateIntents: grpc.handleUnaryCall<
 		ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
-		ondewo_nlu_operations_pb.Operation
+		ondewo_nlu_intent_pb.BatchUpdateIntentsResponse
 	>;
 	batchDeleteIntents: grpc.handleUnaryCall<
 		ondewo_nlu_intent_pb.BatchDeleteIntentsRequest,
@@ -536,18 +539,18 @@ export interface IIntentsClient {
 	): grpc.ClientUnaryCall;
 	batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
 		metadata: grpc.Metadata,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	batchDeleteIntents(
 		request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest,
@@ -1026,18 +1029,18 @@ export class IntentsClient extends grpc.Client implements IIntentsClient {
 	): grpc.ClientUnaryCall;
 	public batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	public batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
 		metadata: grpc.Metadata,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	public batchUpdateIntents(
 		request: ondewo_nlu_intent_pb.BatchUpdateIntentsRequest,
 		metadata: grpc.Metadata,
 		options: Partial<grpc.CallOptions>,
-		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void
+		callback: (error: grpc.ServiceError | null, response: ondewo_nlu_intent_pb.BatchUpdateIntentsResponse) => void
 	): grpc.ClientUnaryCall;
 	public batchDeleteIntents(
 		request: ondewo_nlu_intent_pb.BatchDeleteIntentsRequest,

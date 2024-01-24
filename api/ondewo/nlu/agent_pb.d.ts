@@ -1370,6 +1370,20 @@ export class CustomPlatformInfo extends jspb.Message {
 	getPosition(): number;
 	setPosition(value: number): CustomPlatformInfo;
 
+	hasCreatedAt(): boolean;
+	clearCreatedAt(): void;
+	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): CustomPlatformInfo;
+
+	hasModifiedAt(): boolean;
+	clearModifiedAt(): void;
+	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): CustomPlatformInfo;
+	getCreatedBy(): string;
+	setCreatedBy(value: string): CustomPlatformInfo;
+	getModifiedBy(): string;
+	setModifiedBy(value: string): CustomPlatformInfo;
+
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): CustomPlatformInfo.AsObject;
 	static toObject(includeInstance: boolean, msg: CustomPlatformInfo): CustomPlatformInfo.AsObject;
@@ -1385,6 +1399,10 @@ export namespace CustomPlatformInfo {
 		platform: ondewo_nlu_intent_pb.Intent.Message.Platform;
 		displayName: string;
 		position: number;
+		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
+		createdBy: string;
+		modifiedBy: string;
 	};
 }
 

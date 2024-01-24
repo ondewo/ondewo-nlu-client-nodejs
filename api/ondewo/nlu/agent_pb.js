@@ -9995,7 +9995,11 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
 			obj = {
 				platform: jspb.Message.getFieldWithDefault(msg, 1, 0),
 				displayName: jspb.Message.getFieldWithDefault(msg, 2, ''),
-				position: jspb.Message.getFieldWithDefault(msg, 3, 0)
+				position: jspb.Message.getFieldWithDefault(msg, 3, 0),
+				createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+				createdBy: jspb.Message.getFieldWithDefault(msg, 6, ''),
+				modifiedBy: jspb.Message.getFieldWithDefault(msg, 7, '')
 			};
 
 		if (includeInstance) {
@@ -10042,6 +10046,24 @@ proto.ondewo.nlu.CustomPlatformInfo.deserializeBinaryFromReader = function (msg,
 				var value = /** @type {number} */ (reader.readUint32());
 				msg.setPosition(value);
 				break;
+			case 4:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setCreatedAt(value);
+				break;
+			case 5:
+				var value = new google_protobuf_timestamp_pb.Timestamp();
+				reader.readMessage(value, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+				msg.setModifiedAt(value);
+				break;
+			case 6:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setCreatedBy(value);
+				break;
+			case 7:
+				var value = /** @type {string} */ (reader.readString());
+				msg.setModifiedBy(value);
+				break;
 			default:
 				reader.skipField();
 				break;
@@ -10080,6 +10102,22 @@ proto.ondewo.nlu.CustomPlatformInfo.serializeBinaryToWriter = function (message,
 	f = message.getPosition();
 	if (f !== 0) {
 		writer.writeUint32(3, f);
+	}
+	f = message.getCreatedAt();
+	if (f != null) {
+		writer.writeMessage(4, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getModifiedAt();
+	if (f != null) {
+		writer.writeMessage(5, f, google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter);
+	}
+	f = message.getCreatedBy();
+	if (f.length > 0) {
+		writer.writeString(6, f);
+	}
+	f = message.getModifiedBy();
+	if (f.length > 0) {
+		writer.writeString(7, f);
 	}
 };
 
@@ -10129,6 +10167,106 @@ proto.ondewo.nlu.CustomPlatformInfo.prototype.getPosition = function () {
  */
 proto.ondewo.nlu.CustomPlatformInfo.prototype.setPosition = function (value) {
 	return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+/**
+ * optional google.protobuf.Timestamp created_at = 4;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getCreatedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setCreatedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 4, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.clearCreatedAt = function () {
+	return this.setCreatedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.hasCreatedAt = function () {
+	return jspb.Message.getField(this, 4) != null;
+};
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getModifiedAt = function () {
+	return /** @type{?proto.google.protobuf.Timestamp} */ (
+		jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5)
+	);
+};
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setModifiedAt = function (value) {
+	return jspb.Message.setWrapperField(this, 5, value);
+};
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.clearModifiedAt = function () {
+	return this.setModifiedAt(undefined);
+};
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.hasModifiedAt = function () {
+	return jspb.Message.getField(this, 5) != null;
+};
+
+/**
+ * optional string created_by = 6;
+ * @return {string}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getCreatedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setCreatedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+/**
+ * optional string modified_by = 7;
+ * @return {string}
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.getModifiedBy = function () {
+	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ''));
+};
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.CustomPlatformInfo} returns this
+ */
+proto.ondewo.nlu.CustomPlatformInfo.prototype.setModifiedBy = function (value) {
+	return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
