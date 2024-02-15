@@ -1,6 +1,6 @@
 {
 	"name": "@ondewo/nlu-client-nodejs",
-	"version": "4.9.0",
+	"version": "5.0.0",
 	"description": "ONDEWO Natural Language Understanding (NLU) Platfrom client library for Nodejs",
 	"main": "public-api.js",
 	"typings": "public-api.d.ts",

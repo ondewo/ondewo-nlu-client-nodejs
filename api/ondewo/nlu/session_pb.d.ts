@@ -126,9 +126,9 @@ export class QueryParameters extends jspb.Message {
 	getIdentifiedUserId(): string;
 	setIdentifiedUserId(value: string): QueryParameters;
 	clearTranscriptionsList(): void;
-	getTranscriptionsList(): Array<Transcription>;
-	setTranscriptionsList(value: Array<Transcription>): QueryParameters;
-	addTranscriptions(value?: Transcription, index?: number): Transcription;
+	getTranscriptionsList(): Array<S2tTranscription>;
+	setTranscriptionsList(value: Array<S2tTranscription>): QueryParameters;
+	addTranscriptions(value?: S2tTranscription, index?: number): S2tTranscription;
 
 	serializeBinary(): Uint8Array;
 	toObject(includeInstance?: boolean): QueryParameters.AsObject;
@@ -154,53 +154,53 @@ export namespace QueryParameters {
 		datastreamId: string;
 		originId: string;
 		identifiedUserId: string;
-		transcriptionsList: Array<Transcription.AsObject>;
+		transcriptionsList: Array<S2tTranscription.AsObject>;
 	};
 }
 
-export class Transcription extends jspb.Message {
+export class S2tTranscription extends jspb.Message {
 	getName(): string;
-	setName(value: string): Transcription;
+	setName(value: string): S2tTranscription;
 	getText(): string;
-	setText(value: string): Transcription;
+	setText(value: string): S2tTranscription;
 	getScore(): number;
-	setScore(value: number): Transcription;
+	setScore(value: number): S2tTranscription;
 	getLanguageCode(): string;
-	setLanguageCode(value: string): Transcription;
+	setLanguageCode(value: string): S2tTranscription;
 	getAudioResourceName(): string;
-	setAudioResourceName(value: string): Transcription;
+	setAudioResourceName(value: string): S2tTranscription;
 	getPipelineId(): string;
-	setPipelineId(value: string): Transcription;
+	setPipelineId(value: string): S2tTranscription;
 	getDurationInS(): number;
-	setDurationInS(value: number): Transcription;
+	setDurationInS(value: number): S2tTranscription;
 	getTranscriptionType(): TranscriptionType;
-	setTranscriptionType(value: TranscriptionType): Transcription;
+	setTranscriptionType(value: TranscriptionType): S2tTranscription;
 
 	hasCreatedAt(): boolean;
 	clearCreatedAt(): void;
 	getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Transcription;
+	setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): S2tTranscription;
 
 	hasModifiedAt(): boolean;
 	clearModifiedAt(): void;
 	getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): Transcription;
+	setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): S2tTranscription;
 	getCreatedBy(): string;
-	setCreatedBy(value: string): Transcription;
+	setCreatedBy(value: string): S2tTranscription;
 	getModifiedBy(): string;
-	setModifiedBy(value: string): Transcription;
+	setModifiedBy(value: string): S2tTranscription;
 
 	serializeBinary(): Uint8Array;
-	toObject(includeInstance?: boolean): Transcription.AsObject;
-	static toObject(includeInstance: boolean, msg: Transcription): Transcription.AsObject;
+	toObject(includeInstance?: boolean): S2tTranscription.AsObject;
+	static toObject(includeInstance: boolean, msg: S2tTranscription): S2tTranscription.AsObject;
 	static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
 	static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-	static serializeBinaryToWriter(message: Transcription, writer: jspb.BinaryWriter): void;
-	static deserializeBinary(bytes: Uint8Array): Transcription;
-	static deserializeBinaryFromReader(message: Transcription, reader: jspb.BinaryReader): Transcription;
+	static serializeBinaryToWriter(message: S2tTranscription, writer: jspb.BinaryWriter): void;
+	static deserializeBinary(bytes: Uint8Array): S2tTranscription;
+	static deserializeBinaryFromReader(message: S2tTranscription, reader: jspb.BinaryReader): S2tTranscription;
 }
 
-export namespace Transcription {
+export namespace S2tTranscription {
 	export type AsObject = {
 		name: string;
 		text: string;
@@ -2584,9 +2584,9 @@ export class AudioFileResource extends jspb.Message {
 	getAudioFileResourceType(): AudioFileResourceType;
 	setAudioFileResourceType(value: AudioFileResourceType): AudioFileResource;
 	clearTranscriptionsList(): void;
-	getTranscriptionsList(): Array<Transcription>;
-	setTranscriptionsList(value: Array<Transcription>): AudioFileResource;
-	addTranscriptions(value?: Transcription, index?: number): Transcription;
+	getTranscriptionsList(): Array<S2tTranscription>;
+	setTranscriptionsList(value: Array<S2tTranscription>): AudioFileResource;
+	addTranscriptions(value?: S2tTranscription, index?: number): S2tTranscription;
 
 	hasCreatedAt(): boolean;
 	clearCreatedAt(): void;
@@ -2620,7 +2620,7 @@ export namespace AudioFileResource {
 		durationInS: number;
 		sampleRate: number;
 		audioFileResourceType: AudioFileResourceType;
-		transcriptionsList: Array<Transcription.AsObject>;
+		transcriptionsList: Array<S2tTranscription.AsObject>;
 		createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
 		modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject;
 		createdBy: string;
