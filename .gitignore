@@ -1,6 +1,7 @@
-node_modules
 *.env
-npm
-.vscode
-grpc_cert.txt
+.code
 .idea
+.vscode
+node_modules
+npm
+tmp
