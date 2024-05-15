@@ -18,7 +18,8 @@ export
 ONDEWO_NLU_VERSION = 5.0.0
 
 NLU_API_GIT_BRANCH=tags/5.0.0
-ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/4.8.0
+#ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/4.8.0
+ONDEWO_PROTO_COMPILER_GIT_BRANCH=master
 ONDEWO_PROTO_COMPILER_DIR=ondewo-proto-compiler
 NLU_APIS_DIR=src/ondewo-nlu-api
 NLU_PROTOS_DIR=${NLU_APIS_DIR}/ondewo
@@ -223,7 +224,9 @@ create_npm_package: ## Create NPM Package for Release
 	mkdir npm
 	cp -R api npm
 	cp public-api.d.ts npm
+	cp public-api.js npm
 	cp package.json npm
+	cp package-lock.json npm
 	cp LICENSE npm
 	cp README.md npm
 
