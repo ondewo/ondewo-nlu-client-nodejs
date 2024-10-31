@@ -13,44 +13,36 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = function () {
-	if (this) {
-		return this;
-	}
-	if (typeof window !== 'undefined') {
-		return window;
-	}
-	if (typeof global !== 'undefined') {
-		return global;
-	}
-	if (typeof self !== 'undefined') {
-		return self;
-	}
-	return Function('return this')();
-}.call(null);
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
 goog.exportSymbol('proto.google.rpc.Code', null, global);
 /**
  * @enum {number}
  */
 proto.google.rpc.Code = {
-	OK: 0,
-	CANCELLED: 1,
-	UNKNOWN: 2,
-	INVALID_ARGUMENT: 3,
-	DEADLINE_EXCEEDED: 4,
-	NOT_FOUND: 5,
-	ALREADY_EXISTS: 6,
-	PERMISSION_DENIED: 7,
-	UNAUTHENTICATED: 16,
-	RESOURCE_EXHAUSTED: 8,
-	FAILED_PRECONDITION: 9,
-	ABORTED: 10,
-	OUT_OF_RANGE: 11,
-	UNIMPLEMENTED: 12,
-	INTERNAL: 13,
-	UNAVAILABLE: 14,
-	DATA_LOSS: 15
+  OK: 0,
+  CANCELLED: 1,
+  UNKNOWN: 2,
+  INVALID_ARGUMENT: 3,
+  DEADLINE_EXCEEDED: 4,
+  NOT_FOUND: 5,
+  ALREADY_EXISTS: 6,
+  PERMISSION_DENIED: 7,
+  UNAUTHENTICATED: 16,
+  RESOURCE_EXHAUSTED: 8,
+  FAILED_PRECONDITION: 9,
+  ABORTED: 10,
+  OUT_OF_RANGE: 11,
+  UNIMPLEMENTED: 12,
+  INTERNAL: 13,
+  UNAVAILABLE: 14,
+  DATA_LOSS: 15
 };
 
 goog.object.extend(exports, proto.google.rpc);

@@ -13,21 +13,13 @@
 
 var jspb = require('google-protobuf');
 var goog = jspb;
-var global = function () {
-	if (this) {
-		return this;
-	}
-	if (typeof window !== 'undefined') {
-		return window;
-	}
-	if (typeof global !== 'undefined') {
-		return global;
-	}
-	if (typeof self !== 'undefined') {
-		return self;
-	}
-	return Function('return this')();
-}.call(null);
+var global = (function() {
+  if (this) { return this; }
+  if (typeof window !== 'undefined') { return window; }
+  if (typeof global !== 'undefined') { return global; }
+  if (typeof self !== 'undefined') { return self; }
+  return Function('return this')();
+}.call(null));
 
 var google_api_annotations_pb = require('../../../../google/api/annotations_pb.js');
 goog.object.extend(proto, google_api_annotations_pb);
@@ -45,70 +37,73 @@ goog.exportSymbol('proto.google.cloud.functions.v1beta2.OperationType', null, gl
  * @extends {jspb.Message}
  * @constructor
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2 = function (opt_data) {
-	jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2 = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
 goog.inherits(proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
-	/**
-	 * @public
-	 * @override
-	 */
-	proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.displayName =
-		'proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2';
+  /**
+   * @public
+   * @override
+   */
+  proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.displayName = 'proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2';
 }
+
+
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
-	/**
-	 * Creates an object representation of this proto.
-	 * Field names that are reserved in JavaScript and will be renamed to pb_name.
-	 * Optional fields that are not set will be set to undefined.
-	 * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
-	 * For the list of reserved names please see:
-	 *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
-	 * @param {boolean=} opt_includeInstance Deprecated. whether to include the
-	 *     JSPB instance for transitional soy proto support:
-	 *     http://goto/soy-param-migration
-	 * @return {!Object}
-	 */
-	proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.toObject = function (opt_includeInstance) {
-		return proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.toObject(opt_includeInstance, this);
-	};
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.toObject = function(opt_includeInstance) {
+  return proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.toObject(opt_includeInstance, this);
+};
 
-	/**
-	 * Static version of the {@see toObject} method.
-	 * @param {boolean|undefined} includeInstance Deprecated. Whether to include
-	 *     the JSPB instance for transitional soy proto support:
-	 *     http://goto/soy-param-migration
-	 * @param {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} msg The msg instance to transform.
-	 * @return {!Object}
-	 * @suppress {unusedLocalVariables} f is only used for nested messages
-	 */
-	proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.toObject = function (includeInstance, msg) {
-		var f,
-			obj = {
-				target: jspb.Message.getFieldWithDefault(msg, 1, ''),
-				type: jspb.Message.getFieldWithDefault(msg, 2, 0),
-				request: (f = msg.getRequest()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
-			};
 
-		if (includeInstance) {
-			obj.$jspbMessageInstance = msg;
-		}
-		return obj;
-	};
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    target: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    type: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    request: (f = msg.getRequest()) && google_protobuf_any_pb.Any.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
 }
+
 
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinary = function (bytes) {
-	var reader = new jspb.BinaryReader(bytes);
-	var msg = new proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2();
-	return proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinaryFromReader(msg, reader);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2;
+  return proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinaryFromReader(msg, reader);
 };
+
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
@@ -117,43 +112,45 @@ proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinary 
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinaryFromReader = function (msg, reader) {
-	while (reader.nextField()) {
-		if (reader.isEndGroup()) {
-			break;
-		}
-		var field = reader.getFieldNumber();
-		switch (field) {
-			case 1:
-				var value = /** @type {string} */ (reader.readString());
-				msg.setTarget(value);
-				break;
-			case 2:
-				var value = /** @type {!proto.google.cloud.functions.v1beta2.OperationType} */ (reader.readEnum());
-				msg.setType(value);
-				break;
-			case 3:
-				var value = new google_protobuf_any_pb.Any();
-				reader.readMessage(value, google_protobuf_any_pb.Any.deserializeBinaryFromReader);
-				msg.setRequest(value);
-				break;
-			default:
-				reader.skipField();
-				break;
-		}
-	}
-	return msg;
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTarget(value);
+      break;
+    case 2:
+      var value = /** @type {!proto.google.cloud.functions.v1beta2.OperationType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
+    case 3:
+      var value = new google_protobuf_any_pb.Any;
+      reader.readMessage(value,google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+      msg.setRequest(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
 };
+
 
 /**
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.serializeBinary = function () {
-	var writer = new jspb.BinaryWriter();
-	proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.serializeBinaryToWriter(this, writer);
-	return writer.getResultBuffer();
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
 };
+
 
 /**
  * Serializes the given message to binary data (in protobuf wire
@@ -162,96 +159,114 @@ proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.serializ
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.serializeBinaryToWriter = function (message, writer) {
-	var f = undefined;
-	f = message.getTarget();
-	if (f.length > 0) {
-		writer.writeString(1, f);
-	}
-	f = message.getType();
-	if (f !== 0.0) {
-		writer.writeEnum(2, f);
-	}
-	f = message.getRequest();
-	if (f != null) {
-		writer.writeMessage(3, f, google_protobuf_any_pb.Any.serializeBinaryToWriter);
-	}
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTarget();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
+  f = message.getRequest();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_any_pb.Any.serializeBinaryToWriter
+    );
+  }
 };
+
 
 /**
  * optional string target = 1;
  * @return {string}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getTarget = function () {
-	return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ''));
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getTarget = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
+
 
 /**
  * @param {string} value
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} returns this
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setTarget = function (value) {
-	return jspb.Message.setProto3StringField(this, 1, value);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setTarget = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
+
 
 /**
  * optional OperationType type = 2;
  * @return {!proto.google.cloud.functions.v1beta2.OperationType}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getType = function () {
-	return /** @type {!proto.google.cloud.functions.v1beta2.OperationType} */ (
-		jspb.Message.getFieldWithDefault(this, 2, 0)
-	);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getType = function() {
+  return /** @type {!proto.google.cloud.functions.v1beta2.OperationType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
+
 
 /**
  * @param {!proto.google.cloud.functions.v1beta2.OperationType} value
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} returns this
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setType = function (value) {
-	return jspb.Message.setProto3EnumField(this, 2, value);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
 };
+
 
 /**
  * optional google.protobuf.Any request = 3;
  * @return {?proto.google.protobuf.Any}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getRequest = function () {
-	return /** @type{?proto.google.protobuf.Any} */ (jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 3));
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.getRequest = function() {
+  return /** @type{?proto.google.protobuf.Any} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 3));
 };
+
 
 /**
  * @param {?proto.google.protobuf.Any|undefined} value
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} returns this
- */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setRequest = function (value) {
-	return jspb.Message.setWrapperField(this, 3, value);
+*/
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.setRequest = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
 };
+
 
 /**
  * Clears the message field making it undefined.
  * @return {!proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2} returns this
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.clearRequest = function () {
-	return this.setRequest(undefined);
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.clearRequest = function() {
+  return this.setRequest(undefined);
 };
+
 
 /**
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.hasRequest = function () {
-	return jspb.Message.getField(this, 3) != null;
+proto.google.cloud.functions.v1beta2.OperationMetadataV1Beta2.prototype.hasRequest = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
+
 
 /**
  * @enum {number}
  */
 proto.google.cloud.functions.v1beta2.OperationType = {
-	OPERATION_UNSPECIFIED: 0,
-	CREATE_FUNCTION: 1,
-	UPDATE_FUNCTION: 2,
-	DELETE_FUNCTION: 3
+  OPERATION_UNSPECIFIED: 0,
+  CREATE_FUNCTION: 1,
+  UPDATE_FUNCTION: 2,
+  DELETE_FUNCTION: 3
 };
 
 goog.object.extend(exports, proto.google.cloud.functions.v1beta2);

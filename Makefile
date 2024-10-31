@@ -18,8 +18,7 @@ export
 ONDEWO_NLU_VERSION = 5.0.1
 
 NLU_API_GIT_BRANCH=tags/5.0.0
-#ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/4.8.0
-ONDEWO_PROTO_COMPILER_GIT_BRANCH=master
+ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/5.0.0
 ONDEWO_PROTO_COMPILER_DIR=ondewo-proto-compiler
 NLU_APIS_DIR=src/ondewo-nlu-api
 NLU_PROTOS_DIR=${NLU_APIS_DIR}/ondewo
@@ -54,7 +53,7 @@ prettier: ## Checks formatting with Prettier - Use PRETTIER_WRITE=-w to also aut
 	node_modules/.bin/prettier --config .prettierrc --check --ignore-path .prettierignore $(PRETTIER_WRITE) ./
 
 eslint: ## Checks Code Logic and Typing
-	./node_modules/.bin/eslint .
+	./node_modules/.bin/eslint --config eslint.config.mjs .
 
 run_precommit_hooks:
 	.husky/pre-commit
@@ -203,6 +202,7 @@ build: check_out_correct_submodule_versions build_compiler update_package npm_ru
 	do \
 		sudo chown -R `whoami`:`whoami` $$f && echo $$f; \
 	done
+	-cd src/ondewo-nlu-api && git checkout -- '**/*.proto' && cd ../..
 	cp src/README.md .
 	cp src/RELEASE.md .
 	make remove_npm_script
@@ -230,14 +230,16 @@ create_npm_package: ## Create NPM Package for Release
 	cp LICENSE npm
 	cp README.md npm
 
-install_dependencies: ## Installs Dev-Dependencies
-	npm i @typescript-eslint/eslint-plugin \
-		  eslint \
-		  prettier \
-		  husky \
-		  --save-dev
+install_dependencies: ## Installs npm dev dependencies
+	npm i eslint --save-dev
+	npm i @eslint/eslintrc --save-dev
+	npm i @eslint/js --save-dev
+	npm i global --save-dev
+	npm i prettier --save-dev
+	npm i @typescript-eslint/eslint-plugin --save-dev
+	npm i husky --save-dev
 
-check_out_correct_submodule_versions: ## Fetches all Submodules and checksout specified branch
+check_out_correct_submodule_versions: ## Fetches all Submodules and checks out specified branch
 	@echo "START checking out correct submodule versions ..."
 	git submodule update --init --recursive
 	git -C ${NLU_APIS_DIR} fetch --all
