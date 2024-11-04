@@ -1,5 +1,4 @@
 export
-
 # ---------------- BEFORE RELEASE ----------------
 # 1 - Update Version Number
 # 2 - Update RELEASE.md
@@ -32,11 +31,11 @@ PRETTIER_WRITE?=
 CURRENT_RELEASE_NOTES=`cat RELEASE.md \
 	| sed -n '/Release ONDEWO NLU Nodejs Client ${ONDEWO_NLU_VERSION}/,/\*\*/p'`
 
-
 GH_REPO="https://github.com/ondewo/ondewo-nlu-client-nodejs"
 DEVOPS_ACCOUNT_GIT="ondewo-devops-accounts"
 DEVOPS_ACCOUNT_DIR="./${DEVOPS_ACCOUNT_GIT}"
 .DEFAULT_GOAL := help
+
 ########################################################
 #       ONDEWO Standard Make Targets
 ########################################################
@@ -49,17 +48,17 @@ install_packages: ## Install npm packages
 install_precommit_hooks: ## Install precommit hooks
 	npx husky install
 
+run_precommit_hooks: ## Runs all precommit hooks
+	.husky/pre-commit
+
 prettier: ## Checks formatting with Prettier - Use PRETTIER_WRITE=-w to also automatically apply corrections where needed
 	node_modules/.bin/prettier --config .prettierrc --check --ignore-path .prettierignore $(PRETTIER_WRITE) ./
 
 eslint: ## Checks Code Logic and Typing
 	./node_modules/.bin/eslint --config eslint.config.mjs .
 
-run_precommit_hooks:
-	.husky/pre-commit
-
-TEST:	## Prints some important variables
-	@echo "Release Notes: \n \n $(CURRENT_RELEASE_NOTES)"
+TEST: ## Prints some important variables
+	@echo "Release Notes: \n \n$(CURRENT_RELEASE_NOTES)"
 	@echo "GH Token: \t $(GITHUB_GH_TOKEN)"
 	@echo "NPM Name: \t $(NPM_USERNAME)"
 	@echo "NPM Password: \t $(NPM_PASSWORD)"
@@ -71,7 +70,7 @@ help: ## Print usage info about help targets
 makefile_chapters: ## Shows all sections of Makefile
 	@echo `cat Makefile| grep "########################################################" -A 1 | grep -v "########################################################"`
 
-check_build: ##Checks if all built proto-code is there
+check_build: ## Checks if all built proto-code is there
 	@rm -rf build_check.txt
 	@for proto in `find src/ondewo-nlu-api/ondewo -iname "*.proto*"`; \
 	do \
@@ -118,7 +117,6 @@ release: ## Create Github and NPM Release
 	make release_to_github_via_docker_image
 	@echo "Finished Release"
 
-
 gh_release: build_utils_docker_image release_to_github_via_docker_image ## Builds Utils Image and Releases to Github
 
 npm_release: ## Releases to NPM
@@ -143,18 +141,18 @@ build_gh_release: ## Generate Github Release with CLI
 ########################################################
 #		Docker
 
-push_to_gh: login_to_gh build_gh_release ##Logs into Github CLI and Releases
+push_to_gh: login_to_gh build_gh_release ## Logs into Github CLI and Releases
 	@echo 'Released to Github'
 
 build_compiler: ## Builds Ondewo-Proto-Compiler
 	cd ondewo-proto-compiler/nodejs && sh build.sh
 
-release_to_github_via_docker_image:  ## Release to Github via docker
+release_to_github_via_docker_image: ## Release to Github via docker
 	docker run --rm \
 		-e GITHUB_GH_TOKEN=${GITHUB_GH_TOKEN} \
 		${IMAGE_UTILS_NAME} make push_to_gh
 
-build_utils_docker_image:  ## Build utils docker image
+build_utils_docker_image: ## Build utils docker image
 	docker build -f Dockerfile.utils -t ${IMAGE_UTILS_NAME} .
 
 publish_npm_via_docker: build_utils_docker_image ## Docker-Image and Releases to NPM
@@ -188,7 +186,6 @@ spc: ## Checks if the Release Branch, Tag and Pypi version already exist
 	$(eval filtered_tags:= $(shell git tag --list | grep "${ONDEWO_NLU_VERSION}"))
 	@if test "$(filtered_branches)" != ""; then echo "-- Test 1: Branch exists!!" & exit 1; else echo "-- Test 1: Branch is fine";fi
 	@if test "$(filtered_tags)" != ""; then echo "-- Test 2: Tag exists!!" & exit 1; else echo "-- Test 2: Tag is fine";fi
-
 
 ########################################################
 # Build
@@ -250,14 +247,7 @@ check_out_correct_submodule_versions: ## Fetches all Submodules and checks out s
 	# cp -R ${NLU_APIS_DIR}/googleapis/google ${NLU_APIS_DIR}/google
 	@echo "DONE checking out correct submodule versions."
 
-
 npm_run_build: ## Runs the build command in package.json
 	@echo "START npm run build ..."
 	cd src/ && npm run build && cd ..
 	@echo "DONE npm run build."
-
-test-in-ondewo-aim: ## Runs test
-	@echo "START copying files to local AIM for testing ..."
-	cd src/ && npm run test-in-ondewo-aim && cd ..
-	@echo "DONE copying files to local AIM for testing."
-
