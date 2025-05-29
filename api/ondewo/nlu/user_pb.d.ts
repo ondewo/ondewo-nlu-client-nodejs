@@ -161,6 +161,11 @@ export class GetUserRequest extends jspb.Message {
     getUserEmail(): string;
     setUserEmail(value: string): GetUserRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetUserRequest;
+
     getUserIdentifierCase(): GetUserRequest.UserIdentifierCase;
 
     serializeBinary(): Uint8Array;
@@ -177,6 +182,7 @@ export namespace GetUserRequest {
     export type AsObject = {
         userId: string,
         userEmail: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 
     export enum UserIdentifierCase {

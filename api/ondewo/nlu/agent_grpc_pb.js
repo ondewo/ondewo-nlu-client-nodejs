@@ -478,6 +478,17 @@ function deserialize_ondewo_nlu_ListUsersInProjectResponse(buffer_arg) {
   return ondewo_nlu_agent_pb.ListUsersInProjectResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_MigrateAgentRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_agent_pb.MigrateAgentRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.MigrateAgentRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_MigrateAgentRequest(buffer_arg) {
+  return ondewo_nlu_agent_pb.MigrateAgentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_Operation(arg) {
   if (!(arg instanceof ondewo_nlu_operations_pb.Operation)) {
     throw new Error('Expected argument of type ondewo.nlu.Operation');
@@ -1012,8 +1023,18 @@ importAgent: {
     responseSerialize: serialize_ondewo_nlu_Operation,
     responseDeserialize: deserialize_ondewo_nlu_Operation,
   },
-  // Runs optimize ranking match
-optimizeRankingMatch: {
+  migrateAgent: {
+    path: '/ondewo.nlu.Agents/MigrateAgent',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_agent_pb.MigrateAgentRequest,
+    responseType: ondewo_nlu_operations_pb.Operation,
+    requestSerialize: serialize_ondewo_nlu_MigrateAgentRequest,
+    requestDeserialize: deserialize_ondewo_nlu_MigrateAgentRequest,
+    responseSerialize: serialize_ondewo_nlu_Operation,
+    responseDeserialize: deserialize_ondewo_nlu_Operation,
+  },
+  optimizeRankingMatch: {
     path: '/ondewo.nlu.Agents/OptimizeRankingMatch',
     requestStream: false,
     responseStream: false,
@@ -1283,4 +1304,4 @@ reindexAgent: {
   },
 };
 
-exports.AgentsClient = grpc.makeGenericClientConstructor(AgentsService);
+exports.AgentsClient = grpc.makeGenericClientConstructor(AgentsService, 'Agents');

@@ -243,4 +243,4 @@ getProjectConfig: {
   },
 };
 
-exports.QAClient = grpc.makeGenericClientConstructor(QAService);
+exports.QAClient = grpc.makeGenericClientConstructor(QAService, 'QA');

@@ -1766,7 +1766,8 @@ proto.ondewo.nlu.GetUserRequest.prototype.toObject = function(opt_includeInstanc
 proto.ondewo.nlu.GetUserRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     userId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    userEmail: jspb.Message.getFieldWithDefault(msg, 3, "")
+    userEmail: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1811,6 +1812,11 @@ proto.ondewo.nlu.GetUserRequest.deserializeBinaryFromReader = function(msg, read
       var value = /** @type {string} */ (reader.readString());
       msg.setUserEmail(value);
       break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1852,6 +1858,14 @@ proto.ondewo.nlu.GetUserRequest.serializeBinaryToWriter = function(message, writ
     writer.writeString(
       3,
       f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -1926,6 +1940,43 @@ proto.ondewo.nlu.GetUserRequest.prototype.clearUserEmail = function() {
  */
 proto.ondewo.nlu.GetUserRequest.prototype.hasUserEmail = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetUserRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetUserRequest} returns this
+*/
+proto.ondewo.nlu.GetUserRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetUserRequest} returns this
+ */
+proto.ondewo.nlu.GetUserRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetUserRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
