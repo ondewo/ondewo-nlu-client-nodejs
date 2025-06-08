@@ -228,6 +228,11 @@ export class GetAgentRequest extends jspb.Message {
     getAgentView(): AgentView;
     setAgentView(value: AgentView): GetAgentRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetAgentRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): GetAgentRequest.AsObject;
     static toObject(includeInstance: boolean, msg: GetAgentRequest): GetAgentRequest.AsObject;
@@ -242,6 +247,7 @@ export namespace GetAgentRequest {
     export type AsObject = {
         parent: string,
         agentView: AgentView,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -255,6 +261,11 @@ export class ListAgentsRequest extends jspb.Message {
     clearSortByField(): void;
     getSortByField(): AgentSorting | undefined;
     setSortByField(value?: AgentSorting): ListAgentsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListAgentsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListAgentsRequest.AsObject;
@@ -271,6 +282,7 @@ export namespace ListAgentsRequest {
         agentView: AgentView,
         pageToken: string,
         sortByField?: AgentSorting.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -899,6 +911,11 @@ export class ListUsersInProjectRequest extends jspb.Message {
     getPageToken(): string;
     setPageToken(value: string): ListUsersInProjectRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListUsersInProjectRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListUsersInProjectRequest.AsObject;
     static toObject(includeInstance: boolean, msg: ListUsersInProjectRequest): ListUsersInProjectRequest.AsObject;
@@ -913,6 +930,7 @@ export namespace ListUsersInProjectRequest {
     export type AsObject = {
         parent: string,
         pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -997,6 +1015,11 @@ export class ListProjectPermissionsRequest extends jspb.Message {
     getPageToken(): string;
     setPageToken(value: string): ListProjectPermissionsRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListProjectPermissionsRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListProjectPermissionsRequest.AsObject;
     static toObject(includeInstance: boolean, msg: ListProjectPermissionsRequest): ListProjectPermissionsRequest.AsObject;
@@ -1010,6 +1033,7 @@ export class ListProjectPermissionsRequest extends jspb.Message {
 export namespace ListProjectPermissionsRequest {
     export type AsObject = {
         pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 

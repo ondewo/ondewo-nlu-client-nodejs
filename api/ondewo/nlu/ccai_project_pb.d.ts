@@ -265,6 +265,11 @@ export class GetCcaiProjectRequest extends jspb.Message {
     getNluProjectName(): string;
     setNluProjectName(value: string): GetCcaiProjectRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCcaiProjectRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): GetCcaiProjectRequest.AsObject;
     static toObject(includeInstance: boolean, msg: GetCcaiProjectRequest): GetCcaiProjectRequest.AsObject;
@@ -281,6 +286,7 @@ export namespace GetCcaiProjectRequest {
         ccaiProjectView?: CcaiProjectView,
         ccaiServiceFilter?: CcaiServiceFilter.AsObject,
         nluProjectName: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -289,6 +295,11 @@ export class GetCcaiServiceRequest extends jspb.Message {
     setName(value: string): GetCcaiServiceRequest;
     getNluProjectName(): string;
     setNluProjectName(value: string): GetCcaiServiceRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetCcaiServiceRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): GetCcaiServiceRequest.AsObject;
@@ -304,6 +315,7 @@ export namespace GetCcaiServiceRequest {
     export type AsObject = {
         name: string,
         nluProjectName: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -328,6 +340,11 @@ export class ListCcaiProjectsRequest extends jspb.Message {
     getNluProjectName(): string;
     setNluProjectName(value: string): ListCcaiProjectsRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListCcaiProjectsRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListCcaiProjectsRequest.AsObject;
     static toObject(includeInstance: boolean, msg: ListCcaiProjectsRequest): ListCcaiProjectsRequest.AsObject;
@@ -345,6 +362,7 @@ export namespace ListCcaiProjectsRequest {
         ccaiProjectSorting?: CcaiProjectSorting.AsObject,
         pageToken?: string,
         nluProjectName: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -420,6 +438,10 @@ export class CcaiServiceFilter extends jspb.Message {
     getCcaiServiceTypesList(): Array<CcaiServiceType>;
     setCcaiServiceTypesList(value: Array<CcaiServiceType>): CcaiServiceFilter;
     addCcaiServiceTypes(value: CcaiServiceType, index?: number): CcaiServiceType;
+    clearCcaiServiceProvidersList(): void;
+    getCcaiServiceProvidersList(): Array<CcaiServiceProvider>;
+    setCcaiServiceProvidersList(value: Array<CcaiServiceProvider>): CcaiServiceFilter;
+    addCcaiServiceProviders(value: CcaiServiceProvider, index?: number): CcaiServiceProvider;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): CcaiServiceFilter.AsObject;
@@ -435,6 +457,7 @@ export namespace CcaiServiceFilter {
     export type AsObject = {
         languageCodesList: Array<string>,
         ccaiServiceTypesList: Array<CcaiServiceType>,
+        ccaiServiceProvidersList: Array<CcaiServiceProvider>,
     }
 }
 
@@ -580,6 +603,9 @@ export enum CcaiServiceType {
     CCAI_SERVICE_TYPE_ONDEWO_NLU_VECTORSTORE = 17,
     CCAI_SERVICE_TYPE_ONDEWO_NLU_LLM_AGENT = 18,
     CCAI_SERVICE_TYPE_ONDEWO_NLU_LLM_MCP = 19,
+    CCAI_SERVICE_TYPE_ONDEWO_NLU_LLM_RAG = 20,
+    CCAI_SERVICE_TYPE_ONDEWO_ANALYTICS = 21,
+    CCAI_SERVICE_TYPE_ONDEWO_ANALYTICS_DASHBOARD = 22,
 }
 
 export enum CcaiServiceProvider {
@@ -614,6 +640,9 @@ export enum CcaiServiceProvider {
     CCAI_SERVICE_PROVIDER_HUGGINGFACE_SMOLAGENTS = 28,
     CCAI_SERVICE_PROVIDER_GOOGLE_AGENT_DEVELOPMENT_KIT = 29,
     CCAI_SERVICE_PROVIDER_MODEL_CONTEXT_PROTOCOL = 30,
+    CCAI_SERVICE_PROVIDER_OPENSEARCH = 31,
+    CCAI_SERVICE_PROVIDER_GROK = 32,
+    CCAI_SERVICE_PROVIDER_POSTGRES = 33,
 }
 
 export enum CcaiProjectView {

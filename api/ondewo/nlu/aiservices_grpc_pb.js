@@ -19,6 +19,7 @@
 var grpc = require('@grpc/grpc-js');
 var ondewo_nlu_aiservices_pb = require('../../ondewo/nlu/aiservices_pb.js');
 var google_api_annotations_pb = require('../../google/api/annotations_pb.js');
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 var ondewo_nlu_ccai_project_pb = require('../../ondewo/nlu/ccai_project_pb.js');
 var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');

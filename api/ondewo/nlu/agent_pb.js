@@ -3140,7 +3140,8 @@ proto.ondewo.nlu.GetAgentRequest.prototype.toObject = function(opt_includeInstan
 proto.ondewo.nlu.GetAgentRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    agentView: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    agentView: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3185,6 +3186,11 @@ proto.ondewo.nlu.GetAgentRequest.deserializeBinaryFromReader = function(msg, rea
       var value = /** @type {!proto.ondewo.nlu.AgentView} */ (reader.readEnum());
       msg.setAgentView(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3228,6 +3234,14 @@ proto.ondewo.nlu.GetAgentRequest.serializeBinaryToWriter = function(message, wri
       f
     );
   }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -3267,6 +3281,43 @@ proto.ondewo.nlu.GetAgentRequest.prototype.setAgentView = function(value) {
 };
 
 
+/**
+ * optional google.protobuf.FieldMask field_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetAgentRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetAgentRequest} returns this
+*/
+proto.ondewo.nlu.GetAgentRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetAgentRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetAgentRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
 
 
 
@@ -3301,7 +3352,8 @@ proto.ondewo.nlu.ListAgentsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     agentView: jspb.Message.getFieldWithDefault(msg, 1, 0),
     pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    sortByField: (f = msg.getSortByField()) && proto.ondewo.nlu.AgentSorting.toObject(includeInstance, f)
+    sortByField: (f = msg.getSortByField()) && proto.ondewo.nlu.AgentSorting.toObject(includeInstance, f),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -3350,6 +3402,11 @@ proto.ondewo.nlu.ListAgentsRequest.deserializeBinaryFromReader = function(msg, r
       var value = new proto.ondewo.nlu.AgentSorting;
       reader.readMessage(value,proto.ondewo.nlu.AgentSorting.deserializeBinaryFromReader);
       msg.setSortByField(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -3400,6 +3457,14 @@ proto.ondewo.nlu.ListAgentsRequest.serializeBinaryToWriter = function(message, w
       3,
       f,
       proto.ondewo.nlu.AgentSorting.serializeBinaryToWriter
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -3475,6 +3540,43 @@ proto.ondewo.nlu.ListAgentsRequest.prototype.clearSortByField = function() {
  */
 proto.ondewo.nlu.ListAgentsRequest.prototype.hasSortByField = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListAgentsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListAgentsRequest} returns this
+*/
+proto.ondewo.nlu.ListAgentsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListAgentsRequest} returns this
+ */
+proto.ondewo.nlu.ListAgentsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListAgentsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -8040,7 +8142,8 @@ proto.ondewo.nlu.ListUsersInProjectRequest.prototype.toObject = function(opt_inc
 proto.ondewo.nlu.ListUsersInProjectRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 2, "")
+    pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8085,6 +8188,11 @@ proto.ondewo.nlu.ListUsersInProjectRequest.deserializeBinaryFromReader = functio
       var value = /** @type {string} */ (reader.readString());
       msg.setPageToken(value);
       break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -8128,6 +8236,14 @@ proto.ondewo.nlu.ListUsersInProjectRequest.serializeBinaryToWriter = function(me
       f
     );
   }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -8164,6 +8280,43 @@ proto.ondewo.nlu.ListUsersInProjectRequest.prototype.getPageToken = function() {
  */
 proto.ondewo.nlu.ListUsersInProjectRequest.prototype.setPageToken = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListUsersInProjectRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListUsersInProjectRequest} returns this
+*/
+proto.ondewo.nlu.ListUsersInProjectRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListUsersInProjectRequest} returns this
+ */
+proto.ondewo.nlu.ListUsersInProjectRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListUsersInProjectRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -8760,7 +8913,8 @@ proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.toObject = function(opt
  */
 proto.ondewo.nlu.ListProjectPermissionsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    pageToken: jspb.Message.getFieldWithDefault(msg, 1, "")
+    pageToken: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -8801,6 +8955,11 @@ proto.ondewo.nlu.ListProjectPermissionsRequest.deserializeBinaryFromReader = fun
       var value = /** @type {string} */ (reader.readString());
       msg.setPageToken(value);
       break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -8837,6 +8996,14 @@ proto.ondewo.nlu.ListProjectPermissionsRequest.serializeBinaryToWriter = functio
       f
     );
   }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
 };
 
 
@@ -8855,6 +9022,43 @@ proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.getPageToken = function
  */
 proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.setPageToken = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListProjectPermissionsRequest} returns this
+*/
+proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListProjectPermissionsRequest} returns this
+ */
+proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListProjectPermissionsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
