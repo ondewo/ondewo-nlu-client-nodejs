@@ -1,37 +1,37 @@
 {
-	"name": "@ondewo/nlu-client-nodejs",
-	"version": "6.2.0",
-	"description": "ONDEWO Natural Language Understanding (NLU) Client library for Nodejs",
-	"author": "ONDEWO GmbH <office@ondewo.com>",
-	"homepage": "https://ondewo.com",
-	"license": "Apache-2.0",
-	"keywords": [
-		"ondewo",
-		"nlu",
-		"api",
-		"client",
-		"nodejs",
-		"grpc"
-	],
-	"main": "public-api.js",
-	"typings": "public-api.d.ts",
-	"repository": {
-		"type": "git",
-		"directory": "https://github.com/ondewo/ondewo-nlu-client-nodejs"
-	},
-	"dependencies": {
-		"@grpc/grpc-js": "^1.12.2",
-		"@types/node": "^20.12.14",
-		"dotenv": "^16.4.5",
-		"google-protobuf": "3.21.4"
-	},
-	"devDependencies": {
-		"@eslint/eslintrc": "^3.3.1",
-		"@eslint/js": "^9.28.0",
-		"@typescript-eslint/eslint-plugin": "^8.33.1",
-		"eslint": "^9.28.0",
-		"global": "^4.4.0",
-		"husky": "^9.1.7",
-		"prettier": "^3.5.3"
-	}
+  "name": "@ondewo/nlu-client-nodejs",
+  "version": "6.2.0",
+  "description": "ONDEWO Natural Language Understanding (NLU) Client library for Nodejs",
+  "author": "ONDEWO GmbH <office@ondewo.com>",
+  "homepage": "https://ondewo.com",
+  "license": "Apache-2.0",
+  "keywords": [
+    "ondewo",
+    "nlu",
+    "api",
+    "client",
+    "nodejs",
+    "grpc"
+  ],
+  "main": "public-api.js",
+  "typings": "public-api.d.ts",
+  "repository": {
+    "type": "git",
+    "directory": "https://github.com/ondewo/ondewo-nlu-client-nodejs"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.12.2",
+    "@types/node": "^20.12.14",
+    "dotenv": "^16.4.5",
+    "google-protobuf": "3.21.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.33.0",
+    "@typescript-eslint/eslint-plugin": "^8.40.0",
+    "eslint": "^9.33.0",
+    "global": "^4.4.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.6.2"
+  }
 }
