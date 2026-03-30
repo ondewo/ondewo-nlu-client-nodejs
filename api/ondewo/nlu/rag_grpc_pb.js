@@ -29,13 +29,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// File-level comment for <code>ondewo/nlu/rags.proto</code>.
-// This file contains a single service <a href="index.html#ondewo.nlu.Rags">Rags</a>. The Rags service provides integration with RAGFlow for Retrieval-Augmented Generation (RAG), including dataset management, document processing, chunk retrieval, conversational AI with chat and agent assistants, and file management. Key message types include <a href="index.html#ondewo.nlu.RagDataset">RagDataset</a>, <a href="index.html#ondewo.nlu.RagChat">RagChat</a>, and <a href="index.html#ondewo.nlu.RagAgent">RagAgent</a>.
+// File-level comment for <code>ondewo/nlu/rag.proto</code>.
+// This file contains a single service <a href="#ondewo.nlu.Rags">Rags</a>. The Rags service provides integration with RAGFlow for Retrieval-Augmented Generation (RAG), including dataset management, document processing, chunk retrieval, conversational AI with chat and agent assistants, and file management. Key message types include <a href="#ondewo.nlu.RagDataset">RagDataset</a>, <a href="#ondewo.nlu.RagChat">RagChat</a>, and <a href="#ondewo.nlu.RagAgent">RagAgent</a>.
+// All message fields that are marked as <code>optional</code> are not actually optional but marked as such to enable presence tracking so that it is possible to distinguish between null and default value fields. Without the <code>optional</code> keyword it would for instance not be possible to distinguish between an integer <code>0</code> and <code>null</code>.
 'use strict';
 var grpc = require('@grpc/grpc-js');
 var ondewo_nlu_rag_pb = require('../../ondewo/nlu/rag_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
+var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
+var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+var ondewo_nlu_operation_metadata_pb = require('../../ondewo/nlu/operation_metadata_pb.js');
+var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
+var ondewo_nlu_session_pb = require('../../ondewo/nlu/session_pb.js');
+var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
   if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
@@ -48,15 +55,15 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
   return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_google_protobuf_Struct(arg) {
-  if (!(arg instanceof google_protobuf_struct_pb.Struct)) {
-    throw new Error('Expected argument of type google.protobuf.Struct');
+function serialize_ondewo_nlu_Operation(arg) {
+  if (!(arg instanceof ondewo_nlu_operations_pb.Operation)) {
+    throw new Error('Expected argument of type ondewo.nlu.Operation');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_google_protobuf_Struct(buffer_arg) {
-  return google_protobuf_struct_pb.Struct.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_Operation(buffer_arg) {
+  return ondewo_nlu_operations_pb.Operation.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagAddChunkRequest(arg) {
@@ -79,6 +86,17 @@ function serialize_ondewo_nlu_RagAddChunkResponse(arg) {
 
 function deserialize_ondewo_nlu_RagAddChunkResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagAddChunkResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagAddCrawlerResultsToDatasetsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagAddCrawlerResultsToDatasetsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagAddCrawlerResultsToDatasetsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagAddCrawlerResultsToDatasetsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagAddCrawlerResultsToDatasetsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagAgentCompletionRequest(arg) {
@@ -114,17 +132,6 @@ function deserialize_ondewo_nlu_RagAgentList(buffer_arg) {
   return ondewo_nlu_rag_pb.RagAgentList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagAgentSession(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagAgentSession)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagAgentSession');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagAgentSession(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagAgentSession.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_ondewo_nlu_RagAgentSessionList(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagAgentSessionList)) {
     throw new Error('Expected argument of type ondewo.nlu.RagAgentSessionList');
@@ -134,39 +141,6 @@ function serialize_ondewo_nlu_RagAgentSessionList(arg) {
 
 function deserialize_ondewo_nlu_RagAgentSessionList(buffer_arg) {
   return ondewo_nlu_rag_pb.RagAgentSessionList.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagAgentbotCompletionRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagAgentbotCompletionRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagAgentbotCompletionRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagAgentbotCompletionRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagAgentbotCompletionRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagAgentbotInputsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagAgentbotInputsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagAgentbotInputsRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagAgentbotInputsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagAgentbotInputsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagAgentbotInputsResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagAgentbotInputsResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagAgentbotInputsResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagAgentbotInputsResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagAgentbotInputsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagAskRequest(arg) {
@@ -191,15 +165,26 @@ function deserialize_ondewo_nlu_RagAskResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagAskResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagChat(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagChat)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagChat');
+function serialize_ondewo_nlu_RagChatAssistant(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatAssistant)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagChatAssistant');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagChat(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagChat.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagChatAssistant(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagChatAssistant.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagChatAssistantList(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatAssistantList)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagChatAssistantList');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagChatAssistantList(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagChatAssistantList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagChatCompletionRequest(arg) {
@@ -224,17 +209,6 @@ function deserialize_ondewo_nlu_RagChatCompletionResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagChatCompletionResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagChatList(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatList)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagChatList');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagChatList(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagChatList.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_ondewo_nlu_RagChatSession(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagChatSession)) {
     throw new Error('Expected argument of type ondewo.nlu.RagChatSession');
@@ -257,37 +231,48 @@ function deserialize_ondewo_nlu_RagChatSessionList(buffer_arg) {
   return ondewo_nlu_rag_pb.RagChatSessionList.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagChatbotCompletionRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatbotCompletionRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagChatbotCompletionRequest');
+function serialize_ondewo_nlu_RagConstructKnowledgeGraphResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagConstructKnowledgeGraphResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagConstructKnowledgeGraphResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagChatbotCompletionRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagChatbotCompletionRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagConstructKnowledgeGraphResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagConstructKnowledgeGraphResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagChatbotInfoRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatbotInfoRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagChatbotInfoRequest');
+function serialize_ondewo_nlu_RagConstructRaptorResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagConstructRaptorResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagConstructRaptorResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagChatbotInfoRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagChatbotInfoRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagConstructRaptorResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagConstructRaptorResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagChatbotInfoResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagChatbotInfoResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagChatbotInfoResponse');
+function serialize_ondewo_nlu_RagCrawler(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagCrawler)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagCrawler');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagChatbotInfoResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagChatbotInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagCrawler(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagCrawler.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagCrawlerResult(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagCrawlerResult)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagCrawlerResult');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagCrawlerResult(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagCrawlerResult.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagCreateAgentRequest(arg) {
@@ -301,26 +286,15 @@ function deserialize_ondewo_nlu_RagCreateAgentRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagCreateAgentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagCreateAgentSessionRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateAgentSessionRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagCreateAgentSessionRequest');
+function serialize_ondewo_nlu_RagCreateChatAssistantRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateChatAssistantRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagCreateChatAssistantRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagCreateAgentSessionRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagCreateAgentSessionRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagCreateChatRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateChatRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagCreateChatRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagCreateChatRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagCreateChatRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagCreateChatAssistantRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagCreateChatAssistantRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagCreateChatSessionRequest(arg) {
@@ -334,6 +308,17 @@ function deserialize_ondewo_nlu_RagCreateChatSessionRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagCreateChatSessionRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_RagCreateCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagCreateCrawlerRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagCreateCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagCreateCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RagCreateDatasetRequest(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateDatasetRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.RagCreateDatasetRequest');
@@ -345,17 +330,6 @@ function deserialize_ondewo_nlu_RagCreateDatasetRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagCreateDatasetRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagCreateFileRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagCreateFileRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagCreateFileRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagCreateFileRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagCreateFileRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_ondewo_nlu_RagDataset(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagDataset)) {
     throw new Error('Expected argument of type ondewo.nlu.RagDataset');
@@ -365,6 +339,17 @@ function serialize_ondewo_nlu_RagDataset(arg) {
 
 function deserialize_ondewo_nlu_RagDataset(buffer_arg) {
   return ondewo_nlu_rag_pb.RagDataset.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagDatasetIdRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDatasetIdRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDatasetIdRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagDatasetIdRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDatasetIdRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagDatasetList(arg) {
@@ -411,26 +396,70 @@ function deserialize_ondewo_nlu_RagDeleteChatSessionsRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagDeleteChatSessionsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagDeleteChatsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteChatsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDeleteChatsRequest');
+function serialize_ondewo_nlu_RagDeleteCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlerRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagDeleteChatsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDeleteChatsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagDeleteCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagDeleteDatasetsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteDatasetsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDeleteDatasetsRequest');
+function serialize_ondewo_nlu_RagDeleteCrawlerResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlerResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlerResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagDeleteDatasetsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDeleteDatasetsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagDeleteCrawlerResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlerResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagDeleteCrawlerRunsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlerRunsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlerRunsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagDeleteCrawlerRunsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlerRunsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagDeleteCrawlerRunsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlerRunsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlerRunsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagDeleteCrawlerRunsResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlerRunsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagDeleteCrawlersRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlersRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlersRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagDeleteCrawlersRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlersRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagDeleteCrawlersResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteCrawlersResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteCrawlersResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagDeleteCrawlersResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteCrawlersResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagDeleteDocumentsRequest(arg) {
@@ -444,48 +473,15 @@ function deserialize_ondewo_nlu_RagDeleteDocumentsRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagDeleteDocumentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagDeleteFilesRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteFilesRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDeleteFilesRequest');
+function serialize_ondewo_nlu_RagDeleteRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagDeleteRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagDeleteFilesRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDeleteFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagDeleteKnowledgeGraphRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDeleteKnowledgeGraphRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDeleteKnowledgeGraphRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagDeleteKnowledgeGraphRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDeleteKnowledgeGraphRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagDifyRecordList(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDifyRecordList)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDifyRecordList');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagDifyRecordList(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDifyRecordList.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagDifyRetrievalRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagDifyRetrievalRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagDifyRetrievalRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagDifyRetrievalRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagDifyRetrievalRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagDeleteRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagDeleteRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagDocument(arg) {
@@ -521,17 +517,6 @@ function deserialize_ondewo_nlu_RagDownloadDocumentRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagDownloadDocumentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagFile(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagFile)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagFile');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagFile(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagFile.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_ondewo_nlu_RagFileChunk(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagFileChunk)) {
     throw new Error('Expected argument of type ondewo.nlu.RagFileChunk');
@@ -543,81 +528,81 @@ function deserialize_ondewo_nlu_RagFileChunk(buffer_arg) {
   return ondewo_nlu_rag_pb.RagFileChunk.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagFileList(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagFileList)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagFileList');
+function serialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagFileList(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagFileList.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagFileToDocumentList(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagFileToDocumentList)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagFileToDocumentList');
+function serialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerAttachedDatasetsResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagFileToDocumentList(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagFileToDocumentList.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagFileToDocumentRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagFileToDocumentRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagFileToDocumentRequest');
+function serialize_ondewo_nlu_RagGetCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagFileToDocumentRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagFileToDocumentRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagGetAllParentFoldersRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetAllParentFoldersRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetAllParentFoldersRequest');
+function serialize_ondewo_nlu_RagGetCrawlerResultRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerResultRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerResultRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagGetAllParentFoldersRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetAllParentFoldersRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerResultRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerResultRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagGetAllParentFoldersResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetAllParentFoldersResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetAllParentFoldersResponse');
+function serialize_ondewo_nlu_RagGetCrawlerResultsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerResultsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerResultsRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagGetAllParentFoldersResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetAllParentFoldersResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerResultsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerResultsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagGetFileRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetFileRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetFileRequest');
+function serialize_ondewo_nlu_RagGetCrawlerResultsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerResultsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerResultsResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagGetFileRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetFileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerResultsResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerResultsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagGetKnowledgeGraphRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetKnowledgeGraphRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetKnowledgeGraphRequest');
+function serialize_ondewo_nlu_RagGetCrawlerRunRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerRunRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerRunRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagGetKnowledgeGraphRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetKnowledgeGraphRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagGetCrawlerRunRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerRunRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagGetKnowledgeGraphResponse(arg) {
@@ -629,50 +614,6 @@ function serialize_ondewo_nlu_RagGetKnowledgeGraphResponse(arg) {
 
 function deserialize_ondewo_nlu_RagGetKnowledgeGraphResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagGetKnowledgeGraphResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagGetParentFolderRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetParentFolderRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetParentFolderRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagGetParentFolderRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetParentFolderRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagGetParentFolderResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetParentFolderResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetParentFolderResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagGetParentFolderResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetParentFolderResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagGetRootFolderRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetRootFolderRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetRootFolderRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagGetRootFolderRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetRootFolderRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagGetRootFolderResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetRootFolderResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagGetRootFolderResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagGetRootFolderResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagGetRootFolderResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagListAgentSessionsRequest(arg) {
@@ -697,6 +638,17 @@ function deserialize_ondewo_nlu_RagListAgentsRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagListAgentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_RagListChatAssistantsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagListChatAssistantsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagListChatAssistantsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagListChatAssistantsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagListChatAssistantsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RagListChatSessionsRequest(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagListChatSessionsRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.RagListChatSessionsRequest');
@@ -706,17 +658,6 @@ function serialize_ondewo_nlu_RagListChatSessionsRequest(arg) {
 
 function deserialize_ondewo_nlu_RagListChatSessionsRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagListChatSessionsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagListChatsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagListChatsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagListChatsRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagListChatsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagListChatsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagListChunksRequest(arg) {
@@ -741,6 +682,50 @@ function deserialize_ondewo_nlu_RagListChunksResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagListChunksResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_RagListCrawlerRunsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagListCrawlerRunsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagListCrawlerRunsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagListCrawlerRunsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagListCrawlerRunsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagListCrawlerRunsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagListCrawlerRunsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagListCrawlerRunsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagListCrawlerRunsResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagListCrawlerRunsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagListCrawlersRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagListCrawlersRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagListCrawlersRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagListCrawlersRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagListCrawlersRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagListCrawlersResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagListCrawlersResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagListCrawlersResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagListCrawlersResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagListCrawlersResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RagListDatasetsRequest(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagListDatasetsRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.RagListDatasetsRequest');
@@ -761,83 +746,6 @@ function serialize_ondewo_nlu_RagListDocumentsRequest(arg) {
 
 function deserialize_ondewo_nlu_RagListDocumentsRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagListDocumentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagListDocumentsResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagListDocumentsResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagListDocumentsResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagListDocumentsResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagListDocumentsResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagListFilesRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagListFilesRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagListFilesRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagListFilesRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagListFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagListFilesResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagListFilesResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagListFilesResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagListFilesResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagListFilesResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagMoveFileRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagMoveFileRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagMoveFileRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagMoveFileRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagMoveFileRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagOpenAiAgentCompletionRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagOpenAiAgentCompletionRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagOpenAiAgentCompletionRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagOpenAiAgentCompletionRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagOpenAiAgentCompletionRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagOpenAiChatCompletionRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagOpenAiChatCompletionRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagOpenAiChatCompletionRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagOpenAiChatCompletionRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagOpenAiChatCompletionRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagOpenAiChatCompletionResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagOpenAiChatCompletionResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagOpenAiChatCompletionResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagOpenAiChatCompletionResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagOpenAiChatCompletionResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagParseDocumentsRequest(arg) {
@@ -895,15 +803,15 @@ function deserialize_ondewo_nlu_RagRemoveChunksRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagRemoveChunksRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagRenameFileRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagRenameFileRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagRenameFileRequest');
+function serialize_ondewo_nlu_RagRemoveCrawlerResultsFromDatasetsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagRemoveCrawlerResultsFromDatasetsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagRemoveCrawlerResultsFromDatasetsRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagRenameFileRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagRenameFileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagRemoveCrawlerResultsFromDatasetsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagRemoveCrawlerResultsFromDatasetsRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagRetrievalRequest(arg) {
@@ -928,81 +836,37 @@ function deserialize_ondewo_nlu_RagRetrievalResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagRetrievalResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagSearchbotAskRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotAskRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotAskRequest');
+function serialize_ondewo_nlu_RagStartCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagStartCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagStartCrawlerRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagSearchbotAskRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotAskRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagStartCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagStartCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagSearchbotDetailRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotDetailRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotDetailRequest');
+function serialize_ondewo_nlu_RagStopCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagStopCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagStopCrawlerRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagSearchbotDetailRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotDetailRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagStopCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagStopCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagSearchbotDetailResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotDetailResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotDetailResponse');
+function serialize_ondewo_nlu_RagStopCrawlerResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagStopCrawlerResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagStopCrawlerResponse');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagSearchbotDetailResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotDetailResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagSearchbotMindmapRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotMindmapRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotMindmapRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagSearchbotMindmapRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotMindmapRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagSearchbotRelatedQuestionsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotRelatedQuestionsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotRelatedQuestionsRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagSearchbotRelatedQuestionsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotRelatedQuestionsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagSearchbotRetrievalRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotRetrievalRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotRetrievalRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagSearchbotRetrievalRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotRetrievalRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagSearchbotRetrievalResponse(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagSearchbotRetrievalResponse)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagSearchbotRetrievalResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagSearchbotRetrievalResponse(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagSearchbotRetrievalResponse.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagStopCrawlerResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagStopCrawlerResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagStopParsingRequest(arg) {
@@ -1016,6 +880,17 @@ function deserialize_ondewo_nlu_RagStopParsingRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagStopParsingRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_RagTaskStatus(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagTaskStatus)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagTaskStatus');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagTaskStatus(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagTaskStatus.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RagUpdateAgentRequest(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagUpdateAgentRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.RagUpdateAgentRequest');
@@ -1027,15 +902,15 @@ function deserialize_ondewo_nlu_RagUpdateAgentRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagUpdateAgentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagUpdateChatRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagUpdateChatRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagUpdateChatRequest');
+function serialize_ondewo_nlu_RagUpdateChatAssistantRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagUpdateChatAssistantRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagUpdateChatAssistantRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagUpdateChatRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagUpdateChatRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagUpdateChatAssistantRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagUpdateChatAssistantRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagUpdateChatSessionRequest(arg) {
@@ -1060,6 +935,17 @@ function deserialize_ondewo_nlu_RagUpdateChunkRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagUpdateChunkRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_RagUpdateCrawlerRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagUpdateCrawlerRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagUpdateCrawlerRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagUpdateCrawlerRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagUpdateCrawlerRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_RagUpdateDatasetRequest(arg) {
   if (!(arg instanceof ondewo_nlu_rag_pb.RagUpdateDatasetRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.RagUpdateDatasetRequest');
@@ -1082,43 +968,32 @@ function deserialize_ondewo_nlu_RagUpdateDocumentRequest(buffer_arg) {
   return ondewo_nlu_rag_pb.RagUpdateDocumentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_ondewo_nlu_RagUploadDocumentsRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagUploadDocumentsRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagUploadDocumentsRequest');
+function serialize_ondewo_nlu_RagUploadDocumentRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagUploadDocumentRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagUploadDocumentRequest');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_ondewo_nlu_RagUploadDocumentsRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagUploadDocumentsRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_ondewo_nlu_RagUploadFilesRequest(arg) {
-  if (!(arg instanceof ondewo_nlu_rag_pb.RagUploadFilesRequest)) {
-    throw new Error('Expected argument of type ondewo.nlu.RagUploadFilesRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_ondewo_nlu_RagUploadFilesRequest(buffer_arg) {
-  return ondewo_nlu_rag_pb.RagUploadFilesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_ondewo_nlu_RagUploadDocumentRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagUploadDocumentRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 
 // TODO change Github link if changes to RAGFlow are merged to upstream
 //
 // Provides an interface for interacting with the RAGFlow RAG engine.
-// Covers all entpoints of the <a href="https://github.com/ondewo/ragflow">RAGFlow</a> HTTP API. For more information on RAGFlow refer to the <a href="https://ragflow.io/docs/dev/">official documentation</a>
+// Covers all endpoints of the <a href="https://github.com/ondewo/ragflow">RAGFlow</a> HTTP API. For more information on RAGFlow refer to the <a href="https://ragflow.io/docs/dev/">official documentation</a>
 var RagsService = exports.RagsService = {
   // ===========================================
-// Dataset Management (6 methods)
+// Dataset Management
 // REST: /api/v1/datasets
 // ===========================================
 //
 // RAGFlow endpoint: POST /api/v1/datasets
 //
 // Create a new dataset (knowledge base).<br>
-// Uses tenant&apos;s default embedding model if not specified.
+// Uses tenant's default embedding model if not specified.
 ragCreateDataset: {
     path: '/ondewo.nlu.Rags/RagCreateDataset',
     requestStream: false,
@@ -1130,9 +1005,9 @@ ragCreateDataset: {
     responseSerialize: serialize_ondewo_nlu_RagDataset,
     responseDeserialize: deserialize_ondewo_nlu_RagDataset,
   },
-  // RAGFlow endpoint: PUT /api/v1/datasets/&lt;dataset_id&gt;
+  // RAGFlow endpoint: PUT /api/v1/datasets/<dataset_id>
 //
-// Update an existing dataset&apos;s configuration.<br>
+// Update an existing dataset's configuration.<br>
 // Cannot change embedding_model if dataset has chunks.
 ragUpdateDataset: {
     path: '/ondewo.nlu.Rags/RagUpdateDataset',
@@ -1148,16 +1023,16 @@ ragUpdateDataset: {
   // RAGFlow endpoint: DELETE /api/v1/datasets
 //
 // Delete one or more datasets (batch operation).<br>
-// If ids is null or empty, deletes all user&apos;s datasets.<br>
+// If ids is null or empty, deletes all user's datasets.<br>
 // Deletes all associated documents, files, and chunks.
 ragDeleteDatasets: {
     path: '/ondewo.nlu.Rags/RagDeleteDatasets',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteDatasetsRequest,
+    requestType: ondewo_nlu_rag_pb.RagDeleteRequest,
     responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteDatasetsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteDatasetsRequest,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteRequest,
     responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
     responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
   },
@@ -1176,57 +1051,27 @@ ragListDatasets: {
     responseSerialize: serialize_ondewo_nlu_RagDatasetList,
     responseDeserialize: deserialize_ondewo_nlu_RagDatasetList,
   },
-  // RAGFlow endpoint: GET /api/v1/datasets/&lt;dataset_id&gt;/knowledge_graph
-//
-// Get the knowledge graph for a dataset.<br>
-// Returns graph structure with nodes (max 256) and edges (max 128).
-ragGetKnowledgeGraph: {
-    path: '/ondewo.nlu.Rags/RagGetKnowledgeGraph',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagGetKnowledgeGraphRequest,
-    responseType: ondewo_nlu_rag_pb.RagGetKnowledgeGraphResponse,
-    requestSerialize: serialize_ondewo_nlu_RagGetKnowledgeGraphRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagGetKnowledgeGraphRequest,
-    responseSerialize: serialize_ondewo_nlu_RagGetKnowledgeGraphResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagGetKnowledgeGraphResponse,
-  },
-  // RAGFlow endpoint: DELETE /api/v1/datasets/&lt;dataset_id&gt;/knowledge_graph
-//
-// Delete the knowledge graph for a dataset.<br>
-// Deletes graph-related chunks but not the dataset itself.
-ragDeleteKnowledgeGraph: {
-    path: '/ondewo.nlu.Rags/RagDeleteKnowledgeGraph',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteKnowledgeGraphRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteKnowledgeGraphRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteKnowledgeGraphRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
-  },
   // ========================================================================
-// Document Management (5 methods)
+// Document Management
 // REST: /api/v1/datasets/<dataset_id>/documents
 // ========================================================================
 //
-// RAGFlow endpoint: POST /api/v1/datasets/&lt;dataset_id&gt;/documents
+// RAGFlow endpoint: POST /api/v1/datasets/<dataset_id>/documents
 //
 // Upload one or more documents to a dataset.<br>
 // Documents start in UNSTART state and must be parsed.
-ragUploadDocuments: {
-    path: '/ondewo.nlu.Rags/RagUploadDocuments',
+ragUploadDocument: {
+    path: '/ondewo.nlu.Rags/RagUploadDocument',
     requestStream: true,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagUploadDocumentsRequest,
-    responseType: ondewo_nlu_rag_pb.RagDocumentList,
-    requestSerialize: serialize_ondewo_nlu_RagUploadDocumentsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagUploadDocumentsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagDocumentList,
-    responseDeserialize: deserialize_ondewo_nlu_RagDocumentList,
+    requestType: ondewo_nlu_rag_pb.RagUploadDocumentRequest,
+    responseType: ondewo_nlu_rag_pb.RagDocument,
+    requestSerialize: serialize_ondewo_nlu_RagUploadDocumentRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagUploadDocumentRequest,
+    responseSerialize: serialize_ondewo_nlu_RagDocument,
+    responseDeserialize: deserialize_ondewo_nlu_RagDocument,
   },
-  // RAGFlow endpoint: PUT /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;
+  // RAGFlow endpoint: PUT /api/v1/datasets/<dataset_id>/documents/<document_id>
 //
 // Update document metadata and configuration.<br>
 // Changing chunk_method resets document to UNSTART and deletes chunks.
@@ -1241,7 +1086,7 @@ ragUpdateDocument: {
     responseSerialize: serialize_ondewo_nlu_RagDocument,
     responseDeserialize: deserialize_ondewo_nlu_RagDocument,
   },
-  // RAGFlow endpoint: GET /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;
+  // RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/documents/<document_id>
 //
 // Download the original document file.<br>
 // Returns binary file stream from storage.<br>
@@ -1257,7 +1102,7 @@ ragDownloadDocument: {
     responseSerialize: serialize_ondewo_nlu_RagFileChunk,
     responseDeserialize: deserialize_ondewo_nlu_RagFileChunk,
   },
-  // RAGFlow endpoint: GET /api/v1/datasets/&lt;dataset_id&gt;/documents
+  // RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/documents
 //
 // List documents in a dataset with pagination and filtering.<br>
 // Supports time range filtering and keyword search.
@@ -1266,13 +1111,13 @@ ragListDocuments: {
     requestStream: false,
     responseStream: false,
     requestType: ondewo_nlu_rag_pb.RagListDocumentsRequest,
-    responseType: ondewo_nlu_rag_pb.RagListDocumentsResponse,
+    responseType: ondewo_nlu_rag_pb.RagDocumentList,
     requestSerialize: serialize_ondewo_nlu_RagListDocumentsRequest,
     requestDeserialize: deserialize_ondewo_nlu_RagListDocumentsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagListDocumentsResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagListDocumentsResponse,
+    responseSerialize: serialize_ondewo_nlu_RagDocumentList,
+    responseDeserialize: deserialize_ondewo_nlu_RagDocumentList,
   },
-  // RAGFlow endpoint: DELETE /api/v1/datasets/&lt;dataset_id&gt;/documents
+  // RAGFlow endpoint: DELETE /api/v1/datasets/<dataset_id>/documents
 //
 // Delete one or more documents from a dataset (batch operation).<br>
 // If ids empty, deletes all documents. Removes chunks and storage files.
@@ -1288,103 +1133,11 @@ ragDeleteDocuments: {
     responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
   },
   // ========================================================================
-// Chunk Management (7 methods)
-// Chunks are text segments extracted from documents for retrieval.
-// REST: /api/v1/datasets/&lt;dataset_id&gt;/chunks
+// Chunk Management
+// REST: /api/v1/datasets/<dataset_id>/chunks, /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks, /api/v1/retrieval
 // ========================================================================
 //
-// RAGFlow endpoint: POST /api/v1/datasets/&lt;dataset_id&gt;/chunks
-//
-// Start parsing documents into chunks.<br>
-// Cannot parse documents currently being processed (0 &lt; progress &lt; 1).<br>
-// Queues documents for background processing.
-ragParseDocuments: {
-    path: '/ondewo.nlu.Rags/RagParseDocuments',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagParseDocumentsRequest,
-    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagParseDocumentsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagParseDocumentsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
-    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
-  },
-  // RAGFlow endpoint: DELETE /api/v1/datasets/&lt;dataset_id&gt;/chunks
-//
-// Stop parsing documents.<br>
-// Can only stop documents with progress between 0 and 1.
-ragStopParsing: {
-    path: '/ondewo.nlu.Rags/RagStopParsing',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagStopParsingRequest,
-    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagStopParsingRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagStopParsingRequest,
-    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
-    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
-  },
-  // RAGFlow endpoint: GET /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;/chunks
-//
-// List chunks of a document with pagination.<br>
-// Supports keyword search with content highlighting.
-ragListChunks: {
-    path: '/ondewo.nlu.Rags/RagListChunks',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagListChunksRequest,
-    responseType: ondewo_nlu_rag_pb.RagListChunksResponse,
-    requestSerialize: serialize_ondewo_nlu_RagListChunksRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagListChunksRequest,
-    responseSerialize: serialize_ondewo_nlu_RagListChunksResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagListChunksResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;/chunks
-//
-// Manually add a chunk to a document.<br>
-// Automatically tokenizes content and generates embeddings.
-ragAddChunk: {
-    path: '/ondewo.nlu.Rags/RagAddChunk',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagAddChunkRequest,
-    responseType: ondewo_nlu_rag_pb.RagAddChunkResponse,
-    requestSerialize: serialize_ondewo_nlu_RagAddChunkRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagAddChunkRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAddChunkResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagAddChunkResponse,
-  },
-  // RAGFlow endpoint: DELETE /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;/chunks
-//
-// Remove one or more chunks from a document.<br>
-// If chunk_ids empty, removes all chunks from document.
-ragRemoveChunks: {
-    path: '/ondewo.nlu.Rags/RagRemoveChunks',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagRemoveChunksRequest,
-    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagRemoveChunksRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagRemoveChunksRequest,
-    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
-    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
-  },
-  // RAGFlow endpoint: PUT /api/v1/datasets/&lt;dataset_id&gt;/documents/&lt;document_id&gt;/chunks/&lt;chunk_id&gt;
-//
-// Update an existing chunk&apos;s content and metadata.<br>
-// Re-tokenizes content and re-generates embeddings if content changed.
-ragUpdateChunk: {
-    path: '/ondewo.nlu.Rags/RagUpdateChunk',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagUpdateChunkRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagUpdateChunkRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChunkRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
-  },
-  // RAGFlow endpoint: POST /api/v1/retrieval
+// RAGFlow endpoint: POST /api/v1/retrieval
 //
 // Retrieve chunks using vector similarity search.<br>
 // All datasets must use the same embedding model.<br>
@@ -1401,54 +1154,246 @@ ragRetrieval: {
     responseDeserialize: deserialize_ondewo_nlu_RagRetrievalResponse,
   },
   // ========================================================================
-// Chat Management (4 methods)
-// Chat assistants are RAG-powered conversational agents.
-// REST: /api/v1/chats
+// Currently unused endpoints
 // ========================================================================
+//
+// -------------------------------------------
+// Dataset Management
+// REST: /api/v1/datasets
+// -------------------------------------------
+//
+// RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/knowledge_graph
+//
+// Get the knowledge graph for a dataset.<br>
+// Returns graph structure with nodes (max 256) and edges (max 128).
+ragGetKnowledgeGraph: {
+    path: '/ondewo.nlu.Rags/RagGetKnowledgeGraph',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: ondewo_nlu_rag_pb.RagGetKnowledgeGraphResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_ondewo_nlu_RagGetKnowledgeGraphResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagGetKnowledgeGraphResponse,
+  },
+  // RAGFlow endpoint: DELETE /api/v1/datasets/<dataset_id>/knowledge_graph
+//
+// Delete the knowledge graph for a dataset.<br>
+// Deletes graph-related chunks but not the dataset itself.
+ragDeleteKnowledgeGraph: {
+    path: '/ondewo.nlu.Rags/RagDeleteKnowledgeGraph',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // RAGFlow endpoint: POST /api/v1/datasets/<dataset_id>/run_graphrag
+//
+// Construct a knowledge graph for a dataset.<br>
+// Uses the dataset's GraphRAG settings.
+ragConstructKnowledgeGraph: {
+    path: '/ondewo.nlu.Rags/RagConstructKnowledgeGraph',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: ondewo_nlu_rag_pb.RagConstructKnowledgeGraphResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_ondewo_nlu_RagConstructKnowledgeGraphResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagConstructKnowledgeGraphResponse,
+  },
+  // RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/trace_graphrag
+//
+// Get the knowledge graph construction status of a dataset.
+ragKnowledgeGraphStatus: {
+    path: '/ondewo.nlu.Rags/RagKnowledgeGraphStatus',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: ondewo_nlu_rag_pb.RagTaskStatus,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_ondewo_nlu_RagTaskStatus,
+    responseDeserialize: deserialize_ondewo_nlu_RagTaskStatus,
+  },
+  // RAGFlow endpoint: POST /api/v1/datasets/<dataset_id>/run_raptor
+//
+// Construct a RAPTOR for a dataset.<br>
+// Uses the dataset's RAPTOR settings.
+ragConstructRaptor: {
+    path: '/ondewo.nlu.Rags/RagConstructRaptor',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: ondewo_nlu_rag_pb.RagConstructRaptorResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_ondewo_nlu_RagConstructRaptorResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagConstructRaptorResponse,
+  },
+  // RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/trace_raptor
+//
+// Get the RAPTOR construction status of a dataset.
+ragRaptorStatus: {
+    path: '/ondewo.nlu.Rags/RagRaptorStatus',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDatasetIdRequest,
+    responseType: ondewo_nlu_rag_pb.RagTaskStatus,
+    requestSerialize: serialize_ondewo_nlu_RagDatasetIdRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDatasetIdRequest,
+    responseSerialize: serialize_ondewo_nlu_RagTaskStatus,
+    responseDeserialize: deserialize_ondewo_nlu_RagTaskStatus,
+  },
+  // ------------------------------------------------------------------------
+// Chunk Management
+// REST: /api/v1/datasets/<dataset_id>/chunks, /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks, /api/v1/retrieval
+// ------------------------------------------------------------------------
+//
+// RAGFlow endpoint: POST /api/v1/datasets/<dataset_id>/chunks
+//
+// Start parsing documents into chunks.<br>
+// Cannot parse documents currently being processed (0 < progress < 1).<br>
+// Queues documents for background processing.
+ragParseDocuments: {
+    path: '/ondewo.nlu.Rags/RagParseDocuments',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagParseDocumentsRequest,
+    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
+    requestSerialize: serialize_ondewo_nlu_RagParseDocumentsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagParseDocumentsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
+    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
+  },
+  // RAGFlow endpoint: DELETE /api/v1/datasets/<dataset_id>/chunks
+//
+// Stop parsing documents.<br>
+// Can only stop documents with progress between 0 and 1.
+ragStopParsing: {
+    path: '/ondewo.nlu.Rags/RagStopParsing',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagStopParsingRequest,
+    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
+    requestSerialize: serialize_ondewo_nlu_RagStopParsingRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagStopParsingRequest,
+    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
+    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
+  },
+  // RAGFlow endpoint: GET /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks
+//
+// List chunks of a document with pagination.<br>
+// Supports keyword search with content highlighting.
+ragListChunks: {
+    path: '/ondewo.nlu.Rags/RagListChunks',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagListChunksRequest,
+    responseType: ondewo_nlu_rag_pb.RagListChunksResponse,
+    requestSerialize: serialize_ondewo_nlu_RagListChunksRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListChunksRequest,
+    responseSerialize: serialize_ondewo_nlu_RagListChunksResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagListChunksResponse,
+  },
+  // RAGFlow endpoint: POST /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks
+//
+// Manually add a chunk to a document.<br>
+// Automatically tokenizes content and generates embeddings.
+ragAddChunk: {
+    path: '/ondewo.nlu.Rags/RagAddChunk',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagAddChunkRequest,
+    responseType: ondewo_nlu_rag_pb.RagAddChunkResponse,
+    requestSerialize: serialize_ondewo_nlu_RagAddChunkRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagAddChunkRequest,
+    responseSerialize: serialize_ondewo_nlu_RagAddChunkResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagAddChunkResponse,
+  },
+  // RAGFlow endpoint: DELETE /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks
+//
+// Remove one or more chunks from a document.<br>
+// If chunk_ids empty, removes all chunks from document.
+ragRemoveChunks: {
+    path: '/ondewo.nlu.Rags/RagRemoveChunks',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagRemoveChunksRequest,
+    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
+    requestSerialize: serialize_ondewo_nlu_RagRemoveChunksRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagRemoveChunksRequest,
+    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
+    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
+  },
+  // RAGFlow endpoint: PUT /api/v1/datasets/<dataset_id>/documents/<document_id>/chunks/<chunk_id>
+//
+// Update an existing chunk's content and metadata.<br>
+// Re-tokenizes content and re-generates embeddings if content changed.
+ragUpdateChunk: {
+    path: '/ondewo.nlu.Rags/RagUpdateChunk',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagUpdateChunkRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_ondewo_nlu_RagUpdateChunkRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChunkRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
+  },
+  // ------------------------------------------------------------------------
+// Chat Assistant Management
+// REST: /api/v1/chats
+// ------------------------------------------------------------------------
 //
 // RAGFlow endpoint: POST /api/v1/chats
 //
 // Create a new chat assistant.<br>
-// All datasets must have parsed files (chunk_num &gt; 0).<br>
+// All datasets must have parsed files (chunk_num > 0).<br>
 // All datasets must use the same embedding model.
-ragCreateChat: {
-    path: '/ondewo.nlu.Rags/RagCreateChat',
+ragCreateChatAssistant: {
+    path: '/ondewo.nlu.Rags/RagCreateChatAssistant',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagCreateChatRequest,
-    responseType: ondewo_nlu_rag_pb.RagChat,
-    requestSerialize: serialize_ondewo_nlu_RagCreateChatRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagCreateChatRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChat,
-    responseDeserialize: deserialize_ondewo_nlu_RagChat,
+    requestType: ondewo_nlu_rag_pb.RagCreateChatAssistantRequest,
+    responseType: ondewo_nlu_rag_pb.RagChatAssistant,
+    requestSerialize: serialize_ondewo_nlu_RagCreateChatAssistantRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagCreateChatAssistantRequest,
+    responseSerialize: serialize_ondewo_nlu_RagChatAssistant,
+    responseDeserialize: deserialize_ondewo_nlu_RagChatAssistant,
   },
-  // RAGFlow endpoint: PUT /api/v1/chats/&lt;chat_id&gt;
+  // RAGFlow endpoint: PUT /api/v1/chats/<chat_id>
 //
-// Update an existing chat assistant&apos;s configuration.<br>
+// Update an existing chat assistant's configuration.<br>
 // LLM and prompt configs are merged with existing values.
-ragUpdateChat: {
-    path: '/ondewo.nlu.Rags/RagUpdateChat',
+ragUpdateChatAssistant: {
+    path: '/ondewo.nlu.Rags/RagUpdateChatAssistant',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagUpdateChatRequest,
+    requestType: ondewo_nlu_rag_pb.RagUpdateChatAssistantRequest,
     responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagUpdateChatRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChatRequest,
+    requestSerialize: serialize_ondewo_nlu_RagUpdateChatAssistantRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChatAssistantRequest,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   // RAGFlow endpoint: DELETE /api/v1/chats
 //
 // Delete one or more chat assistants (batch operation).<br>
-// If ids empty, deletes all user&apos;s chats (soft delete).
-ragDeleteChats: {
-    path: '/ondewo.nlu.Rags/RagDeleteChats',
+// If ids empty, deletes all user's chats.
+ragDeleteChatAssistants: {
+    path: '/ondewo.nlu.Rags/RagDeleteChatAssistants',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteChatsRequest,
+    requestType: ondewo_nlu_rag_pb.RagDeleteRequest,
     responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteChatsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteChatsRequest,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteRequest,
     responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
     responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
   },
@@ -1456,203 +1401,21 @@ ragDeleteChats: {
 //
 // List chat assistants with pagination.<br>
 // Returns full dataset objects (not just IDs).
-ragListChats: {
-    path: '/ondewo.nlu.Rags/RagListChats',
+ragListChatAssistants: {
+    path: '/ondewo.nlu.Rags/RagListChatAssistants',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagListChatsRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatList,
-    requestSerialize: serialize_ondewo_nlu_RagListChatsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagListChatsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatList,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatList,
+    requestType: ondewo_nlu_rag_pb.RagListChatAssistantsRequest,
+    responseType: ondewo_nlu_rag_pb.RagChatAssistantList,
+    requestSerialize: serialize_ondewo_nlu_RagListChatAssistantsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListChatAssistantsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagChatAssistantList,
+    responseDeserialize: deserialize_ondewo_nlu_RagChatAssistantList,
   },
-  // ========================================================================
-// Session Management (7 methods)
-// Sessions are conversation instances for chats and agents.
-// REST: /api/v1/chats/&lt;chat_id&gt;/sessions,
-// /api/v1/agents/&lt;agent_id&gt;/sessions
-// ========================================================================
-//
-// RAGFlow endpoint: POST /api/v1/chats/&lt;chat_id&gt;/sessions
-//
-// Create a new chat session (conversation).<br>
-// Session initialized with assistant&apos;s prologue message.
-ragCreateChatSession: {
-    path: '/ondewo.nlu.Rags/RagCreateChatSession',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagCreateChatSessionRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatSession,
-    requestSerialize: serialize_ondewo_nlu_RagCreateChatSessionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagCreateChatSessionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatSession,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatSession,
-  },
-  // RAGFlow endpoint: POST /api/v1/agents/&lt;agent_id&gt;/sessions
-//
-// Create a new agent session.<br>
-// Initializes Canvas with agent&apos;s DSL configuration.
-ragCreateAgentSession: {
-    path: '/ondewo.nlu.Rags/RagCreateAgentSession',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagCreateAgentSessionRequest,
-    responseType: ondewo_nlu_rag_pb.RagAgentSession,
-    requestSerialize: serialize_ondewo_nlu_RagCreateAgentSessionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagCreateAgentSessionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAgentSession,
-    responseDeserialize: deserialize_ondewo_nlu_RagAgentSession,
-  },
-  // RAGFlow endpoint: PUT /api/v1/chats/&lt;chat_id&gt;/sessions/&lt;session_id&gt;
-//
-// Update a chat session&apos;s metadata (name only).<br>
-// Cannot update message or reference fields.
-ragUpdateChatSession: {
-    path: '/ondewo.nlu.Rags/RagUpdateChatSession',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagUpdateChatSessionRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagUpdateChatSessionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChatSessionRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
-  },
-  // RAGFlow endpoint: GET /api/v1/chats/&lt;chat_id&gt;/sessions
-//
-// List sessions for a chat assistant.<br>
-// Returns message history with embedded chunk references.
-ragListChatSessions: {
-    path: '/ondewo.nlu.Rags/RagListChatSessions',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagListChatSessionsRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatSessionList,
-    requestSerialize: serialize_ondewo_nlu_RagListChatSessionsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagListChatSessionsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatSessionList,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatSessionList,
-  },
-  // RAGFlow endpoint: GET /api/v1/agents/&lt;agent_id&gt;/sessions
-//
-// List sessions for an agent.<br>
-// Can optionally exclude DSL from response for performance.
-ragListAgentSessions: {
-    path: '/ondewo.nlu.Rags/RagListAgentSessions',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagListAgentSessionsRequest,
-    responseType: ondewo_nlu_rag_pb.RagAgentSessionList,
-    requestSerialize: serialize_ondewo_nlu_RagListAgentSessionsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagListAgentSessionsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAgentSessionList,
-    responseDeserialize: deserialize_ondewo_nlu_RagAgentSessionList,
-  },
-  // RAGFlow endpoint: DELETE /api/v1/chats/&lt;chat_id&gt;/sessions
-//
-// Delete one or more chat sessions (batch operation).<br>
-// If ids empty, deletes all sessions for the chat (hard delete).
-ragDeleteChatSessions: {
-    path: '/ondewo.nlu.Rags/RagDeleteChatSessions',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteChatSessionsRequest,
-    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteChatSessionsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteChatSessionsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
-    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
-  },
-  // RAGFlow endpoint: DELETE /api/v1/agents/&lt;agent_id&gt;/sessions
-//
-// Delete one or more agent sessions (batch operation).<br>
-// If ids empty, deletes all sessions for the agent (hard delete).
-ragDeleteAgentSessions: {
-    path: '/ondewo.nlu.Rags/RagDeleteAgentSessions',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteAgentSessionsRequest,
-    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteAgentSessionsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteAgentSessionsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
-    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
-  },
-  // ========================================================================
-// Completion (4 streaming methods)
-// Generate responses using RAG and LLMs.
-// All methods support server-side streaming.
-// REST: /api/v1/chats/&lt;id&gt;/completions,
-// /api/v1/agents/&lt;id&gt;/completions
-// ========================================================================
-//
-// RAGFlow endpoint: POST /api/v1/chats/&lt;chat_id&gt;/completions
-//
-// Generate chat completion with RAG (server streaming).<br>
-// Creates new session if session_id not provided.
-ragChatCompletion: {
-    path: '/ondewo.nlu.Rags/RagChatCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagChatCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagChatCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagChatCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatCompletionResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/chats_openai/&lt;chat_id&gt;/chat/completions
-//
-// OpenAI-compatible chat completion endpoint (server streaming).<br>
-// Compatible with OpenAI Python client.<br>
-// Supports reasoning content in &lt;redacted_reasoning&gt; tags.
-ragOpenAiChatCompletion: {
-    path: '/ondewo.nlu.Rags/RagOpenAiChatCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagOpenAiChatCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagOpenAiChatCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagOpenAiChatCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagOpenAiChatCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagOpenAiChatCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagOpenAiChatCompletionResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/agents/&lt;agent_id&gt;/completions
-//
-// Generate agent completion (server streaming).<br>
-// Filters events to only return message-related events.
-ragAgentCompletion: {
-    path: '/ondewo.nlu.Rags/RagAgentCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagAgentCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagAgentCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagAgentCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagAgentCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAgentCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagAgentCompletionResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/agents_openai/&lt;agent_id&gt;/chat/completions
-//
-// OpenAI-compatible agent completion endpoint (server streaming).<br>
-// Uses tiktoken for token counting.
-ragOpenAiAgentCompletion: {
-    path: '/ondewo.nlu.Rags/RagOpenAiAgentCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagOpenAiAgentCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagOpenAiChatCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagOpenAiAgentCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagOpenAiAgentCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagOpenAiChatCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagOpenAiChatCompletionResponse,
-  },
-  // ========================================================================
-// Agent Management (4 methods)
-// Agents are workflow-based AI assistants with DSL configuration.
+  // ------------------------------------------------------------------------
+// Agent Management
 // REST: /api/v1/agents
-// ========================================================================
+// ------------------------------------------------------------------------
 //
 // RAGFlow endpoint: POST /api/v1/agents
 //
@@ -1669,7 +1432,7 @@ ragCreateAgent: {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // RAGFlow endpoint: PUT /api/v1/agents/&lt;agent_id&gt;
+  // RAGFlow endpoint: PUT /api/v1/agents/<agent_id>
 //
 // Update an existing agent.<br>
 // DSL updates create new version snapshot. Only owner can update.
@@ -1684,9 +1447,9 @@ ragUpdateAgent: {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // RAGFlow endpoint: DELETE /api/v1/agents/&lt;agent_id&gt;
+  // RAGFlow endpoint: DELETE /api/v1/agents/<agent_id>
 //
-// Delete an agent (hard delete).<br>
+// Delete an agent.<br>
 // Only owner can delete.
 ragDeleteAgent: {
     path: '/ondewo.nlu.Rags/RagDeleteAgent',
@@ -1702,7 +1465,7 @@ ragDeleteAgent: {
   // RAGFlow endpoint: GET /api/v1/agents
 //
 // List agents with pagination.<br>
-// Only returns user&apos;s own agents.
+// Only returns user's own agents.
 ragListAgents: {
     path: '/ondewo.nlu.Rags/RagListAgents',
     requestStream: false,
@@ -1714,209 +1477,143 @@ ragListAgents: {
     responseSerialize: serialize_ondewo_nlu_RagAgentList,
     responseDeserialize: deserialize_ondewo_nlu_RagAgentList,
   },
-  // ========================================================================
-// File Management (11 methods)
-// Manage files and folders in RAGFlow&apos;s file system.
-// Files can be converted to dataset documents.
-// REST: /api/v1/file/*
-// ========================================================================
+  // ------------------------------------------------------------------------
+// Session Management
+// REST: /api/v1/chats/<chat_id>/sessions, /api/v1/agents/<agent_id>/sessions
+// ------------------------------------------------------------------------
 //
-// RAGFlow endpoint: POST /api/v1/file/upload
+// RAGFlow endpoint: POST /api/v1/chats/<chat_id>/sessions
 //
-// Upload one or more files via multipart form data.<br>
-// Supports nested folder paths in filename.<br>
-// Auto-creates intermediate folders.
-ragUploadFiles: {
-    path: '/ondewo.nlu.Rags/RagUploadFiles',
-    requestStream: true,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagUploadFilesRequest,
-    responseType: ondewo_nlu_rag_pb.RagFileList,
-    requestSerialize: serialize_ondewo_nlu_RagUploadFilesRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagUploadFilesRequest,
-    responseSerialize: serialize_ondewo_nlu_RagFileList,
-    responseDeserialize: deserialize_ondewo_nlu_RagFileList,
-  },
-  // RAGFlow endpoint: POST /api/v1/file/create
-//
-// Create a new folder.<br>
-// Duplicate names in same folder not allowed.
-ragCreateFile: {
-    path: '/ondewo.nlu.Rags/RagCreateFile',
+// Create a new chat session (conversation).<br>
+// Session initialized with assistant's prologue message.
+ragCreateChatSession: {
+    path: '/ondewo.nlu.Rags/RagCreateChatSession',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagCreateFileRequest,
-    responseType: ondewo_nlu_rag_pb.RagFile,
-    requestSerialize: serialize_ondewo_nlu_RagCreateFileRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagCreateFileRequest,
-    responseSerialize: serialize_ondewo_nlu_RagFile,
-    responseDeserialize: deserialize_ondewo_nlu_RagFile,
+    requestType: ondewo_nlu_rag_pb.RagCreateChatSessionRequest,
+    responseType: ondewo_nlu_rag_pb.RagChatSession,
+    requestSerialize: serialize_ondewo_nlu_RagCreateChatSessionRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagCreateChatSessionRequest,
+    responseSerialize: serialize_ondewo_nlu_RagChatSession,
+    responseDeserialize: deserialize_ondewo_nlu_RagChatSession,
   },
-  // RAGFlow endpoint: GET /api/v1/file/list
+  // RAGFlow endpoint: PUT /api/v1/chats/<chat_id>/sessions/<session_id>
 //
-// List files in a folder with pagination.<br>
-// Supports keyword search. Auto-initializes knowledgebase docs folder.
-ragListFiles: {
-    path: '/ondewo.nlu.Rags/RagListFiles',
+// Update a chat session's metadata (name only).<br>
+// Cannot update message or reference fields.
+ragUpdateChatSession: {
+    path: '/ondewo.nlu.Rags/RagUpdateChatSession',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagListFilesRequest,
-    responseType: ondewo_nlu_rag_pb.RagListFilesResponse,
-    requestSerialize: serialize_ondewo_nlu_RagListFilesRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagListFilesRequest,
-    responseSerialize: serialize_ondewo_nlu_RagListFilesResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagListFilesResponse,
-  },
-  // RAGFlow endpoint: GET /api/v1/file/root_folder
-//
-// Get user&apos;s root folder information.<br>
-// Each tenant has a unique root folder.
-ragGetRootFolder: {
-    path: '/ondewo.nlu.Rags/RagGetRootFolder',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagGetRootFolderRequest,
-    responseType: ondewo_nlu_rag_pb.RagGetRootFolderResponse,
-    requestSerialize: serialize_ondewo_nlu_RagGetRootFolderRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagGetRootFolderRequest,
-    responseSerialize: serialize_ondewo_nlu_RagGetRootFolderResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagGetRootFolderResponse,
-  },
-  // RAGFlow endpoint: GET /api/v1/file/parent_folder
-//
-// Get the parent folder of a file.<br>
-// Returns 404 if file or parent not found.
-ragGetParentFolder: {
-    path: '/ondewo.nlu.Rags/RagGetParentFolder',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagGetParentFolderRequest,
-    responseType: ondewo_nlu_rag_pb.RagGetParentFolderResponse,
-    requestSerialize: serialize_ondewo_nlu_RagGetParentFolderRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagGetParentFolderRequest,
-    responseSerialize: serialize_ondewo_nlu_RagGetParentFolderResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagGetParentFolderResponse,
-  },
-  // RAGFlow endpoint: GET /api/v1/file/all_parent_folder
-//
-// Get all parent folders (breadcrumb path) of a file.<br>
-// Returns array from file itself to root (includes the file, ordered deepest to root).
-ragGetAllParentFolders: {
-    path: '/ondewo.nlu.Rags/RagGetAllParentFolders',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagGetAllParentFoldersRequest,
-    responseType: ondewo_nlu_rag_pb.RagGetAllParentFoldersResponse,
-    requestSerialize: serialize_ondewo_nlu_RagGetAllParentFoldersRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagGetAllParentFoldersRequest,
-    responseSerialize: serialize_ondewo_nlu_RagGetAllParentFoldersResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagGetAllParentFoldersResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/file/rm
-//
-// Delete one or more files/folders (hard delete).<br>
-// Recursively deletes folder contents. Removes from storage.
-ragDeleteFiles: {
-    path: '/ondewo.nlu.Rags/RagDeleteFiles',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDeleteFilesRequest,
+    requestType: ondewo_nlu_rag_pb.RagUpdateChatSessionRequest,
     responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagDeleteFilesRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDeleteFilesRequest,
+    requestSerialize: serialize_ondewo_nlu_RagUpdateChatSessionRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagUpdateChatSessionRequest,
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  // RAGFlow endpoint: POST /api/v1/file/rename
+  // RAGFlow endpoint: GET /api/v1/chats/<chat_id>/sessions
 //
-// Rename a file or folder.<br>
-// Cannot change file extension. Duplicate names not allowed.
-ragRenameFile: {
-    path: '/ondewo.nlu.Rags/RagRenameFile',
+// List sessions for a chat assistant.<br>
+// Returns message history with embedded chunk references.
+ragListChatSessions: {
+    path: '/ondewo.nlu.Rags/RagListChatSessions',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagRenameFileRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagRenameFileRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagRenameFileRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
+    requestType: ondewo_nlu_rag_pb.RagListChatSessionsRequest,
+    responseType: ondewo_nlu_rag_pb.RagChatSessionList,
+    requestSerialize: serialize_ondewo_nlu_RagListChatSessionsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListChatSessionsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagChatSessionList,
+    responseDeserialize: deserialize_ondewo_nlu_RagChatSessionList,
   },
-  // RAGFlow endpoint: GET /api/v1/file/get/&lt;file_id&gt;
+  // RAGFlow endpoint: DELETE /api/v1/chats/<chat_id>/sessions
 //
-// Download a file.<br>
-// Retrieves from MinIO/S3 storage.<br>
-// First chunk contains metadata, subsequent chunks only contain data.
-ragGetFile: {
-    path: '/ondewo.nlu.Rags/RagGetFile',
+// Delete one or more chat sessions (batch operation).<br>
+// If ids empty, deletes all sessions for the chat.
+ragDeleteChatSessions: {
+    path: '/ondewo.nlu.Rags/RagDeleteChatSessions',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDeleteChatSessionsRequest,
+    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteChatSessionsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteChatSessionsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
+    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
+  },
+  // RAGFlow endpoint: GET /api/v1/agents/<agent_id>/sessions
+//
+// List sessions for an agent.<br>
+// Can optionally exclude DSL from response for performance.
+ragListAgentSessions: {
+    path: '/ondewo.nlu.Rags/RagListAgentSessions',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagListAgentSessionsRequest,
+    responseType: ondewo_nlu_rag_pb.RagAgentSessionList,
+    requestSerialize: serialize_ondewo_nlu_RagListAgentSessionsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListAgentSessionsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagAgentSessionList,
+    responseDeserialize: deserialize_ondewo_nlu_RagAgentSessionList,
+  },
+  // RAGFlow endpoint: DELETE /api/v1/agents/<agent_id>/sessions
+//
+// Delete one or more agent sessions (batch operation).<br>
+// If ids empty, deletes all sessions for the agent.
+ragDeleteAgentSessions: {
+    path: '/ondewo.nlu.Rags/RagDeleteAgentSessions',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDeleteAgentSessionsRequest,
+    responseType: ondewo_nlu_rag_pb.RagPartialSuccess,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteAgentSessionsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteAgentSessionsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagPartialSuccess,
+    responseDeserialize: deserialize_ondewo_nlu_RagPartialSuccess,
+  },
+  // ------------------------------------------------------------------------
+// Completion
+// REST: /api/v1/chats/<id>/completions, /api/v1/agents/<id>/completions, /api/v1/sessions
+// ------------------------------------------------------------------------
+//
+// RAGFlow endpoint: POST /api/v1/chats/<chat_id>/completions or POST /api/v1/chats_openai/<chat_id>/chat/completions
+//
+// Generate chat completion with RAG (server streaming).<br>
+// This endpoint either
+// <ul>
+//     <li>creates a new session if no <code>session_id</code> is provided and <code>messages</code> contains only one message</li>
+//     <li>uses an existing session if <code>session_id</code> is provided (ignores message history in <code>messages</code>)</li>
+//     <li>continues a conversion with the message history from <code>messages</code> without creating a session if no <code>session_id</code> is provided and <code>messages</code> contains multiple messages</li>
+// </ul>
+// At this point the endpoint is not fully implemented and does not support sessions. This means the full message history must always be passed.
+ragChatCompletion: {
+    path: '/ondewo.nlu.Rags/RagChatCompletion',
     requestStream: false,
     responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagGetFileRequest,
-    responseType: ondewo_nlu_rag_pb.RagFileChunk,
-    requestSerialize: serialize_ondewo_nlu_RagGetFileRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagGetFileRequest,
-    responseSerialize: serialize_ondewo_nlu_RagFileChunk,
-    responseDeserialize: deserialize_ondewo_nlu_RagFileChunk,
+    requestType: ondewo_nlu_rag_pb.RagChatCompletionRequest,
+    responseType: ondewo_nlu_rag_pb.RagChatCompletionResponse,
+    requestSerialize: serialize_ondewo_nlu_RagChatCompletionRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagChatCompletionRequest,
+    responseSerialize: serialize_ondewo_nlu_RagChatCompletionResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagChatCompletionResponse,
   },
-  // RAGFlow endpoint: POST /api/v1/file/mv
+  // RAGFlow endpoint: POST /api/v1/agents/<agent_id>/completions
 //
-// Move one or more files to another folder.<br>
-// Validates all files and destination exist.
-ragMoveFile: {
-    path: '/ondewo.nlu.Rags/RagMoveFile',
+// Generate agent completion (server streaming).<br>
+// Filters events to only return message-related events.
+ragAgentCompletion: {
+    path: '/ondewo.nlu.Rags/RagAgentCompletion',
     requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagMoveFileRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_ondewo_nlu_RagMoveFileRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagMoveFileRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
+    responseStream: true,
+    requestType: ondewo_nlu_rag_pb.RagAgentCompletionRequest,
+    responseType: ondewo_nlu_rag_pb.RagAgentCompletionResponse,
+    requestSerialize: serialize_ondewo_nlu_RagAgentCompletionRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagAgentCompletionRequest,
+    responseSerialize: serialize_ondewo_nlu_RagAgentCompletionResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagAgentCompletionResponse,
   },
-  // RAGFlow endpoint: POST /api/v1/file/convert
-//
-// Convert files to documents and add to datasets.<br>
-// Handles folders recursively (converts all inner files).<br>
-// Links files to multiple datasets if multiple dataset_ids provided.
-ragFileToDocument: {
-    path: '/ondewo.nlu.Rags/RagFileToDocument',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagFileToDocumentRequest,
-    responseType: ondewo_nlu_rag_pb.RagFileToDocumentList,
-    requestSerialize: serialize_ondewo_nlu_RagFileToDocumentRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagFileToDocumentRequest,
-    responseSerialize: serialize_ondewo_nlu_RagFileToDocumentList,
-    responseDeserialize: deserialize_ondewo_nlu_RagFileToDocumentList,
-  },
-  // ========================================================================
-// Dify Integration (1 method)
-// Integration with Dify platform.
-// REST: /api/v1/dify/retrieval
-// ========================================================================
-//
-// RAGFlow endpoint: POST /api/v1/dify/retrieval
-//
-// Retrieve chunks in Dify-compatible format.<br>
-// Uses API key authentication (not Bearer token).
-ragDifyRetrieval: {
-    path: '/ondewo.nlu.Rags/RagDifyRetrieval',
-    requestStream: false,
-    responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagDifyRetrievalRequest,
-    responseType: ondewo_nlu_rag_pb.RagDifyRecordList,
-    requestSerialize: serialize_ondewo_nlu_RagDifyRetrievalRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagDifyRetrievalRequest,
-    responseSerialize: serialize_ondewo_nlu_RagDifyRecordList,
-    responseDeserialize: deserialize_ondewo_nlu_RagDifyRecordList,
-  },
-  // ========================================================================
-// Bot API (11 methods)
-// Use API key authentication (not Bearer token).
-// REST: /api/v1/chatbots/*, /api/v1/agentbots/*, /api/v1/searchbots/*
-// ========================================================================
-//
-// RAGFlow endpoint: POST /api/v1/sessions/ask
+  // RAGFlow endpoint: POST /api/v1/sessions/ask
 //
 // Ask a question across datasets without a chat assistant.<br>
 // Streaming only. All datasets must have parsed files.
@@ -1946,140 +1643,201 @@ ragRelatedQuestions: {
     responseSerialize: serialize_ondewo_nlu_RagRelatedQuestionsResponse,
     responseDeserialize: deserialize_ondewo_nlu_RagRelatedQuestionsResponse,
   },
-  // RAGFlow endpoint: POST /api/v1/chatbots/&lt;dialog_id&gt;/completions
+  // ========================================================================
+// Crawler
+// ========================================================================
 //
-// Chat completion for iframe/embedded chatbot (server streaming).<br>
-// Uses API key from APIToken table.
-ragChatbotCompletion: {
-    path: '/ondewo.nlu.Rags/RagChatbotCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagChatbotCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagChatbotCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagChatbotCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatCompletionResponse,
-  },
-  // RAGFlow endpoint: GET /api/v1/chatbots/&lt;dialog_id&gt;/info
-//
-// Get chatbot information for embedded UI initialization.<br>
-// Returns title, avatar, and prologue.
-ragChatbotInfo: {
-    path: '/ondewo.nlu.Rags/RagChatbotInfo',
+// Create a rag crawler for a dataset of an agent.
+ragCreateCrawler: {
+    path: '/ondewo.nlu.Rags/RagCreateCrawler',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagChatbotInfoRequest,
-    responseType: ondewo_nlu_rag_pb.RagChatbotInfoResponse,
-    requestSerialize: serialize_ondewo_nlu_RagChatbotInfoRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagChatbotInfoRequest,
-    responseSerialize: serialize_ondewo_nlu_RagChatbotInfoResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagChatbotInfoResponse,
+    requestType: ondewo_nlu_rag_pb.RagCreateCrawlerRequest,
+    responseType: ondewo_nlu_rag_pb.RagCrawler,
+    requestSerialize: serialize_ondewo_nlu_RagCreateCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagCreateCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_RagCrawler,
+    responseDeserialize: deserialize_ondewo_nlu_RagCrawler,
   },
-  // RAGFlow endpoint: POST /api/v1/agentbots/&lt;agent_id&gt;/completions
-//
-// Agent completion for iframe/embedded agentbot (server streaming).<br>
-// Uses API key authentication.
-ragAgentbotCompletion: {
-    path: '/ondewo.nlu.Rags/RagAgentbotCompletion',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagAgentbotCompletionRequest,
-    responseType: ondewo_nlu_rag_pb.RagAgentCompletionResponse,
-    requestSerialize: serialize_ondewo_nlu_RagAgentbotCompletionRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagAgentbotCompletionRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAgentCompletionResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagAgentCompletionResponse,
-  },
-  // RAGFlow endpoint: GET /api/v1/agentbots/&lt;agent_id&gt;/inputs
-//
-// Get agent input form configuration for embedded UI.<br>
-// Returns input schema from &quot;begin&quot; component in DSL.
-ragAgentbotInputs: {
-    path: '/ondewo.nlu.Rags/RagAgentbotInputs',
+  // Get a rag crawler by resource name.
+ragGetCrawler: {
+    path: '/ondewo.nlu.Rags/RagGetCrawler',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagAgentbotInputsRequest,
-    responseType: ondewo_nlu_rag_pb.RagAgentbotInputsResponse,
-    requestSerialize: serialize_ondewo_nlu_RagAgentbotInputsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagAgentbotInputsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAgentbotInputsResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagAgentbotInputsResponse,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerRequest,
+    responseType: ondewo_nlu_rag_pb.RagCrawler,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_RagCrawler,
+    responseDeserialize: deserialize_ondewo_nlu_RagCrawler,
   },
-  // RAGFlow endpoint: POST /api/v1/searchbots/ask
-//
-// Ask question in searchbot with search app configuration.<br>
-// Uses search app config if provided.
-ragSearchbotAsk: {
-    path: '/ondewo.nlu.Rags/RagSearchbotAsk',
-    requestStream: false,
-    responseStream: true,
-    requestType: ondewo_nlu_rag_pb.RagSearchbotAskRequest,
-    responseType: ondewo_nlu_rag_pb.RagAskResponse,
-    requestSerialize: serialize_ondewo_nlu_RagSearchbotAskRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagSearchbotAskRequest,
-    responseSerialize: serialize_ondewo_nlu_RagAskResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagAskResponse,
-  },
-  // RAGFlow endpoint: POST /api/v1/searchbots/retrieval_test
-//
-// Test retrieval with searchbot configuration.<br>
-// Supports search app configuration with auto metadata filtering.
-ragSearchbotRetrieval: {
-    path: '/ondewo.nlu.Rags/RagSearchbotRetrieval',
+  // List rag crawlers of a dataset for the specified agent.
+ragListCrawlers: {
+    path: '/ondewo.nlu.Rags/RagListCrawlers',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagSearchbotRetrievalRequest,
-    responseType: ondewo_nlu_rag_pb.RagSearchbotRetrievalResponse,
-    requestSerialize: serialize_ondewo_nlu_RagSearchbotRetrievalRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagSearchbotRetrievalRequest,
-    responseSerialize: serialize_ondewo_nlu_RagSearchbotRetrievalResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagSearchbotRetrievalResponse,
+    requestType: ondewo_nlu_rag_pb.RagListCrawlersRequest,
+    responseType: ondewo_nlu_rag_pb.RagListCrawlersResponse,
+    requestSerialize: serialize_ondewo_nlu_RagListCrawlersRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListCrawlersRequest,
+    responseSerialize: serialize_ondewo_nlu_RagListCrawlersResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagListCrawlersResponse,
   },
-  // RAGFlow endpoint: POST /api/v1/searchbots/related_questions
-//
-// Generate related questions for searchbot.<br>
-// Uses search app LLM config if available.
-ragSearchbotRelatedQuestions: {
-    path: '/ondewo.nlu.Rags/RagSearchbotRelatedQuestions',
+  // Update a rag crawler (partial update of configuration fields).
+ragUpdateCrawler: {
+    path: '/ondewo.nlu.Rags/RagUpdateCrawler',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagSearchbotRelatedQuestionsRequest,
-    responseType: ondewo_nlu_rag_pb.RagRelatedQuestionsResponse,
-    requestSerialize: serialize_ondewo_nlu_RagSearchbotRelatedQuestionsRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagSearchbotRelatedQuestionsRequest,
-    responseSerialize: serialize_ondewo_nlu_RagRelatedQuestionsResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagRelatedQuestionsResponse,
+    requestType: ondewo_nlu_rag_pb.RagUpdateCrawlerRequest,
+    responseType: ondewo_nlu_rag_pb.RagCrawler,
+    requestSerialize: serialize_ondewo_nlu_RagUpdateCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagUpdateCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_RagCrawler,
+    responseDeserialize: deserialize_ondewo_nlu_RagCrawler,
   },
-  // RAGFlow endpoint: GET /api/v1/searchbots/detail
-//
-// Get search app configuration details.<br>
-// Requires user to have access to search app.
-ragSearchbotDetail: {
-    path: '/ondewo.nlu.Rags/RagSearchbotDetail',
+  // Delete a rag crawler of a dataset for the specified agent.
+ragDeleteCrawler: {
+    path: '/ondewo.nlu.Rags/RagDeleteCrawler',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagSearchbotDetailRequest,
-    responseType: ondewo_nlu_rag_pb.RagSearchbotDetailResponse,
-    requestSerialize: serialize_ondewo_nlu_RagSearchbotDetailRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagSearchbotDetailRequest,
-    responseSerialize: serialize_ondewo_nlu_RagSearchbotDetailResponse,
-    responseDeserialize: deserialize_ondewo_nlu_RagSearchbotDetailResponse,
+    requestType: ondewo_nlu_rag_pb.RagDeleteCrawlerRequest,
+    responseType: ondewo_nlu_rag_pb.RagDeleteCrawlerResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_RagDeleteCrawlerResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlerResponse,
   },
-  // RAGFlow endpoint: POST /api/v1/searchbots/mindmap
-//
-// Generate mindmap for a question.<br>
-// Uses search app config if provided.
-ragSearchbotMindmap: {
-    path: '/ondewo.nlu.Rags/RagSearchbotMindmap',
+  // Run a crawler.
+ragStartCrawler: {
+    path: '/ondewo.nlu.Rags/RagStartCrawler',
     requestStream: false,
     responseStream: false,
-    requestType: ondewo_nlu_rag_pb.RagSearchbotMindmapRequest,
-    responseType: google_protobuf_struct_pb.Struct,
-    requestSerialize: serialize_ondewo_nlu_RagSearchbotMindmapRequest,
-    requestDeserialize: deserialize_ondewo_nlu_RagSearchbotMindmapRequest,
-    responseSerialize: serialize_google_protobuf_Struct,
-    responseDeserialize: deserialize_google_protobuf_Struct,
+    requestType: ondewo_nlu_rag_pb.RagStartCrawlerRequest,
+    responseType: ondewo_nlu_operations_pb.Operation,
+    requestSerialize: serialize_ondewo_nlu_RagStartCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagStartCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_Operation,
+    responseDeserialize: deserialize_ondewo_nlu_Operation,
+  },
+  // Stop a pending or running crawler run.
+ragStopCrawler: {
+    path: '/ondewo.nlu.Rags/RagStopCrawler',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagStopCrawlerRequest,
+    responseType: ondewo_nlu_rag_pb.RagStopCrawlerResponse,
+    requestSerialize: serialize_ondewo_nlu_RagStopCrawlerRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagStopCrawlerRequest,
+    responseSerialize: serialize_ondewo_nlu_RagStopCrawlerResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagStopCrawlerResponse,
+  },
+  // Get a crawler run by resource name.
+ragGetCrawlerRun: {
+    path: '/ondewo.nlu.Rags/RagGetCrawlerRun',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerRunRequest,
+    responseType: ondewo_nlu_operations_pb.Operation,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerRunRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerRunRequest,
+    responseSerialize: serialize_ondewo_nlu_Operation,
+    responseDeserialize: deserialize_ondewo_nlu_Operation,
+  },
+  // List crawler runs for a crawler.
+ragListCrawlerRuns: {
+    path: '/ondewo.nlu.Rags/RagListCrawlerRuns',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagListCrawlerRunsRequest,
+    responseType: ondewo_nlu_rag_pb.RagListCrawlerRunsResponse,
+    requestSerialize: serialize_ondewo_nlu_RagListCrawlerRunsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagListCrawlerRunsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagListCrawlerRunsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagListCrawlerRunsResponse,
+  },
+  // Delete crawler runs by explicit run names and/or crawler names.
+ragDeleteCrawlerRuns: {
+    path: '/ondewo.nlu.Rags/RagDeleteCrawlerRuns',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDeleteCrawlerRunsRequest,
+    responseType: ondewo_nlu_rag_pb.RagDeleteCrawlerRunsResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteCrawlerRunsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlerRunsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagDeleteCrawlerRunsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlerRunsResponse,
+  },
+  // Get a single crawler result by crawler run resource name and URL.
+ragGetCrawlerResult: {
+    path: '/ondewo.nlu.Rags/RagGetCrawlerResult',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerResultRequest,
+    responseType: ondewo_nlu_rag_pb.RagCrawlerResult,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerResultRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerResultRequest,
+    responseSerialize: serialize_ondewo_nlu_RagCrawlerResult,
+    responseDeserialize: deserialize_ondewo_nlu_RagCrawlerResult,
+  },
+  // Get crawler results by crawler run resource name.
+ragGetCrawlerResults: {
+    path: '/ondewo.nlu.Rags/RagGetCrawlerResults',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerResultsRequest,
+    responseType: ondewo_nlu_rag_pb.RagGetCrawlerResultsResponse,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerResultsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerResultsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagGetCrawlerResultsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagGetCrawlerResultsResponse,
+  },
+  // Add rag crawler output to one or more datasets.
+ragAddCrawlerResultsToDatasets: {
+    path: '/ondewo.nlu.Rags/RagAddCrawlerResultsToDatasets',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagAddCrawlerResultsToDatasetsRequest,
+    responseType: ondewo_nlu_operations_pb.Operation,
+    requestSerialize: serialize_ondewo_nlu_RagAddCrawlerResultsToDatasetsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagAddCrawlerResultsToDatasetsRequest,
+    responseSerialize: serialize_ondewo_nlu_Operation,
+    responseDeserialize: deserialize_ondewo_nlu_Operation,
+  },
+  // Remove previously imported crawler output from one or more datasets.
+ragRemoveCrawlerResultsFromDatasets: {
+    path: '/ondewo.nlu.Rags/RagRemoveCrawlerResultsFromDatasets',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagRemoveCrawlerResultsFromDatasetsRequest,
+    responseType: ondewo_nlu_operations_pb.Operation,
+    requestSerialize: serialize_ondewo_nlu_RagRemoveCrawlerResultsFromDatasetsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagRemoveCrawlerResultsFromDatasetsRequest,
+    responseSerialize: serialize_ondewo_nlu_Operation,
+    responseDeserialize: deserialize_ondewo_nlu_Operation,
+  },
+  // Get datasets currently attached to a crawler.
+ragGetCrawlerAttachedDatasets: {
+    path: '/ondewo.nlu.Rags/RagGetCrawlerAttachedDatasets',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsRequest,
+    responseType: ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsResponse,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagGetCrawlerAttachedDatasetsResponse,
+  },
+  // Delete multiple crawlers.
+ragDeleteCrawlers: {
+    path: '/ondewo.nlu.Rags/RagDeleteCrawlers',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest,
+    responseType: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse,
+    requestSerialize: serialize_ondewo_nlu_RagDeleteCrawlersRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlersRequest,
+    responseSerialize: serialize_ondewo_nlu_RagDeleteCrawlersResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlersResponse,
   },
 };
 
