@@ -27,8 +27,6 @@ var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/fie
 goog.object.extend(proto, google_protobuf_field_mask_pb);
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 goog.object.extend(proto, google_protobuf_timestamp_pb);
-var google_logging_v2_log_entry_pb = require('../../google/logging/v2/log_entry_pb.js');
-goog.object.extend(proto, google_logging_v2_log_entry_pb);
 var ondewo_nlu_operation_metadata_pb = require('../../ondewo/nlu/operation_metadata_pb.js');
 goog.object.extend(proto, ondewo_nlu_operation_metadata_pb);
 var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
