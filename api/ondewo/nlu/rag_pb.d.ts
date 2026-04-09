@@ -5,10 +5,10 @@
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
-import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 import * as google_protobuf_struct_pb from "google-protobuf/google/protobuf/struct_pb";
 import * as google_protobuf_field_mask_pb from "google-protobuf/google/protobuf/field_mask_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as google_logging_v2_log_entry_pb from "../../google/logging/v2/log_entry_pb";
 import * as ondewo_nlu_operation_metadata_pb from "../../ondewo/nlu/operation_metadata_pb";
 import * as ondewo_nlu_operations_pb from "../../ondewo/nlu/operations_pb";
 import * as ondewo_nlu_session_pb from "../../ondewo/nlu/session_pb";
@@ -76,10 +76,7 @@ export class RagCreateDatasetRequest extends jspb.Message {
     setDescription(value: string): RagCreateDatasetRequest;
     getAvatar(): string;
     setAvatar(value: string): RagCreateDatasetRequest;
-
-    hasChunkMethod(): boolean;
-    clearChunkMethod(): void;
-    getChunkMethod(): RagChunkMethod | undefined;
+    getChunkMethod(): RagChunkMethod;
     setChunkMethod(value: RagChunkMethod): RagCreateDatasetRequest;
 
     hasParserConfig(): boolean;
@@ -104,7 +101,7 @@ export namespace RagCreateDatasetRequest {
         name: string,
         description: string,
         avatar: string,
-        chunkMethod?: RagChunkMethod,
+        chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
     }
 }
@@ -296,10 +293,7 @@ export class RagDataset extends jspb.Message {
     clearChunkCount(): void;
     getChunkCount(): number | undefined;
     setChunkCount(value: number): RagDataset;
-
-    hasChunkMethod(): boolean;
-    clearChunkMethod(): void;
-    getChunkMethod(): RagChunkMethod | undefined;
+    getChunkMethod(): RagChunkMethod;
     setChunkMethod(value: RagChunkMethod): RagDataset;
 
     hasParserConfig(): boolean;
@@ -311,6 +305,11 @@ export class RagDataset extends jspb.Message {
     clearPagerank(): void;
     getPagerank(): number | undefined;
     setPagerank(value: number): RagDataset;
+
+    hasParsingStatus(): boolean;
+    clearParsingStatus(): void;
+    getParsingStatus(): RagDatasetParsingStatus | undefined;
+    setParsingStatus(value?: RagDatasetParsingStatus): RagDataset;
 
     hasCreateTime(): boolean;
     clearCreateTime(): void;
@@ -341,11 +340,44 @@ export namespace RagDataset {
         documentCount?: number,
         tokenNum?: number,
         chunkCount?: number,
-        chunkMethod?: RagChunkMethod,
+        chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
         pagerank?: number,
+        parsingStatus?: RagDatasetParsingStatus.AsObject,
         createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         updateTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class RagDatasetParsingStatus extends jspb.Message { 
+    getUnstart(): number;
+    setUnstart(value: number): RagDatasetParsingStatus;
+    getRunning(): number;
+    setRunning(value: number): RagDatasetParsingStatus;
+    getCancel(): number;
+    setCancel(value: number): RagDatasetParsingStatus;
+    getDone(): number;
+    setDone(value: number): RagDatasetParsingStatus;
+    getFail(): number;
+    setFail(value: number): RagDatasetParsingStatus;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RagDatasetParsingStatus.AsObject;
+    static toObject(includeInstance: boolean, msg: RagDatasetParsingStatus): RagDatasetParsingStatus.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RagDatasetParsingStatus, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RagDatasetParsingStatus;
+    static deserializeBinaryFromReader(message: RagDatasetParsingStatus, reader: jspb.BinaryReader): RagDatasetParsingStatus;
+}
+
+export namespace RagDatasetParsingStatus {
+    export type AsObject = {
+        unstart: number,
+        running: number,
+        cancel: number,
+        done: number,
+        fail: number,
     }
 }
 
@@ -358,14 +390,17 @@ export class RagUpdateDatasetRequest extends jspb.Message {
     setDatasetId(value: string): RagUpdateDatasetRequest;
     getName(): string;
     setName(value: string): RagUpdateDatasetRequest;
-    getDescription(): string;
-    setDescription(value: string): RagUpdateDatasetRequest;
-    getAvatar(): string;
-    setAvatar(value: string): RagUpdateDatasetRequest;
 
-    hasChunkMethod(): boolean;
-    clearChunkMethod(): void;
-    getChunkMethod(): RagChunkMethod | undefined;
+    hasDescription(): boolean;
+    clearDescription(): void;
+    getDescription(): string | undefined;
+    setDescription(value: string): RagUpdateDatasetRequest;
+
+    hasAvatar(): boolean;
+    clearAvatar(): void;
+    getAvatar(): string | undefined;
+    setAvatar(value: string): RagUpdateDatasetRequest;
+    getChunkMethod(): RagChunkMethod;
     setChunkMethod(value: RagChunkMethod): RagUpdateDatasetRequest;
 
     hasParserConfig(): boolean;
@@ -394,9 +429,9 @@ export namespace RagUpdateDatasetRequest {
         languageCode: string,
         datasetId: string,
         name: string,
-        description: string,
-        avatar: string,
-        chunkMethod?: RagChunkMethod,
+        description?: string,
+        avatar?: string,
+        chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
         pagerank?: number,
     }
@@ -411,6 +446,8 @@ export class RagDeleteRequest extends jspb.Message {
     getIdsList(): Array<string>;
     setIdsList(value: Array<string>): RagDeleteRequest;
     addIds(value: string, index?: number): string;
+    getDeleteAll(): boolean;
+    setDeleteAll(value: boolean): RagDeleteRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagDeleteRequest.AsObject;
@@ -427,6 +464,7 @@ export namespace RagDeleteRequest {
         parent: string,
         languageCode: string,
         idsList: Array<string>,
+        deleteAll: boolean,
     }
 }
 
@@ -543,10 +581,7 @@ export class RagDocument extends jspb.Message {
     setThumbnail(value: string): RagDocument;
     getDatasetId(): string;
     setDatasetId(value: string): RagDocument;
-
-    hasChunkMethod(): boolean;
-    clearChunkMethod(): void;
-    getChunkMethod(): RagChunkMethod | undefined;
+    getChunkMethod(): RagChunkMethod;
     setChunkMethod(value: RagChunkMethod): RagDocument;
 
     hasParserConfig(): boolean;
@@ -594,10 +629,7 @@ export class RagDocument extends jspb.Message {
     clearMetaFields(): void;
     getMetaFields(): google_protobuf_struct_pb.Struct | undefined;
     setMetaFields(value?: google_protobuf_struct_pb.Struct): RagDocument;
-
-    hasRun(): boolean;
-    clearRun(): void;
-    getRun(): RagDocumentStatus | undefined;
+    getRun(): RagDocumentStatus;
     setRun(value: RagDocumentStatus): RagDocument;
     getStatus(): string;
     setStatus(value: string): RagDocument;
@@ -627,7 +659,7 @@ export namespace RagDocument {
         id: string,
         thumbnail: string,
         datasetId: string,
-        chunkMethod?: RagChunkMethod,
+        chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
         type: RagDocumentType,
         name: string,
@@ -639,7 +671,7 @@ export namespace RagDocument {
         processBeginAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         processDuration?: number,
         metaFields?: google_protobuf_struct_pb.Struct.AsObject,
-        run?: RagDocumentStatus,
+        run: RagDocumentStatus,
         status: string,
         createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         updateTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
@@ -657,10 +689,7 @@ export class RagUpdateDocumentRequest extends jspb.Message {
     setDocumentId(value: string): RagUpdateDocumentRequest;
     getName(): string;
     setName(value: string): RagUpdateDocumentRequest;
-
-    hasChunkMethod(): boolean;
-    clearChunkMethod(): void;
-    getChunkMethod(): RagChunkMethod | undefined;
+    getChunkMethod(): RagChunkMethod;
     setChunkMethod(value: RagChunkMethod): RagUpdateDocumentRequest;
 
     hasParserConfig(): boolean;
@@ -695,7 +724,7 @@ export namespace RagUpdateDocumentRequest {
         datasetId: string,
         documentId: string,
         name: string,
-        chunkMethod?: RagChunkMethod,
+        chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
         enabled?: boolean,
         metaFields?: google_protobuf_struct_pb.Struct.AsObject,
@@ -924,6 +953,8 @@ export class RagDeleteDocumentsRequest extends jspb.Message {
     getIdsList(): Array<string>;
     setIdsList(value: Array<string>): RagDeleteDocumentsRequest;
     addIds(value: string, index?: number): string;
+    getDeleteAll(): boolean;
+    setDeleteAll(value: boolean): RagDeleteDocumentsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagDeleteDocumentsRequest.AsObject;
@@ -941,6 +972,38 @@ export namespace RagDeleteDocumentsRequest {
         languageCode: string,
         datasetId: string,
         idsList: Array<string>,
+        deleteAll: boolean,
+    }
+}
+
+export class RagDocumentIdsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): RagDocumentIdsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): RagDocumentIdsRequest;
+    getDatasetId(): string;
+    setDatasetId(value: string): RagDocumentIdsRequest;
+    clearDocumentIdsList(): void;
+    getDocumentIdsList(): Array<string>;
+    setDocumentIdsList(value: Array<string>): RagDocumentIdsRequest;
+    addDocumentIds(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RagDocumentIdsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: RagDocumentIdsRequest): RagDocumentIdsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RagDocumentIdsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RagDocumentIdsRequest;
+    static deserializeBinaryFromReader(message: RagDocumentIdsRequest, reader: jspb.BinaryReader): RagDocumentIdsRequest;
+}
+
+export namespace RagDocumentIdsRequest {
+    export type AsObject = {
+        parent: string,
+        languageCode: string,
+        datasetId: string,
+        documentIdsList: Array<string>,
     }
 }
 
@@ -975,7 +1038,10 @@ export class RagRetrievalRequest extends jspb.Message {
     clearMetadataCondition(): void;
     getMetadataCondition(): RagMetadataConditions | undefined;
     setMetadataCondition(value?: RagMetadataConditions): RagRetrievalRequest;
-    getSimilarityThreshold(): number;
+
+    hasSimilarityThreshold(): boolean;
+    clearSimilarityThreshold(): void;
+    getSimilarityThreshold(): number | undefined;
     setSimilarityThreshold(value: number): RagRetrievalRequest;
 
     hasVectorSimilarityWeight(): boolean;
@@ -1016,7 +1082,7 @@ export namespace RagRetrievalRequest {
         useKg?: boolean,
         crossLanguagesList: Array<string>,
         metadataCondition?: RagMetadataConditions.AsObject,
-        similarityThreshold: number,
+        similarityThreshold?: number,
         vectorSimilarityWeight?: number,
         topK: number,
         highlight?: boolean,
@@ -1066,8 +1132,6 @@ export class RagChunk extends jspb.Message {
     setDocumentId(value: string): RagChunk;
     getContent(): string;
     setContent(value: string): RagChunk;
-    getDocnmKwd(): string;
-    setDocnmKwd(value: string): RagChunk;
     clearImportantKeywordsList(): void;
     getImportantKeywordsList(): Array<string>;
     setImportantKeywordsList(value: Array<string>): RagChunk;
@@ -1078,11 +1142,6 @@ export class RagChunk extends jspb.Message {
     addQuestions(value: string, index?: number): string;
     getImageId(): string;
     setImageId(value: string): RagChunk;
-
-    hasAvailable(): boolean;
-    clearAvailable(): void;
-    getAvailable(): boolean | undefined;
-    setAvailable(value: boolean): RagChunk;
     clearPositionsList(): void;
     getPositionsList(): Array<google_protobuf_struct_pb.ListValue>;
     setPositionsList(value: Array<google_protobuf_struct_pb.ListValue>): RagChunk;
@@ -1116,11 +1175,9 @@ export namespace RagChunk {
         datasetId: string,
         documentId: string,
         content: string,
-        docnmKwd: string,
         importantKeywordsList: Array<string>,
         questionsList: Array<string>,
         imageId: string,
-        available?: boolean,
         positionsList: Array<google_protobuf_struct_pb.ListValue.AsObject>,
         createTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         documentKeyword: string,
@@ -1151,2106 +1208,6 @@ export namespace RagDocAgg {
         docName: string,
         docId: string,
         count: number,
-    }
-}
-
-export class RagDatasetIdRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagDatasetIdRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagDatasetIdRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagDatasetIdRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagDatasetIdRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagDatasetIdRequest): RagDatasetIdRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagDatasetIdRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagDatasetIdRequest;
-    static deserializeBinaryFromReader(message: RagDatasetIdRequest, reader: jspb.BinaryReader): RagDatasetIdRequest;
-}
-
-export namespace RagDatasetIdRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-    }
-}
-
-export class RagGetKnowledgeGraphResponse extends jspb.Message { 
-
-    hasGraph(): boolean;
-    clearGraph(): void;
-    getGraph(): google_protobuf_struct_pb.Struct | undefined;
-    setGraph(value?: google_protobuf_struct_pb.Struct): RagGetKnowledgeGraphResponse;
-
-    hasMindMap(): boolean;
-    clearMindMap(): void;
-    getMindMap(): google_protobuf_struct_pb.Struct | undefined;
-    setMindMap(value?: google_protobuf_struct_pb.Struct): RagGetKnowledgeGraphResponse;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagGetKnowledgeGraphResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagGetKnowledgeGraphResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagGetKnowledgeGraphResponse): RagGetKnowledgeGraphResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagGetKnowledgeGraphResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagGetKnowledgeGraphResponse;
-    static deserializeBinaryFromReader(message: RagGetKnowledgeGraphResponse, reader: jspb.BinaryReader): RagGetKnowledgeGraphResponse;
-}
-
-export namespace RagGetKnowledgeGraphResponse {
-    export type AsObject = {
-        graph?: google_protobuf_struct_pb.Struct.AsObject,
-        mindMap?: google_protobuf_struct_pb.Struct.AsObject,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagConstructKnowledgeGraphResponse extends jspb.Message { 
-    getGraphragTaskId(): string;
-    setGraphragTaskId(value: string): RagConstructKnowledgeGraphResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagConstructKnowledgeGraphResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagConstructKnowledgeGraphResponse): RagConstructKnowledgeGraphResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagConstructKnowledgeGraphResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagConstructKnowledgeGraphResponse;
-    static deserializeBinaryFromReader(message: RagConstructKnowledgeGraphResponse, reader: jspb.BinaryReader): RagConstructKnowledgeGraphResponse;
-}
-
-export namespace RagConstructKnowledgeGraphResponse {
-    export type AsObject = {
-        graphragTaskId: string,
-    }
-}
-
-export class RagTaskStatus extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagTaskStatus;
-    getDocId(): string;
-    setDocId(value: string): RagTaskStatus;
-
-    hasFromPage(): boolean;
-    clearFromPage(): void;
-    getFromPage(): number | undefined;
-    setFromPage(value: number): RagTaskStatus;
-
-    hasToPage(): boolean;
-    clearToPage(): void;
-    getToPage(): number | undefined;
-    setToPage(value: number): RagTaskStatus;
-    getTaskType(): string;
-    setTaskType(value: string): RagTaskStatus;
-
-    hasPriority(): boolean;
-    clearPriority(): void;
-    getPriority(): number | undefined;
-    setPriority(value: number): RagTaskStatus;
-    getBeginAt(): string;
-    setBeginAt(value: string): RagTaskStatus;
-
-    hasProcessDuration(): boolean;
-    clearProcessDuration(): void;
-    getProcessDuration(): number | undefined;
-    setProcessDuration(value: number): RagTaskStatus;
-
-    hasProgress(): boolean;
-    clearProgress(): void;
-    getProgress(): number | undefined;
-    setProgress(value: number): RagTaskStatus;
-    getProgressMsg(): string;
-    setProgressMsg(value: string): RagTaskStatus;
-
-    hasRetryCount(): boolean;
-    clearRetryCount(): void;
-    getRetryCount(): number | undefined;
-    setRetryCount(value: number): RagTaskStatus;
-    getDigest(): string;
-    setDigest(value: string): RagTaskStatus;
-    getChunkIds(): string;
-    setChunkIds(value: string): RagTaskStatus;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagTaskStatus.AsObject;
-    static toObject(includeInstance: boolean, msg: RagTaskStatus): RagTaskStatus.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagTaskStatus, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagTaskStatus;
-    static deserializeBinaryFromReader(message: RagTaskStatus, reader: jspb.BinaryReader): RagTaskStatus;
-}
-
-export namespace RagTaskStatus {
-    export type AsObject = {
-        id: string,
-        docId: string,
-        fromPage?: number,
-        toPage?: number,
-        taskType: string,
-        priority?: number,
-        beginAt: string,
-        processDuration?: number,
-        progress?: number,
-        progressMsg: string,
-        retryCount?: number,
-        digest: string,
-        chunkIds: string,
-    }
-}
-
-export class RagConstructRaptorResponse extends jspb.Message { 
-    getRaptorTaskId(): string;
-    setRaptorTaskId(value: string): RagConstructRaptorResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagConstructRaptorResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagConstructRaptorResponse): RagConstructRaptorResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagConstructRaptorResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagConstructRaptorResponse;
-    static deserializeBinaryFromReader(message: RagConstructRaptorResponse, reader: jspb.BinaryReader): RagConstructRaptorResponse;
-}
-
-export namespace RagConstructRaptorResponse {
-    export type AsObject = {
-        raptorTaskId: string,
-    }
-}
-
-export class RagParseDocumentsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagParseDocumentsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagParseDocumentsRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagParseDocumentsRequest;
-    clearDocumentIdsList(): void;
-    getDocumentIdsList(): Array<string>;
-    setDocumentIdsList(value: Array<string>): RagParseDocumentsRequest;
-    addDocumentIds(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagParseDocumentsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagParseDocumentsRequest): RagParseDocumentsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagParseDocumentsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagParseDocumentsRequest;
-    static deserializeBinaryFromReader(message: RagParseDocumentsRequest, reader: jspb.BinaryReader): RagParseDocumentsRequest;
-}
-
-export namespace RagParseDocumentsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentIdsList: Array<string>,
-    }
-}
-
-export class RagStopParsingRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagStopParsingRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagStopParsingRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagStopParsingRequest;
-    clearDocumentIdsList(): void;
-    getDocumentIdsList(): Array<string>;
-    setDocumentIdsList(value: Array<string>): RagStopParsingRequest;
-    addDocumentIds(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagStopParsingRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagStopParsingRequest): RagStopParsingRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagStopParsingRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagStopParsingRequest;
-    static deserializeBinaryFromReader(message: RagStopParsingRequest, reader: jspb.BinaryReader): RagStopParsingRequest;
-}
-
-export namespace RagStopParsingRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentIdsList: Array<string>,
-    }
-}
-
-export class RagListChunksRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagListChunksRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagListChunksRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagListChunksRequest;
-    getDocumentId(): string;
-    setDocumentId(value: string): RagListChunksRequest;
-    getPagination(): string;
-    setPagination(value: string): RagListChunksRequest;
-    getKeywords(): string;
-    setKeywords(value: string): RagListChunksRequest;
-    getId(): string;
-    setId(value: string): RagListChunksRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListChunksRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListChunksRequest): RagListChunksRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListChunksRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListChunksRequest;
-    static deserializeBinaryFromReader(message: RagListChunksRequest, reader: jspb.BinaryReader): RagListChunksRequest;
-}
-
-export namespace RagListChunksRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentId: string,
-        pagination: string,
-        keywords: string,
-        id: string,
-    }
-}
-
-export class RagListChunksResponse extends jspb.Message { 
-
-    hasTotal(): boolean;
-    clearTotal(): void;
-    getTotal(): number | undefined;
-    setTotal(value: number): RagListChunksResponse;
-    clearChunksList(): void;
-    getChunksList(): Array<RagChunk>;
-    setChunksList(value: Array<RagChunk>): RagListChunksResponse;
-    addChunks(value?: RagChunk, index?: number): RagChunk;
-
-    hasDoc(): boolean;
-    clearDoc(): void;
-    getDoc(): RagDocument | undefined;
-    setDoc(value?: RagDocument): RagListChunksResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListChunksResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListChunksResponse): RagListChunksResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListChunksResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListChunksResponse;
-    static deserializeBinaryFromReader(message: RagListChunksResponse, reader: jspb.BinaryReader): RagListChunksResponse;
-}
-
-export namespace RagListChunksResponse {
-    export type AsObject = {
-        total?: number,
-        chunksList: Array<RagChunk.AsObject>,
-        doc?: RagDocument.AsObject,
-    }
-}
-
-export class RagAddChunkRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagAddChunkRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagAddChunkRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagAddChunkRequest;
-    getDocumentId(): string;
-    setDocumentId(value: string): RagAddChunkRequest;
-    getContent(): string;
-    setContent(value: string): RagAddChunkRequest;
-    clearImportantKeywordsList(): void;
-    getImportantKeywordsList(): Array<string>;
-    setImportantKeywordsList(value: Array<string>): RagAddChunkRequest;
-    addImportantKeywords(value: string, index?: number): string;
-    clearQuestionsList(): void;
-    getQuestionsList(): Array<string>;
-    setQuestionsList(value: Array<string>): RagAddChunkRequest;
-    addQuestions(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAddChunkRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAddChunkRequest): RagAddChunkRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAddChunkRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAddChunkRequest;
-    static deserializeBinaryFromReader(message: RagAddChunkRequest, reader: jspb.BinaryReader): RagAddChunkRequest;
-}
-
-export namespace RagAddChunkRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentId: string,
-        content: string,
-        importantKeywordsList: Array<string>,
-        questionsList: Array<string>,
-    }
-}
-
-export class RagAddChunkResponse extends jspb.Message { 
-
-    hasChunk(): boolean;
-    clearChunk(): void;
-    getChunk(): RagChunk | undefined;
-    setChunk(value?: RagChunk): RagAddChunkResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAddChunkResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAddChunkResponse): RagAddChunkResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAddChunkResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAddChunkResponse;
-    static deserializeBinaryFromReader(message: RagAddChunkResponse, reader: jspb.BinaryReader): RagAddChunkResponse;
-}
-
-export namespace RagAddChunkResponse {
-    export type AsObject = {
-        chunk?: RagChunk.AsObject,
-    }
-}
-
-export class RagRemoveChunksRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagRemoveChunksRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagRemoveChunksRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagRemoveChunksRequest;
-    getDocumentId(): string;
-    setDocumentId(value: string): RagRemoveChunksRequest;
-    clearChunkIdsList(): void;
-    getChunkIdsList(): Array<string>;
-    setChunkIdsList(value: Array<string>): RagRemoveChunksRequest;
-    addChunkIds(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagRemoveChunksRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagRemoveChunksRequest): RagRemoveChunksRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagRemoveChunksRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagRemoveChunksRequest;
-    static deserializeBinaryFromReader(message: RagRemoveChunksRequest, reader: jspb.BinaryReader): RagRemoveChunksRequest;
-}
-
-export namespace RagRemoveChunksRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentId: string,
-        chunkIdsList: Array<string>,
-    }
-}
-
-export class RagUpdateChunkRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagUpdateChunkRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagUpdateChunkRequest;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagUpdateChunkRequest;
-    getDocumentId(): string;
-    setDocumentId(value: string): RagUpdateChunkRequest;
-    getChunkId(): string;
-    setChunkId(value: string): RagUpdateChunkRequest;
-    getContent(): string;
-    setContent(value: string): RagUpdateChunkRequest;
-    clearImportantKeywordsList(): void;
-    getImportantKeywordsList(): Array<string>;
-    setImportantKeywordsList(value: Array<string>): RagUpdateChunkRequest;
-    addImportantKeywords(value: string, index?: number): string;
-    clearQuestionsList(): void;
-    getQuestionsList(): Array<string>;
-    setQuestionsList(value: Array<string>): RagUpdateChunkRequest;
-    addQuestions(value: string, index?: number): string;
-
-    hasAvailable(): boolean;
-    clearAvailable(): void;
-    getAvailable(): boolean | undefined;
-    setAvailable(value: boolean): RagUpdateChunkRequest;
-    clearPositionsList(): void;
-    getPositionsList(): Array<google_protobuf_struct_pb.ListValue>;
-    setPositionsList(value: Array<google_protobuf_struct_pb.ListValue>): RagUpdateChunkRequest;
-    addPositions(value?: google_protobuf_struct_pb.ListValue, index?: number): google_protobuf_struct_pb.ListValue;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagUpdateChunkRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagUpdateChunkRequest): RagUpdateChunkRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagUpdateChunkRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagUpdateChunkRequest;
-    static deserializeBinaryFromReader(message: RagUpdateChunkRequest, reader: jspb.BinaryReader): RagUpdateChunkRequest;
-}
-
-export namespace RagUpdateChunkRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        datasetId: string,
-        documentId: string,
-        chunkId: string,
-        content: string,
-        importantKeywordsList: Array<string>,
-        questionsList: Array<string>,
-        available?: boolean,
-        positionsList: Array<google_protobuf_struct_pb.ListValue.AsObject>,
-    }
-}
-
-export class RagCreateChatAssistantRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagCreateChatAssistantRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagCreateChatAssistantRequest;
-    getName(): string;
-    setName(value: string): RagCreateChatAssistantRequest;
-    getDescription(): string;
-    setDescription(value: string): RagCreateChatAssistantRequest;
-    getAvatar(): string;
-    setAvatar(value: string): RagCreateChatAssistantRequest;
-    clearDatasetIdsList(): void;
-    getDatasetIdsList(): Array<string>;
-    setDatasetIdsList(value: Array<string>): RagCreateChatAssistantRequest;
-    addDatasetIds(value: string, index?: number): string;
-
-    hasLlm(): boolean;
-    clearLlm(): void;
-    getLlm(): RagLlmSetting | undefined;
-    setLlm(value?: RagLlmSetting): RagCreateChatAssistantRequest;
-
-    hasPrompt(): boolean;
-    clearPrompt(): void;
-    getPrompt(): RagPromptConfig | undefined;
-    setPrompt(value?: RagPromptConfig): RagCreateChatAssistantRequest;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagCreateChatAssistantRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagCreateChatAssistantRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagCreateChatAssistantRequest): RagCreateChatAssistantRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagCreateChatAssistantRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagCreateChatAssistantRequest;
-    static deserializeBinaryFromReader(message: RagCreateChatAssistantRequest, reader: jspb.BinaryReader): RagCreateChatAssistantRequest;
-}
-
-export namespace RagCreateChatAssistantRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        name: string,
-        description: string,
-        avatar: string,
-        datasetIdsList: Array<string>,
-        llm?: RagLlmSetting.AsObject,
-        prompt?: RagPromptConfig.AsObject,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagLlmSetting extends jspb.Message { 
-    getModelName(): string;
-    setModelName(value: string): RagLlmSetting;
-
-    hasTemperature(): boolean;
-    clearTemperature(): void;
-    getTemperature(): number | undefined;
-    setTemperature(value: number): RagLlmSetting;
-
-    hasTopP(): boolean;
-    clearTopP(): void;
-    getTopP(): number | undefined;
-    setTopP(value: number): RagLlmSetting;
-
-    hasFrequencyPenalty(): boolean;
-    clearFrequencyPenalty(): void;
-    getFrequencyPenalty(): number | undefined;
-    setFrequencyPenalty(value: number): RagLlmSetting;
-
-    hasPresencePenalty(): boolean;
-    clearPresencePenalty(): void;
-    getPresencePenalty(): number | undefined;
-    setPresencePenalty(value: number): RagLlmSetting;
-    getMaxTokens(): number;
-    setMaxTokens(value: number): RagLlmSetting;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagLlmSetting;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagLlmSetting.AsObject;
-    static toObject(includeInstance: boolean, msg: RagLlmSetting): RagLlmSetting.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagLlmSetting, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagLlmSetting;
-    static deserializeBinaryFromReader(message: RagLlmSetting, reader: jspb.BinaryReader): RagLlmSetting;
-}
-
-export namespace RagLlmSetting {
-    export type AsObject = {
-        modelName: string,
-        temperature?: number,
-        topP?: number,
-        frequencyPenalty?: number,
-        presencePenalty?: number,
-        maxTokens: number,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagPromptConfig extends jspb.Message { 
-    getPrompt(): string;
-    setPrompt(value: string): RagPromptConfig;
-    clearVariablesList(): void;
-    getVariablesList(): Array<RagPromptVariable>;
-    setVariablesList(value: Array<RagPromptVariable>): RagPromptConfig;
-    addVariables(value?: RagPromptVariable, index?: number): RagPromptVariable;
-    getOpener(): string;
-    setOpener(value: string): RagPromptConfig;
-
-    hasShowQuote(): boolean;
-    clearShowQuote(): void;
-    getShowQuote(): boolean | undefined;
-    setShowQuote(value: boolean): RagPromptConfig;
-    getEmptyResponse(): string;
-    setEmptyResponse(value: string): RagPromptConfig;
-
-    hasTts(): boolean;
-    clearTts(): void;
-    getTts(): boolean | undefined;
-    setTts(value: boolean): RagPromptConfig;
-
-    hasRefineMultiturn(): boolean;
-    clearRefineMultiturn(): void;
-    getRefineMultiturn(): boolean | undefined;
-    setRefineMultiturn(value: boolean): RagPromptConfig;
-
-    hasSimilarityThreshold(): boolean;
-    clearSimilarityThreshold(): void;
-    getSimilarityThreshold(): number | undefined;
-    setSimilarityThreshold(value: number): RagPromptConfig;
-
-    hasKeywordsSimilarityWeight(): boolean;
-    clearKeywordsSimilarityWeight(): void;
-    getKeywordsSimilarityWeight(): number | undefined;
-    setKeywordsSimilarityWeight(value: number): RagPromptConfig;
-    getTopN(): number;
-    setTopN(value: number): RagPromptConfig;
-    getTopK(): number;
-    setTopK(value: number): RagPromptConfig;
-    getRerankModel(): string;
-    setRerankModel(value: string): RagPromptConfig;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagPromptConfig;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagPromptConfig.AsObject;
-    static toObject(includeInstance: boolean, msg: RagPromptConfig): RagPromptConfig.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagPromptConfig, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagPromptConfig;
-    static deserializeBinaryFromReader(message: RagPromptConfig, reader: jspb.BinaryReader): RagPromptConfig;
-}
-
-export namespace RagPromptConfig {
-    export type AsObject = {
-        prompt: string,
-        variablesList: Array<RagPromptVariable.AsObject>,
-        opener: string,
-        showQuote?: boolean,
-        emptyResponse: string,
-        tts?: boolean,
-        refineMultiturn?: boolean,
-        similarityThreshold?: number,
-        keywordsSimilarityWeight?: number,
-        topN: number,
-        topK: number,
-        rerankModel: string,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagPromptVariable extends jspb.Message { 
-    getKey(): string;
-    setKey(value: string): RagPromptVariable;
-
-    hasOptional(): boolean;
-    clearOptional(): void;
-    getOptional(): boolean | undefined;
-    setOptional(value: boolean): RagPromptVariable;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagPromptVariable.AsObject;
-    static toObject(includeInstance: boolean, msg: RagPromptVariable): RagPromptVariable.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagPromptVariable, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagPromptVariable;
-    static deserializeBinaryFromReader(message: RagPromptVariable, reader: jspb.BinaryReader): RagPromptVariable;
-}
-
-export namespace RagPromptVariable {
-    export type AsObject = {
-        key: string,
-        optional?: boolean,
-    }
-}
-
-export class RagChatAssistant extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagChatAssistant;
-    getTenantId(): string;
-    setTenantId(value: string): RagChatAssistant;
-    getName(): string;
-    setName(value: string): RagChatAssistant;
-    getDescription(): string;
-    setDescription(value: string): RagChatAssistant;
-    getAvatar(): string;
-    setAvatar(value: string): RagChatAssistant;
-    getLanguage(): string;
-    setLanguage(value: string): RagChatAssistant;
-    clearDatasetIdsList(): void;
-    getDatasetIdsList(): Array<string>;
-    setDatasetIdsList(value: Array<string>): RagChatAssistant;
-    addDatasetIds(value: string, index?: number): string;
-    clearDatasetsList(): void;
-    getDatasetsList(): Array<RagDataset>;
-    setDatasetsList(value: Array<RagDataset>): RagChatAssistant;
-    addDatasets(value?: RagDataset, index?: number): RagDataset;
-
-    hasLlm(): boolean;
-    clearLlm(): void;
-    getLlm(): RagLlmSetting | undefined;
-    setLlm(value?: RagLlmSetting): RagChatAssistant;
-
-    hasPromptType(): boolean;
-    clearPromptType(): void;
-    getPromptType(): RagPromptType | undefined;
-    setPromptType(value: RagPromptType): RagChatAssistant;
-
-    hasPrompt(): boolean;
-    clearPrompt(): void;
-    getPrompt(): RagPromptConfig | undefined;
-    setPrompt(value?: RagPromptConfig): RagChatAssistant;
-
-    hasMetaDataFilter(): boolean;
-    clearMetaDataFilter(): void;
-    getMetaDataFilter(): google_protobuf_struct_pb.Struct | undefined;
-    setMetaDataFilter(value?: google_protobuf_struct_pb.Struct): RagChatAssistant;
-    getDoRefer(): string;
-    setDoRefer(value: string): RagChatAssistant;
-    getStatus(): string;
-    setStatus(value: string): RagChatAssistant;
-    getCreateTime(): number;
-    setCreateTime(value: number): RagChatAssistant;
-    getCreateDate(): string;
-    setCreateDate(value: string): RagChatAssistant;
-    getUpdateTime(): number;
-    setUpdateTime(value: number): RagChatAssistant;
-    getUpdateDate(): string;
-    setUpdateDate(value: string): RagChatAssistant;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatAssistant.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatAssistant): RagChatAssistant.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatAssistant, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatAssistant;
-    static deserializeBinaryFromReader(message: RagChatAssistant, reader: jspb.BinaryReader): RagChatAssistant;
-}
-
-export namespace RagChatAssistant {
-    export type AsObject = {
-        id: string,
-        tenantId: string,
-        name: string,
-        description: string,
-        avatar: string,
-        language: string,
-        datasetIdsList: Array<string>,
-        datasetsList: Array<RagDataset.AsObject>,
-        llm?: RagLlmSetting.AsObject,
-        promptType?: RagPromptType,
-        prompt?: RagPromptConfig.AsObject,
-        metaDataFilter?: google_protobuf_struct_pb.Struct.AsObject,
-        doRefer: string,
-        status: string,
-        createTime: number,
-        createDate: string,
-        updateTime: number,
-        updateDate: string,
-    }
-}
-
-export class RagUpdateChatAssistantRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagUpdateChatAssistantRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagUpdateChatAssistantRequest;
-    getChatId(): string;
-    setChatId(value: string): RagUpdateChatAssistantRequest;
-    getName(): string;
-    setName(value: string): RagUpdateChatAssistantRequest;
-    getDescription(): string;
-    setDescription(value: string): RagUpdateChatAssistantRequest;
-    getAvatar(): string;
-    setAvatar(value: string): RagUpdateChatAssistantRequest;
-    clearDatasetIdsList(): void;
-    getDatasetIdsList(): Array<string>;
-    setDatasetIdsList(value: Array<string>): RagUpdateChatAssistantRequest;
-    addDatasetIds(value: string, index?: number): string;
-
-    hasLlm(): boolean;
-    clearLlm(): void;
-    getLlm(): RagLlmSetting | undefined;
-    setLlm(value?: RagLlmSetting): RagUpdateChatAssistantRequest;
-
-    hasPrompt(): boolean;
-    clearPrompt(): void;
-    getPrompt(): RagPromptConfig | undefined;
-    setPrompt(value?: RagPromptConfig): RagUpdateChatAssistantRequest;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagUpdateChatAssistantRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagUpdateChatAssistantRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagUpdateChatAssistantRequest): RagUpdateChatAssistantRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagUpdateChatAssistantRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagUpdateChatAssistantRequest;
-    static deserializeBinaryFromReader(message: RagUpdateChatAssistantRequest, reader: jspb.BinaryReader): RagUpdateChatAssistantRequest;
-}
-
-export namespace RagUpdateChatAssistantRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        name: string,
-        description: string,
-        avatar: string,
-        datasetIdsList: Array<string>,
-        llm?: RagLlmSetting.AsObject,
-        prompt?: RagPromptConfig.AsObject,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagListChatAssistantsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagListChatAssistantsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagListChatAssistantsRequest;
-    getPagination(): string;
-    setPagination(value: string): RagListChatAssistantsRequest;
-    getId(): string;
-    setId(value: string): RagListChatAssistantsRequest;
-    getName(): string;
-    setName(value: string): RagListChatAssistantsRequest;
-    getOrderby(): string;
-    setOrderby(value: string): RagListChatAssistantsRequest;
-
-    hasDesc(): boolean;
-    clearDesc(): void;
-    getDesc(): boolean | undefined;
-    setDesc(value: boolean): RagListChatAssistantsRequest;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagListChatAssistantsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListChatAssistantsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListChatAssistantsRequest): RagListChatAssistantsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListChatAssistantsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListChatAssistantsRequest;
-    static deserializeBinaryFromReader(message: RagListChatAssistantsRequest, reader: jspb.BinaryReader): RagListChatAssistantsRequest;
-}
-
-export namespace RagListChatAssistantsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        pagination: string,
-        id: string,
-        name: string,
-        orderby: string,
-        desc?: boolean,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagChatAssistantList extends jspb.Message { 
-    clearChatsList(): void;
-    getChatsList(): Array<RagChatAssistant>;
-    setChatsList(value: Array<RagChatAssistant>): RagChatAssistantList;
-    addChats(value?: RagChatAssistant, index?: number): RagChatAssistant;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatAssistantList.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatAssistantList): RagChatAssistantList.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatAssistantList, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatAssistantList;
-    static deserializeBinaryFromReader(message: RagChatAssistantList, reader: jspb.BinaryReader): RagChatAssistantList;
-}
-
-export namespace RagChatAssistantList {
-    export type AsObject = {
-        chatsList: Array<RagChatAssistant.AsObject>,
-    }
-}
-
-export class RagCreateAgentRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagCreateAgentRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagCreateAgentRequest;
-    getAvatar(): string;
-    setAvatar(value: string): RagCreateAgentRequest;
-    getTitle(): string;
-    setTitle(value: string): RagCreateAgentRequest;
-
-    hasPermission(): boolean;
-    clearPermission(): void;
-    getPermission(): RagPermission | undefined;
-    setPermission(value: RagPermission): RagCreateAgentRequest;
-    getDescription(): string;
-    setDescription(value: string): RagCreateAgentRequest;
-
-    hasCanvasType(): boolean;
-    clearCanvasType(): void;
-    getCanvasType(): string | undefined;
-    setCanvasType(value: string): RagCreateAgentRequest;
-
-    hasCanvasCategory(): boolean;
-    clearCanvasCategory(): void;
-    getCanvasCategory(): RagCanvasCategory | undefined;
-    setCanvasCategory(value: RagCanvasCategory): RagCreateAgentRequest;
-
-    hasDsl(): boolean;
-    clearDsl(): void;
-    getDsl(): google_protobuf_struct_pb.Struct | undefined;
-    setDsl(value?: google_protobuf_struct_pb.Struct): RagCreateAgentRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagCreateAgentRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagCreateAgentRequest): RagCreateAgentRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagCreateAgentRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagCreateAgentRequest;
-    static deserializeBinaryFromReader(message: RagCreateAgentRequest, reader: jspb.BinaryReader): RagCreateAgentRequest;
-}
-
-export namespace RagCreateAgentRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        avatar: string,
-        title: string,
-        permission?: RagPermission,
-        description: string,
-        canvasType?: string,
-        canvasCategory?: RagCanvasCategory,
-        dsl?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagUpdateAgentRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagUpdateAgentRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagUpdateAgentRequest;
-    getAgentId(): string;
-    setAgentId(value: string): RagUpdateAgentRequest;
-    getAvatar(): string;
-    setAvatar(value: string): RagUpdateAgentRequest;
-    getTitle(): string;
-    setTitle(value: string): RagUpdateAgentRequest;
-
-    hasPermission(): boolean;
-    clearPermission(): void;
-    getPermission(): RagPermission | undefined;
-    setPermission(value: RagPermission): RagUpdateAgentRequest;
-    getDescription(): string;
-    setDescription(value: string): RagUpdateAgentRequest;
-
-    hasCanvasType(): boolean;
-    clearCanvasType(): void;
-    getCanvasType(): string | undefined;
-    setCanvasType(value: string): RagUpdateAgentRequest;
-
-    hasCanvasCategory(): boolean;
-    clearCanvasCategory(): void;
-    getCanvasCategory(): RagCanvasCategory | undefined;
-    setCanvasCategory(value: RagCanvasCategory): RagUpdateAgentRequest;
-
-    hasDsl(): boolean;
-    clearDsl(): void;
-    getDsl(): google_protobuf_struct_pb.Struct | undefined;
-    setDsl(value?: google_protobuf_struct_pb.Struct): RagUpdateAgentRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagUpdateAgentRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagUpdateAgentRequest): RagUpdateAgentRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagUpdateAgentRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagUpdateAgentRequest;
-    static deserializeBinaryFromReader(message: RagUpdateAgentRequest, reader: jspb.BinaryReader): RagUpdateAgentRequest;
-}
-
-export namespace RagUpdateAgentRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        agentId: string,
-        avatar: string,
-        title: string,
-        permission?: RagPermission,
-        description: string,
-        canvasType?: string,
-        canvasCategory?: RagCanvasCategory,
-        dsl?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagDeleteAgentRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagDeleteAgentRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagDeleteAgentRequest;
-    getAgentId(): string;
-    setAgentId(value: string): RagDeleteAgentRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagDeleteAgentRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagDeleteAgentRequest): RagDeleteAgentRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagDeleteAgentRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagDeleteAgentRequest;
-    static deserializeBinaryFromReader(message: RagDeleteAgentRequest, reader: jspb.BinaryReader): RagDeleteAgentRequest;
-}
-
-export namespace RagDeleteAgentRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        agentId: string,
-    }
-}
-
-export class RagListAgentsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagListAgentsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagListAgentsRequest;
-    getPagination(): string;
-    setPagination(value: string): RagListAgentsRequest;
-    getTitle(): string;
-    setTitle(value: string): RagListAgentsRequest;
-    getOrderby(): string;
-    setOrderby(value: string): RagListAgentsRequest;
-
-    hasDesc(): boolean;
-    clearDesc(): void;
-    getDesc(): boolean | undefined;
-    setDesc(value: boolean): RagListAgentsRequest;
-    getId(): string;
-    setId(value: string): RagListAgentsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListAgentsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListAgentsRequest): RagListAgentsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListAgentsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListAgentsRequest;
-    static deserializeBinaryFromReader(message: RagListAgentsRequest, reader: jspb.BinaryReader): RagListAgentsRequest;
-}
-
-export namespace RagListAgentsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        pagination: string,
-        title: string,
-        orderby: string,
-        desc?: boolean,
-        id: string,
-    }
-}
-
-export class RagAgentList extends jspb.Message { 
-    clearAgentsList(): void;
-    getAgentsList(): Array<RagAgent>;
-    setAgentsList(value: Array<RagAgent>): RagAgentList;
-    addAgents(value?: RagAgent, index?: number): RagAgent;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentList.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentList): RagAgentList.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentList, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentList;
-    static deserializeBinaryFromReader(message: RagAgentList, reader: jspb.BinaryReader): RagAgentList;
-}
-
-export namespace RagAgentList {
-    export type AsObject = {
-        agentsList: Array<RagAgent.AsObject>,
-    }
-}
-
-export class RagAgent extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagAgent;
-    getAvatar(): string;
-    setAvatar(value: string): RagAgent;
-    getUserId(): string;
-    setUserId(value: string): RagAgent;
-    getTitle(): string;
-    setTitle(value: string): RagAgent;
-
-    hasPermission(): boolean;
-    clearPermission(): void;
-    getPermission(): RagPermission | undefined;
-    setPermission(value: RagPermission): RagAgent;
-    getDescription(): string;
-    setDescription(value: string): RagAgent;
-
-    hasCanvasType(): boolean;
-    clearCanvasType(): void;
-    getCanvasType(): string | undefined;
-    setCanvasType(value: string): RagAgent;
-
-    hasCanvasCategory(): boolean;
-    clearCanvasCategory(): void;
-    getCanvasCategory(): RagCanvasCategory | undefined;
-    setCanvasCategory(value: RagCanvasCategory): RagAgent;
-
-    hasDsl(): boolean;
-    clearDsl(): void;
-    getDsl(): google_protobuf_struct_pb.Struct | undefined;
-    setDsl(value?: google_protobuf_struct_pb.Struct): RagAgent;
-    getCreateTime(): number;
-    setCreateTime(value: number): RagAgent;
-    getCreateDate(): string;
-    setCreateDate(value: string): RagAgent;
-    getUpdateTime(): number;
-    setUpdateTime(value: number): RagAgent;
-    getUpdateDate(): string;
-    setUpdateDate(value: string): RagAgent;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgent.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgent): RagAgent.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgent, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgent;
-    static deserializeBinaryFromReader(message: RagAgent, reader: jspb.BinaryReader): RagAgent;
-}
-
-export namespace RagAgent {
-    export type AsObject = {
-        id: string,
-        avatar: string,
-        userId: string,
-        title: string,
-        permission?: RagPermission,
-        description: string,
-        canvasType?: string,
-        canvasCategory?: RagCanvasCategory,
-        dsl?: google_protobuf_struct_pb.Struct.AsObject,
-        createTime: number,
-        createDate: string,
-        updateTime: number,
-        updateDate: string,
-    }
-}
-
-export class RagCreateChatSessionRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagCreateChatSessionRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagCreateChatSessionRequest;
-    getChatId(): string;
-    setChatId(value: string): RagCreateChatSessionRequest;
-    getName(): string;
-    setName(value: string): RagCreateChatSessionRequest;
-    getUserId(): string;
-    setUserId(value: string): RagCreateChatSessionRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagCreateChatSessionRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagCreateChatSessionRequest): RagCreateChatSessionRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagCreateChatSessionRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagCreateChatSessionRequest;
-    static deserializeBinaryFromReader(message: RagCreateChatSessionRequest, reader: jspb.BinaryReader): RagCreateChatSessionRequest;
-}
-
-export namespace RagCreateChatSessionRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        name: string,
-        userId: string,
-    }
-}
-
-export class RagChatSession extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagChatSession;
-    getChatId(): string;
-    setChatId(value: string): RagChatSession;
-    getName(): string;
-    setName(value: string): RagChatSession;
-    clearMessagesList(): void;
-    getMessagesList(): Array<RagMessage>;
-    setMessagesList(value: Array<RagMessage>): RagChatSession;
-    addMessages(value?: RagMessage, index?: number): RagMessage;
-    getCreateTime(): number;
-    setCreateTime(value: number): RagChatSession;
-    getCreateDate(): string;
-    setCreateDate(value: string): RagChatSession;
-    getUpdateTime(): number;
-    setUpdateTime(value: number): RagChatSession;
-    getUpdateDate(): string;
-    setUpdateDate(value: string): RagChatSession;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatSession.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatSession): RagChatSession.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatSession, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatSession;
-    static deserializeBinaryFromReader(message: RagChatSession, reader: jspb.BinaryReader): RagChatSession;
-}
-
-export namespace RagChatSession {
-    export type AsObject = {
-        id: string,
-        chatId: string,
-        name: string,
-        messagesList: Array<RagMessage.AsObject>,
-        createTime: number,
-        createDate: string,
-        updateTime: number,
-        updateDate: string,
-    }
-}
-
-export class RagMessage extends jspb.Message { 
-
-    hasRole(): boolean;
-    clearRole(): void;
-    getRole(): RagMessageRole | undefined;
-    setRole(value: RagMessageRole): RagMessage;
-    getContent(): string;
-    setContent(value: string): RagMessage;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagMessage;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagMessage.AsObject;
-    static toObject(includeInstance: boolean, msg: RagMessage): RagMessage.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagMessage, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagMessage;
-    static deserializeBinaryFromReader(message: RagMessage, reader: jspb.BinaryReader): RagMessage;
-}
-
-export namespace RagMessage {
-    export type AsObject = {
-        role?: RagMessageRole,
-        content: string,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagUpdateChatSessionRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagUpdateChatSessionRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagUpdateChatSessionRequest;
-    getChatId(): string;
-    setChatId(value: string): RagUpdateChatSessionRequest;
-    getSessionId(): string;
-    setSessionId(value: string): RagUpdateChatSessionRequest;
-    getName(): string;
-    setName(value: string): RagUpdateChatSessionRequest;
-    getUserId(): string;
-    setUserId(value: string): RagUpdateChatSessionRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagUpdateChatSessionRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagUpdateChatSessionRequest): RagUpdateChatSessionRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagUpdateChatSessionRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagUpdateChatSessionRequest;
-    static deserializeBinaryFromReader(message: RagUpdateChatSessionRequest, reader: jspb.BinaryReader): RagUpdateChatSessionRequest;
-}
-
-export namespace RagUpdateChatSessionRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        sessionId: string,
-        name: string,
-        userId: string,
-    }
-}
-
-export class RagListChatSessionsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagListChatSessionsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagListChatSessionsRequest;
-    getChatId(): string;
-    setChatId(value: string): RagListChatSessionsRequest;
-    getPagination(): string;
-    setPagination(value: string): RagListChatSessionsRequest;
-    getOrderby(): string;
-    setOrderby(value: string): RagListChatSessionsRequest;
-
-    hasDesc(): boolean;
-    clearDesc(): void;
-    getDesc(): boolean | undefined;
-    setDesc(value: boolean): RagListChatSessionsRequest;
-    getName(): string;
-    setName(value: string): RagListChatSessionsRequest;
-    getId(): string;
-    setId(value: string): RagListChatSessionsRequest;
-    getUserId(): string;
-    setUserId(value: string): RagListChatSessionsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListChatSessionsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListChatSessionsRequest): RagListChatSessionsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListChatSessionsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListChatSessionsRequest;
-    static deserializeBinaryFromReader(message: RagListChatSessionsRequest, reader: jspb.BinaryReader): RagListChatSessionsRequest;
-}
-
-export namespace RagListChatSessionsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        pagination: string,
-        orderby: string,
-        desc?: boolean,
-        name: string,
-        id: string,
-        userId: string,
-    }
-}
-
-export class RagChatSessionList extends jspb.Message { 
-    clearChatSessionsList(): void;
-    getChatSessionsList(): Array<RagChatSession>;
-    setChatSessionsList(value: Array<RagChatSession>): RagChatSessionList;
-    addChatSessions(value?: RagChatSession, index?: number): RagChatSession;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatSessionList.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatSessionList): RagChatSessionList.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatSessionList, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatSessionList;
-    static deserializeBinaryFromReader(message: RagChatSessionList, reader: jspb.BinaryReader): RagChatSessionList;
-}
-
-export namespace RagChatSessionList {
-    export type AsObject = {
-        chatSessionsList: Array<RagChatSession.AsObject>,
-    }
-}
-
-export class RagDeleteChatSessionsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagDeleteChatSessionsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagDeleteChatSessionsRequest;
-    getChatId(): string;
-    setChatId(value: string): RagDeleteChatSessionsRequest;
-    clearIdsList(): void;
-    getIdsList(): Array<string>;
-    setIdsList(value: Array<string>): RagDeleteChatSessionsRequest;
-    addIds(value: string, index?: number): string;
-
-    hasDeleteAll(): boolean;
-    clearDeleteAll(): void;
-    getDeleteAll(): boolean | undefined;
-    setDeleteAll(value: boolean): RagDeleteChatSessionsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagDeleteChatSessionsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagDeleteChatSessionsRequest): RagDeleteChatSessionsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagDeleteChatSessionsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagDeleteChatSessionsRequest;
-    static deserializeBinaryFromReader(message: RagDeleteChatSessionsRequest, reader: jspb.BinaryReader): RagDeleteChatSessionsRequest;
-}
-
-export namespace RagDeleteChatSessionsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        idsList: Array<string>,
-        deleteAll?: boolean,
-    }
-}
-
-export class RagListAgentSessionsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagListAgentSessionsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagListAgentSessionsRequest;
-    getAgentId(): string;
-    setAgentId(value: string): RagListAgentSessionsRequest;
-    getPagination(): string;
-    setPagination(value: string): RagListAgentSessionsRequest;
-    getOrderby(): string;
-    setOrderby(value: string): RagListAgentSessionsRequest;
-
-    hasDesc(): boolean;
-    clearDesc(): void;
-    getDesc(): boolean | undefined;
-    setDesc(value: boolean): RagListAgentSessionsRequest;
-    getId(): string;
-    setId(value: string): RagListAgentSessionsRequest;
-    getUserId(): string;
-    setUserId(value: string): RagListAgentSessionsRequest;
-
-    hasDsl(): boolean;
-    clearDsl(): void;
-    getDsl(): boolean | undefined;
-    setDsl(value: boolean): RagListAgentSessionsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagListAgentSessionsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagListAgentSessionsRequest): RagListAgentSessionsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagListAgentSessionsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagListAgentSessionsRequest;
-    static deserializeBinaryFromReader(message: RagListAgentSessionsRequest, reader: jspb.BinaryReader): RagListAgentSessionsRequest;
-}
-
-export namespace RagListAgentSessionsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        agentId: string,
-        pagination: string,
-        orderby: string,
-        desc?: boolean,
-        id: string,
-        userId: string,
-        dsl?: boolean,
-    }
-}
-
-export class RagAgentSessionList extends jspb.Message { 
-    clearAgentSessionsList(): void;
-    getAgentSessionsList(): Array<RagAgentSession>;
-    setAgentSessionsList(value: Array<RagAgentSession>): RagAgentSessionList;
-    addAgentSessions(value?: RagAgentSession, index?: number): RagAgentSession;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentSessionList.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentSessionList): RagAgentSessionList.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentSessionList, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentSessionList;
-    static deserializeBinaryFromReader(message: RagAgentSessionList, reader: jspb.BinaryReader): RagAgentSessionList;
-}
-
-export namespace RagAgentSessionList {
-    export type AsObject = {
-        agentSessionsList: Array<RagAgentSession.AsObject>,
-    }
-}
-
-export class RagAgentSession extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagAgentSession;
-    getAgentId(): string;
-    setAgentId(value: string): RagAgentSession;
-    getUserId(): string;
-    setUserId(value: string): RagAgentSession;
-    clearMessagesList(): void;
-    getMessagesList(): Array<RagMessage>;
-    setMessagesList(value: Array<RagMessage>): RagAgentSession;
-    addMessages(value?: RagMessage, index?: number): RagMessage;
-
-    hasTokens(): boolean;
-    clearTokens(): void;
-    getTokens(): number | undefined;
-    setTokens(value: number): RagAgentSession;
-
-    hasSource(): boolean;
-    clearSource(): void;
-    getSource(): RagSessionSource | undefined;
-    setSource(value: RagSessionSource): RagAgentSession;
-
-    hasDsl(): boolean;
-    clearDsl(): void;
-    getDsl(): google_protobuf_struct_pb.Struct | undefined;
-    setDsl(value?: google_protobuf_struct_pb.Struct): RagAgentSession;
-    getDuration(): number;
-    setDuration(value: number): RagAgentSession;
-
-    hasRound(): boolean;
-    clearRound(): void;
-    getRound(): number | undefined;
-    setRound(value: number): RagAgentSession;
-
-    hasThumbUp(): boolean;
-    clearThumbUp(): void;
-    getThumbUp(): number | undefined;
-    setThumbUp(value: number): RagAgentSession;
-    getErrors(): string;
-    setErrors(value: string): RagAgentSession;
-    getCreateTime(): number;
-    setCreateTime(value: number): RagAgentSession;
-    getCreateDate(): string;
-    setCreateDate(value: string): RagAgentSession;
-    getUpdateTime(): number;
-    setUpdateTime(value: number): RagAgentSession;
-    getUpdateDate(): string;
-    setUpdateDate(value: string): RagAgentSession;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentSession.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentSession): RagAgentSession.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentSession, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentSession;
-    static deserializeBinaryFromReader(message: RagAgentSession, reader: jspb.BinaryReader): RagAgentSession;
-}
-
-export namespace RagAgentSession {
-    export type AsObject = {
-        id: string,
-        agentId: string,
-        userId: string,
-        messagesList: Array<RagMessage.AsObject>,
-        tokens?: number,
-        source?: RagSessionSource,
-        dsl?: google_protobuf_struct_pb.Struct.AsObject,
-        duration: number,
-        round?: number,
-        thumbUp?: number,
-        errors: string,
-        createTime: number,
-        createDate: string,
-        updateTime: number,
-        updateDate: string,
-    }
-}
-
-export class RagDeleteAgentSessionsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagDeleteAgentSessionsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagDeleteAgentSessionsRequest;
-    getAgentId(): string;
-    setAgentId(value: string): RagDeleteAgentSessionsRequest;
-    clearIdsList(): void;
-    getIdsList(): Array<string>;
-    setIdsList(value: Array<string>): RagDeleteAgentSessionsRequest;
-    addIds(value: string, index?: number): string;
-
-    hasDeleteAll(): boolean;
-    clearDeleteAll(): void;
-    getDeleteAll(): boolean | undefined;
-    setDeleteAll(value: boolean): RagDeleteAgentSessionsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagDeleteAgentSessionsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagDeleteAgentSessionsRequest): RagDeleteAgentSessionsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagDeleteAgentSessionsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagDeleteAgentSessionsRequest;
-    static deserializeBinaryFromReader(message: RagDeleteAgentSessionsRequest, reader: jspb.BinaryReader): RagDeleteAgentSessionsRequest;
-}
-
-export namespace RagDeleteAgentSessionsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        agentId: string,
-        idsList: Array<string>,
-        deleteAll?: boolean,
-    }
-}
-
-export class RagChatCompletionRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagChatCompletionRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagChatCompletionRequest;
-    getChatId(): string;
-    setChatId(value: string): RagChatCompletionRequest;
-    clearMessagesList(): void;
-    getMessagesList(): Array<RagMessage>;
-    setMessagesList(value: Array<RagMessage>): RagChatCompletionRequest;
-    addMessages(value?: RagMessage, index?: number): RagMessage;
-    getSessionId(): string;
-    setSessionId(value: string): RagChatCompletionRequest;
-    getName(): string;
-    setName(value: string): RagChatCompletionRequest;
-    getUserId(): string;
-    setUserId(value: string): RagChatCompletionRequest;
-
-    hasStream(): boolean;
-    clearStream(): void;
-    getStream(): boolean | undefined;
-    setStream(value: boolean): RagChatCompletionRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatCompletionRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatCompletionRequest): RagChatCompletionRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatCompletionRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatCompletionRequest;
-    static deserializeBinaryFromReader(message: RagChatCompletionRequest, reader: jspb.BinaryReader): RagChatCompletionRequest;
-}
-
-export namespace RagChatCompletionRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        chatId: string,
-        messagesList: Array<RagMessage.AsObject>,
-        sessionId: string,
-        name: string,
-        userId: string,
-        stream?: boolean,
-    }
-}
-
-export class RagChatCompletionResponse extends jspb.Message { 
-    getAnswer(): string;
-    setAnswer(value: string): RagChatCompletionResponse;
-
-    hasReference(): boolean;
-    clearReference(): void;
-    getReference(): RagReference | undefined;
-    setReference(value?: RagReference): RagChatCompletionResponse;
-    getAudioBinary(): string;
-    setAudioBinary(value: string): RagChatCompletionResponse;
-    getId(): string;
-    setId(value: string): RagChatCompletionResponse;
-    getSessionId(): string;
-    setSessionId(value: string): RagChatCompletionResponse;
-    getPrompt(): string;
-    setPrompt(value: string): RagChatCompletionResponse;
-    getCreatedAt(): number;
-    setCreatedAt(value: number): RagChatCompletionResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagChatCompletionResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagChatCompletionResponse): RagChatCompletionResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagChatCompletionResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagChatCompletionResponse;
-    static deserializeBinaryFromReader(message: RagChatCompletionResponse, reader: jspb.BinaryReader): RagChatCompletionResponse;
-}
-
-export namespace RagChatCompletionResponse {
-    export type AsObject = {
-        answer: string,
-        reference?: RagReference.AsObject,
-        audioBinary: string,
-        id: string,
-        sessionId: string,
-        prompt: string,
-        createdAt: number,
-    }
-}
-
-export class RagReference extends jspb.Message { 
-    clearChunksList(): void;
-    getChunksList(): Array<RagReferenceChunk>;
-    setChunksList(value: Array<RagReferenceChunk>): RagReference;
-    addChunks(value?: RagReferenceChunk, index?: number): RagReferenceChunk;
-    clearDocAggsList(): void;
-    getDocAggsList(): Array<RagDocAgg>;
-    setDocAggsList(value: Array<RagDocAgg>): RagReference;
-    addDocAggs(value?: RagDocAgg, index?: number): RagDocAgg;
-    getTotal(): number;
-    setTotal(value: number): RagReference;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagReference.AsObject;
-    static toObject(includeInstance: boolean, msg: RagReference): RagReference.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagReference, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagReference;
-    static deserializeBinaryFromReader(message: RagReference, reader: jspb.BinaryReader): RagReference;
-}
-
-export namespace RagReference {
-    export type AsObject = {
-        chunksList: Array<RagReferenceChunk.AsObject>,
-        docAggsList: Array<RagDocAgg.AsObject>,
-        total: number,
-    }
-}
-
-export class RagReferenceChunk extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagReferenceChunk;
-    getContent(): string;
-    setContent(value: string): RagReferenceChunk;
-    getDocumentId(): string;
-    setDocumentId(value: string): RagReferenceChunk;
-    getDocumentName(): string;
-    setDocumentName(value: string): RagReferenceChunk;
-    getDatasetId(): string;
-    setDatasetId(value: string): RagReferenceChunk;
-    getImageId(): string;
-    setImageId(value: string): RagReferenceChunk;
-    clearPositionsList(): void;
-    getPositionsList(): Array<RagIntList>;
-    setPositionsList(value: Array<RagIntList>): RagReferenceChunk;
-    addPositions(value?: RagIntList, index?: number): RagIntList;
-    getVectorSimilarity(): number;
-    setVectorSimilarity(value: number): RagReferenceChunk;
-    getTermSimilarity(): number;
-    setTermSimilarity(value: number): RagReferenceChunk;
-    getSimilarity(): number;
-    setSimilarity(value: number): RagReferenceChunk;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagReferenceChunk.AsObject;
-    static toObject(includeInstance: boolean, msg: RagReferenceChunk): RagReferenceChunk.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagReferenceChunk, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagReferenceChunk;
-    static deserializeBinaryFromReader(message: RagReferenceChunk, reader: jspb.BinaryReader): RagReferenceChunk;
-}
-
-export namespace RagReferenceChunk {
-    export type AsObject = {
-        id: string,
-        content: string,
-        documentId: string,
-        documentName: string,
-        datasetId: string,
-        imageId: string,
-        positionsList: Array<RagIntList.AsObject>,
-        vectorSimilarity: number,
-        termSimilarity: number,
-        similarity: number,
-    }
-}
-
-export class RagIntList extends jspb.Message { 
-    clearIntListList(): void;
-    getIntListList(): Array<number>;
-    setIntListList(value: Array<number>): RagIntList;
-    addIntList(value: number, index?: number): number;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagIntList.AsObject;
-    static toObject(includeInstance: boolean, msg: RagIntList): RagIntList.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagIntList, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagIntList;
-    static deserializeBinaryFromReader(message: RagIntList, reader: jspb.BinaryReader): RagIntList;
-}
-
-export namespace RagIntList {
-    export type AsObject = {
-        intListList: Array<number>,
-    }
-}
-
-export class RagAgentCompletionRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagAgentCompletionRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagAgentCompletionRequest;
-    getAgentId(): string;
-    setAgentId(value: string): RagAgentCompletionRequest;
-    getSessionId(): string;
-    setSessionId(value: string): RagAgentCompletionRequest;
-    getQuestion(): string;
-    setQuestion(value: string): RagAgentCompletionRequest;
-
-    hasStream(): boolean;
-    clearStream(): void;
-    getStream(): boolean | undefined;
-    setStream(value: boolean): RagAgentCompletionRequest;
-    clearFilesList(): void;
-    getFilesList(): Array<RagFile>;
-    setFilesList(value: Array<RagFile>): RagAgentCompletionRequest;
-    addFiles(value?: RagFile, index?: number): RagFile;
-
-    hasInputs(): boolean;
-    clearInputs(): void;
-    getInputs(): google_protobuf_struct_pb.Struct | undefined;
-    setInputs(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionRequest;
-    getUserId(): string;
-    setUserId(value: string): RagAgentCompletionRequest;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentCompletionRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentCompletionRequest): RagAgentCompletionRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentCompletionRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentCompletionRequest;
-    static deserializeBinaryFromReader(message: RagAgentCompletionRequest, reader: jspb.BinaryReader): RagAgentCompletionRequest;
-}
-
-export namespace RagAgentCompletionRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        agentId: string,
-        sessionId: string,
-        question: string,
-        stream?: boolean,
-        filesList: Array<RagFile.AsObject>,
-        inputs?: google_protobuf_struct_pb.Struct.AsObject,
-        userId: string,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagFile extends jspb.Message { 
-    getId(): string;
-    setId(value: string): RagFile;
-    getParentId(): string;
-    setParentId(value: string): RagFile;
-    getTenantId(): string;
-    setTenantId(value: string): RagFile;
-    getCreatedBy(): string;
-    setCreatedBy(value: string): RagFile;
-    getName(): string;
-    setName(value: string): RagFile;
-    getLocation(): string;
-    setLocation(value: string): RagFile;
-
-    hasSize(): boolean;
-    clearSize(): void;
-    getSize(): number | undefined;
-    setSize(value: number): RagFile;
-    getType(): string;
-    setType(value: string): RagFile;
-    getSourceType(): string;
-    setSourceType(value: string): RagFile;
-    getCreateTime(): number;
-    setCreateTime(value: number): RagFile;
-    getCreateDate(): string;
-    setCreateDate(value: string): RagFile;
-    getUpdateTime(): number;
-    setUpdateTime(value: number): RagFile;
-    getUpdateDate(): string;
-    setUpdateDate(value: string): RagFile;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagFile.AsObject;
-    static toObject(includeInstance: boolean, msg: RagFile): RagFile.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagFile, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagFile;
-    static deserializeBinaryFromReader(message: RagFile, reader: jspb.BinaryReader): RagFile;
-}
-
-export namespace RagFile {
-    export type AsObject = {
-        id: string,
-        parentId: string,
-        tenantId: string,
-        createdBy: string,
-        name: string,
-        location: string,
-        size?: number,
-        type: string,
-        sourceType: string,
-        createTime: number,
-        createDate: string,
-        updateTime: number,
-        updateDate: string,
-    }
-}
-
-export class RagAgentCompletionResponse extends jspb.Message { 
-
-    hasEvent(): boolean;
-    clearEvent(): void;
-    getEvent(): RagAgentEventType | undefined;
-    setEvent(value: RagAgentEventType): RagAgentCompletionResponse;
-    getMessageId(): string;
-    setMessageId(value: string): RagAgentCompletionResponse;
-    getCreatedAt(): number;
-    setCreatedAt(value: number): RagAgentCompletionResponse;
-    getTaskId(): string;
-    setTaskId(value: string): RagAgentCompletionResponse;
-
-    hasData(): boolean;
-    clearData(): void;
-    getData(): RagAgentCompletionData | undefined;
-    setData(value?: RagAgentCompletionData): RagAgentCompletionResponse;
-    getSessionId(): string;
-    setSessionId(value: string): RagAgentCompletionResponse;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentCompletionResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentCompletionResponse): RagAgentCompletionResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentCompletionResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentCompletionResponse;
-    static deserializeBinaryFromReader(message: RagAgentCompletionResponse, reader: jspb.BinaryReader): RagAgentCompletionResponse;
-}
-
-export namespace RagAgentCompletionResponse {
-    export type AsObject = {
-        event?: RagAgentEventType,
-        messageId: string,
-        createdAt: number,
-        taskId: string,
-        data?: RagAgentCompletionData.AsObject,
-        sessionId: string,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagAgentCompletionData extends jspb.Message { 
-    getContent(): string;
-    setContent(value: string): RagAgentCompletionData;
-
-    hasInputs(): boolean;
-    clearInputs(): void;
-    getInputs(): google_protobuf_struct_pb.Struct | undefined;
-    setInputs(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionData;
-
-    hasOutputs(): boolean;
-    clearOutputs(): void;
-    getOutputs(): google_protobuf_struct_pb.Struct | undefined;
-    setOutputs(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionData;
-
-    hasReference(): boolean;
-    clearReference(): void;
-    getReference(): google_protobuf_struct_pb.Struct | undefined;
-    setReference(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionData;
-
-    hasAdditionalFields(): boolean;
-    clearAdditionalFields(): void;
-    getAdditionalFields(): google_protobuf_struct_pb.Struct | undefined;
-    setAdditionalFields(value?: google_protobuf_struct_pb.Struct): RagAgentCompletionData;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAgentCompletionData.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAgentCompletionData): RagAgentCompletionData.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAgentCompletionData, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAgentCompletionData;
-    static deserializeBinaryFromReader(message: RagAgentCompletionData, reader: jspb.BinaryReader): RagAgentCompletionData;
-}
-
-export namespace RagAgentCompletionData {
-    export type AsObject = {
-        content: string,
-        inputs?: google_protobuf_struct_pb.Struct.AsObject,
-        outputs?: google_protobuf_struct_pb.Struct.AsObject,
-        reference?: google_protobuf_struct_pb.Struct.AsObject,
-        additionalFields?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagAskRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagAskRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagAskRequest;
-    getQuestion(): string;
-    setQuestion(value: string): RagAskRequest;
-    clearDatasetIdsList(): void;
-    getDatasetIdsList(): Array<string>;
-    setDatasetIdsList(value: Array<string>): RagAskRequest;
-    addDatasetIds(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAskRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAskRequest): RagAskRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAskRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAskRequest;
-    static deserializeBinaryFromReader(message: RagAskRequest, reader: jspb.BinaryReader): RagAskRequest;
-}
-
-export namespace RagAskRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        question: string,
-        datasetIdsList: Array<string>,
-    }
-}
-
-export class RagAskResponse extends jspb.Message { 
-    getAnswer(): string;
-    setAnswer(value: string): RagAskResponse;
-
-    hasReference(): boolean;
-    clearReference(): void;
-    getReference(): google_protobuf_struct_pb.Struct | undefined;
-    setReference(value?: google_protobuf_struct_pb.Struct): RagAskResponse;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagAskResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagAskResponse): RagAskResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagAskResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagAskResponse;
-    static deserializeBinaryFromReader(message: RagAskResponse, reader: jspb.BinaryReader): RagAskResponse;
-}
-
-export namespace RagAskResponse {
-    export type AsObject = {
-        answer: string,
-        reference?: google_protobuf_struct_pb.Struct.AsObject,
-    }
-}
-
-export class RagRelatedQuestionsRequest extends jspb.Message { 
-    getParent(): string;
-    setParent(value: string): RagRelatedQuestionsRequest;
-    getLanguageCode(): string;
-    setLanguageCode(value: string): RagRelatedQuestionsRequest;
-    getQuestion(): string;
-    setQuestion(value: string): RagRelatedQuestionsRequest;
-    getIndustry(): string;
-    setIndustry(value: string): RagRelatedQuestionsRequest;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagRelatedQuestionsRequest.AsObject;
-    static toObject(includeInstance: boolean, msg: RagRelatedQuestionsRequest): RagRelatedQuestionsRequest.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagRelatedQuestionsRequest, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagRelatedQuestionsRequest;
-    static deserializeBinaryFromReader(message: RagRelatedQuestionsRequest, reader: jspb.BinaryReader): RagRelatedQuestionsRequest;
-}
-
-export namespace RagRelatedQuestionsRequest {
-    export type AsObject = {
-        parent: string,
-        languageCode: string,
-        question: string,
-        industry: string,
-    }
-}
-
-export class RagRelatedQuestionsResponse extends jspb.Message { 
-    clearQuestionsList(): void;
-    getQuestionsList(): Array<string>;
-    setQuestionsList(value: Array<string>): RagRelatedQuestionsResponse;
-    addQuestions(value: string, index?: number): string;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagRelatedQuestionsResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: RagRelatedQuestionsResponse): RagRelatedQuestionsResponse.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagRelatedQuestionsResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagRelatedQuestionsResponse;
-    static deserializeBinaryFromReader(message: RagRelatedQuestionsResponse, reader: jspb.BinaryReader): RagRelatedQuestionsResponse;
-}
-
-export namespace RagRelatedQuestionsResponse {
-    export type AsObject = {
-        questionsList: Array<string>,
     }
 }
 
@@ -3536,6 +1493,20 @@ export class RagCrawler extends jspb.Message {
     getDisplayName(): string;
     setDisplayName(value: string): RagCrawler;
 
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): RagCrawler;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): RagCrawler;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): RagCrawler;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): RagCrawler;
+
     hasCrawlerSources(): boolean;
     clearCrawlerSources(): void;
     getCrawlerSources(): RagCrawlerSources | undefined;
@@ -3561,19 +1532,10 @@ export class RagCrawler extends jspb.Message {
     getCrawlerConfig(): RagCrawlerConfig | undefined;
     setCrawlerConfig(value?: RagCrawlerConfig): RagCrawler;
 
-    hasCreatedAt(): boolean;
-    clearCreatedAt(): void;
-    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): RagCrawler;
-
-    hasModifiedAt(): boolean;
-    clearModifiedAt(): void;
-    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
-    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): RagCrawler;
-    getCreatedBy(): string;
-    setCreatedBy(value: string): RagCrawler;
-    getModifiedBy(): string;
-    setModifiedBy(value: string): RagCrawler;
+    hasRetryConfig(): boolean;
+    clearRetryConfig(): void;
+    getRetryConfig(): RagCrawlerRetryConfig | undefined;
+    setRetryConfig(value?: RagCrawlerRetryConfig): RagCrawler;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawler.AsObject;
@@ -3589,15 +1551,16 @@ export namespace RagCrawler {
     export type AsObject = {
         name: string,
         displayName: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedBy: string,
         crawlerSources?: RagCrawlerSources.AsObject,
         crawlerSeedUrlFilters?: RagCrawlerSeedUrlFilters.AsObject,
         crawlerAuth?: RagCrawlerAuth.AsObject,
         crawlerBrowserConfig?: RagCrawlerBrowserConfig.AsObject,
         crawlerConfig?: RagCrawlerConfig.AsObject,
-        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        createdBy: string,
-        modifiedBy: string,
+        retryConfig?: RagCrawlerRetryConfig.AsObject,
     }
 }
 
@@ -3745,6 +1708,8 @@ export class RagCrawlerHtmlAuth extends jspb.Message {
     setHtmlAuthPasswordSelector(value: string): RagCrawlerHtmlAuth;
     getHtmlAuthPassword(): string;
     setHtmlAuthPassword(value: string): RagCrawlerHtmlAuth;
+    getAuthenticationExecutionType(): RagCrawlerAuthenticationExecutionType;
+    setAuthenticationExecutionType(value: RagCrawlerAuthenticationExecutionType): RagCrawlerHtmlAuth;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawlerHtmlAuth.AsObject;
@@ -3765,6 +1730,7 @@ export namespace RagCrawlerHtmlAuth {
         htmlAuthPasswordSelectorType: RagCrawlerSelectorType,
         htmlAuthPasswordSelector: string,
         htmlAuthPassword: string,
+        authenticationExecutionType: RagCrawlerAuthenticationExecutionType,
     }
 }
 
@@ -3937,57 +1903,11 @@ export namespace RagCrawlerDeepCrawlerConfig {
     }
 }
 
-export class RagCrawlerDiagnosticsConfig extends jspb.Message { 
-    getSslCertificate(): boolean;
-    setSslCertificate(value: boolean): RagCrawlerDiagnosticsConfig;
-    getNetworkRequests(): boolean;
-    setNetworkRequests(value: boolean): RagCrawlerDiagnosticsConfig;
-    getConsoleMessages(): boolean;
-    setConsoleMessages(value: boolean): RagCrawlerDiagnosticsConfig;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagCrawlerDiagnosticsConfig.AsObject;
-    static toObject(includeInstance: boolean, msg: RagCrawlerDiagnosticsConfig): RagCrawlerDiagnosticsConfig.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagCrawlerDiagnosticsConfig, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagCrawlerDiagnosticsConfig;
-    static deserializeBinaryFromReader(message: RagCrawlerDiagnosticsConfig, reader: jspb.BinaryReader): RagCrawlerDiagnosticsConfig;
-}
-
-export namespace RagCrawlerDiagnosticsConfig {
-    export type AsObject = {
-        sslCertificate: boolean,
-        networkRequests: boolean,
-        consoleMessages: boolean,
-    }
-}
-
-export class RagCrawlerInteractionConfig extends jspb.Message { 
-    getWaitFor(): string;
-    setWaitFor(value: string): RagCrawlerInteractionConfig;
-    getWaitForTimeout(): number;
-    setWaitForTimeout(value: number): RagCrawlerInteractionConfig;
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): RagCrawlerInteractionConfig.AsObject;
-    static toObject(includeInstance: boolean, msg: RagCrawlerInteractionConfig): RagCrawlerInteractionConfig.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: RagCrawlerInteractionConfig, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): RagCrawlerInteractionConfig;
-    static deserializeBinaryFromReader(message: RagCrawlerInteractionConfig, reader: jspb.BinaryReader): RagCrawlerInteractionConfig;
-}
-
-export namespace RagCrawlerInteractionConfig {
-    export type AsObject = {
-        waitFor: string,
-        waitForTimeout: number,
-    }
-}
-
 export class RagCrawlerResultsConfig extends jspb.Message { 
-    getInjectFrontmatter(): boolean;
+
+    hasInjectFrontmatter(): boolean;
+    clearInjectFrontmatter(): void;
+    getInjectFrontmatter(): boolean | undefined;
     setInjectFrontmatter(value: boolean): RagCrawlerResultsConfig;
     clearMetaDataExtractorsList(): void;
     getMetaDataExtractorsList(): Array<RagCrawlerMetaDataExtractor>;
@@ -4006,7 +1926,7 @@ export class RagCrawlerResultsConfig extends jspb.Message {
 
 export namespace RagCrawlerResultsConfig {
     export type AsObject = {
-        injectFrontmatter: boolean,
+        injectFrontmatter?: boolean,
         metaDataExtractorsList: Array<RagCrawlerMetaDataExtractor.AsObject>,
     }
 }
@@ -4620,133 +2540,96 @@ export namespace RagGetCrawlerAttachedDatasetsResponse {
 }
 
 export enum RagChunkMethod {
-    RAG_CHUNK_METHOD_NAIVE = 0,
-    RAG_CHUNK_METHOD_BOOK = 1,
-    RAG_CHUNK_METHOD_EMAIL = 2,
-    RAG_CHUNK_METHOD_LAWS = 3,
-    RAG_CHUNK_METHOD_MANUAL = 4,
-    RAG_CHUNK_METHOD_ONE = 5,
-    RAG_CHUNK_METHOD_PAPER = 6,
-    RAG_CHUNK_METHOD_PICTURE = 7,
-    RAG_CHUNK_METHOD_PRESENTATION = 8,
-    RAG_CHUNK_METHOD_QA = 9,
-    RAG_CHUNK_METHOD_TABLE = 10,
-    RAG_CHUNK_METHOD_TAG = 11,
+    RAG_CHUNK_METHOD_UNSPECIFIED = 0,
+    RAG_CHUNK_METHOD_NAIVE = 1,
+    RAG_CHUNK_METHOD_BOOK = 2,
+    RAG_CHUNK_METHOD_EMAIL = 3,
+    RAG_CHUNK_METHOD_LAWS = 4,
+    RAG_CHUNK_METHOD_MANUAL = 5,
+    RAG_CHUNK_METHOD_ONE = 6,
+    RAG_CHUNK_METHOD_PAPER = 7,
+    RAG_CHUNK_METHOD_PICTURE = 8,
+    RAG_CHUNK_METHOD_PRESENTATION = 9,
+    RAG_CHUNK_METHOD_QA = 10,
+    RAG_CHUNK_METHOD_TABLE = 11,
+    RAG_CHUNK_METHOD_TAG = 12,
 }
 
 export enum RagGraphRagMethod {
-    RAG_GRAPH_RAG_METHOD_LIGHT = 0,
-    RAG_GRAPH_RAG_METHOD_GENERAL = 1,
+    RAG_GRAPH_RAG_METHOD_UNSPECIFIED = 0,
+    RAG_GRAPH_RAG_METHOD_LIGHT = 1,
+    RAG_GRAPH_RAG_METHOD_GENERAL = 2,
 }
 
 export enum RagDocumentType {
-    RAG_DOCUMENT_TYPE_PDF = 0,
-    RAG_DOCUMENT_TYPE_DOC = 1,
-    RAG_DOCUMENT_TYPE_VISUAL = 2,
-    RAG_DOCUMENT_TYPE_AURAL = 3,
-    RAG_DOCUMENT_TYPE_VIRTUAL = 4,
-    RAG_DOCUMENT_TYPE_FOLDER = 5,
-    RAG_DOCUMENT_TYPE_OTHER = 6,
+    RAG_DOCUMENT_TYPE_UNSPECIFIED = 0,
+    RAG_DOCUMENT_TYPE_PDF = 1,
+    RAG_DOCUMENT_TYPE_DOC = 2,
+    RAG_DOCUMENT_TYPE_VISUAL = 3,
+    RAG_DOCUMENT_TYPE_AURAL = 4,
+    RAG_DOCUMENT_TYPE_VIRTUAL = 5,
+    RAG_DOCUMENT_TYPE_FOLDER = 6,
+    RAG_DOCUMENT_TYPE_OTHER = 7,
 }
 
 export enum RagDocumentStatus {
-    RAG_DOCUMENT_STATUS_UNSTART = 0,
-    RAG_DOCUMENT_STATUS_RUNNING = 1,
-    RAG_DOCUMENT_STATUS_CANCEL = 2,
-    RAG_DOCUMENT_STATUS_DONE = 3,
-    RAG_DOCUMENT_STATUS_FAIL = 4,
+    RAG_DOCUMENT_STATUS_UNSPECIFIED = 0,
+    RAG_DOCUMENT_STATUS_UNSTART = 1,
+    RAG_DOCUMENT_STATUS_RUNNING = 2,
+    RAG_DOCUMENT_STATUS_CANCEL = 3,
+    RAG_DOCUMENT_STATUS_DONE = 4,
+    RAG_DOCUMENT_STATUS_FAIL = 5,
 }
 
 export enum RagLogic {
-    RAG_LOGIC_AND = 0,
-    RAG_LOGIC_OR = 1,
+    RAG_LOGIC_UNSPECIFIED = 0,
+    RAG_LOGIC_AND = 1,
+    RAG_LOGIC_OR = 2,
 }
 
 export enum RagComparisonOperator {
-    RAG_COMPARISON_OPERATOR_CONTAINS = 0,
-    RAG_COMPARISON_OPERATOR_NOT_CONTAINS = 1,
-    RAG_COMPARISON_OPERATOR_IN = 2,
-    RAG_COMPARISON_OPERATOR_NOT_IN = 3,
-    RAG_COMPARISON_OPERATOR_START_WITH = 4,
-    RAG_COMPARISON_OPERATOR_ENDS_WITH = 5,
-    RAG_COMPARISON_OPERATOR_EMPTY = 6,
-    RAG_COMPARISON_OPERATOR_NOT_EMPTY = 7,
-    RAG_COMPARISON_OPERATOR_EQ = 8,
-    RAG_COMPARISON_OPERATOR_NEQ = 9,
-    RAG_COMPARISON_OPERATOR_GT = 10,
-    RAG_COMPARISON_OPERATOR_LT = 11,
-    RAG_COMPARISON_OPERATOR_GEQ = 12,
-    RAG_COMPARISON_OPERATOR_LEQ = 13,
-}
-
-export enum RagPromptType {
-    RAG_PROMPT_TYPE_SIMPLE = 0,
-    RAG_PROMPT_TYPE_ADVANCED = 1,
-}
-
-export enum RagPermission {
-    RAG_PERMISSION_ME = 0,
-    RAG_PERMISSION_TEAM = 1,
-}
-
-export enum RagCanvasCategory {
-    RAG_CANVAS_CATEGORY_AGENT_CANVAS = 0,
-    RAG_CANVAS_CATEGORY_DATAFLOW_CANVAS = 1,
-}
-
-export enum RagMessageRole {
-    RAG_MESSAGE_ROLE_USER = 0,
-    RAG_MESSAGE_ROLE_ASSISTANT = 1,
-    RAG_MESSAGE_ROLE_SYSTEM = 2,
-}
-
-export enum RagSessionSource {
-    RAG_SESSION_SOURCE_NONE = 0,
-    RAG_SESSION_SOURCE_AGENT = 1,
-    RAG_SESSION_SOURCE_DIALOG = 2,
-}
-
-export enum RagAgentEventType {
-    RAG_AGENT_EVENT_TYPE_MESSAGE = 0,
-    RAG_AGENT_EVENT_TYPE_MESSAGE_END = 1,
+    RAG_COMPARISON_OPERATOR_UNSPECIFIED = 0,
+    RAG_COMPARISON_OPERATOR_CONTAINS = 1,
+    RAG_COMPARISON_OPERATOR_NOT_CONTAINS = 2,
+    RAG_COMPARISON_OPERATOR_IN = 3,
+    RAG_COMPARISON_OPERATOR_NOT_IN = 4,
+    RAG_COMPARISON_OPERATOR_START_WITH = 5,
+    RAG_COMPARISON_OPERATOR_END_WITH = 6,
+    RAG_COMPARISON_OPERATOR_EMPTY = 7,
+    RAG_COMPARISON_OPERATOR_NOT_EMPTY = 8,
+    RAG_COMPARISON_OPERATOR_EQ = 9,
+    RAG_COMPARISON_OPERATOR_NEQ = 10,
+    RAG_COMPARISON_OPERATOR_GT = 11,
+    RAG_COMPARISON_OPERATOR_LT = 12,
+    RAG_COMPARISON_OPERATOR_GEQ = 13,
+    RAG_COMPARISON_OPERATOR_LEQ = 14,
 }
 
 export enum RagCrawlerSelectorType {
-    RAG_CRAWLER_SELECTOR_TYPE_ID = 0,
-    RAG_CRAWLER_SELECTOR_TYPE_CSS_CLASS = 1,
-    RAG_CRAWLER_SELECTOR_TYPE_XPATH = 2,
+    RAG_CRAWLER_SELECTOR_TYPE_UNSPECIFIED = 0,
+    RAG_CRAWLER_SELECTOR_TYPE_ID = 1,
+    RAG_CRAWLER_SELECTOR_TYPE_CSS_CLASS = 2,
+    RAG_CRAWLER_SELECTOR_TYPE_XPATH = 3,
 }
 
-export enum RagCrawlerCacheMode {
-    RAG_CRAWLER_CACHE_MODE_ENABLED = 0,
-    RAG_CRAWLER_CACHE_MODE_DISABLED = 1,
-    RAG_CRAWLER_CACHE_MODE_READ_ONLY = 2,
-    RAG_CRAWLER_CACHE_MODE_WRITE_ONLY = 3,
-    RAG_CRAWLER_CACHE_MODE_BYPASS = 4,
+export enum RagCrawlerAuthenticationExecutionType {
+    RAG_CRAWLER_AUTHENTICATION_EXECUTION_TYPE_UNSPECIFIED = 0,
+    RAG_CRAWLER_AUTHENTICATION_EXECUTION_TYPE_SERVER_SIDE = 1,
+    RAG_CRAWLER_AUTHENTICATION_EXECUTION_TYPE_CLIENT_SIDE = 2,
 }
 
 export enum RagCrawlerMetaDataExtractorType {
-    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_REGEX = 0,
-    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_FIXED_VALUE = 1,
-    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_CSS_SELECTOR = 2,
-    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_XPATH_SELECTOR = 3,
-    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_ID_SELECTOR = 4,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TPYE_UNSPECIFIED = 0,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_REGEX = 1,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_FIXED_VALUE = 2,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_CSS_SELECTOR = 3,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_XPATH_SELECTOR = 4,
+    RAG_CRAWLER_META_DATA_EXTRACTOR_TYPE_ID_SELECTOR = 5,
 }
 
 export enum RagCrawlerCrawlStrategy {
-    RAG_CRAWLER_CRAWL_STRATEGY_BFS = 0,
-    RAG_CRAWLER_CRAWL_STRATEGY_DFS = 1,
-    RAG_CRAWLER_CRAWL_STRATEGY_BEST_FIRST = 2,
-}
-
-export enum RagCrawlerFilterContentType {
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_UNSPECIFIED = 0,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_TEXT_HTML = 1,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_JSON = 2,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_XML = 3,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_TEXT_PLAIN = 4,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_PDF = 5,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_POWERPOINT = 6,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_EXCEL = 7,
-    RAG_CRAWLER_FILTER_CONTENT_TYPE_APPLICATION_WORD = 8,
+    RAG_CRAWLER_CRAWL_STRATEGY_UNSPECIFIED = 0,
+    RAG_CRAWLER_CRAWL_STRATEGY_BFS = 1,
+    RAG_CRAWLER_CRAWL_STRATEGY_DFS = 2,
+    RAG_CRAWLER_CRAWL_STRATEGY_BEST_FIRST = 3,
 }
