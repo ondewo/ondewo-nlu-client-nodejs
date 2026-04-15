@@ -38,10 +38,10 @@ var ondewo_nlu_rag_pb = require('../../ondewo/nlu/rag_pb.js');
 var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_pb.js');
 var google_protobuf_field_mask_pb = require('google-protobuf/google/protobuf/field_mask_pb.js');
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
+var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 var ondewo_nlu_operation_metadata_pb = require('../../ondewo/nlu/operation_metadata_pb.js');
 var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
 var ondewo_nlu_session_pb = require('../../ondewo/nlu/session_pb.js');
-var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 
 function serialize_ondewo_nlu_Operation(arg) {
   if (!(arg instanceof ondewo_nlu_operations_pb.Operation)) {
@@ -338,6 +338,28 @@ function serialize_ondewo_nlu_RagGetCrawlerResultsResponse(arg) {
 
 function deserialize_ondewo_nlu_RagGetCrawlerResultsResponse(buffer_arg) {
   return ondewo_nlu_rag_pb.RagGetCrawlerResultsResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagGetCrawlerRunLogsRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerRunLogsRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagGetCrawlerRunLogsRequest(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_RagGetCrawlerRunLogsResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.RagGetCrawlerRunLogsResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_RagGetCrawlerRunLogsResponse(buffer_arg) {
+  return ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_ondewo_nlu_RagGetCrawlerRunRequest(arg) {
@@ -932,6 +954,18 @@ ragDeleteCrawlers: {
     requestDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlersRequest,
     responseSerialize: serialize_ondewo_nlu_RagDeleteCrawlersResponse,
     responseDeserialize: deserialize_ondewo_nlu_RagDeleteCrawlersResponse,
+  },
+  // Get crawler run logs.
+ragGetCrawlerRunLogs: {
+    path: '/ondewo.nlu.Rags/RagGetCrawlerRunLogs',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest,
+    responseType: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse,
+    requestSerialize: serialize_ondewo_nlu_RagGetCrawlerRunLogsRequest,
+    requestDeserialize: deserialize_ondewo_nlu_RagGetCrawlerRunLogsRequest,
+    responseSerialize: serialize_ondewo_nlu_RagGetCrawlerRunLogsResponse,
+    responseDeserialize: deserialize_ondewo_nlu_RagGetCrawlerRunLogsResponse,
   },
 };
 

@@ -8,10 +8,10 @@ import * as jspb from "google-protobuf";
 import * as google_protobuf_struct_pb from "google-protobuf/google/protobuf/struct_pb";
 import * as google_protobuf_field_mask_pb from "google-protobuf/google/protobuf/field_mask_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 import * as ondewo_nlu_operation_metadata_pb from "../../ondewo/nlu/operation_metadata_pb";
 import * as ondewo_nlu_operations_pb from "../../ondewo/nlu/operations_pb";
 import * as ondewo_nlu_session_pb from "../../ondewo/nlu/session_pb";
-import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 
 export class RagFileMetadata extends jspb.Message { 
     getFileName(): string;
@@ -1605,6 +1605,22 @@ export class RagCrawlerFilters extends jspb.Message {
     setAllowExternalLinks(value: boolean): RagCrawlerFilters;
     getAllowSocialMediaLinks(): boolean;
     setAllowSocialMediaLinks(value: boolean): RagCrawlerFilters;
+    clearAllowedRegexList(): void;
+    getAllowedRegexList(): Array<string>;
+    setAllowedRegexList(value: Array<string>): RagCrawlerFilters;
+    addAllowedRegex(value: string, index?: number): string;
+    clearDisallowedRegexList(): void;
+    getDisallowedRegexList(): Array<string>;
+    setDisallowedRegexList(value: Array<string>): RagCrawlerFilters;
+    addDisallowedRegex(value: string, index?: number): string;
+    clearAllowedPathsList(): void;
+    getAllowedPathsList(): Array<string>;
+    setAllowedPathsList(value: Array<string>): RagCrawlerFilters;
+    addAllowedPaths(value: string, index?: number): string;
+    clearDisallowedPathsList(): void;
+    getDisallowedPathsList(): Array<string>;
+    setDisallowedPathsList(value: Array<string>): RagCrawlerFilters;
+    addDisallowedPaths(value: string, index?: number): string;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawlerFilters.AsObject;
@@ -1623,6 +1639,10 @@ export namespace RagCrawlerFilters {
         allowInternalLinks: boolean,
         allowExternalLinks: boolean,
         allowSocialMediaLinks: boolean,
+        allowedRegexList: Array<string>,
+        disallowedRegexList: Array<string>,
+        allowedPathsList: Array<string>,
+        disallowedPathsList: Array<string>,
     }
 }
 
@@ -1738,8 +1758,6 @@ export class RagCrawlerHttpAuth extends jspb.Message {
     setHttpAuthUsername(value: string): RagCrawlerHttpAuth;
     getHttpAuthPassword(): string;
     setHttpAuthPassword(value: string): RagCrawlerHttpAuth;
-    getHttpAuthUserAgent(): string;
-    setHttpAuthUserAgent(value: string): RagCrawlerHttpAuth;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawlerHttpAuth.AsObject;
@@ -1755,7 +1773,6 @@ export namespace RagCrawlerHttpAuth {
     export type AsObject = {
         httpAuthUsername: string,
         httpAuthPassword: string,
-        httpAuthUserAgent: string,
     }
 }
 
@@ -1768,6 +1785,8 @@ export class RagCrawlerBrowserConfig extends jspb.Message {
     getCrawlerCookiesList(): Array<RagCrawlerCookie>;
     setCrawlerCookiesList(value: Array<RagCrawlerCookie>): RagCrawlerBrowserConfig;
     addCrawlerCookies(value?: RagCrawlerCookie, index?: number): RagCrawlerCookie;
+    getCrawlerUserAgent(): string;
+    setCrawlerUserAgent(value: string): RagCrawlerBrowserConfig;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawlerBrowserConfig.AsObject;
@@ -1783,6 +1802,7 @@ export namespace RagCrawlerBrowserConfig {
     export type AsObject = {
         crawlerHeadersList: Array<google_protobuf_struct_pb.Struct.AsObject>,
         crawlerCookiesList: Array<RagCrawlerCookie.AsObject>,
+        crawlerUserAgent: string,
     }
 }
 
@@ -2148,8 +2168,8 @@ export class RagListCrawlerRunsRequest extends jspb.Message {
     setCrawlerName(value: string): RagListCrawlerRunsRequest;
     getPageToken(): string;
     setPageToken(value: string): RagListCrawlerRunsRequest;
-    getState(): ondewo_nlu_operation_metadata_pb.OperationMetadata.Status;
-    setState(value: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status): RagListCrawlerRunsRequest;
+    getStatus(): ondewo_nlu_operation_metadata_pb.OperationMetadata.Status;
+    setStatus(value: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status): RagListCrawlerRunsRequest;
     getOrderby(): string;
     setOrderby(value: string): RagListCrawlerRunsRequest;
 
@@ -2174,7 +2194,7 @@ export namespace RagListCrawlerRunsRequest {
         languageCode: string,
         crawlerName: string,
         pageToken: string,
-        state: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
+        status: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
         orderby: string,
         sortingMode?: ondewo_nlu_common_pb.SortingMode,
     }
@@ -2534,6 +2554,98 @@ export class RagGetCrawlerAttachedDatasetsResponse extends jspb.Message {
 export namespace RagGetCrawlerAttachedDatasetsResponse {
     export type AsObject = {
         datasetsList: Array<RagDataset.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class RagGetCrawlerRunLogsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): RagGetCrawlerRunLogsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): RagGetCrawlerRunLogsRequest;
+    getOperationName(): string;
+    setOperationName(value: string): RagGetCrawlerRunLogsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): RagGetCrawlerRunLogsRequest;
+    getPageSize(): number;
+    setPageSize(value: number): RagGetCrawlerRunLogsRequest;
+    clearLevelFiltersList(): void;
+    getLevelFiltersList(): Array<ondewo_nlu_common_pb.LogSeverity>;
+    setLevelFiltersList(value: Array<ondewo_nlu_common_pb.LogSeverity>): RagGetCrawlerRunLogsRequest;
+    addLevelFilters(value: ondewo_nlu_common_pb.LogSeverity, index?: number): ondewo_nlu_common_pb.LogSeverity;
+    getPhaseFilter(): string;
+    setPhaseFilter(value: string): RagGetCrawlerRunLogsRequest;
+    getSearchQuery(): string;
+    setSearchQuery(value: string): RagGetCrawlerRunLogsRequest;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): RagGetCrawlerRunLogsRequest;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): RagGetCrawlerRunLogsRequest;
+    getSourceUrlFilter(): string;
+    setSourceUrlFilter(value: string): RagGetCrawlerRunLogsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RagGetCrawlerRunLogsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: RagGetCrawlerRunLogsRequest): RagGetCrawlerRunLogsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RagGetCrawlerRunLogsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RagGetCrawlerRunLogsRequest;
+    static deserializeBinaryFromReader(message: RagGetCrawlerRunLogsRequest, reader: jspb.BinaryReader): RagGetCrawlerRunLogsRequest;
+}
+
+export namespace RagGetCrawlerRunLogsRequest {
+    export type AsObject = {
+        parent: string,
+        languageCode: string,
+        operationName: string,
+        pageToken: string,
+        pageSize: number,
+        levelFiltersList: Array<ondewo_nlu_common_pb.LogSeverity>,
+        phaseFilter: string,
+        searchQuery: string,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        sourceUrlFilter: string,
+    }
+}
+
+export class RagGetCrawlerRunLogsResponse extends jspb.Message { 
+    getOperationName(): string;
+    setOperationName(value: string): RagGetCrawlerRunLogsResponse;
+    getCrawlerName(): string;
+    setCrawlerName(value: string): RagGetCrawlerRunLogsResponse;
+    getStatus(): ondewo_nlu_operation_metadata_pb.OperationMetadata.Status;
+    setStatus(value: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status): RagGetCrawlerRunLogsResponse;
+    clearEntriesList(): void;
+    getEntriesList(): Array<ondewo_nlu_common_pb.LogEntry>;
+    setEntriesList(value: Array<ondewo_nlu_common_pb.LogEntry>): RagGetCrawlerRunLogsResponse;
+    addEntries(value?: ondewo_nlu_common_pb.LogEntry, index?: number): ondewo_nlu_common_pb.LogEntry;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): RagGetCrawlerRunLogsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RagGetCrawlerRunLogsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: RagGetCrawlerRunLogsResponse): RagGetCrawlerRunLogsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RagGetCrawlerRunLogsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RagGetCrawlerRunLogsResponse;
+    static deserializeBinaryFromReader(message: RagGetCrawlerRunLogsResponse, reader: jspb.BinaryReader): RagGetCrawlerRunLogsResponse;
+}
+
+export namespace RagGetCrawlerRunLogsResponse {
+    export type AsObject = {
+        operationName: string,
+        crawlerName: string,
+        status: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
+        entriesList: Array<ondewo_nlu_common_pb.LogEntry.AsObject>,
         nextPageToken: string,
     }
 }

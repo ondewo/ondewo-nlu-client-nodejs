@@ -9,10 +9,10 @@ import * as ondewo_nlu_rag_pb from "../../ondewo/nlu/rag_pb";
 import * as google_protobuf_struct_pb from "google-protobuf/google/protobuf/struct_pb";
 import * as google_protobuf_field_mask_pb from "google-protobuf/google/protobuf/field_mask_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
+import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 import * as ondewo_nlu_operation_metadata_pb from "../../ondewo/nlu/operation_metadata_pb";
 import * as ondewo_nlu_operations_pb from "../../ondewo/nlu/operations_pb";
 import * as ondewo_nlu_session_pb from "../../ondewo/nlu/session_pb";
-import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 
 interface IRagsService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     ragCreateDataset: IRagsService_IRagCreateDataset;
@@ -43,6 +43,7 @@ interface IRagsService extends grpc.ServiceDefinition<grpc.UntypedServiceImpleme
     ragRemoveCrawlerResultsFromDatasets: IRagsService_IRagRemoveCrawlerResultsFromDatasets;
     ragGetCrawlerAttachedDatasets: IRagsService_IRagGetCrawlerAttachedDatasets;
     ragDeleteCrawlers: IRagsService_IRagDeleteCrawlers;
+    ragGetCrawlerRunLogs: IRagsService_IRagGetCrawlerRunLogs;
 }
 
 interface IRagsService_IRagCreateDataset extends grpc.MethodDefinition<ondewo_nlu_rag_pb.RagCreateDatasetRequest, ondewo_nlu_rag_pb.RagDataset> {
@@ -297,6 +298,15 @@ interface IRagsService_IRagDeleteCrawlers extends grpc.MethodDefinition<ondewo_n
     responseSerialize: grpc.serialize<ondewo_nlu_rag_pb.RagDeleteCrawlersResponse>;
     responseDeserialize: grpc.deserialize<ondewo_nlu_rag_pb.RagDeleteCrawlersResponse>;
 }
+interface IRagsService_IRagGetCrawlerRunLogs extends grpc.MethodDefinition<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse> {
+    path: "/ondewo.nlu.Rags/RagGetCrawlerRunLogs";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse>;
+}
 
 export const RagsService: IRagsService;
 
@@ -329,6 +339,7 @@ export interface IRagsServer {
     ragRemoveCrawlerResultsFromDatasets: grpc.handleUnaryCall<ondewo_nlu_rag_pb.RagRemoveCrawlerResultsFromDatasetsRequest, ondewo_nlu_operations_pb.Operation>;
     ragGetCrawlerAttachedDatasets: grpc.handleUnaryCall<ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsRequest, ondewo_nlu_rag_pb.RagGetCrawlerAttachedDatasetsResponse>;
     ragDeleteCrawlers: grpc.handleUnaryCall<ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, ondewo_nlu_rag_pb.RagDeleteCrawlersResponse>;
+    ragGetCrawlerRunLogs: grpc.handleUnaryCall<ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse>;
 }
 
 export interface IRagsClient {
@@ -416,6 +427,9 @@ export interface IRagsClient {
     ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
     ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
     ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
+    ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
+    ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
+    ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class RagsClient extends grpc.Client implements IRagsClient {
@@ -504,4 +518,7 @@ export class RagsClient extends grpc.Client implements IRagsClient {
     public ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
     public ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
     public ragDeleteCrawlers(request: ondewo_nlu_rag_pb.RagDeleteCrawlersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagDeleteCrawlersResponse) => void): grpc.ClientUnaryCall;
+    public ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
+    public ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
+    public ragGetCrawlerRunLogs(request: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_rag_pb.RagGetCrawlerRunLogsResponse) => void): grpc.ClientUnaryCall;
 }
