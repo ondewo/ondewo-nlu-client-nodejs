@@ -412,6 +412,16 @@ export class RagUpdateDatasetRequest extends jspb.Message {
     getPagerank(): number | undefined;
     setPagerank(value: number): RagUpdateDatasetRequest;
 
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): RagUpdateDatasetRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagUpdateDatasetRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagUpdateDatasetRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagUpdateDatasetRequest): RagUpdateDatasetRequest.AsObject;
@@ -433,6 +443,8 @@ export namespace RagUpdateDatasetRequest {
         chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
         pagerank?: number,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -486,6 +498,16 @@ export class RagListDatasetsRequest extends jspb.Message {
     getDesc(): boolean | undefined;
     setDesc(value: boolean): RagListDatasetsRequest;
 
+    hasSortingMode(): boolean;
+    clearSortingMode(): void;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagListDatasetsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagListDatasetsRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagListDatasetsRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagListDatasetsRequest): RagListDatasetsRequest.AsObject;
@@ -505,6 +527,8 @@ export namespace RagListDatasetsRequest {
         name: string,
         orderby: string,
         desc?: boolean,
+        sortingMode?: ondewo_nlu_common_pb.SortingMode,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -706,6 +730,16 @@ export class RagUpdateDocumentRequest extends jspb.Message {
     getMetaFields(): google_protobuf_struct_pb.Struct | undefined;
     setMetaFields(value?: google_protobuf_struct_pb.Struct): RagUpdateDocumentRequest;
 
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): RagUpdateDocumentRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagUpdateDocumentRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagUpdateDocumentRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagUpdateDocumentRequest): RagUpdateDocumentRequest.AsObject;
@@ -727,6 +761,8 @@ export namespace RagUpdateDocumentRequest {
         parserConfig?: RagParserConfig.AsObject,
         enabled?: boolean,
         metaFields?: google_protobuf_struct_pb.Struct.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -833,6 +869,16 @@ export class RagListDocumentsRequest extends jspb.Message {
     getMetadataCondition(): RagMetadataConditions | undefined;
     setMetadataCondition(value?: RagMetadataConditions): RagListDocumentsRequest;
 
+    hasSortingMode(): boolean;
+    clearSortingMode(): void;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagListDocumentsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagListDocumentsRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagListDocumentsRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagListDocumentsRequest): RagListDocumentsRequest.AsObject;
@@ -859,6 +905,8 @@ export namespace RagListDocumentsRequest {
         createTimeFrom?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         createTimeTo?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         metadataCondition?: RagMetadataConditions.AsObject,
+        sortingMode?: ondewo_nlu_common_pb.SortingMode,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -1060,6 +1108,11 @@ export class RagRetrievalRequest extends jspb.Message {
     getKeyword(): boolean | undefined;
     setKeyword(value: boolean): RagRetrievalRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagRetrievalRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagRetrievalRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagRetrievalRequest): RagRetrievalRequest.AsObject;
@@ -1086,6 +1139,7 @@ export namespace RagRetrievalRequest {
         topK: number,
         highlight?: boolean,
         keyword?: boolean,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -1352,19 +1406,36 @@ export class RagListCrawlersRequest extends jspb.Message {
     setParent(value: string): RagListCrawlersRequest;
     getLanguageCode(): string;
     setLanguageCode(value: string): RagListCrawlersRequest;
-    getPageToken(): string;
+
+    hasPageToken(): boolean;
+    clearPageToken(): void;
+    getPageToken(): string | undefined;
     setPageToken(value: string): RagListCrawlersRequest;
-    getDatasetName(): string;
+
+    hasDatasetName(): boolean;
+    clearDatasetName(): void;
+    getDatasetName(): string | undefined;
     setDatasetName(value: string): RagListCrawlersRequest;
-    getCrawlerName(): string;
+
+    hasCrawlerName(): boolean;
+    clearCrawlerName(): void;
+    getCrawlerName(): string | undefined;
     setCrawlerName(value: string): RagListCrawlersRequest;
-    getOrderby(): string;
+
+    hasOrderby(): boolean;
+    clearOrderby(): void;
+    getOrderby(): string | undefined;
     setOrderby(value: string): RagListCrawlersRequest;
 
     hasSortingMode(): boolean;
     clearSortingMode(): void;
     getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
     setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagListCrawlersRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagListCrawlersRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagListCrawlersRequest.AsObject;
@@ -1380,11 +1451,12 @@ export namespace RagListCrawlersRequest {
     export type AsObject = {
         parent: string,
         languageCode: string,
-        pageToken: string,
-        datasetName: string,
-        crawlerName: string,
-        orderby: string,
+        pageToken?: string,
+        datasetName?: string,
+        crawlerName?: string,
+        orderby?: string,
         sortingMode?: ondewo_nlu_common_pb.SortingMode,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -1489,7 +1561,10 @@ export namespace RagUpdateCrawlerRequest {
 export class RagCrawler extends jspb.Message { 
     getName(): string;
     setName(value: string): RagCrawler;
-    getDisplayName(): string;
+
+    hasDisplayName(): boolean;
+    clearDisplayName(): void;
+    getDisplayName(): string | undefined;
     setDisplayName(value: string): RagCrawler;
 
     hasCreatedAt(): boolean;
@@ -1549,7 +1624,7 @@ export class RagCrawler extends jspb.Message {
 export namespace RagCrawler {
     export type AsObject = {
         name: string,
-        displayName: string,
+        displayName?: string,
         createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         createdBy: string,
@@ -1599,11 +1674,20 @@ export class RagCrawlerFilters extends jspb.Message {
     getDisallowedDomainsList(): Array<string>;
     setDisallowedDomainsList(value: Array<string>): RagCrawlerFilters;
     addDisallowedDomains(value: string, index?: number): string;
-    getAllowInternalLinks(): boolean;
+
+    hasAllowInternalLinks(): boolean;
+    clearAllowInternalLinks(): void;
+    getAllowInternalLinks(): boolean | undefined;
     setAllowInternalLinks(value: boolean): RagCrawlerFilters;
-    getAllowExternalLinks(): boolean;
+
+    hasAllowExternalLinks(): boolean;
+    clearAllowExternalLinks(): void;
+    getAllowExternalLinks(): boolean | undefined;
     setAllowExternalLinks(value: boolean): RagCrawlerFilters;
-    getAllowSocialMediaLinks(): boolean;
+
+    hasAllowSocialMediaLinks(): boolean;
+    clearAllowSocialMediaLinks(): void;
+    getAllowSocialMediaLinks(): boolean | undefined;
     setAllowSocialMediaLinks(value: boolean): RagCrawlerFilters;
     clearAllowedRegexList(): void;
     getAllowedRegexList(): Array<string>;
@@ -1636,9 +1720,9 @@ export namespace RagCrawlerFilters {
     export type AsObject = {
         allowedDomainsList: Array<string>,
         disallowedDomainsList: Array<string>,
-        allowInternalLinks: boolean,
-        allowExternalLinks: boolean,
-        allowSocialMediaLinks: boolean,
+        allowInternalLinks?: boolean,
+        allowExternalLinks?: boolean,
+        allowSocialMediaLinks?: boolean,
         allowedRegexList: Array<string>,
         disallowedRegexList: Array<string>,
         allowedPathsList: Array<string>,
@@ -1713,21 +1797,45 @@ export namespace RagCrawlerAuth {
 }
 
 export class RagCrawlerHtmlAuth extends jspb.Message { 
-    getHtmlAuthBaseUrl(): string;
+
+    hasHtmlAuthBaseUrl(): boolean;
+    clearHtmlAuthBaseUrl(): void;
+    getHtmlAuthBaseUrl(): string | undefined;
     setHtmlAuthBaseUrl(value: string): RagCrawlerHtmlAuth;
-    getHtmlAuthUsernameSelectorType(): RagCrawlerSelectorType;
+
+    hasHtmlAuthUsernameSelectorType(): boolean;
+    clearHtmlAuthUsernameSelectorType(): void;
+    getHtmlAuthUsernameSelectorType(): RagCrawlerSelectorType | undefined;
     setHtmlAuthUsernameSelectorType(value: RagCrawlerSelectorType): RagCrawlerHtmlAuth;
-    getHtmlAuthUsernameSelector(): string;
+
+    hasHtmlAuthUsernameSelector(): boolean;
+    clearHtmlAuthUsernameSelector(): void;
+    getHtmlAuthUsernameSelector(): string | undefined;
     setHtmlAuthUsernameSelector(value: string): RagCrawlerHtmlAuth;
-    getHtmlAuthUsername(): string;
+
+    hasHtmlAuthUsername(): boolean;
+    clearHtmlAuthUsername(): void;
+    getHtmlAuthUsername(): string | undefined;
     setHtmlAuthUsername(value: string): RagCrawlerHtmlAuth;
-    getHtmlAuthPasswordSelectorType(): RagCrawlerSelectorType;
+
+    hasHtmlAuthPasswordSelectorType(): boolean;
+    clearHtmlAuthPasswordSelectorType(): void;
+    getHtmlAuthPasswordSelectorType(): RagCrawlerSelectorType | undefined;
     setHtmlAuthPasswordSelectorType(value: RagCrawlerSelectorType): RagCrawlerHtmlAuth;
-    getHtmlAuthPasswordSelector(): string;
+
+    hasHtmlAuthPasswordSelector(): boolean;
+    clearHtmlAuthPasswordSelector(): void;
+    getHtmlAuthPasswordSelector(): string | undefined;
     setHtmlAuthPasswordSelector(value: string): RagCrawlerHtmlAuth;
-    getHtmlAuthPassword(): string;
+
+    hasHtmlAuthPassword(): boolean;
+    clearHtmlAuthPassword(): void;
+    getHtmlAuthPassword(): string | undefined;
     setHtmlAuthPassword(value: string): RagCrawlerHtmlAuth;
-    getAuthenticationExecutionType(): RagCrawlerAuthenticationExecutionType;
+
+    hasAuthenticationExecutionType(): boolean;
+    clearAuthenticationExecutionType(): void;
+    getAuthenticationExecutionType(): RagCrawlerAuthenticationExecutionType | undefined;
     setAuthenticationExecutionType(value: RagCrawlerAuthenticationExecutionType): RagCrawlerHtmlAuth;
 
     serializeBinary(): Uint8Array;
@@ -1742,14 +1850,14 @@ export class RagCrawlerHtmlAuth extends jspb.Message {
 
 export namespace RagCrawlerHtmlAuth {
     export type AsObject = {
-        htmlAuthBaseUrl: string,
-        htmlAuthUsernameSelectorType: RagCrawlerSelectorType,
-        htmlAuthUsernameSelector: string,
-        htmlAuthUsername: string,
-        htmlAuthPasswordSelectorType: RagCrawlerSelectorType,
-        htmlAuthPasswordSelector: string,
-        htmlAuthPassword: string,
-        authenticationExecutionType: RagCrawlerAuthenticationExecutionType,
+        htmlAuthBaseUrl?: string,
+        htmlAuthUsernameSelectorType?: RagCrawlerSelectorType,
+        htmlAuthUsernameSelector?: string,
+        htmlAuthUsername?: string,
+        htmlAuthPasswordSelectorType?: RagCrawlerSelectorType,
+        htmlAuthPasswordSelector?: string,
+        htmlAuthPassword?: string,
+        authenticationExecutionType?: RagCrawlerAuthenticationExecutionType,
     }
 }
 
@@ -1785,7 +1893,10 @@ export class RagCrawlerBrowserConfig extends jspb.Message {
     getCrawlerCookiesList(): Array<RagCrawlerCookie>;
     setCrawlerCookiesList(value: Array<RagCrawlerCookie>): RagCrawlerBrowserConfig;
     addCrawlerCookies(value?: RagCrawlerCookie, index?: number): RagCrawlerCookie;
-    getCrawlerUserAgent(): string;
+
+    hasCrawlerUserAgent(): boolean;
+    clearCrawlerUserAgent(): void;
+    getCrawlerUserAgent(): string | undefined;
     setCrawlerUserAgent(value: string): RagCrawlerBrowserConfig;
 
     serializeBinary(): Uint8Array;
@@ -1802,7 +1913,7 @@ export namespace RagCrawlerBrowserConfig {
     export type AsObject = {
         crawlerHeadersList: Array<google_protobuf_struct_pb.Struct.AsObject>,
         crawlerCookiesList: Array<RagCrawlerCookie.AsObject>,
-        crawlerUserAgent: string,
+        crawlerUserAgent?: string,
     }
 }
 
@@ -1811,7 +1922,10 @@ export class RagCrawlerCookie extends jspb.Message {
     setCookieName(value: string): RagCrawlerCookie;
     getCookieValue(): string;
     setCookieValue(value: string): RagCrawlerCookie;
-    getCookieDomain(): string;
+
+    hasCookieDomain(): boolean;
+    clearCookieDomain(): void;
+    getCookieDomain(): string | undefined;
     setCookieDomain(value: string): RagCrawlerCookie;
 
     serializeBinary(): Uint8Array;
@@ -1828,13 +1942,21 @@ export namespace RagCrawlerCookie {
     export type AsObject = {
         cookieName: string,
         cookieValue: string,
-        cookieDomain: string,
+        cookieDomain?: string,
     }
 }
 
 export class RagCrawlerConcurrencyConfig extends jspb.Message { 
-    getMaxConcurrentRequests(): number;
+
+    hasMaxConcurrentRequests(): boolean;
+    clearMaxConcurrentRequests(): void;
+    getMaxConcurrentRequests(): number | undefined;
     setMaxConcurrentRequests(value: number): RagCrawlerConcurrencyConfig;
+
+    hasSlowCrawl(): boolean;
+    clearSlowCrawl(): void;
+    getSlowCrawl(): boolean | undefined;
+    setSlowCrawl(value: boolean): RagCrawlerConcurrencyConfig;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCrawlerConcurrencyConfig.AsObject;
@@ -1848,7 +1970,8 @@ export class RagCrawlerConcurrencyConfig extends jspb.Message {
 
 export namespace RagCrawlerConcurrencyConfig {
     export type AsObject = {
-        maxConcurrentRequests: number,
+        maxConcurrentRequests?: number,
+        slowCrawl?: boolean,
     }
 }
 
@@ -1888,13 +2011,25 @@ export namespace RagCrawlerConfig {
 }
 
 export class RagCrawlerDeepCrawlerConfig extends jspb.Message { 
-    getIsActive(): boolean;
+
+    hasIsActive(): boolean;
+    clearIsActive(): void;
+    getIsActive(): boolean | undefined;
     setIsActive(value: boolean): RagCrawlerDeepCrawlerConfig;
-    getCrawlStrategy(): RagCrawlerCrawlStrategy;
+
+    hasCrawlStrategy(): boolean;
+    clearCrawlStrategy(): void;
+    getCrawlStrategy(): RagCrawlerCrawlStrategy | undefined;
     setCrawlStrategy(value: RagCrawlerCrawlStrategy): RagCrawlerDeepCrawlerConfig;
-    getMaxDepth(): number;
+
+    hasMaxDepth(): boolean;
+    clearMaxDepth(): void;
+    getMaxDepth(): number | undefined;
     setMaxDepth(value: number): RagCrawlerDeepCrawlerConfig;
-    getMaxPages(): number;
+
+    hasMaxPages(): boolean;
+    clearMaxPages(): void;
+    getMaxPages(): number | undefined;
     setMaxPages(value: number): RagCrawlerDeepCrawlerConfig;
 
     hasDeepCrawlerFilters(): boolean;
@@ -1914,10 +2049,10 @@ export class RagCrawlerDeepCrawlerConfig extends jspb.Message {
 
 export namespace RagCrawlerDeepCrawlerConfig {
     export type AsObject = {
-        isActive: boolean,
-        crawlStrategy: RagCrawlerCrawlStrategy,
-        maxDepth: number,
-        maxPages: number,
+        isActive?: boolean,
+        crawlStrategy?: RagCrawlerCrawlStrategy,
+        maxDepth?: number,
+        maxPages?: number,
         deepCrawlerFilters?: RagCrawlerFilters.AsObject,
     }
 }
@@ -1951,11 +2086,20 @@ export namespace RagCrawlerResultsConfig {
 }
 
 export class RagCrawlerMetaDataExtractor extends jspb.Message { 
-    getType(): RagCrawlerMetaDataExtractorType;
+
+    hasType(): boolean;
+    clearType(): void;
+    getType(): RagCrawlerMetaDataExtractorType | undefined;
     setType(value: RagCrawlerMetaDataExtractorType): RagCrawlerMetaDataExtractor;
-    getValue(): string;
+
+    hasValue(): boolean;
+    clearValue(): void;
+    getValue(): string | undefined;
     setValue(value: string): RagCrawlerMetaDataExtractor;
-    getKey(): string;
+
+    hasKey(): boolean;
+    clearKey(): void;
+    getKey(): string | undefined;
     setKey(value: string): RagCrawlerMetaDataExtractor;
 
     serializeBinary(): Uint8Array;
@@ -1970,16 +2114,22 @@ export class RagCrawlerMetaDataExtractor extends jspb.Message {
 
 export namespace RagCrawlerMetaDataExtractor {
     export type AsObject = {
-        type: RagCrawlerMetaDataExtractorType,
-        value: string,
-        key: string,
+        type?: RagCrawlerMetaDataExtractorType,
+        value?: string,
+        key?: string,
     }
 }
 
 export class RagCrawlerRetryConfig extends jspb.Message { 
-    getPageLoadTimeoutSeconds(): number;
+
+    hasPageLoadTimeoutSeconds(): boolean;
+    clearPageLoadTimeoutSeconds(): void;
+    getPageLoadTimeoutSeconds(): number | undefined;
     setPageLoadTimeoutSeconds(value: number): RagCrawlerRetryConfig;
-    getRetryMaxAttempts(): number;
+
+    hasRetryMaxAttempts(): boolean;
+    clearRetryMaxAttempts(): void;
+    getRetryMaxAttempts(): number | undefined;
     setRetryMaxAttempts(value: number): RagCrawlerRetryConfig;
 
     serializeBinary(): Uint8Array;
@@ -1994,8 +2144,8 @@ export class RagCrawlerRetryConfig extends jspb.Message {
 
 export namespace RagCrawlerRetryConfig {
     export type AsObject = {
-        pageLoadTimeoutSeconds: number,
-        retryMaxAttempts: number,
+        pageLoadTimeoutSeconds?: number,
+        retryMaxAttempts?: number,
     }
 }
 
@@ -2005,7 +2155,10 @@ export class RagCrawlerContentResult extends jspb.Message {
     clearMetadata(): void;
     getMetadata(): google_protobuf_struct_pb.Struct | undefined;
     setMetadata(value?: google_protobuf_struct_pb.Struct): RagCrawlerContentResult;
-    getMarkdown(): string;
+
+    hasMarkdown(): boolean;
+    clearMarkdown(): void;
+    getMarkdown(): string | undefined;
     setMarkdown(value: string): RagCrawlerContentResult;
 
     serializeBinary(): Uint8Array;
@@ -2021,7 +2174,7 @@ export class RagCrawlerContentResult extends jspb.Message {
 export namespace RagCrawlerContentResult {
     export type AsObject = {
         metadata?: google_protobuf_struct_pb.Struct.AsObject,
-        markdown: string,
+        markdown?: string,
     }
 }
 
@@ -2031,9 +2184,15 @@ export class RagCrawlerExecutionInfo extends jspb.Message {
     clearSslCertificate(): void;
     getSslCertificate(): google_protobuf_struct_pb.Struct | undefined;
     setSslCertificate(value?: google_protobuf_struct_pb.Struct): RagCrawlerExecutionInfo;
-    getSuccess(): boolean;
+
+    hasSuccess(): boolean;
+    clearSuccess(): void;
+    getSuccess(): boolean | undefined;
     setSuccess(value: boolean): RagCrawlerExecutionInfo;
-    getErrorMessage(): string;
+
+    hasErrorMessage(): boolean;
+    clearErrorMessage(): void;
+    getErrorMessage(): string | undefined;
     setErrorMessage(value: string): RagCrawlerExecutionInfo;
 
     serializeBinary(): Uint8Array;
@@ -2049,8 +2208,8 @@ export class RagCrawlerExecutionInfo extends jspb.Message {
 export namespace RagCrawlerExecutionInfo {
     export type AsObject = {
         sslCertificate?: google_protobuf_struct_pb.Struct.AsObject,
-        success: boolean,
-        errorMessage: string,
+        success?: boolean,
+        errorMessage?: string,
     }
 }
 
@@ -2164,13 +2323,25 @@ export class RagListCrawlerRunsRequest extends jspb.Message {
     setParent(value: string): RagListCrawlerRunsRequest;
     getLanguageCode(): string;
     setLanguageCode(value: string): RagListCrawlerRunsRequest;
-    getCrawlerName(): string;
+
+    hasCrawlerName(): boolean;
+    clearCrawlerName(): void;
+    getCrawlerName(): string | undefined;
     setCrawlerName(value: string): RagListCrawlerRunsRequest;
-    getPageToken(): string;
+
+    hasPageToken(): boolean;
+    clearPageToken(): void;
+    getPageToken(): string | undefined;
     setPageToken(value: string): RagListCrawlerRunsRequest;
-    getStatus(): ondewo_nlu_operation_metadata_pb.OperationMetadata.Status;
+
+    hasStatus(): boolean;
+    clearStatus(): void;
+    getStatus(): ondewo_nlu_operation_metadata_pb.OperationMetadata.Status | undefined;
     setStatus(value: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status): RagListCrawlerRunsRequest;
-    getOrderby(): string;
+
+    hasOrderby(): boolean;
+    clearOrderby(): void;
+    getOrderby(): string | undefined;
     setOrderby(value: string): RagListCrawlerRunsRequest;
 
     hasSortingMode(): boolean;
@@ -2192,10 +2363,10 @@ export namespace RagListCrawlerRunsRequest {
     export type AsObject = {
         parent: string,
         languageCode: string,
-        crawlerName: string,
-        pageToken: string,
-        status: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
-        orderby: string,
+        crawlerName?: string,
+        pageToken?: string,
+        status?: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
+        orderby?: string,
         sortingMode?: ondewo_nlu_common_pb.SortingMode,
     }
 }
@@ -2339,10 +2510,31 @@ export class RagGetCrawlerResultsRequest extends jspb.Message {
     setLanguageCode(value: string): RagGetCrawlerResultsRequest;
     getOperationName(): string;
     setOperationName(value: string): RagGetCrawlerResultsRequest;
-    getPageToken(): string;
+
+    hasPageToken(): boolean;
+    clearPageToken(): void;
+    getPageToken(): string | undefined;
     setPageToken(value: string): RagGetCrawlerResultsRequest;
-    getUrlQuery(): string;
+
+    hasUrlQuery(): boolean;
+    clearUrlQuery(): void;
+    getUrlQuery(): string | undefined;
     setUrlQuery(value: string): RagGetCrawlerResultsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagGetCrawlerResultsRequest;
+
+    hasOrderby(): boolean;
+    clearOrderby(): void;
+    getOrderby(): string | undefined;
+    setOrderby(value: string): RagGetCrawlerResultsRequest;
+
+    hasSortingMode(): boolean;
+    clearSortingMode(): void;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagGetCrawlerResultsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagGetCrawlerResultsRequest.AsObject;
@@ -2359,8 +2551,11 @@ export namespace RagGetCrawlerResultsRequest {
         parent: string,
         languageCode: string,
         operationName: string,
-        pageToken: string,
-        urlQuery: string,
+        pageToken?: string,
+        urlQuery?: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        orderby?: string,
+        sortingMode?: ondewo_nlu_common_pb.SortingMode,
     }
 }
 
@@ -2402,6 +2597,11 @@ export class RagGetCrawlerResultRequest extends jspb.Message {
     getUrl(): string;
     setUrl(value: string): RagGetCrawlerResultRequest;
 
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagGetCrawlerResultRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagGetCrawlerResultRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagGetCrawlerResultRequest): RagGetCrawlerResultRequest.AsObject;
@@ -2418,6 +2618,7 @@ export namespace RagGetCrawlerResultRequest {
         languageCode: string,
         operationName: string,
         url: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -2502,15 +2703,31 @@ export class RagGetCrawlerAttachedDatasetsRequest extends jspb.Message {
     setLanguageCode(value: string): RagGetCrawlerAttachedDatasetsRequest;
     getCrawlerName(): string;
     setCrawlerName(value: string): RagGetCrawlerAttachedDatasetsRequest;
-    getPageSize(): number;
+
+    hasPageSize(): boolean;
+    clearPageSize(): void;
+    getPageSize(): number | undefined;
     setPageSize(value: number): RagGetCrawlerAttachedDatasetsRequest;
-    getPageToken(): string;
+
+    hasPageToken(): boolean;
+    clearPageToken(): void;
+    getPageToken(): string | undefined;
     setPageToken(value: string): RagGetCrawlerAttachedDatasetsRequest;
 
     hasFieldMask(): boolean;
     clearFieldMask(): void;
     getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagGetCrawlerAttachedDatasetsRequest;
+
+    hasOrderby(): boolean;
+    clearOrderby(): void;
+    getOrderby(): string | undefined;
+    setOrderby(value: string): RagGetCrawlerAttachedDatasetsRequest;
+
+    hasSortingMode(): boolean;
+    clearSortingMode(): void;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagGetCrawlerAttachedDatasetsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagGetCrawlerAttachedDatasetsRequest.AsObject;
@@ -2527,9 +2744,11 @@ export namespace RagGetCrawlerAttachedDatasetsRequest {
         parent: string,
         languageCode: string,
         crawlerName: string,
-        pageSize: number,
-        pageToken: string,
+        pageSize?: number,
+        pageToken?: string,
         fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        orderby?: string,
+        sortingMode?: ondewo_nlu_common_pb.SortingMode,
     }
 }
 
@@ -2565,17 +2784,29 @@ export class RagGetCrawlerRunLogsRequest extends jspb.Message {
     setLanguageCode(value: string): RagGetCrawlerRunLogsRequest;
     getOperationName(): string;
     setOperationName(value: string): RagGetCrawlerRunLogsRequest;
-    getPageToken(): string;
+
+    hasPageToken(): boolean;
+    clearPageToken(): void;
+    getPageToken(): string | undefined;
     setPageToken(value: string): RagGetCrawlerRunLogsRequest;
-    getPageSize(): number;
+
+    hasPageSize(): boolean;
+    clearPageSize(): void;
+    getPageSize(): number | undefined;
     setPageSize(value: number): RagGetCrawlerRunLogsRequest;
     clearLevelFiltersList(): void;
     getLevelFiltersList(): Array<ondewo_nlu_common_pb.LogSeverity>;
     setLevelFiltersList(value: Array<ondewo_nlu_common_pb.LogSeverity>): RagGetCrawlerRunLogsRequest;
     addLevelFilters(value: ondewo_nlu_common_pb.LogSeverity, index?: number): ondewo_nlu_common_pb.LogSeverity;
-    getPhaseFilter(): string;
+
+    hasPhaseFilter(): boolean;
+    clearPhaseFilter(): void;
+    getPhaseFilter(): string | undefined;
     setPhaseFilter(value: string): RagGetCrawlerRunLogsRequest;
-    getSearchQuery(): string;
+
+    hasSearchQuery(): boolean;
+    clearSearchQuery(): void;
+    getSearchQuery(): string | undefined;
     setSearchQuery(value: string): RagGetCrawlerRunLogsRequest;
 
     hasStartTime(): boolean;
@@ -2587,8 +2818,26 @@ export class RagGetCrawlerRunLogsRequest extends jspb.Message {
     clearEndTime(): void;
     getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): RagGetCrawlerRunLogsRequest;
-    getSourceUrlFilter(): string;
+
+    hasSourceUrlFilter(): boolean;
+    clearSourceUrlFilter(): void;
+    getSourceUrlFilter(): string | undefined;
     setSourceUrlFilter(value: string): RagGetCrawlerRunLogsRequest;
+
+    hasOrderby(): boolean;
+    clearOrderby(): void;
+    getOrderby(): string | undefined;
+    setOrderby(value: string): RagGetCrawlerRunLogsRequest;
+
+    hasSortingMode(): boolean;
+    clearSortingMode(): void;
+    getSortingMode(): ondewo_nlu_common_pb.SortingMode | undefined;
+    setSortingMode(value: ondewo_nlu_common_pb.SortingMode): RagGetCrawlerRunLogsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagGetCrawlerRunLogsRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagGetCrawlerRunLogsRequest.AsObject;
@@ -2605,14 +2854,17 @@ export namespace RagGetCrawlerRunLogsRequest {
         parent: string,
         languageCode: string,
         operationName: string,
-        pageToken: string,
-        pageSize: number,
+        pageToken?: string,
+        pageSize?: number,
         levelFiltersList: Array<ondewo_nlu_common_pb.LogSeverity>,
-        phaseFilter: string,
-        searchQuery: string,
+        phaseFilter?: string,
+        searchQuery?: string,
         startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
-        sourceUrlFilter: string,
+        sourceUrlFilter?: string,
+        orderby?: string,
+        sortingMode?: ondewo_nlu_common_pb.SortingMode,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
     }
 }
 
@@ -2629,6 +2881,8 @@ export class RagGetCrawlerRunLogsResponse extends jspb.Message {
     addEntries(value?: ondewo_nlu_common_pb.LogEntry, index?: number): ondewo_nlu_common_pb.LogEntry;
     getNextPageToken(): string;
     setNextPageToken(value: string): RagGetCrawlerRunLogsResponse;
+    getTotalLogEntries(): number;
+    setTotalLogEntries(value: number): RagGetCrawlerRunLogsResponse;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagGetCrawlerRunLogsResponse.AsObject;
@@ -2647,6 +2901,7 @@ export namespace RagGetCrawlerRunLogsResponse {
         status: ondewo_nlu_operation_metadata_pb.OperationMetadata.Status,
         entriesList: Array<ondewo_nlu_common_pb.LogEntry.AsObject>,
         nextPageToken: string,
+        totalLogEntries: number,
     }
 }
 

@@ -4532,7 +4532,9 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.toObject = function(includeInstance, ms
     avatar: jspb.Message.getFieldWithDefault(msg, 6, ""),
     chunkMethod: jspb.Message.getFieldWithDefault(msg, 7, 0),
     parserConfig: (f = msg.getParserConfig()) && proto.ondewo.nlu.RagParserConfig.toObject(includeInstance, f),
-    pagerank: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    pagerank: jspb.Message.getFieldWithDefault(msg, 9, 0),
+    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -4605,6 +4607,16 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.deserializeBinaryFromReader = function(
     case 9:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPagerank(value);
+      break;
+    case 10:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setUpdateMask(value);
+      break;
+    case 11:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -4697,6 +4709,22 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.serializeBinaryToWriter = function(mess
     writer.writeInt32(
       9,
       f
+    );
+  }
+  f = message.getUpdateMask();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -4934,6 +4962,80 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.clearPagerank = function() {
  */
 proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.hasPagerank = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask update_mask = 10;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.getUpdateMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 10));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagUpdateDatasetRequest} returns this
+*/
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.setUpdateMask = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagUpdateDatasetRequest} returns this
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.clearUpdateMask = function() {
+  return this.setUpdateMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.hasUpdateMask = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 11;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagUpdateDatasetRequest} returns this
+*/
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagUpdateDatasetRequest} returns this
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
@@ -5221,7 +5323,9 @@ proto.ondewo.nlu.RagListDatasetsRequest.toObject = function(includeInstance, msg
     id: jspb.Message.getFieldWithDefault(msg, 4, ""),
     name: jspb.Message.getFieldWithDefault(msg, 5, ""),
     orderby: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    desc: jspb.Message.getBooleanFieldWithDefault(msg, 7, false)
+    desc: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -5285,6 +5389,15 @@ proto.ondewo.nlu.RagListDatasetsRequest.deserializeBinaryFromReader = function(m
     case 7:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setDesc(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
+      msg.setSortingMode(value);
+      break;
+    case 9:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -5362,6 +5475,21 @@ proto.ondewo.nlu.RagListDatasetsRequest.serializeBinaryToWriter = function(messa
     writer.writeBool(
       7,
       f
+    );
+  }
+  f = /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeEnum(
+      8,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -5508,6 +5636,79 @@ proto.ondewo.nlu.RagListDatasetsRequest.prototype.clearDesc = function() {
  */
 proto.ondewo.nlu.RagListDatasetsRequest.prototype.hasDesc = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional SortingMode sorting_mode = 8;
+ * @return {!proto.ondewo.nlu.SortingMode}
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.getSortingMode = function() {
+  return /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SortingMode} value
+ * @return {!proto.ondewo.nlu.RagListDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.setSortingMode = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.clearSortingMode = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.hasSortingMode = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 9;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 9));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagListDatasetsRequest} returns this
+*/
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListDatasetsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 
@@ -6931,7 +7132,9 @@ proto.ondewo.nlu.RagUpdateDocumentRequest.toObject = function(includeInstance, m
     chunkMethod: jspb.Message.getFieldWithDefault(msg, 6, 0),
     parserConfig: (f = msg.getParserConfig()) && proto.ondewo.nlu.RagParserConfig.toObject(includeInstance, f),
     enabled: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
-    metaFields: (f = msg.getMetaFields()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f)
+    metaFields: (f = msg.getMetaFields()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
+    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7005,6 +7208,16 @@ proto.ondewo.nlu.RagUpdateDocumentRequest.deserializeBinaryFromReader = function
       var value = new google_protobuf_struct_pb.Struct;
       reader.readMessage(value,google_protobuf_struct_pb.Struct.deserializeBinaryFromReader);
       msg.setMetaFields(value);
+      break;
+    case 10:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setUpdateMask(value);
+      break;
+    case 11:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -7098,6 +7311,22 @@ proto.ondewo.nlu.RagUpdateDocumentRequest.serializeBinaryToWriter = function(mes
       9,
       f,
       google_protobuf_struct_pb.Struct.serializeBinaryToWriter
+    );
+  }
+  f = message.getUpdateMask();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -7318,6 +7547,80 @@ proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.clearMetaFields = function()
  */
 proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.hasMetaFields = function() {
   return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask update_mask = 10;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.getUpdateMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 10));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagUpdateDocumentRequest} returns this
+*/
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.setUpdateMask = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagUpdateDocumentRequest} returns this
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.clearUpdateMask = function() {
+  return this.setUpdateMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.hasUpdateMask = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 11;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 11));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagUpdateDocumentRequest} returns this
+*/
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagUpdateDocumentRequest} returns this
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagUpdateDocumentRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 11) != null;
 };
 
 
@@ -7798,7 +8101,9 @@ proto.ondewo.nlu.RagListDocumentsRequest.toObject = function(includeInstance, ms
     runStatusList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
     createTimeFrom: (f = msg.getCreateTimeFrom()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     createTimeTo: (f = msg.getCreateTimeTo()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    metadataCondition: (f = msg.getMetadataCondition()) && proto.ondewo.nlu.RagMetadataConditions.toObject(includeInstance, f)
+    metadataCondition: (f = msg.getMetadataCondition()) && proto.ondewo.nlu.RagMetadataConditions.toObject(includeInstance, f),
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 15, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7895,6 +8200,15 @@ proto.ondewo.nlu.RagListDocumentsRequest.deserializeBinaryFromReader = function(
       var value = new proto.ondewo.nlu.RagMetadataConditions;
       reader.readMessage(value,proto.ondewo.nlu.RagMetadataConditions.deserializeBinaryFromReader);
       msg.setMetadataCondition(value);
+      break;
+    case 15:
+      var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
+      msg.setSortingMode(value);
+      break;
+    case 16:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -8024,6 +8338,21 @@ proto.ondewo.nlu.RagListDocumentsRequest.serializeBinaryToWriter = function(mess
       14,
       f,
       proto.ondewo.nlu.RagMetadataConditions.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getField(message, 15));
+  if (f != null) {
+    writer.writeEnum(
+      15,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      16,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -8391,6 +8720,79 @@ proto.ondewo.nlu.RagListDocumentsRequest.prototype.clearMetadataCondition = func
  */
 proto.ondewo.nlu.RagListDocumentsRequest.prototype.hasMetadataCondition = function() {
   return jspb.Message.getField(this, 14) != null;
+};
+
+
+/**
+ * optional SortingMode sorting_mode = 15;
+ * @return {!proto.ondewo.nlu.SortingMode}
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.getSortingMode = function() {
+  return /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getFieldWithDefault(this, 15, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SortingMode} value
+ * @return {!proto.ondewo.nlu.RagListDocumentsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.setSortingMode = function(value) {
+  return jspb.Message.setField(this, 15, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListDocumentsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.clearSortingMode = function() {
+  return jspb.Message.setField(this, 15, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.hasSortingMode = function() {
+  return jspb.Message.getField(this, 15) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 16;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 16));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagListDocumentsRequest} returns this
+*/
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 16, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListDocumentsRequest} returns this
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListDocumentsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
@@ -9568,7 +9970,8 @@ proto.ondewo.nlu.RagRetrievalRequest.toObject = function(includeInstance, msg) {
     vectorSimilarityWeight: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
     topK: jspb.Message.getFieldWithDefault(msg, 12, 0),
     highlight: jspb.Message.getBooleanFieldWithDefault(msg, 13, false),
-    keyword: jspb.Message.getBooleanFieldWithDefault(msg, 14, false)
+    keyword: jspb.Message.getBooleanFieldWithDefault(msg, 14, false),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -9661,6 +10064,11 @@ proto.ondewo.nlu.RagRetrievalRequest.deserializeBinaryFromReader = function(msg,
     case 14:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setKeyword(value);
+      break;
+    case 15:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -9788,6 +10196,14 @@ proto.ondewo.nlu.RagRetrievalRequest.serializeBinaryToWriter = function(message,
     writer.writeBool(
       14,
       f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      15,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -10208,6 +10624,43 @@ proto.ondewo.nlu.RagRetrievalRequest.prototype.clearKeyword = function() {
  */
 proto.ondewo.nlu.RagRetrievalRequest.prototype.hasKeyword = function() {
   return jspb.Message.getField(this, 14) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 15;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 15));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagRetrievalRequest} returns this
+*/
+proto.ondewo.nlu.RagRetrievalRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 15, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagRetrievalRequest} returns this
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
@@ -12267,7 +12720,8 @@ proto.ondewo.nlu.RagListCrawlersRequest.toObject = function(includeInstance, msg
     datasetName: jspb.Message.getFieldWithDefault(msg, 4, ""),
     crawlerName: jspb.Message.getFieldWithDefault(msg, 5, ""),
     orderby: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    sortingMode: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -12332,6 +12786,11 @@ proto.ondewo.nlu.RagListCrawlersRequest.deserializeBinaryFromReader = function(m
       var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
       msg.setSortingMode(value);
       break;
+    case 8:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -12375,29 +12834,29 @@ proto.ondewo.nlu.RagListCrawlersRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
-  f = message.getPageToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getDatasetName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getCrawlerName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeString(
       5,
       f
     );
   }
-  f = message.getOrderby();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeString(
       6,
       f
@@ -12408,6 +12867,14 @@ proto.ondewo.nlu.RagListCrawlersRequest.serializeBinaryToWriter = function(messa
     writer.writeEnum(
       7,
       f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -12463,7 +12930,25 @@ proto.ondewo.nlu.RagListCrawlersRequest.prototype.getPageToken = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlersRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -12481,7 +12966,25 @@ proto.ondewo.nlu.RagListCrawlersRequest.prototype.getDatasetName = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlersRequest.prototype.setDatasetName = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearDatasetName = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasDatasetName = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -12499,7 +13002,25 @@ proto.ondewo.nlu.RagListCrawlersRequest.prototype.getCrawlerName = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlersRequest.prototype.setCrawlerName = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearCrawlerName = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasCrawlerName = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -12517,7 +13038,25 @@ proto.ondewo.nlu.RagListCrawlersRequest.prototype.getOrderby = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlersRequest.prototype.setOrderby = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearOrderby = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasOrderby = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -12554,6 +13093,43 @@ proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearSortingMode = function() 
  */
 proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasSortingMode = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 8;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 8));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+*/
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlersRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlersRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -13473,8 +14049,8 @@ proto.ondewo.nlu.RagCrawler.serializeBinaryToWriter = function(message, writer) 
       f
     );
   }
-  f = message.getDisplayName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeString(
       2,
       f
@@ -13593,7 +14169,25 @@ proto.ondewo.nlu.RagCrawler.prototype.getDisplayName = function() {
  * @return {!proto.ondewo.nlu.RagCrawler} returns this
  */
 proto.ondewo.nlu.RagCrawler.prototype.setDisplayName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawler} returns this
+ */
+proto.ondewo.nlu.RagCrawler.prototype.clearDisplayName = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawler.prototype.hasDisplayName = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -14297,22 +14891,22 @@ proto.ondewo.nlu.RagCrawlerFilters.serializeBinaryToWriter = function(message, w
       f
     );
   }
-  f = message.getAllowInternalLinks();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeBool(
       3,
       f
     );
   }
-  f = message.getAllowExternalLinks();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeBool(
       4,
       f
     );
   }
-  f = message.getAllowSocialMediaLinks();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeBool(
       5,
       f
@@ -14437,7 +15031,25 @@ proto.ondewo.nlu.RagCrawlerFilters.prototype.getAllowInternalLinks = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
  */
 proto.ondewo.nlu.RagCrawlerFilters.prototype.setAllowInternalLinks = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.clearAllowInternalLinks = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.hasAllowInternalLinks = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -14455,7 +15067,25 @@ proto.ondewo.nlu.RagCrawlerFilters.prototype.getAllowExternalLinks = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
  */
 proto.ondewo.nlu.RagCrawlerFilters.prototype.setAllowExternalLinks = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.clearAllowExternalLinks = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.hasAllowExternalLinks = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -14473,7 +15103,25 @@ proto.ondewo.nlu.RagCrawlerFilters.prototype.getAllowSocialMediaLinks = function
  * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
  */
 proto.ondewo.nlu.RagCrawlerFilters.prototype.setAllowSocialMediaLinks = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerFilters} returns this
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.clearAllowSocialMediaLinks = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerFilters.prototype.hasAllowSocialMediaLinks = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -15267,57 +15915,57 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.serializeBinary = function() {
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getHtmlAuthBaseUrl();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeString(
       1,
       f
     );
   }
-  f = message.getHtmlAuthUsernameSelectorType();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.RagCrawlerSelectorType} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeEnum(
       2,
       f
     );
   }
-  f = message.getHtmlAuthUsernameSelector();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getHtmlAuthUsername();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getHtmlAuthPasswordSelectorType();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.RagCrawlerSelectorType} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeEnum(
       5,
       f
     );
   }
-  f = message.getHtmlAuthPasswordSelector();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeString(
       6,
       f
     );
   }
-  f = message.getHtmlAuthPassword();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
     writer.writeString(
       7,
       f
     );
   }
-  f = message.getAuthenticationExecutionType();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.RagCrawlerAuthenticationExecutionType} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
     writer.writeEnum(
       8,
       f
@@ -15340,7 +15988,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthBaseUrl = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthBaseUrl = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthBaseUrl = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthBaseUrl = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -15358,7 +16024,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthUsernameSelectorType = 
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthUsernameSelectorType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthUsernameSelectorType = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthUsernameSelectorType = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -15376,7 +16060,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthUsernameSelector = func
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthUsernameSelector = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthUsernameSelector = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthUsernameSelector = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -15394,7 +16096,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthUsername = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthUsername = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthUsername = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthUsername = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -15412,7 +16132,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthPasswordSelectorType = 
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthPasswordSelectorType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthPasswordSelectorType = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthPasswordSelectorType = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -15430,7 +16168,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthPasswordSelector = func
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthPasswordSelector = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthPasswordSelector = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthPasswordSelector = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -15448,7 +16204,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getHtmlAuthPassword = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setHtmlAuthPassword = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearHtmlAuthPassword = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasHtmlAuthPassword = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -15466,7 +16240,25 @@ proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.getAuthenticationExecutionType = f
  * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
  */
 proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.setAuthenticationExecutionType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 8, value);
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerHtmlAuth} returns this
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.clearAuthenticationExecutionType = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerHtmlAuth.prototype.hasAuthenticationExecutionType = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -15769,8 +16561,8 @@ proto.ondewo.nlu.RagCrawlerBrowserConfig.serializeBinaryToWriter = function(mess
       proto.ondewo.nlu.RagCrawlerCookie.serializeBinaryToWriter
     );
   }
-  f = message.getCrawlerUserAgent();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
@@ -15869,7 +16661,25 @@ proto.ondewo.nlu.RagCrawlerBrowserConfig.prototype.getCrawlerUserAgent = functio
  * @return {!proto.ondewo.nlu.RagCrawlerBrowserConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerBrowserConfig.prototype.setCrawlerUserAgent = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerBrowserConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerBrowserConfig.prototype.clearCrawlerUserAgent = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerBrowserConfig.prototype.hasCrawlerUserAgent = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -15999,8 +16809,8 @@ proto.ondewo.nlu.RagCrawlerCookie.serializeBinaryToWriter = function(message, wr
       f
     );
   }
-  f = message.getCookieDomain();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
@@ -16059,7 +16869,25 @@ proto.ondewo.nlu.RagCrawlerCookie.prototype.getCookieDomain = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerCookie} returns this
  */
 proto.ondewo.nlu.RagCrawlerCookie.prototype.setCookieDomain = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerCookie} returns this
+ */
+proto.ondewo.nlu.RagCrawlerCookie.prototype.clearCookieDomain = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerCookie.prototype.hasCookieDomain = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -16095,7 +16923,8 @@ proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.toObject = function(opt_i
  */
 proto.ondewo.nlu.RagCrawlerConcurrencyConfig.toObject = function(includeInstance, msg) {
   var f, obj = {
-    maxConcurrentRequests: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    maxConcurrentRequests: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    slowCrawl: jspb.Message.getBooleanFieldWithDefault(msg, 2, false)
   };
 
   if (includeInstance) {
@@ -16136,6 +16965,10 @@ proto.ondewo.nlu.RagCrawlerConcurrencyConfig.deserializeBinaryFromReader = funct
       var value = /** @type {number} */ (reader.readInt32());
       msg.setMaxConcurrentRequests(value);
       break;
+    case 2:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setSlowCrawl(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -16165,10 +16998,17 @@ proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.serializeBinary = functio
  */
 proto.ondewo.nlu.RagCrawlerConcurrencyConfig.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getMaxConcurrentRequests();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeInt32(
       1,
+      f
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
+    writer.writeBool(
+      2,
       f
     );
   }
@@ -16189,7 +17029,61 @@ proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.getMaxConcurrentRequests 
  * @return {!proto.ondewo.nlu.RagCrawlerConcurrencyConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.setMaxConcurrentRequests = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerConcurrencyConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.clearMaxConcurrentRequests = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.hasMaxConcurrentRequests = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional bool slow_crawl = 2;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.getSlowCrawl = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 2, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.RagCrawlerConcurrencyConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.setSlowCrawl = function(value) {
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerConcurrencyConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.clearSlowCrawl = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerConcurrencyConfig.prototype.hasSlowCrawl = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -16569,29 +17463,29 @@ proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.serializeBinary = functio
  */
 proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getIsActive();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeBool(
       1,
       f
     );
   }
-  f = message.getCrawlStrategy();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.RagCrawlerCrawlStrategy} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeEnum(
       2,
       f
     );
   }
-  f = message.getMaxDepth();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeInt32(
       3,
       f
     );
   }
-  f = message.getMaxPages();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeInt32(
       4,
       f
@@ -16622,7 +17516,25 @@ proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.getIsActive = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.setIsActive = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.clearIsActive = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.hasIsActive = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -16640,7 +17552,25 @@ proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.getCrawlStrategy = functi
  * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.setCrawlStrategy = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.clearCrawlStrategy = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.hasCrawlStrategy = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -16658,7 +17588,25 @@ proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.getMaxDepth = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.setMaxDepth = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.clearMaxDepth = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.hasMaxDepth = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -16676,7 +17624,25 @@ proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.getMaxPages = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.setMaxPages = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.clearMaxPages = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerDeepCrawlerConfig.prototype.hasMaxPages = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -17037,22 +18003,22 @@ proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.serializeBinary = functio
  */
 proto.ondewo.nlu.RagCrawlerMetaDataExtractor.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getType();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.RagCrawlerMetaDataExtractorType} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeEnum(
       1,
       f
     );
   }
-  f = message.getValue();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getKey();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
@@ -17075,7 +18041,25 @@ proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.getType = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
  */
 proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.clearType = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.hasType = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -17093,7 +18077,25 @@ proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.getValue = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
  */
 proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.setValue = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.clearValue = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.hasValue = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -17111,7 +18113,25 @@ proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.getKey = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
  */
 proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.setKey = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerMetaDataExtractor} returns this
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.clearKey = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerMetaDataExtractor.prototype.hasKey = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -17222,15 +18242,15 @@ proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.serializeBinary = function() {
  */
 proto.ondewo.nlu.RagCrawlerRetryConfig.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getPageLoadTimeoutSeconds();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 1));
+  if (f != null) {
     writer.writeInt32(
       1,
       f
     );
   }
-  f = message.getRetryMaxAttempts();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeInt32(
       2,
       f
@@ -17253,7 +18273,25 @@ proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.getPageLoadTimeoutSeconds = fun
  * @return {!proto.ondewo.nlu.RagCrawlerRetryConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.setPageLoadTimeoutSeconds = function(value) {
-  return jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setField(this, 1, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerRetryConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.clearPageLoadTimeoutSeconds = function() {
+  return jspb.Message.setField(this, 1, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.hasPageLoadTimeoutSeconds = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -17271,7 +18309,25 @@ proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.getRetryMaxAttempts = function(
  * @return {!proto.ondewo.nlu.RagCrawlerRetryConfig} returns this
  */
 proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.setRetryMaxAttempts = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerRetryConfig} returns this
+ */
+proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.clearRetryMaxAttempts = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerRetryConfig.prototype.hasRetryMaxAttempts = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -17391,8 +18447,8 @@ proto.ondewo.nlu.RagCrawlerContentResult.serializeBinaryToWriter = function(mess
       google_protobuf_struct_pb.Struct.serializeBinaryToWriter
     );
   }
-  f = message.getMarkdown();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeString(
       2,
       f
@@ -17452,7 +18508,25 @@ proto.ondewo.nlu.RagCrawlerContentResult.prototype.getMarkdown = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerContentResult} returns this
  */
 proto.ondewo.nlu.RagCrawlerContentResult.prototype.setMarkdown = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerContentResult} returns this
+ */
+proto.ondewo.nlu.RagCrawlerContentResult.prototype.clearMarkdown = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerContentResult.prototype.hasMarkdown = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -17577,15 +18651,15 @@ proto.ondewo.nlu.RagCrawlerExecutionInfo.serializeBinaryToWriter = function(mess
       google_protobuf_struct_pb.Struct.serializeBinaryToWriter
     );
   }
-  f = message.getSuccess();
-  if (f) {
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeBool(
       2,
       f
     );
   }
-  f = message.getErrorMessage();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
@@ -17645,7 +18719,25 @@ proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.getSuccess = function() {
  * @return {!proto.ondewo.nlu.RagCrawlerExecutionInfo} returns this
  */
 proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.setSuccess = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerExecutionInfo} returns this
+ */
+proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.clearSuccess = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.hasSuccess = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -17663,7 +18755,25 @@ proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.getErrorMessage = function() 
  * @return {!proto.ondewo.nlu.RagCrawlerExecutionInfo} returns this
  */
 proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.setErrorMessage = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagCrawlerExecutionInfo} returns this
+ */
+proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.clearErrorMessage = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagCrawlerExecutionInfo.prototype.hasErrorMessage = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -18617,29 +19727,29 @@ proto.ondewo.nlu.RagListCrawlerRunsRequest.serializeBinaryToWriter = function(me
       f
     );
   }
-  f = message.getCrawlerName();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getPageToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getStatus();
-  if (f !== 0.0) {
+  f = /** @type {!proto.ondewo.nlu.OperationMetadata.Status} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeEnum(
       5,
       f
     );
   }
-  f = message.getOrderby();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 6));
+  if (f != null) {
     writer.writeString(
       6,
       f
@@ -18705,7 +19815,25 @@ proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.getCrawlerName = function()
  * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.setCrawlerName = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.clearCrawlerName = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.hasCrawlerName = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 
@@ -18723,7 +19851,25 @@ proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.getPageToken = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -18741,7 +19887,25 @@ proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.getStatus = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.setStatus = function(value) {
-  return jspb.Message.setProto3EnumField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.clearStatus = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.hasStatus = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -18759,7 +19923,25 @@ proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.getOrderby = function() {
  * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
  */
 proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.setOrderby = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setField(this, 6, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagListCrawlerRunsRequest} returns this
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.clearOrderby = function() {
+  return jspb.Message.setField(this, 6, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagListCrawlerRunsRequest.prototype.hasOrderby = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -19826,7 +21008,10 @@ proto.ondewo.nlu.RagGetCrawlerResultsRequest.toObject = function(includeInstance
     languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
     operationName: jspb.Message.getFieldWithDefault(msg, 3, ""),
     pageToken: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    urlQuery: jspb.Message.getFieldWithDefault(msg, 5, "")
+    urlQuery: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    orderby: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -19883,6 +21068,19 @@ proto.ondewo.nlu.RagGetCrawlerResultsRequest.deserializeBinaryFromReader = funct
       var value = /** @type {string} */ (reader.readString());
       msg.setUrlQuery(value);
       break;
+    case 6:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrderby(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
+      msg.setSortingMode(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -19933,17 +21131,39 @@ proto.ondewo.nlu.RagGetCrawlerResultsRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getPageToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getUrlQuery();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeEnum(
+      8,
       f
     );
   }
@@ -20018,7 +21238,25 @@ proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.getPageToken = function()
  * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -20036,7 +21274,134 @@ proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.getUrlQuery = function() 
  * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.setUrlQuery = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.clearUrlQuery = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.hasUrlQuery = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 6;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 6));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+*/
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional string orderby = 7;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.getOrderby = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.setOrderby = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.clearOrderby = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.hasOrderby = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional SortingMode sorting_mode = 8;
+ * @return {!proto.ondewo.nlu.SortingMode}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.getSortingMode = function() {
+  return /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SortingMode} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.setSortingMode = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.clearSortingMode = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultsRequest.prototype.hasSortingMode = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -20295,7 +21660,8 @@ proto.ondewo.nlu.RagGetCrawlerResultRequest.toObject = function(includeInstance,
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
     languageCode: jspb.Message.getFieldWithDefault(msg, 2, ""),
     operationName: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    url: jspb.Message.getFieldWithDefault(msg, 4, "")
+    url: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -20347,6 +21713,11 @@ proto.ondewo.nlu.RagGetCrawlerResultRequest.deserializeBinaryFromReader = functi
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setUrl(value);
+      break;
+    case 5:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
       break;
     default:
       reader.skipField();
@@ -20403,6 +21774,14 @@ proto.ondewo.nlu.RagGetCrawlerResultRequest.serializeBinaryToWriter = function(m
     writer.writeString(
       4,
       f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -20477,6 +21856,43 @@ proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.getUrl = function() {
  */
 proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.setUrl = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 5;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultRequest} returns this
+*/
+proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerResultRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerResultRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -21126,7 +22542,9 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.toObject = function(includ
     crawlerName: jspb.Message.getFieldWithDefault(msg, 3, ""),
     pageSize: jspb.Message.getFieldWithDefault(msg, 4, 0),
     pageToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    orderby: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -21188,6 +22606,14 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.deserializeBinaryFromReade
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setFieldMask(value);
       break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrderby(value);
+      break;
+    case 8:
+      var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
+      msg.setSortingMode(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -21238,15 +22664,15 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.serializeBinaryToWriter = 
       f
     );
   }
-  f = message.getPageSize();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeInt32(
       4,
       f
     );
   }
-  f = message.getPageToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeString(
       5,
       f
@@ -21258,6 +22684,20 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.serializeBinaryToWriter = 
       6,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeEnum(
+      8,
+      f
     );
   }
 };
@@ -21331,7 +22771,25 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.getPageSize = fu
  * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.clearPageSize = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.hasPageSize = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -21349,7 +22807,25 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.getPageToken = f
  * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -21387,6 +22863,78 @@ proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.clearFieldMask =
  */
 proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.hasFieldMask = function() {
   return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional string orderby = 7;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.getOrderby = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.setOrderby = function(value) {
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.clearOrderby = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.hasOrderby = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional SortingMode sorting_mode = 8;
+ * @return {!proto.ondewo.nlu.SortingMode}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.getSortingMode = function() {
+  return /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SortingMode} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.setSortingMode = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.clearSortingMode = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerAttachedDatasetsRequest.prototype.hasSortingMode = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -21629,7 +23177,10 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.toObject = function(includeInstance
     searchQuery: jspb.Message.getFieldWithDefault(msg, 8, ""),
     startTime: (f = msg.getStartTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
     endTime: (f = msg.getEndTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    sourceUrlFilter: jspb.Message.getFieldWithDefault(msg, 11, "")
+    sourceUrlFilter: jspb.Message.getFieldWithDefault(msg, 11, ""),
+    orderby: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    sortingMode: jspb.Message.getFieldWithDefault(msg, 13, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -21714,6 +23265,19 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.deserializeBinaryFromReader = funct
       var value = /** @type {string} */ (reader.readString());
       msg.setSourceUrlFilter(value);
       break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrderby(value);
+      break;
+    case 13:
+      var value = /** @type {!proto.ondewo.nlu.SortingMode} */ (reader.readEnum());
+      msg.setSortingMode(value);
+      break;
+    case 14:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -21764,15 +23328,15 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getPageToken();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getPageSize();
-  if (f !== 0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeInt32(
       5,
       f
@@ -21785,15 +23349,15 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getPhaseFilter();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 7));
+  if (f != null) {
     writer.writeString(
       7,
       f
     );
   }
-  f = message.getSearchQuery();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
     writer.writeString(
       8,
       f
@@ -21815,11 +23379,33 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.serializeBinaryToWriter = function(
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
     );
   }
-  f = message.getSourceUrlFilter();
-  if (f.length > 0) {
+  f = /** @type {string} */ (jspb.Message.getField(message, 11));
+  if (f != null) {
     writer.writeString(
       11,
       f
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 12));
+  if (f != null) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getField(message, 13));
+  if (f != null) {
+    writer.writeEnum(
+      13,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      14,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
     );
   }
 };
@@ -21893,7 +23479,25 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getPageToken = function()
  * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearPageToken = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasPageToken = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -21911,7 +23515,25 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getPageSize = function() 
  * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearPageSize = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasPageSize = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -21966,7 +23588,25 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getPhaseFilter = function
  * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setPhaseFilter = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setField(this, 7, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearPhaseFilter = function() {
+  return jspb.Message.setField(this, 7, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasPhaseFilter = function() {
+  return jspb.Message.getField(this, 7) != null;
 };
 
 
@@ -21984,7 +23624,25 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getSearchQuery = function
  * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setSearchQuery = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearSearchQuery = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasSearchQuery = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -22076,7 +23734,134 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getSourceUrlFilter = func
  * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setSourceUrlFilter = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
+  return jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearSourceUrlFilter = function() {
+  return jspb.Message.setField(this, 11, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasSourceUrlFilter = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional string orderby = 12;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getOrderby = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setOrderby = function(value) {
+  return jspb.Message.setField(this, 12, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearOrderby = function() {
+  return jspb.Message.setField(this, 12, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasOrderby = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional SortingMode sorting_mode = 13;
+ * @return {!proto.ondewo.nlu.SortingMode}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getSortingMode = function() {
+  return /** @type {!proto.ondewo.nlu.SortingMode} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SortingMode} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setSortingMode = function(value) {
+  return jspb.Message.setField(this, 13, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearSortingMode = function() {
+  return jspb.Message.setField(this, 13, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasSortingMode = function() {
+  return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 14;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 14));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+*/
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 14, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsRequest} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
@@ -22124,7 +23909,8 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.toObject = function(includeInstanc
     status: jspb.Message.getFieldWithDefault(msg, 3, 0),
     entriesList: jspb.Message.toObjectList(msg.getEntriesList(),
     ondewo_nlu_common_pb.LogEntry.toObject, includeInstance),
-    nextPageToken: jspb.Message.getFieldWithDefault(msg, 5, "")
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    totalLogEntries: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -22181,6 +23967,10 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.deserializeBinaryFromReader = func
     case 5:
       var value = /** @type {string} */ (reader.readString());
       msg.setNextPageToken(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotalLogEntries(value);
       break;
     default:
       reader.skipField();
@@ -22244,6 +24034,13 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.serializeBinaryToWriter = function
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getTotalLogEntries();
+  if (f !== 0) {
+    writer.writeInt32(
+      6,
       f
     );
   }
@@ -22357,6 +24154,24 @@ proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.prototype.getNextPageToken = funct
  */
 proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.prototype.setNextPageToken = function(value) {
   return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional int32 total_log_entries = 6;
+ * @return {number}
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.prototype.getTotalLogEntries = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.RagGetCrawlerRunLogsResponse} returns this
+ */
+proto.ondewo.nlu.RagGetCrawlerRunLogsResponse.prototype.setTotalLogEntries = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
