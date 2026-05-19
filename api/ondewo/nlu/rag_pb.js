@@ -2021,7 +2021,8 @@ proto.ondewo.nlu.RagCreateDatasetRequest.toObject = function(includeInstance, ms
     description: jspb.Message.getFieldWithDefault(msg, 4, ""),
     avatar: jspb.Message.getFieldWithDefault(msg, 5, ""),
     chunkMethod: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    parserConfig: (f = msg.getParserConfig()) && proto.ondewo.nlu.RagParserConfig.toObject(includeInstance, f)
+    parserConfig: (f = msg.getParserConfig()) && proto.ondewo.nlu.RagParserConfig.toObject(includeInstance, f),
+    embeddingModelCcaiServiceName: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -2086,6 +2087,10 @@ proto.ondewo.nlu.RagCreateDatasetRequest.deserializeBinaryFromReader = function(
       var value = new proto.ondewo.nlu.RagParserConfig;
       reader.readMessage(value,proto.ondewo.nlu.RagParserConfig.deserializeBinaryFromReader);
       msg.setParserConfig(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEmbeddingModelCcaiServiceName(value);
       break;
     default:
       reader.skipField();
@@ -2164,6 +2169,13 @@ proto.ondewo.nlu.RagCreateDatasetRequest.serializeBinaryToWriter = function(mess
       7,
       f,
       proto.ondewo.nlu.RagParserConfig.serializeBinaryToWriter
+    );
+  }
+  f = message.getEmbeddingModelCcaiServiceName();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
     );
   }
 };
@@ -2311,6 +2323,24 @@ proto.ondewo.nlu.RagCreateDatasetRequest.prototype.clearParserConfig = function(
  */
 proto.ondewo.nlu.RagCreateDatasetRequest.prototype.hasParserConfig = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional string embedding_model_ccai_service_name = 8;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagCreateDatasetRequest.prototype.getEmbeddingModelCcaiServiceName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagCreateDatasetRequest} returns this
+ */
+proto.ondewo.nlu.RagCreateDatasetRequest.prototype.setEmbeddingModelCcaiServiceName = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -4534,7 +4564,8 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.toObject = function(includeInstance, ms
     parserConfig: (f = msg.getParserConfig()) && proto.ondewo.nlu.RagParserConfig.toObject(includeInstance, f),
     pagerank: jspb.Message.getFieldWithDefault(msg, 9, 0),
     updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    embeddingModelCcaiServiceName: jspb.Message.getFieldWithDefault(msg, 12, "")
   };
 
   if (includeInstance) {
@@ -4617,6 +4648,10 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.deserializeBinaryFromReader = function(
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setFieldMask(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEmbeddingModelCcaiServiceName(value);
       break;
     default:
       reader.skipField();
@@ -4725,6 +4760,13 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.serializeBinaryToWriter = function(mess
       11,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getEmbeddingModelCcaiServiceName();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
     );
   }
 };
@@ -5036,6 +5078,24 @@ proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.clearFieldMask = function() {
  */
 proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.hasFieldMask = function() {
   return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional string embedding_model_ccai_service_name = 12;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.getEmbeddingModelCcaiServiceName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagUpdateDatasetRequest} returns this
+ */
+proto.ondewo.nlu.RagUpdateDatasetRequest.prototype.setEmbeddingModelCcaiServiceName = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
 };
 
 
@@ -9971,7 +10031,8 @@ proto.ondewo.nlu.RagRetrievalRequest.toObject = function(includeInstance, msg) {
     topK: jspb.Message.getFieldWithDefault(msg, 12, 0),
     highlight: jspb.Message.getBooleanFieldWithDefault(msg, 13, false),
     keyword: jspb.Message.getBooleanFieldWithDefault(msg, 14, false),
-    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    rerankModelCcaiServiceName: jspb.Message.getFieldWithDefault(msg, 16, "")
   };
 
   if (includeInstance) {
@@ -10069,6 +10130,10 @@ proto.ondewo.nlu.RagRetrievalRequest.deserializeBinaryFromReader = function(msg,
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setFieldMask(value);
+      break;
+    case 16:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setRerankModelCcaiServiceName(value);
       break;
     default:
       reader.skipField();
@@ -10204,6 +10269,13 @@ proto.ondewo.nlu.RagRetrievalRequest.serializeBinaryToWriter = function(message,
       15,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {string} */ (jspb.Message.getField(message, 16));
+  if (f != null) {
+    writer.writeString(
+      16,
+      f
     );
   }
 };
@@ -10661,6 +10733,42 @@ proto.ondewo.nlu.RagRetrievalRequest.prototype.clearFieldMask = function() {
  */
 proto.ondewo.nlu.RagRetrievalRequest.prototype.hasFieldMask = function() {
   return jspb.Message.getField(this, 15) != null;
+};
+
+
+/**
+ * optional string rerank_model_ccai_service_name = 16;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.getRerankModelCcaiServiceName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagRetrievalRequest} returns this
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.setRerankModelCcaiServiceName = function(value) {
+  return jspb.Message.setField(this, 16, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.RagRetrievalRequest} returns this
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.clearRerankModelCcaiServiceName = function() {
+  return jspb.Message.setField(this, 16, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.RagRetrievalRequest.prototype.hasRerankModelCcaiServiceName = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 

@@ -82,6 +82,8 @@ export class RagCreateDatasetRequest extends jspb.Message {
     clearParserConfig(): void;
     getParserConfig(): RagParserConfig | undefined;
     setParserConfig(value?: RagParserConfig): RagCreateDatasetRequest;
+    getEmbeddingModelCcaiServiceName(): string;
+    setEmbeddingModelCcaiServiceName(value: string): RagCreateDatasetRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagCreateDatasetRequest.AsObject;
@@ -102,6 +104,7 @@ export namespace RagCreateDatasetRequest {
         avatar: string,
         chunkMethod: RagChunkMethod,
         parserConfig?: RagParserConfig.AsObject,
+        embeddingModelCcaiServiceName: string,
     }
 }
 
@@ -421,6 +424,8 @@ export class RagUpdateDatasetRequest extends jspb.Message {
     clearFieldMask(): void;
     getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagUpdateDatasetRequest;
+    getEmbeddingModelCcaiServiceName(): string;
+    setEmbeddingModelCcaiServiceName(value: string): RagUpdateDatasetRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagUpdateDatasetRequest.AsObject;
@@ -445,6 +450,7 @@ export namespace RagUpdateDatasetRequest {
         pagerank?: number,
         updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
         fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        embeddingModelCcaiServiceName: string,
     }
 }
 
@@ -1113,6 +1119,11 @@ export class RagRetrievalRequest extends jspb.Message {
     getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): RagRetrievalRequest;
 
+    hasRerankModelCcaiServiceName(): boolean;
+    clearRerankModelCcaiServiceName(): void;
+    getRerankModelCcaiServiceName(): string | undefined;
+    setRerankModelCcaiServiceName(value: string): RagRetrievalRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RagRetrievalRequest.AsObject;
     static toObject(includeInstance: boolean, msg: RagRetrievalRequest): RagRetrievalRequest.AsObject;
@@ -1140,6 +1151,7 @@ export namespace RagRetrievalRequest {
         highlight?: boolean,
         keyword?: boolean,
         fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        rerankModelCcaiServiceName?: string,
     }
 }
 
