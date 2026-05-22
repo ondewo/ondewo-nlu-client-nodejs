@@ -3670,7 +3670,8 @@ proto.ondewo.nlu.RagDataset.toObject = function(includeInstance, msg) {
     pagerank: jspb.Message.getFieldWithDefault(msg, 10, 0),
     parsingStatus: (f = msg.getParsingStatus()) && proto.ondewo.nlu.RagDatasetParsingStatus.toObject(includeInstance, f),
     createTime: (f = msg.getCreateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    updateTime: (f = msg.getUpdateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+    updateTime: (f = msg.getUpdateTime()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    embeddingModelCcaiServiceName: jspb.Message.getFieldWithDefault(msg, 14, "")
   };
 
   if (includeInstance) {
@@ -3762,6 +3763,10 @@ proto.ondewo.nlu.RagDataset.deserializeBinaryFromReader = function(msg, reader) 
       var value = new google_protobuf_timestamp_pb.Timestamp;
       reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
       msg.setUpdateTime(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setEmbeddingModelCcaiServiceName(value);
       break;
     default:
       reader.skipField();
@@ -3885,6 +3890,13 @@ proto.ondewo.nlu.RagDataset.serializeBinaryToWriter = function(message, writer) 
       13,
       f,
       google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getEmbeddingModelCcaiServiceName();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
     );
   }
 };
@@ -4269,6 +4281,24 @@ proto.ondewo.nlu.RagDataset.prototype.clearUpdateTime = function() {
  */
 proto.ondewo.nlu.RagDataset.prototype.hasUpdateTime = function() {
   return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * optional string embedding_model_ccai_service_name = 14;
+ * @return {string}
+ */
+proto.ondewo.nlu.RagDataset.prototype.getEmbeddingModelCcaiServiceName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.RagDataset} returns this
+ */
+proto.ondewo.nlu.RagDataset.prototype.setEmbeddingModelCcaiServiceName = function(value) {
+  return jspb.Message.setProto3StringField(this, 14, value);
 };
 
 
