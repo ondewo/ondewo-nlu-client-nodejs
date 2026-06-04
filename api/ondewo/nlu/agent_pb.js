@@ -43,6 +43,8 @@ var ondewo_nlu_operations_pb = require('../../ondewo/nlu/operations_pb.js');
 goog.object.extend(proto, ondewo_nlu_operations_pb);
 var ondewo_nlu_session_pb = require('../../ondewo/nlu/session_pb.js');
 goog.object.extend(proto, ondewo_nlu_session_pb);
+var ondewo_nlu_ccai_project_pb = require('../../ondewo/nlu/ccai_project_pb.js');
+goog.object.extend(proto, ondewo_nlu_ccai_project_pb);
 goog.exportSymbol('proto.ondewo.nlu.AddUserToProjectRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Agent', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AgentOfUserWithOwner', null, global);
@@ -596,7 +598,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.ondewo.nlu.GetAgentStatisticsRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.GetAgentStatisticsRequest.repeatedFields_, null);
 };
 goog.inherits(proto.ondewo.nlu.GetAgentStatisticsRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -6602,6 +6604,13 @@ proto.ondewo.nlu.MigrateAgentRequest.prototype.setAgentContent = function(value)
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.repeatedFields_ = [5,6,7,8,10];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -6636,7 +6645,13 @@ proto.ondewo.nlu.GetAgentStatisticsRequest.toObject = function(includeInstance, 
     parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
     format: jspb.Message.getFieldWithDefault(msg, 2, 0),
     languageCode: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    type: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    llmModelFilterList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+    llmProviderFilterList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
+    llmAgentNameFilterList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    llmGroupBysList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    llmCcaiServiceProviderFilterList: (f = jspb.Message.getRepeatedField(msg, 10)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -6688,6 +6703,33 @@ proto.ondewo.nlu.GetAgentStatisticsRequest.deserializeBinaryFromReader = functio
     case 4:
       var value = /** @type {!proto.ondewo.nlu.ReportType} */ (reader.readEnum());
       msg.setType(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmModelFilter(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmProviderFilter(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmAgentNameFilter(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmGroupBys(value);
+      break;
+    case 9:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 10:
+      var values = /** @type {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addLlmCcaiServiceProviderFilter(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -6743,6 +6785,49 @@ proto.ondewo.nlu.GetAgentStatisticsRequest.serializeBinaryToWriter = function(me
   if (f !== 0.0) {
     writer.writeEnum(
       4,
+      f
+    );
+  }
+  f = message.getLlmModelFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      5,
+      f
+    );
+  }
+  f = message.getLlmProviderFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      6,
+      f
+    );
+  }
+  f = message.getLlmAgentNameFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
+      f
+    );
+  }
+  f = message.getLlmGroupBysList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      8,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getLlmCcaiServiceProviderFilterList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      10,
       f
     );
   }
@@ -6821,6 +6906,228 @@ proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setType = function(value) {
 };
 
 
+/**
+ * repeated string llm_model_filter = 5;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getLlmModelFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setLlmModelFilterList = function(value) {
+  return jspb.Message.setField(this, 5, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.addLlmModelFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearLlmModelFilterList = function() {
+  return this.setLlmModelFilterList([]);
+};
+
+
+/**
+ * repeated string llm_provider_filter = 6;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getLlmProviderFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setLlmProviderFilterList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.addLlmProviderFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearLlmProviderFilterList = function() {
+  return this.setLlmProviderFilterList([]);
+};
+
+
+/**
+ * repeated string llm_agent_name_filter = 7;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getLlmAgentNameFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setLlmAgentNameFilterList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.addLlmAgentNameFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearLlmAgentNameFilterList = function() {
+  return this.setLlmAgentNameFilterList([]);
+};
+
+
+/**
+ * repeated string llm_group_bys = 8;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getLlmGroupBysList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setLlmGroupBysList = function(value) {
+  return jspb.Message.setField(this, 8, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.addLlmGroupBys = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearLlmGroupBysList = function() {
+  return this.setLlmGroupBysList([]);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 9;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 9));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+*/
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * repeated CcaiServiceProvider llm_ccai_service_provider_filter = 10;
+ * @return {!Array<!proto.ondewo.nlu.CcaiServiceProvider>}
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.getLlmCcaiServiceProviderFilterList = function() {
+  return /** @type {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} */ (jspb.Message.getRepeatedField(this, 10));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.setLlmCcaiServiceProviderFilterList = function(value) {
+  return jspb.Message.setField(this, 10, value || []);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.CcaiServiceProvider} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.addLlmCcaiServiceProviderFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 10, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsRequest.prototype.clearLlmCcaiServiceProviderFilterList = function() {
+  return this.setLlmCcaiServiceProviderFilterList([]);
+};
+
+
 
 
 
@@ -6855,7 +7162,8 @@ proto.ondewo.nlu.GetAgentStatisticsResponse.toObject = function(includeInstance,
   var f, obj = {
     reports: msg.getReports_asB64(),
     format: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    type: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    type: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    llmTelemetryReport: (f = msg.getLlmTelemetryReport()) && ondewo_nlu_session_pb.LlmTelemetryReport.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -6903,6 +7211,11 @@ proto.ondewo.nlu.GetAgentStatisticsResponse.deserializeBinaryFromReader = functi
     case 3:
       var value = /** @type {!proto.ondewo.nlu.ReportType} */ (reader.readEnum());
       msg.setType(value);
+      break;
+    case 4:
+      var value = new ondewo_nlu_session_pb.LlmTelemetryReport;
+      reader.readMessage(value,ondewo_nlu_session_pb.LlmTelemetryReport.deserializeBinaryFromReader);
+      msg.setLlmTelemetryReport(value);
       break;
     default:
       reader.skipField();
@@ -6952,6 +7265,14 @@ proto.ondewo.nlu.GetAgentStatisticsResponse.serializeBinaryToWriter = function(m
     writer.writeEnum(
       3,
       f
+    );
+  }
+  f = message.getLlmTelemetryReport();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      ondewo_nlu_session_pb.LlmTelemetryReport.serializeBinaryToWriter
     );
   }
 };
@@ -7035,13 +7356,50 @@ proto.ondewo.nlu.GetAgentStatisticsResponse.prototype.setType = function(value) 
 };
 
 
+/**
+ * optional LlmTelemetryReport llm_telemetry_report = 4;
+ * @return {?proto.ondewo.nlu.LlmTelemetryReport}
+ */
+proto.ondewo.nlu.GetAgentStatisticsResponse.prototype.getLlmTelemetryReport = function() {
+  return /** @type{?proto.ondewo.nlu.LlmTelemetryReport} */ (
+    jspb.Message.getWrapperField(this, ondewo_nlu_session_pb.LlmTelemetryReport, 4));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.LlmTelemetryReport|undefined} value
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsResponse} returns this
+*/
+proto.ondewo.nlu.GetAgentStatisticsResponse.prototype.setLlmTelemetryReport = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetAgentStatisticsResponse} returns this
+ */
+proto.ondewo.nlu.GetAgentStatisticsResponse.prototype.clearLlmTelemetryReport = function() {
+  return this.setLlmTelemetryReport(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetAgentStatisticsResponse.prototype.hasLlmTelemetryReport = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
 
 /**
  * List of repeated fields within this message type.
  * @private {!Array<number>}
  * @const
  */
-proto.ondewo.nlu.GetSessionsStatisticsRequest.repeatedFields_ = [5,7,8];
+proto.ondewo.nlu.GetSessionsStatisticsRequest.repeatedFields_ = [5,7,8,11,12,13,14,15];
 
 
 
@@ -7084,7 +7442,12 @@ proto.ondewo.nlu.GetSessionsStatisticsRequest.toObject = function(includeInstanc
     groupBysList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
     orderBysList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
     fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
-    sqlQuery: jspb.Message.getFieldWithDefault(msg, 10, "")
+    sqlQuery: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    llmModelFilterList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
+    llmProviderFilterList: (f = jspb.Message.getRepeatedField(msg, 12)) == null ? undefined : f,
+    llmAgentNameFilterList: (f = jspb.Message.getRepeatedField(msg, 13)) == null ? undefined : f,
+    llmToolNameFilterList: (f = jspb.Message.getRepeatedField(msg, 14)) == null ? undefined : f,
+    llmCcaiServiceProviderFilterList: (f = jspb.Message.getRepeatedField(msg, 15)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -7163,6 +7526,28 @@ proto.ondewo.nlu.GetSessionsStatisticsRequest.deserializeBinaryFromReader = func
     case 10:
       var value = /** @type {string} */ (reader.readString());
       msg.setSqlQuery(value);
+      break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmModelFilter(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmProviderFilter(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmAgentNameFilter(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLlmToolNameFilter(value);
+      break;
+    case 15:
+      var values = /** @type {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addLlmCcaiServiceProviderFilter(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -7263,6 +7648,41 @@ proto.ondewo.nlu.GetSessionsStatisticsRequest.serializeBinaryToWriter = function
   if (f.length > 0) {
     writer.writeString(
       10,
+      f
+    );
+  }
+  f = message.getLlmModelFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      11,
+      f
+    );
+  }
+  f = message.getLlmProviderFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      12,
+      f
+    );
+  }
+  f = message.getLlmAgentNameFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      13,
+      f
+    );
+  }
+  f = message.getLlmToolNameFilterList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      14,
+      f
+    );
+  }
+  f = message.getLlmCcaiServiceProviderFilterList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      15,
       f
     );
   }
@@ -7545,6 +7965,191 @@ proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setSqlQuery = function(v
 };
 
 
+/**
+ * repeated string llm_model_filter = 11;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.getLlmModelFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setLlmModelFilterList = function(value) {
+  return jspb.Message.setField(this, 11, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.addLlmModelFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.clearLlmModelFilterList = function() {
+  return this.setLlmModelFilterList([]);
+};
+
+
+/**
+ * repeated string llm_provider_filter = 12;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.getLlmProviderFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 12));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setLlmProviderFilterList = function(value) {
+  return jspb.Message.setField(this, 12, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.addLlmProviderFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 12, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.clearLlmProviderFilterList = function() {
+  return this.setLlmProviderFilterList([]);
+};
+
+
+/**
+ * repeated string llm_agent_name_filter = 13;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.getLlmAgentNameFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 13));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setLlmAgentNameFilterList = function(value) {
+  return jspb.Message.setField(this, 13, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.addLlmAgentNameFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 13, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.clearLlmAgentNameFilterList = function() {
+  return this.setLlmAgentNameFilterList([]);
+};
+
+
+/**
+ * repeated string llm_tool_name_filter = 14;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.getLlmToolNameFilterList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 14));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setLlmToolNameFilterList = function(value) {
+  return jspb.Message.setField(this, 14, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.addLlmToolNameFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 14, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.clearLlmToolNameFilterList = function() {
+  return this.setLlmToolNameFilterList([]);
+};
+
+
+/**
+ * repeated CcaiServiceProvider llm_ccai_service_provider_filter = 15;
+ * @return {!Array<!proto.ondewo.nlu.CcaiServiceProvider>}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.getLlmCcaiServiceProviderFilterList = function() {
+  return /** @type {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} */ (jspb.Message.getRepeatedField(this, 15));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.CcaiServiceProvider>} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.setLlmCcaiServiceProviderFilterList = function(value) {
+  return jspb.Message.setField(this, 15, value || []);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.CcaiServiceProvider} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.addLlmCcaiServiceProviderFilter = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 15, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsRequest.prototype.clearLlmCcaiServiceProviderFilterList = function() {
+  return this.setLlmCcaiServiceProviderFilterList([]);
+};
+
+
 
 
 
@@ -7579,7 +8184,8 @@ proto.ondewo.nlu.GetSessionsStatisticsResponse.toObject = function(includeInstan
   var f, obj = {
     reports: msg.getReports_asB64(),
     format: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    type: jspb.Message.getFieldWithDefault(msg, 3, 0)
+    type: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    llmTelemetryReport: (f = msg.getLlmTelemetryReport()) && ondewo_nlu_session_pb.LlmTelemetryReport.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7627,6 +8233,11 @@ proto.ondewo.nlu.GetSessionsStatisticsResponse.deserializeBinaryFromReader = fun
     case 3:
       var value = /** @type {!proto.ondewo.nlu.SessionsReportType} */ (reader.readEnum());
       msg.setType(value);
+      break;
+    case 4:
+      var value = new ondewo_nlu_session_pb.LlmTelemetryReport;
+      reader.readMessage(value,ondewo_nlu_session_pb.LlmTelemetryReport.deserializeBinaryFromReader);
+      msg.setLlmTelemetryReport(value);
       break;
     default:
       reader.skipField();
@@ -7676,6 +8287,14 @@ proto.ondewo.nlu.GetSessionsStatisticsResponse.serializeBinaryToWriter = functio
     writer.writeEnum(
       3,
       f
+    );
+  }
+  f = message.getLlmTelemetryReport();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      ondewo_nlu_session_pb.LlmTelemetryReport.serializeBinaryToWriter
     );
   }
 };
@@ -7756,6 +8375,43 @@ proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.getType = function() {
  */
 proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.setType = function(value) {
   return jspb.Message.setProto3EnumField(this, 3, value);
+};
+
+
+/**
+ * optional LlmTelemetryReport llm_telemetry_report = 4;
+ * @return {?proto.ondewo.nlu.LlmTelemetryReport}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.getLlmTelemetryReport = function() {
+  return /** @type{?proto.ondewo.nlu.LlmTelemetryReport} */ (
+    jspb.Message.getWrapperField(this, ondewo_nlu_session_pb.LlmTelemetryReport, 4));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.LlmTelemetryReport|undefined} value
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsResponse} returns this
+*/
+proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.setLlmTelemetryReport = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetSessionsStatisticsResponse} returns this
+ */
+proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.clearLlmTelemetryReport = function() {
+  return this.setLlmTelemetryReport(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetSessionsStatisticsResponse.prototype.hasLlmTelemetryReport = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -20387,7 +21043,27 @@ proto.ondewo.nlu.ReportType = {
   INTENT_PER_LANGUAGE: 1,
   ENTITY_PER_LANGUAGE: 2,
   ENTITY_COLLISION: 3,
-  INTENT_GENERAL: 4
+  INTENT_GENERAL: 4,
+  AGENT_LLM_TOKEN_USAGE: 5,
+  AGENT_LLM_MODELS_USED: 6,
+  AGENT_LLM_PROVIDERS_USED: 7,
+  AGENT_LLM_CCAI_SERVICES_USED: 8,
+  AGENT_LLM_AGENTS_USED: 9,
+  AGENT_LLM_ERRORS: 10,
+  AGENT_LLM_CACHE_EFFICIENCY: 11,
+  AGENT_LLM_REASONING_EFFORT: 12,
+  AGENT_LLM_TOP_X_TOOLS: 13,
+  AGENT_LLM_LEAST_X_TOOLS: 14,
+  AGENT_LLM_LATENCY: 15,
+  AGENT_LLM_FINISH_REASONS: 16,
+  AGENT_LLM_TOTAL_STATISTICS: 17,
+  AGENT_LLM_INPUT_TOKEN_USAGE: 18,
+  AGENT_LLM_OUTPUT_TOKEN_USAGE: 19,
+  AGENT_LLM_THINKING_TOKEN_USAGE: 20,
+  AGENT_LLM_TOOL_CALL_TOKEN_USAGE: 21,
+  AGENT_LLM_TOP_X_MODELS: 22,
+  AGENT_LLM_TOP_X_CCAI_SERVICE_PROVIDERS: 23,
+  AGENT_LLM_TOP_X_AGENT_NAMES: 24
 };
 
 /**
@@ -20411,7 +21087,30 @@ proto.ondewo.nlu.SessionsReportType = {
   SESSION_LEAST_X_USERS: 14,
   SESSION_LEAST_X_LABELS: 15,
   SESSION_LEAST_X_TAGS: 16,
-  TOTAL_STATISTICS: 17
+  TOTAL_STATISTICS: 17,
+  SESSION_LLM_TOKEN_USAGE: 18,
+  SESSION_LLM_TOOL_CALLS: 19,
+  SESSION_LLM_THINKING: 20,
+  SESSION_LLM_FINISH_REASONS: 21,
+  SESSION_LLM_LATENCY: 22,
+  SESSION_LLM_RAG_METRICS: 23,
+  SESSION_LLM_MODELS_USED: 24,
+  SESSION_LLM_PROVIDERS_USED: 25,
+  SESSION_LLM_CCAI_SERVICES_USED: 26,
+  SESSION_LLM_AGENTS_USED: 27,
+  SESSION_LLM_ERRORS: 28,
+  SESSION_LLM_CACHE_EFFICIENCY: 29,
+  SESSION_LLM_REASONING_EFFORT: 30,
+  SESSION_LLM_TOP_X_TOOLS: 31,
+  SESSION_LLM_LEAST_X_TOOLS: 32,
+  SESSION_LLM_TOTAL_STATISTICS: 33,
+  SESSION_LLM_INPUT_TOKEN_USAGE: 34,
+  SESSION_LLM_OUTPUT_TOKEN_USAGE: 35,
+  SESSION_LLM_THINKING_TOKEN_USAGE: 36,
+  SESSION_LLM_TOOL_CALL_TOKEN_USAGE: 37,
+  SESSION_LLM_TOP_X_MODELS: 38,
+  SESSION_LLM_TOP_X_CCAI_SERVICE_PROVIDERS: 39,
+  SESSION_LLM_TOP_X_AGENT_NAMES: 40
 };
 
 /**

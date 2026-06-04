@@ -12,10 +12,12 @@ import * as google_protobuf_struct_pb from "google-protobuf/google/protobuf/stru
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 import * as google_type_latlng_pb from "../../google/type/latlng_pb";
+import * as ondewo_nlu_ccai_project_pb from "../../ondewo/nlu/ccai_project_pb";
 import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 import * as ondewo_nlu_context_pb from "../../ondewo/nlu/context_pb";
-import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
 import * as ondewo_nlu_entity_type_pb from "../../ondewo/nlu/entity_type_pb";
+import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
+import * as ondewo_nlu_llm_evaluation_pb from "../../ondewo/nlu/llm_evaluation_pb";
 
 interface ISessionsService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
     detectIntent: ISessionsService_IDetectIntent;

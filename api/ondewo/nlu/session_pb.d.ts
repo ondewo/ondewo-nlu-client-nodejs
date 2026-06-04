@@ -11,10 +11,12 @@ import * as google_protobuf_struct_pb from "google-protobuf/google/protobuf/stru
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_rpc_status_pb from "../../google/rpc/status_pb";
 import * as google_type_latlng_pb from "../../google/type/latlng_pb";
+import * as ondewo_nlu_ccai_project_pb from "../../ondewo/nlu/ccai_project_pb";
 import * as ondewo_nlu_common_pb from "../../ondewo/nlu/common_pb";
 import * as ondewo_nlu_context_pb from "../../ondewo/nlu/context_pb";
-import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
 import * as ondewo_nlu_entity_type_pb from "../../ondewo/nlu/entity_type_pb";
+import * as ondewo_nlu_intent_pb from "../../ondewo/nlu/intent_pb";
+import * as ondewo_nlu_llm_evaluation_pb from "../../ondewo/nlu/llm_evaluation_pb";
 
 export class DetectIntentRequest extends jspb.Message { 
     getSession(): string;
@@ -67,6 +69,11 @@ export class DetectIntentResponse extends jspb.Message {
     getWebhookStatus(): google_rpc_status_pb.Status | undefined;
     setWebhookStatus(value?: google_rpc_status_pb.Status): DetectIntentResponse;
 
+    hasLlmTelemetryReport(): boolean;
+    clearLlmTelemetryReport(): void;
+    getLlmTelemetryReport(): LlmTelemetryReport | undefined;
+    setLlmTelemetryReport(value?: LlmTelemetryReport): DetectIntentResponse;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): DetectIntentResponse.AsObject;
     static toObject(includeInstance: boolean, msg: DetectIntentResponse): DetectIntentResponse.AsObject;
@@ -82,6 +89,7 @@ export namespace DetectIntentResponse {
         responseId: string,
         queryResult?: QueryResult.AsObject,
         webhookStatus?: google_rpc_status_pb.Status.AsObject,
+        llmTelemetryReport?: LlmTelemetryReport.AsObject,
     }
 }
 
@@ -264,6 +272,1127 @@ export namespace QueryInput {
 
 }
 
+export class LlmTokenUsage extends jspb.Message { 
+    getTotalTokens(): number;
+    setTotalTokens(value: number): LlmTokenUsage;
+    getInputTokens(): number;
+    setInputTokens(value: number): LlmTokenUsage;
+    getOutputTokens(): number;
+    setOutputTokens(value: number): LlmTokenUsage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmTokenUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmTokenUsage): LlmTokenUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmTokenUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmTokenUsage;
+    static deserializeBinaryFromReader(message: LlmTokenUsage, reader: jspb.BinaryReader): LlmTokenUsage;
+}
+
+export namespace LlmTokenUsage {
+    export type AsObject = {
+        totalTokens: number,
+        inputTokens: number,
+        outputTokens: number,
+    }
+}
+
+export class LlmToolCallMetadata extends jspb.Message { 
+    getToolCallId(): string;
+    setToolCallId(value: string): LlmToolCallMetadata;
+    getToolName(): string;
+    setToolName(value: string): LlmToolCallMetadata;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmToolCallMetadata;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmToolCallMetadata;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmToolCallMetadata;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmToolCallMetadata;
+
+    hasArguments(): boolean;
+    clearArguments(): void;
+    getArguments(): google_protobuf_struct_pb.Struct | undefined;
+    setArguments(value?: google_protobuf_struct_pb.Struct): LlmToolCallMetadata;
+
+    hasResult(): boolean;
+    clearResult(): void;
+    getResult(): google_protobuf_struct_pb.Struct | undefined;
+    setResult(value?: google_protobuf_struct_pb.Struct): LlmToolCallMetadata;
+    getErrorMessage(): string;
+    setErrorMessage(value: string): LlmToolCallMetadata;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmToolCallMetadata.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmToolCallMetadata): LlmToolCallMetadata.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmToolCallMetadata, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmToolCallMetadata;
+    static deserializeBinaryFromReader(message: LlmToolCallMetadata, reader: jspb.BinaryReader): LlmToolCallMetadata;
+}
+
+export namespace LlmToolCallMetadata {
+    export type AsObject = {
+        toolCallId: string,
+        toolName: string,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        durationInS: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        arguments?: google_protobuf_struct_pb.Struct.AsObject,
+        result?: google_protobuf_struct_pb.Struct.AsObject,
+        errorMessage: string,
+    }
+}
+
+export class LlmThinkingMetadata extends jspb.Message { 
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmThinkingMetadata;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmThinkingMetadata;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmThinkingMetadata;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmThinkingMetadata;
+    getThinkingText(): string;
+    setThinkingText(value: string): LlmThinkingMetadata;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmThinkingMetadata.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmThinkingMetadata): LlmThinkingMetadata.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmThinkingMetadata, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmThinkingMetadata;
+    static deserializeBinaryFromReader(message: LlmThinkingMetadata, reader: jspb.BinaryReader): LlmThinkingMetadata;
+}
+
+export namespace LlmThinkingMetadata {
+    export type AsObject = {
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        durationInS: number,
+        thinkingText: string,
+    }
+}
+
+export class LlmTelemetry extends jspb.Message { 
+    getProvider(): string;
+    setProvider(value: string): LlmTelemetry;
+    getModelName(): string;
+    setModelName(value: string): LlmTelemetry;
+    getAgentName(): string;
+    setAgentName(value: string): LlmTelemetry;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmTelemetry;
+    clearLlmToolCallMetadatasList(): void;
+    getLlmToolCallMetadatasList(): Array<LlmToolCallMetadata>;
+    setLlmToolCallMetadatasList(value: Array<LlmToolCallMetadata>): LlmTelemetry;
+    addLlmToolCallMetadatas(value?: LlmToolCallMetadata, index?: number): LlmToolCallMetadata;
+    getToolCallCount(): number;
+    setToolCallCount(value: number): LlmTelemetry;
+
+    hasLlmThinkingMetadata(): boolean;
+    clearLlmThinkingMetadata(): void;
+    getLlmThinkingMetadata(): LlmThinkingMetadata | undefined;
+    setLlmThinkingMetadata(value?: LlmThinkingMetadata): LlmTelemetry;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmTelemetry;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmTelemetry;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmTelemetry;
+    getRunId(): string;
+    setRunId(value: string): LlmTelemetry;
+    getParentRunId(): string;
+    setParentRunId(value: string): LlmTelemetry;
+    getRunType(): string;
+    setRunType(value: string): LlmTelemetry;
+    getComponentName(): string;
+    setComponentName(value: string): LlmTelemetry;
+    clearTagsList(): void;
+    getTagsList(): Array<string>;
+    setTagsList(value: Array<string>): LlmTelemetry;
+    addTags(value: string, index?: number): string;
+
+    hasMetadata(): boolean;
+    clearMetadata(): void;
+    getMetadata(): google_protobuf_struct_pb.Struct | undefined;
+    setMetadata(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasInputs(): boolean;
+    clearInputs(): void;
+    getInputs(): google_protobuf_struct_pb.Struct | undefined;
+    setInputs(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasOutputs(): boolean;
+    clearOutputs(): void;
+    getOutputs(): google_protobuf_struct_pb.Struct | undefined;
+    setOutputs(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+    getErrorClass(): string;
+    setErrorClass(value: string): LlmTelemetry;
+    getErrorMessage(): string;
+    setErrorMessage(value: string): LlmTelemetry;
+    getTraceback(): string;
+    setTraceback(value: string): LlmTelemetry;
+    getStreamingChunkCount(): number;
+    setStreamingChunkCount(value: number): LlmTelemetry;
+    getFirstTokenLatencySeconds(): number;
+    setFirstTokenLatencySeconds(value: number): LlmTelemetry;
+    getSystemFingerprint(): string;
+    setSystemFingerprint(value: string): LlmTelemetry;
+    getCached(): boolean;
+    setCached(value: boolean): LlmTelemetry;
+    getRetryCount(): number;
+    setRetryCount(value: number): LlmTelemetry;
+    getFallbackDepth(): number;
+    setFallbackDepth(value: number): LlmTelemetry;
+    getTemperature(): number;
+    setTemperature(value: number): LlmTelemetry;
+    getTopP(): number;
+    setTopP(value: number): LlmTelemetry;
+    getMaxTokens(): number;
+    setMaxTokens(value: number): LlmTelemetry;
+    getNGenerations(): number;
+    setNGenerations(value: number): LlmTelemetry;
+    clearFinishReasonsList(): void;
+    getFinishReasonsList(): Array<string>;
+    setFinishReasonsList(value: Array<string>): LlmTelemetry;
+    addFinishReasons(value: string, index?: number): string;
+    getCachedInputTokens(): number;
+    setCachedInputTokens(value: number): LlmTelemetry;
+    getCacheCreationInputTokens(): number;
+    setCacheCreationInputTokens(value: number): LlmTelemetry;
+    getLangsmithRunUrl(): string;
+    setLangsmithRunUrl(value: string): LlmTelemetry;
+    getTeamName(): string;
+    setTeamName(value: string): LlmTelemetry;
+    getTeamId(): string;
+    setTeamId(value: string): LlmTelemetry;
+    getAgentRole(): string;
+    setAgentRole(value: string): LlmTelemetry;
+    getSenderAgent(): string;
+    setSenderAgent(value: string): LlmTelemetry;
+    getRecipientAgent(): string;
+    setRecipientAgent(value: string): LlmTelemetry;
+    getTurnIndex(): number;
+    setTurnIndex(value: number): LlmTelemetry;
+    getReflectionIterations(): number;
+    setReflectionIterations(value: number): LlmTelemetry;
+    getTerminationReason(): string;
+    setTerminationReason(value: string): LlmTelemetry;
+    getEvaluatorRunsJoinKey(): string;
+    setEvaluatorRunsJoinKey(value: string): LlmTelemetry;
+    clearLlmEvaluationFeedbacksList(): void;
+    getLlmEvaluationFeedbacksList(): Array<ondewo_nlu_llm_evaluation_pb.LlmEvaluationFeedback>;
+    setLlmEvaluationFeedbacksList(value: Array<ondewo_nlu_llm_evaluation_pb.LlmEvaluationFeedback>): LlmTelemetry;
+    addLlmEvaluationFeedbacks(value?: ondewo_nlu_llm_evaluation_pb.LlmEvaluationFeedback, index?: number): ondewo_nlu_llm_evaluation_pb.LlmEvaluationFeedback;
+    getCcaiServiceName(): string;
+    setCcaiServiceName(value: string): LlmTelemetry;
+    getBaseUrl(): string;
+    setBaseUrl(value: string): LlmTelemetry;
+
+    hasDefaultHeaders(): boolean;
+    clearDefaultHeaders(): void;
+    getDefaultHeaders(): google_protobuf_struct_pb.Struct | undefined;
+    setDefaultHeaders(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasDefaultQuery(): boolean;
+    clearDefaultQuery(): void;
+    getDefaultQuery(): google_protobuf_struct_pb.Struct | undefined;
+    setDefaultQuery(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasFrequencyPenalty(): boolean;
+    clearFrequencyPenalty(): void;
+    getFrequencyPenalty(): number | undefined;
+    setFrequencyPenalty(value: number): LlmTelemetry;
+
+    hasOpenaiMetadata(): boolean;
+    clearOpenaiMetadata(): void;
+    getOpenaiMetadata(): google_protobuf_struct_pb.Struct | undefined;
+    setOpenaiMetadata(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasPresencePenalty(): boolean;
+    clearPresencePenalty(): void;
+    getPresencePenalty(): number | undefined;
+    setPresencePenalty(value: number): LlmTelemetry;
+
+    hasReasoningEffort(): boolean;
+    clearReasoningEffort(): void;
+    getReasoningEffort(): ReasoningEffort | undefined;
+    setReasoningEffort(value: ReasoningEffort): LlmTelemetry;
+
+    hasUser(): boolean;
+    clearUser(): void;
+    getUser(): string | undefined;
+    setUser(value: string): LlmTelemetry;
+
+    hasTimeout(): boolean;
+    clearTimeout(): void;
+    getTimeout(): number | undefined;
+    setTimeout(value: number): LlmTelemetry;
+
+    hasStrictResponseValidation(): boolean;
+    clearStrictResponseValidation(): void;
+    getStrictResponseValidation(): boolean | undefined;
+    setStrictResponseValidation(value: boolean): LlmTelemetry;
+
+    hasExtraHeaders(): boolean;
+    clearExtraHeaders(): void;
+    getExtraHeaders(): google_protobuf_struct_pb.Struct | undefined;
+    setExtraHeaders(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasExtraQuery(): boolean;
+    clearExtraQuery(): void;
+    getExtraQuery(): google_protobuf_struct_pb.Struct | undefined;
+    setExtraQuery(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+
+    hasExtraBody(): boolean;
+    clearExtraBody(): void;
+    getExtraBody(): google_protobuf_struct_pb.Struct | undefined;
+    setExtraBody(value?: google_protobuf_struct_pb.Struct): LlmTelemetry;
+    getCcaiServiceProvider(): ondewo_nlu_ccai_project_pb.CcaiServiceProvider;
+    setCcaiServiceProvider(value: ondewo_nlu_ccai_project_pb.CcaiServiceProvider): LlmTelemetry;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmTelemetry.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmTelemetry): LlmTelemetry.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmTelemetry, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmTelemetry;
+    static deserializeBinaryFromReader(message: LlmTelemetry, reader: jspb.BinaryReader): LlmTelemetry;
+}
+
+export namespace LlmTelemetry {
+    export type AsObject = {
+        provider: string,
+        modelName: string,
+        agentName: string,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        llmToolCallMetadatasList: Array<LlmToolCallMetadata.AsObject>,
+        toolCallCount: number,
+        llmThinkingMetadata?: LlmThinkingMetadata.AsObject,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        durationInS: number,
+        runId: string,
+        parentRunId: string,
+        runType: string,
+        componentName: string,
+        tagsList: Array<string>,
+        metadata?: google_protobuf_struct_pb.Struct.AsObject,
+        inputs?: google_protobuf_struct_pb.Struct.AsObject,
+        outputs?: google_protobuf_struct_pb.Struct.AsObject,
+        errorClass: string,
+        errorMessage: string,
+        traceback: string,
+        streamingChunkCount: number,
+        firstTokenLatencySeconds: number,
+        systemFingerprint: string,
+        cached: boolean,
+        retryCount: number,
+        fallbackDepth: number,
+        temperature: number,
+        topP: number,
+        maxTokens: number,
+        nGenerations: number,
+        finishReasonsList: Array<string>,
+        cachedInputTokens: number,
+        cacheCreationInputTokens: number,
+        langsmithRunUrl: string,
+        teamName: string,
+        teamId: string,
+        agentRole: string,
+        senderAgent: string,
+        recipientAgent: string,
+        turnIndex: number,
+        reflectionIterations: number,
+        terminationReason: string,
+        evaluatorRunsJoinKey: string,
+        llmEvaluationFeedbacksList: Array<ondewo_nlu_llm_evaluation_pb.LlmEvaluationFeedback.AsObject>,
+        ccaiServiceName: string,
+        baseUrl: string,
+        defaultHeaders?: google_protobuf_struct_pb.Struct.AsObject,
+        defaultQuery?: google_protobuf_struct_pb.Struct.AsObject,
+        frequencyPenalty?: number,
+        openaiMetadata?: google_protobuf_struct_pb.Struct.AsObject,
+        presencePenalty?: number,
+        reasoningEffort?: ReasoningEffort,
+        user?: string,
+        timeout?: number,
+        strictResponseValidation?: boolean,
+        extraHeaders?: google_protobuf_struct_pb.Struct.AsObject,
+        extraQuery?: google_protobuf_struct_pb.Struct.AsObject,
+        extraBody?: google_protobuf_struct_pb.Struct.AsObject,
+        ccaiServiceProvider: ondewo_nlu_ccai_project_pb.CcaiServiceProvider,
+    }
+}
+
+export class LlmLatencyStats extends jspb.Message { 
+    getCallCount(): number;
+    setCallCount(value: number): LlmLatencyStats;
+    getMeanDurationSeconds(): number;
+    setMeanDurationSeconds(value: number): LlmLatencyStats;
+    getP50DurationSeconds(): number;
+    setP50DurationSeconds(value: number): LlmLatencyStats;
+    getP95DurationSeconds(): number;
+    setP95DurationSeconds(value: number): LlmLatencyStats;
+    getP99DurationSeconds(): number;
+    setP99DurationSeconds(value: number): LlmLatencyStats;
+    getMaxDurationSeconds(): number;
+    setMaxDurationSeconds(value: number): LlmLatencyStats;
+    getMeanFirstTokenLatencySeconds(): number;
+    setMeanFirstTokenLatencySeconds(value: number): LlmLatencyStats;
+    getP95FirstTokenLatencySeconds(): number;
+    setP95FirstTokenLatencySeconds(value: number): LlmLatencyStats;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmLatencyStats.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmLatencyStats): LlmLatencyStats.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmLatencyStats, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmLatencyStats;
+    static deserializeBinaryFromReader(message: LlmLatencyStats, reader: jspb.BinaryReader): LlmLatencyStats;
+}
+
+export namespace LlmLatencyStats {
+    export type AsObject = {
+        callCount: number,
+        meanDurationSeconds: number,
+        p50DurationSeconds: number,
+        p95DurationSeconds: number,
+        p99DurationSeconds: number,
+        maxDurationSeconds: number,
+        meanFirstTokenLatencySeconds: number,
+        p95FirstTokenLatencySeconds: number,
+    }
+}
+
+export class LlmCacheStats extends jspb.Message { 
+    getCachedInputTokens(): number;
+    setCachedInputTokens(value: number): LlmCacheStats;
+    getCacheCreationInputTokens(): number;
+    setCacheCreationInputTokens(value: number): LlmCacheStats;
+    getUncachedInputTokens(): number;
+    setUncachedInputTokens(value: number): LlmCacheStats;
+    getCacheHitRate(): number;
+    setCacheHitRate(value: number): LlmCacheStats;
+    getTokenSavings(): number;
+    setTokenSavings(value: number): LlmCacheStats;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmCacheStats.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmCacheStats): LlmCacheStats.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmCacheStats, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmCacheStats;
+    static deserializeBinaryFromReader(message: LlmCacheStats, reader: jspb.BinaryReader): LlmCacheStats;
+}
+
+export namespace LlmCacheStats {
+    export type AsObject = {
+        cachedInputTokens: number,
+        cacheCreationInputTokens: number,
+        uncachedInputTokens: number,
+        cacheHitRate: number,
+        tokenSavings: number,
+    }
+}
+
+export class LlmModelUsage extends jspb.Message { 
+    getModelName(): string;
+    setModelName(value: string): LlmModelUsage;
+    getProvider(): string;
+    setProvider(value: string): LlmModelUsage;
+    getCallCount(): number;
+    setCallCount(value: number): LlmModelUsage;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmModelUsage;
+    getToolCallCount(): number;
+    setToolCallCount(value: number): LlmModelUsage;
+    getErrorCount(): number;
+    setErrorCount(value: number): LlmModelUsage;
+    getDurationSecondsTotal(): number;
+    setDurationSecondsTotal(value: number): LlmModelUsage;
+
+    hasCacheStats(): boolean;
+    clearCacheStats(): void;
+    getCacheStats(): LlmCacheStats | undefined;
+    setCacheStats(value?: LlmCacheStats): LlmModelUsage;
+    getCcaiServiceName(): string;
+    setCcaiServiceName(value: string): LlmModelUsage;
+    getCcaiServiceProvider(): ondewo_nlu_ccai_project_pb.CcaiServiceProvider;
+    setCcaiServiceProvider(value: ondewo_nlu_ccai_project_pb.CcaiServiceProvider): LlmModelUsage;
+    getBaseUrl(): string;
+    setBaseUrl(value: string): LlmModelUsage;
+    getThinkingTokensTotal(): number;
+    setThinkingTokensTotal(value: number): LlmModelUsage;
+    getThinkingDurationSecondsTotal(): number;
+    setThinkingDurationSecondsTotal(value: number): LlmModelUsage;
+    getToolCallTokensTotal(): number;
+    setToolCallTokensTotal(value: number): LlmModelUsage;
+    getToolCallDurationSecondsTotal(): number;
+    setToolCallDurationSecondsTotal(value: number): LlmModelUsage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmModelUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmModelUsage): LlmModelUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmModelUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmModelUsage;
+    static deserializeBinaryFromReader(message: LlmModelUsage, reader: jspb.BinaryReader): LlmModelUsage;
+}
+
+export namespace LlmModelUsage {
+    export type AsObject = {
+        modelName: string,
+        provider: string,
+        callCount: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        toolCallCount: number,
+        errorCount: number,
+        durationSecondsTotal: number,
+        cacheStats?: LlmCacheStats.AsObject,
+        ccaiServiceName: string,
+        ccaiServiceProvider: ondewo_nlu_ccai_project_pb.CcaiServiceProvider,
+        baseUrl: string,
+        thinkingTokensTotal: number,
+        thinkingDurationSecondsTotal: number,
+        toolCallTokensTotal: number,
+        toolCallDurationSecondsTotal: number,
+    }
+}
+
+export class LlmProviderUsage extends jspb.Message { 
+    getProvider(): string;
+    setProvider(value: string): LlmProviderUsage;
+    getCallCount(): number;
+    setCallCount(value: number): LlmProviderUsage;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmProviderUsage;
+    getErrorCount(): number;
+    setErrorCount(value: number): LlmProviderUsage;
+    getDurationSecondsTotal(): number;
+    setDurationSecondsTotal(value: number): LlmProviderUsage;
+    clearModelNamesList(): void;
+    getModelNamesList(): Array<string>;
+    setModelNamesList(value: Array<string>): LlmProviderUsage;
+    addModelNames(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmProviderUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmProviderUsage): LlmProviderUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmProviderUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmProviderUsage;
+    static deserializeBinaryFromReader(message: LlmProviderUsage, reader: jspb.BinaryReader): LlmProviderUsage;
+}
+
+export namespace LlmProviderUsage {
+    export type AsObject = {
+        provider: string,
+        callCount: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        errorCount: number,
+        durationSecondsTotal: number,
+        modelNamesList: Array<string>,
+    }
+}
+
+export class LlmCcaiServiceUsage extends jspb.Message { 
+    getCcaiServiceProvider(): ondewo_nlu_ccai_project_pb.CcaiServiceProvider;
+    setCcaiServiceProvider(value: ondewo_nlu_ccai_project_pb.CcaiServiceProvider): LlmCcaiServiceUsage;
+    getCcaiServiceName(): string;
+    setCcaiServiceName(value: string): LlmCcaiServiceUsage;
+    getCallCount(): number;
+    setCallCount(value: number): LlmCcaiServiceUsage;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmCcaiServiceUsage;
+    getBaseUrl(): string;
+    setBaseUrl(value: string): LlmCcaiServiceUsage;
+    clearModelNamesList(): void;
+    getModelNamesList(): Array<string>;
+    setModelNamesList(value: Array<string>): LlmCcaiServiceUsage;
+    addModelNames(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmCcaiServiceUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmCcaiServiceUsage): LlmCcaiServiceUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmCcaiServiceUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmCcaiServiceUsage;
+    static deserializeBinaryFromReader(message: LlmCcaiServiceUsage, reader: jspb.BinaryReader): LlmCcaiServiceUsage;
+}
+
+export namespace LlmCcaiServiceUsage {
+    export type AsObject = {
+        ccaiServiceProvider: ondewo_nlu_ccai_project_pb.CcaiServiceProvider,
+        ccaiServiceName: string,
+        callCount: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        baseUrl: string,
+        modelNamesList: Array<string>,
+    }
+}
+
+export class LlmAgentUsage extends jspb.Message { 
+    getAgentName(): string;
+    setAgentName(value: string): LlmAgentUsage;
+    getAgentRole(): string;
+    setAgentRole(value: string): LlmAgentUsage;
+    getTeamName(): string;
+    setTeamName(value: string): LlmAgentUsage;
+    getCallCount(): number;
+    setCallCount(value: number): LlmAgentUsage;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmAgentUsage;
+    getToolCallCount(): number;
+    setToolCallCount(value: number): LlmAgentUsage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmAgentUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmAgentUsage): LlmAgentUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmAgentUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmAgentUsage;
+    static deserializeBinaryFromReader(message: LlmAgentUsage, reader: jspb.BinaryReader): LlmAgentUsage;
+}
+
+export namespace LlmAgentUsage {
+    export type AsObject = {
+        agentName: string,
+        agentRole: string,
+        teamName: string,
+        callCount: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        toolCallCount: number,
+    }
+}
+
+export class LlmToolUsage extends jspb.Message { 
+    getToolName(): string;
+    setToolName(value: string): LlmToolUsage;
+    getCallCount(): number;
+    setCallCount(value: number): LlmToolUsage;
+    getErrorCount(): number;
+    setErrorCount(value: number): LlmToolUsage;
+    getErrorRate(): number;
+    setErrorRate(value: number): LlmToolUsage;
+    getDurationSecondsTotal(): number;
+    setDurationSecondsTotal(value: number): LlmToolUsage;
+    getMeanDurationSeconds(): number;
+    setMeanDurationSeconds(value: number): LlmToolUsage;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmToolUsage;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmToolUsage.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmToolUsage): LlmToolUsage.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmToolUsage, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmToolUsage;
+    static deserializeBinaryFromReader(message: LlmToolUsage, reader: jspb.BinaryReader): LlmToolUsage;
+}
+
+export namespace LlmToolUsage {
+    export type AsObject = {
+        toolName: string,
+        callCount: number,
+        errorCount: number,
+        errorRate: number,
+        durationSecondsTotal: number,
+        meanDurationSeconds: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+    }
+}
+
+export class LlmErrorStat extends jspb.Message { 
+    getErrorClass(): string;
+    setErrorClass(value: string): LlmErrorStat;
+    getCount(): number;
+    setCount(value: number): LlmErrorStat;
+    getRate(): number;
+    setRate(value: number): LlmErrorStat;
+    getSampleMessage(): string;
+    setSampleMessage(value: string): LlmErrorStat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmErrorStat.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmErrorStat): LlmErrorStat.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmErrorStat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmErrorStat;
+    static deserializeBinaryFromReader(message: LlmErrorStat, reader: jspb.BinaryReader): LlmErrorStat;
+}
+
+export namespace LlmErrorStat {
+    export type AsObject = {
+        errorClass: string,
+        count: number,
+        rate: number,
+        sampleMessage: string,
+    }
+}
+
+export class LlmErrorStats extends jspb.Message { 
+    getTotalErrorCount(): number;
+    setTotalErrorCount(value: number): LlmErrorStats;
+    getOverallErrorRate(): number;
+    setOverallErrorRate(value: number): LlmErrorStats;
+    clearErrorsByClassList(): void;
+    getErrorsByClassList(): Array<LlmErrorStat>;
+    setErrorsByClassList(value: Array<LlmErrorStat>): LlmErrorStats;
+    addErrorsByClass(value?: LlmErrorStat, index?: number): LlmErrorStat;
+    getRetryCountTotal(): number;
+    setRetryCountTotal(value: number): LlmErrorStats;
+    getMaxFallbackDepth(): number;
+    setMaxFallbackDepth(value: number): LlmErrorStats;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmErrorStats.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmErrorStats): LlmErrorStats.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmErrorStats, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmErrorStats;
+    static deserializeBinaryFromReader(message: LlmErrorStats, reader: jspb.BinaryReader): LlmErrorStats;
+}
+
+export namespace LlmErrorStats {
+    export type AsObject = {
+        totalErrorCount: number,
+        overallErrorRate: number,
+        errorsByClassList: Array<LlmErrorStat.AsObject>,
+        retryCountTotal: number,
+        maxFallbackDepth: number,
+    }
+}
+
+export class LlmFinishReasonStat extends jspb.Message { 
+    getFinishReason(): string;
+    setFinishReason(value: string): LlmFinishReasonStat;
+    getCount(): number;
+    setCount(value: number): LlmFinishReasonStat;
+    getRate(): number;
+    setRate(value: number): LlmFinishReasonStat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmFinishReasonStat.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmFinishReasonStat): LlmFinishReasonStat.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmFinishReasonStat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmFinishReasonStat;
+    static deserializeBinaryFromReader(message: LlmFinishReasonStat, reader: jspb.BinaryReader): LlmFinishReasonStat;
+}
+
+export namespace LlmFinishReasonStat {
+    export type AsObject = {
+        finishReason: string,
+        count: number,
+        rate: number,
+    }
+}
+
+export class LlmReasoningEffortStat extends jspb.Message { 
+    getReasoningEffort(): ReasoningEffort;
+    setReasoningEffort(value: ReasoningEffort): LlmReasoningEffortStat;
+    getCount(): number;
+    setCount(value: number): LlmReasoningEffortStat;
+    getRate(): number;
+    setRate(value: number): LlmReasoningEffortStat;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmReasoningEffortStat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmReasoningEffortStat.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmReasoningEffortStat): LlmReasoningEffortStat.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmReasoningEffortStat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmReasoningEffortStat;
+    static deserializeBinaryFromReader(message: LlmReasoningEffortStat, reader: jspb.BinaryReader): LlmReasoningEffortStat;
+}
+
+export namespace LlmReasoningEffortStat {
+    export type AsObject = {
+        reasoningEffort: ReasoningEffort,
+        count: number,
+        rate: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+    }
+}
+
+export class LlmTelemetryReport extends jspb.Message { 
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmTelemetryReport;
+    getToolCallCountTotal(): number;
+    setToolCallCountTotal(value: number): LlmTelemetryReport;
+    getLlmCallCount(): number;
+    setLlmCallCount(value: number): LlmTelemetryReport;
+    clearLlmTelemetriesList(): void;
+    getLlmTelemetriesList(): Array<LlmTelemetry>;
+    setLlmTelemetriesList(value: Array<LlmTelemetry>): LlmTelemetryReport;
+    addLlmTelemetries(value?: LlmTelemetry, index?: number): LlmTelemetry;
+    getDurationSecondsTotal(): number;
+    setDurationSecondsTotal(value: number): LlmTelemetryReport;
+    clearModelsUsedList(): void;
+    getModelsUsedList(): Array<LlmModelUsage>;
+    setModelsUsedList(value: Array<LlmModelUsage>): LlmTelemetryReport;
+    addModelsUsed(value?: LlmModelUsage, index?: number): LlmModelUsage;
+    clearProvidersUsedList(): void;
+    getProvidersUsedList(): Array<LlmProviderUsage>;
+    setProvidersUsedList(value: Array<LlmProviderUsage>): LlmTelemetryReport;
+    addProvidersUsed(value?: LlmProviderUsage, index?: number): LlmProviderUsage;
+    clearCcaiServicesUsedList(): void;
+    getCcaiServicesUsedList(): Array<LlmCcaiServiceUsage>;
+    setCcaiServicesUsedList(value: Array<LlmCcaiServiceUsage>): LlmTelemetryReport;
+    addCcaiServicesUsed(value?: LlmCcaiServiceUsage, index?: number): LlmCcaiServiceUsage;
+    clearAgentsUsedList(): void;
+    getAgentsUsedList(): Array<LlmAgentUsage>;
+    setAgentsUsedList(value: Array<LlmAgentUsage>): LlmTelemetryReport;
+    addAgentsUsed(value?: LlmAgentUsage, index?: number): LlmAgentUsage;
+    clearToolsUsedList(): void;
+    getToolsUsedList(): Array<LlmToolUsage>;
+    setToolsUsedList(value: Array<LlmToolUsage>): LlmTelemetryReport;
+    addToolsUsed(value?: LlmToolUsage, index?: number): LlmToolUsage;
+
+    hasLatencyStats(): boolean;
+    clearLatencyStats(): void;
+    getLatencyStats(): LlmLatencyStats | undefined;
+    setLatencyStats(value?: LlmLatencyStats): LlmTelemetryReport;
+
+    hasCacheStats(): boolean;
+    clearCacheStats(): void;
+    getCacheStats(): LlmCacheStats | undefined;
+    setCacheStats(value?: LlmCacheStats): LlmTelemetryReport;
+
+    hasErrorStats(): boolean;
+    clearErrorStats(): void;
+    getErrorStats(): LlmErrorStats | undefined;
+    setErrorStats(value?: LlmErrorStats): LlmTelemetryReport;
+    clearFinishReasonDistributionList(): void;
+    getFinishReasonDistributionList(): Array<LlmFinishReasonStat>;
+    setFinishReasonDistributionList(value: Array<LlmFinishReasonStat>): LlmTelemetryReport;
+    addFinishReasonDistribution(value?: LlmFinishReasonStat, index?: number): LlmFinishReasonStat;
+    clearReasoningEffortDistributionList(): void;
+    getReasoningEffortDistributionList(): Array<LlmReasoningEffortStat>;
+    setReasoningEffortDistributionList(value: Array<LlmReasoningEffortStat>): LlmTelemetryReport;
+    addReasoningEffortDistribution(value?: LlmReasoningEffortStat, index?: number): LlmReasoningEffortStat;
+    getThinkingTokensTotal(): number;
+    setThinkingTokensTotal(value: number): LlmTelemetryReport;
+    getThinkingDurationSecondsTotal(): number;
+    setThinkingDurationSecondsTotal(value: number): LlmTelemetryReport;
+    getToolCallTokensTotal(): number;
+    setToolCallTokensTotal(value: number): LlmTelemetryReport;
+    getToolCallDurationSecondsTotal(): number;
+    setToolCallDurationSecondsTotal(value: number): LlmTelemetryReport;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmTelemetryReport.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmTelemetryReport): LlmTelemetryReport.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmTelemetryReport, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmTelemetryReport;
+    static deserializeBinaryFromReader(message: LlmTelemetryReport, reader: jspb.BinaryReader): LlmTelemetryReport;
+}
+
+export namespace LlmTelemetryReport {
+    export type AsObject = {
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        toolCallCountTotal: number,
+        llmCallCount: number,
+        llmTelemetriesList: Array<LlmTelemetry.AsObject>,
+        durationSecondsTotal: number,
+        modelsUsedList: Array<LlmModelUsage.AsObject>,
+        providersUsedList: Array<LlmProviderUsage.AsObject>,
+        ccaiServicesUsedList: Array<LlmCcaiServiceUsage.AsObject>,
+        agentsUsedList: Array<LlmAgentUsage.AsObject>,
+        toolsUsedList: Array<LlmToolUsage.AsObject>,
+        latencyStats?: LlmLatencyStats.AsObject,
+        cacheStats?: LlmCacheStats.AsObject,
+        errorStats?: LlmErrorStats.AsObject,
+        finishReasonDistributionList: Array<LlmFinishReasonStat.AsObject>,
+        reasoningEffortDistributionList: Array<LlmReasoningEffortStat.AsObject>,
+        thinkingTokensTotal: number,
+        thinkingDurationSecondsTotal: number,
+        toolCallTokensTotal: number,
+        toolCallDurationSecondsTotal: number,
+    }
+}
+
+export class LlmCallStartedEvent extends jspb.Message { 
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmCallStartedEvent;
+    getProvider(): string;
+    setProvider(value: string): LlmCallStartedEvent;
+    getModelName(): string;
+    setModelName(value: string): LlmCallStartedEvent;
+    getAgentName(): string;
+    setAgentName(value: string): LlmCallStartedEvent;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmCallStartedEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmCallStartedEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmCallStartedEvent): LlmCallStartedEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmCallStartedEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmCallStartedEvent;
+    static deserializeBinaryFromReader(message: LlmCallStartedEvent, reader: jspb.BinaryReader): LlmCallStartedEvent;
+}
+
+export namespace LlmCallStartedEvent {
+    export type AsObject = {
+        llmCallId: string,
+        provider: string,
+        modelName: string,
+        agentName: string,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class LlmCallFinishedEvent extends jspb.Message { 
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmCallFinishedEvent;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmCallFinishedEvent;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmCallFinishedEvent;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmCallFinishedEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmCallFinishedEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmCallFinishedEvent): LlmCallFinishedEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmCallFinishedEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmCallFinishedEvent;
+    static deserializeBinaryFromReader(message: LlmCallFinishedEvent, reader: jspb.BinaryReader): LlmCallFinishedEvent;
+}
+
+export namespace LlmCallFinishedEvent {
+    export type AsObject = {
+        llmCallId: string,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        durationInS: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+    }
+}
+
+export class LlmToolCallStartedEvent extends jspb.Message { 
+    getToolCallId(): string;
+    setToolCallId(value: string): LlmToolCallStartedEvent;
+    getToolName(): string;
+    setToolName(value: string): LlmToolCallStartedEvent;
+
+    hasArguments(): boolean;
+    clearArguments(): void;
+    getArguments(): google_protobuf_struct_pb.Struct | undefined;
+    setArguments(value?: google_protobuf_struct_pb.Struct): LlmToolCallStartedEvent;
+
+    hasStartTime(): boolean;
+    clearStartTime(): void;
+    getStartTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmToolCallStartedEvent;
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmToolCallStartedEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmToolCallStartedEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmToolCallStartedEvent): LlmToolCallStartedEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmToolCallStartedEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmToolCallStartedEvent;
+    static deserializeBinaryFromReader(message: LlmToolCallStartedEvent, reader: jspb.BinaryReader): LlmToolCallStartedEvent;
+}
+
+export namespace LlmToolCallStartedEvent {
+    export type AsObject = {
+        toolCallId: string,
+        toolName: string,
+        arguments?: google_protobuf_struct_pb.Struct.AsObject,
+        startTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        llmCallId: string,
+    }
+}
+
+export class LlmToolCallFinishedEvent extends jspb.Message { 
+    getToolCallId(): string;
+    setToolCallId(value: string): LlmToolCallFinishedEvent;
+
+    hasEndTime(): boolean;
+    clearEndTime(): void;
+    getEndTime(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEndTime(value?: google_protobuf_timestamp_pb.Timestamp): LlmToolCallFinishedEvent;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmToolCallFinishedEvent;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmToolCallFinishedEvent;
+
+    hasResult(): boolean;
+    clearResult(): void;
+    getResult(): google_protobuf_struct_pb.Struct | undefined;
+    setResult(value?: google_protobuf_struct_pb.Struct): LlmToolCallFinishedEvent;
+    getErrorMessage(): string;
+    setErrorMessage(value: string): LlmToolCallFinishedEvent;
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmToolCallFinishedEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmToolCallFinishedEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmToolCallFinishedEvent): LlmToolCallFinishedEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmToolCallFinishedEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmToolCallFinishedEvent;
+    static deserializeBinaryFromReader(message: LlmToolCallFinishedEvent, reader: jspb.BinaryReader): LlmToolCallFinishedEvent;
+}
+
+export namespace LlmToolCallFinishedEvent {
+    export type AsObject = {
+        toolCallId: string,
+        endTime?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        durationInS: number,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+        result?: google_protobuf_struct_pb.Struct.AsObject,
+        errorMessage: string,
+        llmCallId: string,
+    }
+}
+
+export class LlmThinkingDeltaEvent extends jspb.Message { 
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmThinkingDeltaEvent;
+    getTextDelta(): string;
+    setTextDelta(value: string): LlmThinkingDeltaEvent;
+
+    hasTimestamp(): boolean;
+    clearTimestamp(): void;
+    getTimestamp(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setTimestamp(value?: google_protobuf_timestamp_pb.Timestamp): LlmThinkingDeltaEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmThinkingDeltaEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmThinkingDeltaEvent): LlmThinkingDeltaEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmThinkingDeltaEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmThinkingDeltaEvent;
+    static deserializeBinaryFromReader(message: LlmThinkingDeltaEvent, reader: jspb.BinaryReader): LlmThinkingDeltaEvent;
+}
+
+export namespace LlmThinkingDeltaEvent {
+    export type AsObject = {
+        llmCallId: string,
+        textDelta: string,
+        timestamp?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class LlmTokenUsageUpdateEvent extends jspb.Message { 
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmTokenUsageUpdateEvent;
+
+    hasLlmTokenUsage(): boolean;
+    clearLlmTokenUsage(): void;
+    getLlmTokenUsage(): LlmTokenUsage | undefined;
+    setLlmTokenUsage(value?: LlmTokenUsage): LlmTokenUsageUpdateEvent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmTokenUsageUpdateEvent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmTokenUsageUpdateEvent): LlmTokenUsageUpdateEvent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmTokenUsageUpdateEvent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmTokenUsageUpdateEvent;
+    static deserializeBinaryFromReader(message: LlmTokenUsageUpdateEvent, reader: jspb.BinaryReader): LlmTokenUsageUpdateEvent;
+}
+
+export namespace LlmTokenUsageUpdateEvent {
+    export type AsObject = {
+        llmCallId: string,
+        llmTokenUsage?: LlmTokenUsage.AsObject,
+    }
+}
+
 export class QueryResult extends jspb.Message { 
     getQueryText(): string;
     setQueryText(value: string): QueryResult;
@@ -316,6 +1445,11 @@ export class QueryResult extends jspb.Message {
     setFileResourcesList(value: Array<FileResource>): QueryResult;
     addFileResources(value?: FileResource, index?: number): FileResource;
 
+    hasLlmTelemetryReport(): boolean;
+    clearLlmTelemetryReport(): void;
+    getLlmTelemetryReport(): LlmTelemetryReport | undefined;
+    setLlmTelemetryReport(value?: LlmTelemetryReport): QueryResult;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): QueryResult.AsObject;
     static toObject(includeInstance: boolean, msg: QueryResult): QueryResult.AsObject;
@@ -344,6 +1478,7 @@ export namespace QueryResult {
         diagnosticInfo?: google_protobuf_struct_pb.Struct.AsObject,
         languageCode: string,
         fileResourcesList: Array<FileResource.AsObject>,
+        llmTelemetryReport?: LlmTelemetryReport.AsObject,
     }
 }
 
@@ -406,6 +1541,38 @@ export class StreamingDetectIntentResponse extends jspb.Message {
     getWebhookStatus(): google_rpc_status_pb.Status | undefined;
     setWebhookStatus(value?: google_rpc_status_pb.Status): StreamingDetectIntentResponse;
 
+    hasLlmCallStarted(): boolean;
+    clearLlmCallStarted(): void;
+    getLlmCallStarted(): LlmCallStartedEvent | undefined;
+    setLlmCallStarted(value?: LlmCallStartedEvent): StreamingDetectIntentResponse;
+
+    hasLlmCallFinished(): boolean;
+    clearLlmCallFinished(): void;
+    getLlmCallFinished(): LlmCallFinishedEvent | undefined;
+    setLlmCallFinished(value?: LlmCallFinishedEvent): StreamingDetectIntentResponse;
+
+    hasLlmToolCallStarted(): boolean;
+    clearLlmToolCallStarted(): void;
+    getLlmToolCallStarted(): LlmToolCallStartedEvent | undefined;
+    setLlmToolCallStarted(value?: LlmToolCallStartedEvent): StreamingDetectIntentResponse;
+
+    hasLlmToolCallFinished(): boolean;
+    clearLlmToolCallFinished(): void;
+    getLlmToolCallFinished(): LlmToolCallFinishedEvent | undefined;
+    setLlmToolCallFinished(value?: LlmToolCallFinishedEvent): StreamingDetectIntentResponse;
+
+    hasLlmThinkingDelta(): boolean;
+    clearLlmThinkingDelta(): void;
+    getLlmThinkingDelta(): LlmThinkingDeltaEvent | undefined;
+    setLlmThinkingDelta(value?: LlmThinkingDeltaEvent): StreamingDetectIntentResponse;
+
+    hasLlmTokenUsageUpdate(): boolean;
+    clearLlmTokenUsageUpdate(): void;
+    getLlmTokenUsageUpdate(): LlmTokenUsageUpdateEvent | undefined;
+    setLlmTokenUsageUpdate(value?: LlmTokenUsageUpdateEvent): StreamingDetectIntentResponse;
+
+    getTelemetryEventCase(): StreamingDetectIntentResponse.TelemetryEventCase;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): StreamingDetectIntentResponse.AsObject;
     static toObject(includeInstance: boolean, msg: StreamingDetectIntentResponse): StreamingDetectIntentResponse.AsObject;
@@ -422,7 +1589,24 @@ export namespace StreamingDetectIntentResponse {
         recognitionResult?: StreamingRecognitionResult.AsObject,
         queryResult?: QueryResult.AsObject,
         webhookStatus?: google_rpc_status_pb.Status.AsObject,
+        llmCallStarted?: LlmCallStartedEvent.AsObject,
+        llmCallFinished?: LlmCallFinishedEvent.AsObject,
+        llmToolCallStarted?: LlmToolCallStartedEvent.AsObject,
+        llmToolCallFinished?: LlmToolCallFinishedEvent.AsObject,
+        llmThinkingDelta?: LlmThinkingDeltaEvent.AsObject,
+        llmTokenUsageUpdate?: LlmTokenUsageUpdateEvent.AsObject,
     }
+
+    export enum TelemetryEventCase {
+        TELEMETRY_EVENT_NOT_SET = 0,
+        LLM_CALL_STARTED = 5,
+        LLM_CALL_FINISHED = 6,
+        LLM_TOOL_CALL_STARTED = 7,
+        LLM_TOOL_CALL_FINISHED = 8,
+        LLM_THINKING_DELTA = 9,
+        LLM_TOKEN_USAGE_UPDATE = 10,
+    }
+
 }
 
 export class StreamingRecognitionResult extends jspb.Message { 
@@ -641,6 +1825,11 @@ export class SessionStep extends jspb.Message {
     setAudioFileResourcesList(value: Array<AudioFileResource>): SessionStep;
     addAudioFileResources(value?: AudioFileResource, index?: number): AudioFileResource;
 
+    hasLlmTelemetryReport(): boolean;
+    clearLlmTelemetryReport(): void;
+    getLlmTelemetryReport(): LlmTelemetryReport | undefined;
+    setLlmTelemetryReport(value?: LlmTelemetryReport): SessionStep;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SessionStep.AsObject;
     static toObject(includeInstance: boolean, msg: SessionStep): SessionStep.AsObject;
@@ -663,6 +1852,7 @@ export namespace SessionStep {
         createdBy: string,
         modifiedBy: string,
         audioFileResourcesList: Array<AudioFileResource.AsObject>,
+        llmTelemetryReport?: LlmTelemetryReport.AsObject,
     }
 }
 
@@ -3109,6 +4299,14 @@ export enum TranscriptionType {
     TRANSCRIPTION_TYPE_UNSPECIFIED = 0,
     TRANSCRIPTION_TYPE_S2T = 1,
     TRANSCRIPTION_TYPE_HUMAN = 2,
+}
+
+export enum ReasoningEffort {
+    REASONING_EFFORT_UNSPECIFIED = 0,
+    REASONING_EFFORT_MINIMAL = 1,
+    REASONING_EFFORT_LOW = 2,
+    REASONING_EFFORT_MEDIUM = 3,
+    REASONING_EFFORT_HIGH = 4,
 }
 
 export enum AudioEncoding {

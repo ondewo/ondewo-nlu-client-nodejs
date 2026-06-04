@@ -39,10 +39,12 @@ var google_protobuf_struct_pb = require('google-protobuf/google/protobuf/struct_
 var google_protobuf_timestamp_pb = require('google-protobuf/google/protobuf/timestamp_pb.js');
 var google_rpc_status_pb = require('../../google/rpc/status_pb.js');
 var google_type_latlng_pb = require('../../google/type/latlng_pb.js');
+var ondewo_nlu_ccai_project_pb = require('../../ondewo/nlu/ccai_project_pb.js');
 var ondewo_nlu_common_pb = require('../../ondewo/nlu/common_pb.js');
 var ondewo_nlu_context_pb = require('../../ondewo/nlu/context_pb.js');
-var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');
 var ondewo_nlu_entity_type_pb = require('../../ondewo/nlu/entity_type_pb.js');
+var ondewo_nlu_intent_pb = require('../../ondewo/nlu/intent_pb.js');
+var ondewo_nlu_llm_evaluation_pb = require('../../ondewo/nlu/llm_evaluation_pb.js');
 
 function serialize_google_protobuf_Empty(arg) {
   if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
@@ -935,6 +937,7 @@ deleteSession: {
   },
   // *** SESSION-LABEL RELATED ENDPOINTS *** //
 //
+// Returns the list of labels attached to a single session.
 listSessionLabels: {
     path: '/ondewo.nlu.Sessions/ListSessionLabels',
     requestStream: false,
@@ -946,7 +949,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListSessionLabelsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListSessionLabelsResponse,
   },
-  listSessionLabelsOfAllSessions: {
+  // Returns the distinct set of labels observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listSessionLabelsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListSessionLabelsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -957,7 +961,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListSessionLabelsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListSessionLabelsResponse,
   },
-  listLanguageCodesOfAllSessions: {
+  // Returns the distinct set of language codes observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listLanguageCodesOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListLanguageCodesOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -968,7 +973,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListLanguageCodesResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListLanguageCodesResponse,
   },
-  listMatchedIntentsOfAllSessions: {
+  // Returns the distinct set of intents matched across all sessions of the agent, optionally narrowed by a SessionFilter.
+listMatchedIntentsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListMatchedIntentsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -979,7 +985,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListMatchedIntentsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListMatchedIntentsResponse,
   },
-  listMatchedEntityTypesOfAllSessions: {
+  // Returns the distinct set of entity types recognised across all sessions of the agent, optionally narrowed by a SessionFilter.
+listMatchedEntityTypesOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListMatchedEntityTypesOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -990,7 +997,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListMatchedEntityTypesResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListMatchedEntityTypesResponse,
   },
-  listUserIdsOfAllSessions: {
+  // Returns the distinct set of <code>user_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listUserIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListUserIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1001,7 +1009,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListUserIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListUserIdsResponse,
   },
-  listIdentifiedUserIdsOfAllSessions: {
+  // Returns the distinct set of <code>identified_user_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listIdentifiedUserIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListIdentifiedUserIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1012,7 +1021,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListIdentifiedUserIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListIdentifiedUserIdsResponse,
   },
-  listTagsOfAllSessions: {
+  // Returns the distinct set of intent tags observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listTagsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListTagsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1023,7 +1033,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListTagsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListTagsResponse,
   },
-  listInputContextsOfAllSessions: {
+  // Returns the distinct set of input contexts observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listInputContextsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListInputContextsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1034,7 +1045,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListInputContextsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListInputContextsResponse,
   },
-  listOutputContextsOfAllSessions: {
+  // Returns the distinct set of output contexts observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listOutputContextsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListOutputContextsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1045,7 +1057,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListOutputContextsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListOutputContextsResponse,
   },
-  listPlatformsOfAllSessions: {
+  // Returns the distinct set of <code>Intent.Message.Platform</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listPlatformsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListPlatformsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1056,7 +1069,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListPlatformsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListPlatformsResponse,
   },
-  listAccountIdsOfAllSessions: {
+  // Returns the distinct set of <code>account_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listAccountIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListAccountIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1067,7 +1081,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListAccountIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListAccountIdsResponse,
   },
-  listPropertyIdsOfAllSessions: {
+  // Returns the distinct set of <code>property_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listPropertyIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListPropertyIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1078,7 +1093,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListPropertyIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListPropertyIdsResponse,
   },
-  listDatastreamIdsOfAllSessions: {
+  // Returns the distinct set of <code>datastream_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listDatastreamIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListDatastreamIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1089,7 +1105,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListDatastreamIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListDatastreamIdsResponse,
   },
-  listOriginIdsOfAllSessions: {
+  // Returns the distinct set of <code>origin_id</code> values observed across all sessions of the agent, optionally narrowed by a SessionFilter.
+listOriginIdsOfAllSessions: {
     path: '/ondewo.nlu.Sessions/ListOriginIdsOfAllSessions',
     requestStream: false,
     responseStream: false,
@@ -1100,7 +1117,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_ListOriginIdsResponse,
     responseDeserialize: deserialize_ondewo_nlu_ListOriginIdsResponse,
   },
-  addSessionLabels: {
+  // Attaches the supplied labels to a session and returns the updated session.
+addSessionLabels: {
     path: '/ondewo.nlu.Sessions/AddSessionLabels',
     requestStream: false,
     responseStream: false,
@@ -1111,7 +1129,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_Session,
     responseDeserialize: deserialize_ondewo_nlu_Session,
   },
-  deleteSessionLabels: {
+  // Removes the supplied labels from a session and returns the updated session.
+deleteSessionLabels: {
     path: '/ondewo.nlu.Sessions/DeleteSessionLabels',
     requestStream: false,
     responseStream: false,
@@ -1122,7 +1141,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_Session,
     responseDeserialize: deserialize_ondewo_nlu_Session,
   },
-  addSessionComment: {
+  // Appends a comment to a session and returns the persisted comment.
+addSessionComment: {
     path: '/ondewo.nlu.Sessions/AddSessionComment',
     requestStream: false,
     responseStream: false,
@@ -1133,7 +1153,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_Comment,
     responseDeserialize: deserialize_ondewo_nlu_Comment,
   },
-  deleteSessionComments: {
+  // Removes the comments named in the request from a session and returns the updated session.
+deleteSessionComments: {
     path: '/ondewo.nlu.Sessions/DeleteSessionComments',
     requestStream: false,
     responseStream: false,
@@ -1144,7 +1165,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_Session,
     responseDeserialize: deserialize_ondewo_nlu_Session,
   },
-  updateSessionComments: {
+  // Updates an existing comment on a session and returns the updated session.
+updateSessionComments: {
     path: '/ondewo.nlu.Sessions/UpdateSessionComments',
     requestStream: false,
     responseStream: false,
@@ -1155,7 +1177,8 @@ listSessionLabels: {
     responseSerialize: serialize_ondewo_nlu_Session,
     responseDeserialize: deserialize_ondewo_nlu_Session,
   },
-  listSessionComments: {
+  // Lists the comments attached to a session with pagination support.
+listSessionComments: {
     path: '/ondewo.nlu.Sessions/ListSessionComments',
     requestStream: false,
     responseStream: false,
