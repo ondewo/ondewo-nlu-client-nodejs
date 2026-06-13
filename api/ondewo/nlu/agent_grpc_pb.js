@@ -391,6 +391,28 @@ function deserialize_ondewo_nlu_GetSessionsStatisticsResponse(buffer_arg) {
   return ondewo_nlu_agent_pb.GetSessionsStatisticsResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesRequest(arg) {
+  if (!(arg instanceof ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesRequest)) {
+    throw new Error('Expected argument of type ondewo.nlu.GetSessionsStatisticsTimeSeriesRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesRequest(buffer_arg) {
+  return ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesResponse(arg) {
+  if (!(arg instanceof ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse)) {
+    throw new Error('Expected argument of type ondewo.nlu.GetSessionsStatisticsTimeSeriesResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesResponse(buffer_arg) {
+  return ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_ondewo_nlu_ImportAgentRequest(arg) {
   if (!(arg instanceof ondewo_nlu_agent_pb.ImportAgentRequest)) {
     throw new Error('Expected argument of type ondewo.nlu.ImportAgentRequest');
@@ -1089,6 +1111,19 @@ getAgentStatistics: {
     requestDeserialize: deserialize_ondewo_nlu_GetSessionsStatisticsRequest,
     responseSerialize: serialize_ondewo_nlu_GetSessionsStatisticsResponse,
     responseDeserialize: deserialize_ondewo_nlu_GetSessionsStatisticsResponse,
+  },
+  // Gets LLM telemetry statistics for sessions bucketed over time (time series).
+// Supports LLM-typed report types (SESSION_LLM_*) only.
+getSessionsStatisticsTimeSeries: {
+    path: '/ondewo.nlu.Agents/GetSessionsStatisticsTimeSeries',
+    requestStream: false,
+    responseStream: false,
+    requestType: ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesRequest,
+    responseType: ondewo_nlu_agent_pb.GetSessionsStatisticsTimeSeriesResponse,
+    requestSerialize: serialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesRequest,
+    requestDeserialize: deserialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesRequest,
+    responseSerialize: serialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesResponse,
+    responseDeserialize: deserialize_ondewo_nlu_GetSessionsStatisticsTimeSeriesResponse,
   },
   // Sets status for the agent
 setAgentStatus: {

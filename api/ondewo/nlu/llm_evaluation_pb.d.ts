@@ -44,6 +44,8 @@ export class LlmEvaluationDataset extends jspb.Message {
     setParent(value: string): LlmEvaluationDataset;
     getLanguageCode(): string;
     setLanguageCode(value: string): LlmEvaluationDataset;
+    getLlmEvaluationDatasetType(): LlmEvaluationDatasetType;
+    setLlmEvaluationDatasetType(value: LlmEvaluationDatasetType): LlmEvaluationDataset;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmEvaluationDataset.AsObject;
@@ -68,6 +70,7 @@ export namespace LlmEvaluationDataset {
         modifiedBy: string,
         parent: string,
         languageCode: string,
+        llmEvaluationDatasetType: LlmEvaluationDatasetType,
     }
 }
 
@@ -210,6 +213,14 @@ export class LlmEvaluationExperiment extends jspb.Message {
     setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationExperiment;
     getModifiedBy(): string;
     setModifiedBy(value: string): LlmEvaluationExperiment;
+    getRepetitions(): number;
+    setRepetitions(value: number): LlmEvaluationExperiment;
+    getLlmEvaluationScheduleName(): string;
+    setLlmEvaluationScheduleName(value: string): LlmEvaluationExperiment;
+    getLlmEvaluationExperimentKind(): LlmEvaluationExperimentKind;
+    setLlmEvaluationExperimentKind(value: LlmEvaluationExperimentKind): LlmEvaluationExperiment;
+    getLlmEvaluationReleaseGateRunName(): string;
+    setLlmEvaluationReleaseGateRunName(value: string): LlmEvaluationExperiment;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmEvaluationExperiment.AsObject;
@@ -247,6 +258,10 @@ export namespace LlmEvaluationExperiment {
         createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         modifiedBy: string,
+        repetitions: number,
+        llmEvaluationScheduleName: string,
+        llmEvaluationExperimentKind: LlmEvaluationExperimentKind,
+        llmEvaluationReleaseGateRunName: string,
     }
 }
 
@@ -293,6 +308,17 @@ export class LlmEvaluationEvaluatorRun extends jspb.Message {
     setCreatedBy(value: string): LlmEvaluationEvaluatorRun;
     getModifiedBy(): string;
     setModifiedBy(value: string): LlmEvaluationEvaluatorRun;
+    clearLlmEvaluationTurnResultsList(): void;
+    getLlmEvaluationTurnResultsList(): Array<LlmEvaluationTurnResult>;
+    setLlmEvaluationTurnResultsList(value: Array<LlmEvaluationTurnResult>): LlmEvaluationEvaluatorRun;
+    addLlmEvaluationTurnResults(value?: LlmEvaluationTurnResult, index?: number): LlmEvaluationTurnResult;
+    getRepetitionIndex(): number;
+    setRepetitionIndex(value: number): LlmEvaluationEvaluatorRun;
+
+    hasActualOutput(): boolean;
+    clearActualOutput(): void;
+    getActualOutput(): google_protobuf_struct_pb.Struct | undefined;
+    setActualOutput(value?: google_protobuf_struct_pb.Struct): LlmEvaluationEvaluatorRun;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmEvaluationEvaluatorRun.AsObject;
@@ -320,6 +346,9 @@ export namespace LlmEvaluationEvaluatorRun {
         modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
         createdBy: string,
         modifiedBy: string,
+        llmEvaluationTurnResultsList: Array<LlmEvaluationTurnResult.AsObject>,
+        repetitionIndex: number,
+        actualOutput?: google_protobuf_struct_pb.Struct.AsObject,
     }
 }
 
@@ -561,6 +590,8 @@ export class LlmEvaluationDatasetFilter extends jspb.Message {
     getTagsList(): Array<string>;
     setTagsList(value: Array<string>): LlmEvaluationDatasetFilter;
     addTags(value: string, index?: number): string;
+    getLlmEvaluationDatasetType(): LlmEvaluationDatasetType;
+    setLlmEvaluationDatasetType(value: LlmEvaluationDatasetType): LlmEvaluationDatasetFilter;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmEvaluationDatasetFilter.AsObject;
@@ -576,6 +607,7 @@ export namespace LlmEvaluationDatasetFilter {
     export type AsObject = {
         displayName: string,
         tagsList: Array<string>,
+        llmEvaluationDatasetType: LlmEvaluationDatasetType,
     }
 }
 
@@ -1009,6 +1041,15 @@ export class RunLlmEvaluationExperimentRequest extends jspb.Message {
     getCcaiServiceNamesList(): Array<string>;
     setCcaiServiceNamesList(value: Array<string>): RunLlmEvaluationExperimentRequest;
     addCcaiServiceNames(value: string, index?: number): string;
+    getRepetitions(): number;
+    setRepetitions(value: number): RunLlmEvaluationExperimentRequest;
+    getLlmEvaluationExperimentKind(): LlmEvaluationExperimentKind;
+    setLlmEvaluationExperimentKind(value: LlmEvaluationExperimentKind): RunLlmEvaluationExperimentRequest;
+
+    hasEvaluatorConfigs(): boolean;
+    clearEvaluatorConfigs(): void;
+    getEvaluatorConfigs(): google_protobuf_struct_pb.Struct | undefined;
+    setEvaluatorConfigs(value?: google_protobuf_struct_pb.Struct): RunLlmEvaluationExperimentRequest;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): RunLlmEvaluationExperimentRequest.AsObject;
@@ -1033,6 +1074,9 @@ export namespace RunLlmEvaluationExperimentRequest {
         llmEvaluationBaselineExperimentName: string,
         languageCode: string,
         ccaiServiceNamesList: Array<string>,
+        repetitions: number,
+        llmEvaluationExperimentKind: LlmEvaluationExperimentKind,
+        evaluatorConfigs?: google_protobuf_struct_pb.Struct.AsObject,
     }
 }
 
@@ -1077,6 +1121,10 @@ export class LlmEvaluationExperimentFilter extends jspb.Message {
     setLlmEvaluationDatasetName(value: string): LlmEvaluationExperimentFilter;
     getModelName(): string;
     setModelName(value: string): LlmEvaluationExperimentFilter;
+    getLlmEvaluationScheduleName(): string;
+    setLlmEvaluationScheduleName(value: string): LlmEvaluationExperimentFilter;
+    getLlmEvaluationExperimentKind(): LlmEvaluationExperimentKind;
+    setLlmEvaluationExperimentKind(value: LlmEvaluationExperimentKind): LlmEvaluationExperimentFilter;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmEvaluationExperimentFilter.AsObject;
@@ -1094,6 +1142,8 @@ export namespace LlmEvaluationExperimentFilter {
         llmEvaluationExperimentStatus: LlmEvaluationExperimentStatus,
         llmEvaluationDatasetName: string,
         modelName: string,
+        llmEvaluationScheduleName: string,
+        llmEvaluationExperimentKind: LlmEvaluationExperimentKind,
     }
 }
 
@@ -1440,6 +1490,3688 @@ export namespace DeleteLlmEvaluationFeedbackRequest {
     }
 }
 
+export class UpdateLlmEvaluationFeedbackRequest extends jspb.Message { 
+
+    hasLlmEvaluationFeedback(): boolean;
+    clearLlmEvaluationFeedback(): void;
+    getLlmEvaluationFeedback(): LlmEvaluationFeedback | undefined;
+    setLlmEvaluationFeedback(value?: LlmEvaluationFeedback): UpdateLlmEvaluationFeedbackRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationFeedbackRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationFeedbackRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationFeedbackRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationFeedbackRequest): UpdateLlmEvaluationFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationFeedbackRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationFeedbackRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationFeedbackRequest;
+}
+
+export namespace UpdateLlmEvaluationFeedbackRequest {
+    export type AsObject = {
+        llmEvaluationFeedback?: LlmEvaluationFeedback.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationTurnResult extends jspb.Message { 
+    getTurnIndex(): number;
+    setTurnIndex(value: number): LlmEvaluationTurnResult;
+
+    hasUserInput(): boolean;
+    clearUserInput(): void;
+    getUserInput(): google_protobuf_struct_pb.Struct | undefined;
+    setUserInput(value?: google_protobuf_struct_pb.Struct): LlmEvaluationTurnResult;
+
+    hasExpectedOutput(): boolean;
+    clearExpectedOutput(): void;
+    getExpectedOutput(): google_protobuf_struct_pb.Struct | undefined;
+    setExpectedOutput(value?: google_protobuf_struct_pb.Struct): LlmEvaluationTurnResult;
+
+    hasActualOutput(): boolean;
+    clearActualOutput(): void;
+    getActualOutput(): google_protobuf_struct_pb.Struct | undefined;
+    setActualOutput(value?: google_protobuf_struct_pb.Struct): LlmEvaluationTurnResult;
+    getLlmTelemetryRunId(): string;
+    setLlmTelemetryRunId(value: string): LlmEvaluationTurnResult;
+    getSessionStepName(): string;
+    setSessionStepName(value: string): LlmEvaluationTurnResult;
+    clearLlmEvaluationFeedbacksList(): void;
+    getLlmEvaluationFeedbacksList(): Array<LlmEvaluationFeedback>;
+    setLlmEvaluationFeedbacksList(value: Array<LlmEvaluationFeedback>): LlmEvaluationTurnResult;
+    addLlmEvaluationFeedbacks(value?: LlmEvaluationFeedback, index?: number): LlmEvaluationFeedback;
+    getDurationInS(): number;
+    setDurationInS(value: number): LlmEvaluationTurnResult;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationTurnResult.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationTurnResult): LlmEvaluationTurnResult.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationTurnResult, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationTurnResult;
+    static deserializeBinaryFromReader(message: LlmEvaluationTurnResult, reader: jspb.BinaryReader): LlmEvaluationTurnResult;
+}
+
+export namespace LlmEvaluationTurnResult {
+    export type AsObject = {
+        turnIndex: number,
+        userInput?: google_protobuf_struct_pb.Struct.AsObject,
+        expectedOutput?: google_protobuf_struct_pb.Struct.AsObject,
+        actualOutput?: google_protobuf_struct_pb.Struct.AsObject,
+        llmTelemetryRunId: string,
+        sessionStepName: string,
+        llmEvaluationFeedbacksList: Array<LlmEvaluationFeedback.AsObject>,
+        durationInS: number,
+    }
+}
+
+export class LlmEvaluationReleaseGateThresholds extends jspb.Message { 
+    getMinPassRate(): number;
+    setMinPassRate(value: number): LlmEvaluationReleaseGateThresholds;
+    getMaxRegressionPerCriterion(): number;
+    setMaxRegressionPerCriterion(value: number): LlmEvaluationReleaseGateThresholds;
+    getMaxP95LatencySeconds(): number;
+    setMaxP95LatencySeconds(value: number): LlmEvaluationReleaseGateThresholds;
+    getAcceptanceMustPass(): boolean;
+    setAcceptanceMustPass(value: boolean): LlmEvaluationReleaseGateThresholds;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateThresholds.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateThresholds): LlmEvaluationReleaseGateThresholds.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateThresholds, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateThresholds;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateThresholds, reader: jspb.BinaryReader): LlmEvaluationReleaseGateThresholds;
+}
+
+export namespace LlmEvaluationReleaseGateThresholds {
+    export type AsObject = {
+        minPassRate: number,
+        maxRegressionPerCriterion: number,
+        maxP95LatencySeconds: number,
+        acceptanceMustPass: boolean,
+    }
+}
+
+export class LlmEvaluationReleaseGateSafetyConfig extends jspb.Message { 
+    getEnabled(): boolean;
+    setEnabled(value: boolean): LlmEvaluationReleaseGateSafetyConfig;
+    getAdversarialDatasetName(): string;
+    setAdversarialDatasetName(value: string): LlmEvaluationReleaseGateSafetyConfig;
+    clearEvaluatorNamesList(): void;
+    getEvaluatorNamesList(): Array<string>;
+    setEvaluatorNamesList(value: Array<string>): LlmEvaluationReleaseGateSafetyConfig;
+    addEvaluatorNames(value: string, index?: number): string;
+    getMaxToxicity(): number;
+    setMaxToxicity(value: number): LlmEvaluationReleaseGateSafetyConfig;
+    getMaxBias(): number;
+    setMaxBias(value: number): LlmEvaluationReleaseGateSafetyConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateSafetyConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateSafetyConfig): LlmEvaluationReleaseGateSafetyConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateSafetyConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateSafetyConfig;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateSafetyConfig, reader: jspb.BinaryReader): LlmEvaluationReleaseGateSafetyConfig;
+}
+
+export namespace LlmEvaluationReleaseGateSafetyConfig {
+    export type AsObject = {
+        enabled: boolean,
+        adversarialDatasetName: string,
+        evaluatorNamesList: Array<string>,
+        maxToxicity: number,
+        maxBias: number,
+    }
+}
+
+export class LlmEvaluationReleaseGate extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationReleaseGate;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationReleaseGate;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationReleaseGate;
+    getRevision(): number;
+    setRevision(value: number): LlmEvaluationReleaseGate;
+    getLlmEvaluationDatasetName(): string;
+    setLlmEvaluationDatasetName(value: string): LlmEvaluationReleaseGate;
+    getLlmEvaluationBaselineExperimentName(): string;
+    setLlmEvaluationBaselineExperimentName(value: string): LlmEvaluationReleaseGate;
+    clearLlmEvaluationEvaluatorNamesList(): void;
+    getLlmEvaluationEvaluatorNamesList(): Array<string>;
+    setLlmEvaluationEvaluatorNamesList(value: Array<string>): LlmEvaluationReleaseGate;
+    addLlmEvaluationEvaluatorNames(value: string, index?: number): string;
+
+    hasThresholds(): boolean;
+    clearThresholds(): void;
+    getThresholds(): LlmEvaluationReleaseGateThresholds | undefined;
+    setThresholds(value?: LlmEvaluationReleaseGateThresholds): LlmEvaluationReleaseGate;
+
+    hasSafety(): boolean;
+    clearSafety(): void;
+    getSafety(): LlmEvaluationReleaseGateSafetyConfig | undefined;
+    setSafety(value?: LlmEvaluationReleaseGateSafetyConfig): LlmEvaluationReleaseGate;
+
+    hasWeights(): boolean;
+    clearWeights(): void;
+    getWeights(): google_protobuf_struct_pb.Struct | undefined;
+    setWeights(value?: google_protobuf_struct_pb.Struct): LlmEvaluationReleaseGate;
+    getPassCutoffScore(): number;
+    setPassCutoffScore(value: number): LlmEvaluationReleaseGate;
+    getStalenessWindowDays(): number;
+    setStalenessWindowDays(value: number): LlmEvaluationReleaseGate;
+    clearCcaiServiceNamesList(): void;
+    getCcaiServiceNamesList(): Array<string>;
+    setCcaiServiceNamesList(value: Array<string>): LlmEvaluationReleaseGate;
+    addCcaiServiceNames(value: string, index?: number): string;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGate;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationReleaseGate;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGate;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationReleaseGate;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationReleaseGate;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationReleaseGate;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGate.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGate): LlmEvaluationReleaseGate.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGate, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGate;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGate, reader: jspb.BinaryReader): LlmEvaluationReleaseGate;
+}
+
+export namespace LlmEvaluationReleaseGate {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        revision: number,
+        llmEvaluationDatasetName: string,
+        llmEvaluationBaselineExperimentName: string,
+        llmEvaluationEvaluatorNamesList: Array<string>,
+        thresholds?: LlmEvaluationReleaseGateThresholds.AsObject,
+        safety?: LlmEvaluationReleaseGateSafetyConfig.AsObject,
+        weights?: google_protobuf_struct_pb.Struct.AsObject,
+        passCutoffScore: number,
+        stalenessWindowDays: number,
+        ccaiServiceNamesList: Array<string>,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationReleaseGateCheck extends jspb.Message { 
+    getId(): string;
+    setId(value: string): LlmEvaluationReleaseGateCheck;
+    getThreshold(): number;
+    setThreshold(value: number): LlmEvaluationReleaseGateCheck;
+    getActual(): number;
+    setActual(value: number): LlmEvaluationReleaseGateCheck;
+    getActualAvailable(): boolean;
+    setActualAvailable(value: boolean): LlmEvaluationReleaseGateCheck;
+    getPassed(): boolean;
+    setPassed(value: boolean): LlmEvaluationReleaseGateCheck;
+    getPartial(): boolean;
+    setPartial(value: boolean): LlmEvaluationReleaseGateCheck;
+    getProvenance(): string;
+    setProvenance(value: string): LlmEvaluationReleaseGateCheck;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateCheck.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateCheck): LlmEvaluationReleaseGateCheck.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateCheck, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateCheck;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateCheck, reader: jspb.BinaryReader): LlmEvaluationReleaseGateCheck;
+}
+
+export namespace LlmEvaluationReleaseGateCheck {
+    export type AsObject = {
+        id: string,
+        threshold: number,
+        actual: number,
+        actualAvailable: boolean,
+        passed: boolean,
+        partial: boolean,
+        provenance: string,
+    }
+}
+
+export class LlmEvaluationReleaseGateRun extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationReleaseGateRun;
+    getLlmEvaluationReleaseGateName(): string;
+    setLlmEvaluationReleaseGateName(value: string): LlmEvaluationReleaseGateRun;
+    getGateRevision(): number;
+    setGateRevision(value: number): LlmEvaluationReleaseGateRun;
+
+    hasGateSnapshot(): boolean;
+    clearGateSnapshot(): void;
+    getGateSnapshot(): google_protobuf_struct_pb.Struct | undefined;
+    setGateSnapshot(value?: google_protobuf_struct_pb.Struct): LlmEvaluationReleaseGateRun;
+    getLlmEvaluationExperimentName(): string;
+    setLlmEvaluationExperimentName(value: string): LlmEvaluationReleaseGateRun;
+    getLlmEvaluationSafetyExperimentName(): string;
+    setLlmEvaluationSafetyExperimentName(value: string): LlmEvaluationReleaseGateRun;
+    getLlmEvaluationBaselineExperimentName(): string;
+    setLlmEvaluationBaselineExperimentName(value: string): LlmEvaluationReleaseGateRun;
+    getLlmEvaluationReleaseGateVerdict(): LlmEvaluationReleaseGateVerdict;
+    setLlmEvaluationReleaseGateVerdict(value: LlmEvaluationReleaseGateVerdict): LlmEvaluationReleaseGateRun;
+    clearChecksList(): void;
+    getChecksList(): Array<LlmEvaluationReleaseGateCheck>;
+    setChecksList(value: Array<LlmEvaluationReleaseGateCheck>): LlmEvaluationReleaseGateRun;
+    addChecks(value?: LlmEvaluationReleaseGateCheck, index?: number): LlmEvaluationReleaseGateCheck;
+
+    hasStartedAt(): boolean;
+    clearStartedAt(): void;
+    getStartedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGateRun;
+
+    hasFinishedAt(): boolean;
+    clearFinishedAt(): void;
+    getFinishedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setFinishedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGateRun;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGateRun;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationReleaseGateRun;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReleaseGateRun;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationReleaseGateRun;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationReleaseGateRun;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationReleaseGateRun;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateRun.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateRun): LlmEvaluationReleaseGateRun.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateRun, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateRun;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateRun, reader: jspb.BinaryReader): LlmEvaluationReleaseGateRun;
+}
+
+export namespace LlmEvaluationReleaseGateRun {
+    export type AsObject = {
+        name: string,
+        llmEvaluationReleaseGateName: string,
+        gateRevision: number,
+        gateSnapshot?: google_protobuf_struct_pb.Struct.AsObject,
+        llmEvaluationExperimentName: string,
+        llmEvaluationSafetyExperimentName: string,
+        llmEvaluationBaselineExperimentName: string,
+        llmEvaluationReleaseGateVerdict: LlmEvaluationReleaseGateVerdict,
+        checksList: Array<LlmEvaluationReleaseGateCheck.AsObject>,
+        startedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        finishedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class CreateLlmEvaluationReleaseGateRequest extends jspb.Message { 
+
+    hasLlmEvaluationReleaseGate(): boolean;
+    clearLlmEvaluationReleaseGate(): void;
+    getLlmEvaluationReleaseGate(): LlmEvaluationReleaseGate | undefined;
+    setLlmEvaluationReleaseGate(value?: LlmEvaluationReleaseGate): CreateLlmEvaluationReleaseGateRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationReleaseGateRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationReleaseGateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationReleaseGateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationReleaseGateRequest): CreateLlmEvaluationReleaseGateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationReleaseGateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationReleaseGateRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationReleaseGateRequest, reader: jspb.BinaryReader): CreateLlmEvaluationReleaseGateRequest;
+}
+
+export namespace CreateLlmEvaluationReleaseGateRequest {
+    export type AsObject = {
+        llmEvaluationReleaseGate?: LlmEvaluationReleaseGate.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationReleaseGateRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationReleaseGateRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationReleaseGateRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationReleaseGateRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationReleaseGateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationReleaseGateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationReleaseGateRequest): GetLlmEvaluationReleaseGateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationReleaseGateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationReleaseGateRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationReleaseGateRequest, reader: jspb.BinaryReader): GetLlmEvaluationReleaseGateRequest;
+}
+
+export namespace GetLlmEvaluationReleaseGateRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationReleaseGateFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationReleaseGateFilter;
+    getLlmEvaluationDatasetName(): string;
+    setLlmEvaluationDatasetName(value: string): LlmEvaluationReleaseGateFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateFilter): LlmEvaluationReleaseGateFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateFilter, reader: jspb.BinaryReader): LlmEvaluationReleaseGateFilter;
+}
+
+export namespace LlmEvaluationReleaseGateFilter {
+    export type AsObject = {
+        displayName: string,
+        llmEvaluationDatasetName: string,
+    }
+}
+
+export class ListLlmEvaluationReleaseGatesRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationReleaseGatesRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationReleaseGatesRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationReleaseGatesRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationReleaseGatesRequest;
+
+    hasLlmEvaluationReleaseGateFilter(): boolean;
+    clearLlmEvaluationReleaseGateFilter(): void;
+    getLlmEvaluationReleaseGateFilter(): LlmEvaluationReleaseGateFilter | undefined;
+    setLlmEvaluationReleaseGateFilter(value?: LlmEvaluationReleaseGateFilter): ListLlmEvaluationReleaseGatesRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReleaseGatesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReleaseGatesRequest): ListLlmEvaluationReleaseGatesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReleaseGatesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReleaseGatesRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReleaseGatesRequest, reader: jspb.BinaryReader): ListLlmEvaluationReleaseGatesRequest;
+}
+
+export namespace ListLlmEvaluationReleaseGatesRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationReleaseGateFilter?: LlmEvaluationReleaseGateFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationReleaseGatesResponse extends jspb.Message { 
+    clearLlmEvaluationReleaseGatesList(): void;
+    getLlmEvaluationReleaseGatesList(): Array<LlmEvaluationReleaseGate>;
+    setLlmEvaluationReleaseGatesList(value: Array<LlmEvaluationReleaseGate>): ListLlmEvaluationReleaseGatesResponse;
+    addLlmEvaluationReleaseGates(value?: LlmEvaluationReleaseGate, index?: number): LlmEvaluationReleaseGate;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationReleaseGatesResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReleaseGatesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReleaseGatesResponse): ListLlmEvaluationReleaseGatesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReleaseGatesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReleaseGatesResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReleaseGatesResponse, reader: jspb.BinaryReader): ListLlmEvaluationReleaseGatesResponse;
+}
+
+export namespace ListLlmEvaluationReleaseGatesResponse {
+    export type AsObject = {
+        llmEvaluationReleaseGatesList: Array<LlmEvaluationReleaseGate.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationReleaseGateRequest extends jspb.Message { 
+
+    hasLlmEvaluationReleaseGate(): boolean;
+    clearLlmEvaluationReleaseGate(): void;
+    getLlmEvaluationReleaseGate(): LlmEvaluationReleaseGate | undefined;
+    setLlmEvaluationReleaseGate(value?: LlmEvaluationReleaseGate): UpdateLlmEvaluationReleaseGateRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationReleaseGateRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationReleaseGateRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationReleaseGateRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationReleaseGateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationReleaseGateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationReleaseGateRequest): UpdateLlmEvaluationReleaseGateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationReleaseGateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationReleaseGateRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationReleaseGateRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationReleaseGateRequest;
+}
+
+export namespace UpdateLlmEvaluationReleaseGateRequest {
+    export type AsObject = {
+        llmEvaluationReleaseGate?: LlmEvaluationReleaseGate.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class DeleteLlmEvaluationReleaseGateRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationReleaseGateRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationReleaseGateRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationReleaseGateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationReleaseGateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationReleaseGateRequest): DeleteLlmEvaluationReleaseGateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationReleaseGateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationReleaseGateRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationReleaseGateRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationReleaseGateRequest;
+}
+
+export namespace DeleteLlmEvaluationReleaseGateRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class RunLlmEvaluationReleaseGateRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): RunLlmEvaluationReleaseGateRequest;
+    getParent(): string;
+    setParent(value: string): RunLlmEvaluationReleaseGateRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): RunLlmEvaluationReleaseGateRequest;
+    clearCcaiServiceNamesList(): void;
+    getCcaiServiceNamesList(): Array<string>;
+    setCcaiServiceNamesList(value: Array<string>): RunLlmEvaluationReleaseGateRequest;
+    addCcaiServiceNames(value: string, index?: number): string;
+    getGitSha(): string;
+    setGitSha(value: string): RunLlmEvaluationReleaseGateRequest;
+    getPromptVersion(): string;
+    setPromptVersion(value: string): RunLlmEvaluationReleaseGateRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RunLlmEvaluationReleaseGateRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: RunLlmEvaluationReleaseGateRequest): RunLlmEvaluationReleaseGateRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RunLlmEvaluationReleaseGateRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RunLlmEvaluationReleaseGateRequest;
+    static deserializeBinaryFromReader(message: RunLlmEvaluationReleaseGateRequest, reader: jspb.BinaryReader): RunLlmEvaluationReleaseGateRequest;
+}
+
+export namespace RunLlmEvaluationReleaseGateRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+        ccaiServiceNamesList: Array<string>,
+        gitSha: string,
+        promptVersion: string,
+    }
+}
+
+export class GetLlmEvaluationReleaseGateRunRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationReleaseGateRunRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationReleaseGateRunRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationReleaseGateRunRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationReleaseGateRunRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationReleaseGateRunRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationReleaseGateRunRequest): GetLlmEvaluationReleaseGateRunRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationReleaseGateRunRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationReleaseGateRunRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationReleaseGateRunRequest, reader: jspb.BinaryReader): GetLlmEvaluationReleaseGateRunRequest;
+}
+
+export namespace GetLlmEvaluationReleaseGateRunRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationReleaseGateRunFilter extends jspb.Message { 
+    getLlmEvaluationReleaseGateName(): string;
+    setLlmEvaluationReleaseGateName(value: string): LlmEvaluationReleaseGateRunFilter;
+    getLlmEvaluationReleaseGateVerdict(): LlmEvaluationReleaseGateVerdict;
+    setLlmEvaluationReleaseGateVerdict(value: LlmEvaluationReleaseGateVerdict): LlmEvaluationReleaseGateRunFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReleaseGateRunFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReleaseGateRunFilter): LlmEvaluationReleaseGateRunFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReleaseGateRunFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReleaseGateRunFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationReleaseGateRunFilter, reader: jspb.BinaryReader): LlmEvaluationReleaseGateRunFilter;
+}
+
+export namespace LlmEvaluationReleaseGateRunFilter {
+    export type AsObject = {
+        llmEvaluationReleaseGateName: string,
+        llmEvaluationReleaseGateVerdict: LlmEvaluationReleaseGateVerdict,
+    }
+}
+
+export class ListLlmEvaluationReleaseGateRunsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationReleaseGateRunsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationReleaseGateRunsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationReleaseGateRunsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationReleaseGateRunsRequest;
+
+    hasLlmEvaluationReleaseGateRunFilter(): boolean;
+    clearLlmEvaluationReleaseGateRunFilter(): void;
+    getLlmEvaluationReleaseGateRunFilter(): LlmEvaluationReleaseGateRunFilter | undefined;
+    setLlmEvaluationReleaseGateRunFilter(value?: LlmEvaluationReleaseGateRunFilter): ListLlmEvaluationReleaseGateRunsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReleaseGateRunsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReleaseGateRunsRequest): ListLlmEvaluationReleaseGateRunsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReleaseGateRunsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReleaseGateRunsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReleaseGateRunsRequest, reader: jspb.BinaryReader): ListLlmEvaluationReleaseGateRunsRequest;
+}
+
+export namespace ListLlmEvaluationReleaseGateRunsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationReleaseGateRunFilter?: LlmEvaluationReleaseGateRunFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationReleaseGateRunsResponse extends jspb.Message { 
+    clearLlmEvaluationReleaseGateRunsList(): void;
+    getLlmEvaluationReleaseGateRunsList(): Array<LlmEvaluationReleaseGateRun>;
+    setLlmEvaluationReleaseGateRunsList(value: Array<LlmEvaluationReleaseGateRun>): ListLlmEvaluationReleaseGateRunsResponse;
+    addLlmEvaluationReleaseGateRuns(value?: LlmEvaluationReleaseGateRun, index?: number): LlmEvaluationReleaseGateRun;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationReleaseGateRunsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReleaseGateRunsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReleaseGateRunsResponse): ListLlmEvaluationReleaseGateRunsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReleaseGateRunsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReleaseGateRunsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReleaseGateRunsResponse, reader: jspb.BinaryReader): ListLlmEvaluationReleaseGateRunsResponse;
+}
+
+export namespace ListLlmEvaluationReleaseGateRunsResponse {
+    export type AsObject = {
+        llmEvaluationReleaseGateRunsList: Array<LlmEvaluationReleaseGateRun.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class LlmEvaluationScorecardComponent extends jspb.Message { 
+    getCriterion(): string;
+    setCriterion(value: string): LlmEvaluationScorecardComponent;
+    getWeight(): number;
+    setWeight(value: number): LlmEvaluationScorecardComponent;
+    getTargetScore(): number;
+    setTargetScore(value: number): LlmEvaluationScorecardComponent;
+    getEvaluatorName(): string;
+    setEvaluatorName(value: string): LlmEvaluationScorecardComponent;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationScorecardComponent.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationScorecardComponent): LlmEvaluationScorecardComponent.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationScorecardComponent, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationScorecardComponent;
+    static deserializeBinaryFromReader(message: LlmEvaluationScorecardComponent, reader: jspb.BinaryReader): LlmEvaluationScorecardComponent;
+}
+
+export namespace LlmEvaluationScorecardComponent {
+    export type AsObject = {
+        criterion: string,
+        weight: number,
+        targetScore: number,
+        evaluatorName: string,
+    }
+}
+
+export class LlmEvaluationScorecard extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationScorecard;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationScorecard;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationScorecard;
+    clearLlmEvaluationScorecardComponentsList(): void;
+    getLlmEvaluationScorecardComponentsList(): Array<LlmEvaluationScorecardComponent>;
+    setLlmEvaluationScorecardComponentsList(value: Array<LlmEvaluationScorecardComponent>): LlmEvaluationScorecard;
+    addLlmEvaluationScorecardComponents(value?: LlmEvaluationScorecardComponent, index?: number): LlmEvaluationScorecardComponent;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationScorecard;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationScorecard;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationScorecard;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationScorecard;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationScorecard;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationScorecard;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationScorecard.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationScorecard): LlmEvaluationScorecard.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationScorecard, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationScorecard;
+    static deserializeBinaryFromReader(message: LlmEvaluationScorecard, reader: jspb.BinaryReader): LlmEvaluationScorecard;
+}
+
+export namespace LlmEvaluationScorecard {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        llmEvaluationScorecardComponentsList: Array<LlmEvaluationScorecardComponent.AsObject>,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class CreateLlmEvaluationScorecardRequest extends jspb.Message { 
+
+    hasLlmEvaluationScorecard(): boolean;
+    clearLlmEvaluationScorecard(): void;
+    getLlmEvaluationScorecard(): LlmEvaluationScorecard | undefined;
+    setLlmEvaluationScorecard(value?: LlmEvaluationScorecard): CreateLlmEvaluationScorecardRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationScorecardRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationScorecardRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationScorecardRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationScorecardRequest): CreateLlmEvaluationScorecardRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationScorecardRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationScorecardRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationScorecardRequest, reader: jspb.BinaryReader): CreateLlmEvaluationScorecardRequest;
+}
+
+export namespace CreateLlmEvaluationScorecardRequest {
+    export type AsObject = {
+        llmEvaluationScorecard?: LlmEvaluationScorecard.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationScorecardRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationScorecardRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationScorecardRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationScorecardRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationScorecardRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationScorecardRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationScorecardRequest): GetLlmEvaluationScorecardRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationScorecardRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationScorecardRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationScorecardRequest, reader: jspb.BinaryReader): GetLlmEvaluationScorecardRequest;
+}
+
+export namespace GetLlmEvaluationScorecardRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationScorecardFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationScorecardFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationScorecardFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationScorecardFilter): LlmEvaluationScorecardFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationScorecardFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationScorecardFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationScorecardFilter, reader: jspb.BinaryReader): LlmEvaluationScorecardFilter;
+}
+
+export namespace LlmEvaluationScorecardFilter {
+    export type AsObject = {
+        displayName: string,
+    }
+}
+
+export class ListLlmEvaluationScorecardsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationScorecardsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationScorecardsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationScorecardsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationScorecardsRequest;
+
+    hasLlmEvaluationScorecardFilter(): boolean;
+    clearLlmEvaluationScorecardFilter(): void;
+    getLlmEvaluationScorecardFilter(): LlmEvaluationScorecardFilter | undefined;
+    setLlmEvaluationScorecardFilter(value?: LlmEvaluationScorecardFilter): ListLlmEvaluationScorecardsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationScorecardsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationScorecardsRequest): ListLlmEvaluationScorecardsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationScorecardsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationScorecardsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationScorecardsRequest, reader: jspb.BinaryReader): ListLlmEvaluationScorecardsRequest;
+}
+
+export namespace ListLlmEvaluationScorecardsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationScorecardFilter?: LlmEvaluationScorecardFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationScorecardsResponse extends jspb.Message { 
+    clearLlmEvaluationScorecardsList(): void;
+    getLlmEvaluationScorecardsList(): Array<LlmEvaluationScorecard>;
+    setLlmEvaluationScorecardsList(value: Array<LlmEvaluationScorecard>): ListLlmEvaluationScorecardsResponse;
+    addLlmEvaluationScorecards(value?: LlmEvaluationScorecard, index?: number): LlmEvaluationScorecard;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationScorecardsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationScorecardsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationScorecardsResponse): ListLlmEvaluationScorecardsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationScorecardsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationScorecardsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationScorecardsResponse, reader: jspb.BinaryReader): ListLlmEvaluationScorecardsResponse;
+}
+
+export namespace ListLlmEvaluationScorecardsResponse {
+    export type AsObject = {
+        llmEvaluationScorecardsList: Array<LlmEvaluationScorecard.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationScorecardRequest extends jspb.Message { 
+
+    hasLlmEvaluationScorecard(): boolean;
+    clearLlmEvaluationScorecard(): void;
+    getLlmEvaluationScorecard(): LlmEvaluationScorecard | undefined;
+    setLlmEvaluationScorecard(value?: LlmEvaluationScorecard): UpdateLlmEvaluationScorecardRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationScorecardRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationScorecardRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationScorecardRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationScorecardRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationScorecardRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationScorecardRequest): UpdateLlmEvaluationScorecardRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationScorecardRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationScorecardRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationScorecardRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationScorecardRequest;
+}
+
+export namespace UpdateLlmEvaluationScorecardRequest {
+    export type AsObject = {
+        llmEvaluationScorecard?: LlmEvaluationScorecard.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class DeleteLlmEvaluationScorecardRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationScorecardRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationScorecardRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationScorecardRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationScorecardRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationScorecardRequest): DeleteLlmEvaluationScorecardRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationScorecardRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationScorecardRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationScorecardRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationScorecardRequest;
+}
+
+export namespace DeleteLlmEvaluationScorecardRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationJudgeConfig extends jspb.Message { 
+    getCcaiServiceName(): string;
+    setCcaiServiceName(value: string): LlmEvaluationJudgeConfig;
+    getModelName(): string;
+    setModelName(value: string): LlmEvaluationJudgeConfig;
+    getTemperature(): number;
+    setTemperature(value: number): LlmEvaluationJudgeConfig;
+    getVerboseReasoning(): boolean;
+    setVerboseReasoning(value: boolean): LlmEvaluationJudgeConfig;
+
+    hasEvaluatorOverrides(): boolean;
+    clearEvaluatorOverrides(): void;
+    getEvaluatorOverrides(): google_protobuf_struct_pb.Struct | undefined;
+    setEvaluatorOverrides(value?: google_protobuf_struct_pb.Struct): LlmEvaluationJudgeConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationJudgeConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationJudgeConfig): LlmEvaluationJudgeConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationJudgeConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationJudgeConfig;
+    static deserializeBinaryFromReader(message: LlmEvaluationJudgeConfig, reader: jspb.BinaryReader): LlmEvaluationJudgeConfig;
+}
+
+export namespace LlmEvaluationJudgeConfig {
+    export type AsObject = {
+        ccaiServiceName: string,
+        modelName: string,
+        temperature: number,
+        verboseReasoning: boolean,
+        evaluatorOverrides?: google_protobuf_struct_pb.Struct.AsObject,
+    }
+}
+
+export class LlmEvaluationProjectSettings extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationProjectSettings;
+
+    hasLlmEvaluationJudgeConfig(): boolean;
+    clearLlmEvaluationJudgeConfig(): void;
+    getLlmEvaluationJudgeConfig(): LlmEvaluationJudgeConfig | undefined;
+    setLlmEvaluationJudgeConfig(value?: LlmEvaluationJudgeConfig): LlmEvaluationProjectSettings;
+
+    hasDefaultWeights(): boolean;
+    clearDefaultWeights(): void;
+    getDefaultWeights(): google_protobuf_struct_pb.Struct | undefined;
+    setDefaultWeights(value?: google_protobuf_struct_pb.Struct): LlmEvaluationProjectSettings;
+    getDefaultPassCutoffScore(): number;
+    setDefaultPassCutoffScore(value: number): LlmEvaluationProjectSettings;
+    getDefaultScorecardName(): string;
+    setDefaultScorecardName(value: string): LlmEvaluationProjectSettings;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationProjectSettings;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationProjectSettings;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationProjectSettings;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationProjectSettings;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationProjectSettings;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationProjectSettings;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationProjectSettings.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationProjectSettings): LlmEvaluationProjectSettings.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationProjectSettings, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationProjectSettings;
+    static deserializeBinaryFromReader(message: LlmEvaluationProjectSettings, reader: jspb.BinaryReader): LlmEvaluationProjectSettings;
+}
+
+export namespace LlmEvaluationProjectSettings {
+    export type AsObject = {
+        name: string,
+        llmEvaluationJudgeConfig?: LlmEvaluationJudgeConfig.AsObject,
+        defaultWeights?: google_protobuf_struct_pb.Struct.AsObject,
+        defaultPassCutoffScore: number,
+        defaultScorecardName: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationProjectSettingsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationProjectSettingsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationProjectSettingsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationProjectSettingsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationProjectSettingsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationProjectSettingsRequest): GetLlmEvaluationProjectSettingsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationProjectSettingsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationProjectSettingsRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationProjectSettingsRequest, reader: jspb.BinaryReader): GetLlmEvaluationProjectSettingsRequest;
+}
+
+export namespace GetLlmEvaluationProjectSettingsRequest {
+    export type AsObject = {
+        parent: string,
+        languageCode: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    }
+}
+
+export class UpdateLlmEvaluationProjectSettingsRequest extends jspb.Message { 
+
+    hasLlmEvaluationProjectSettings(): boolean;
+    clearLlmEvaluationProjectSettings(): void;
+    getLlmEvaluationProjectSettings(): LlmEvaluationProjectSettings | undefined;
+    setLlmEvaluationProjectSettings(value?: LlmEvaluationProjectSettings): UpdateLlmEvaluationProjectSettingsRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationProjectSettingsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationProjectSettingsRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationProjectSettingsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationProjectSettingsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationProjectSettingsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationProjectSettingsRequest): UpdateLlmEvaluationProjectSettingsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationProjectSettingsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationProjectSettingsRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationProjectSettingsRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationProjectSettingsRequest;
+}
+
+export namespace UpdateLlmEvaluationProjectSettingsRequest {
+    export type AsObject = {
+        llmEvaluationProjectSettings?: LlmEvaluationProjectSettings.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationEvaluatorParameterSpec extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationEvaluatorParameterSpec;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationEvaluatorParameterSpec;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationEvaluatorParameterSpec;
+    getValueType(): string;
+    setValueType(value: string): LlmEvaluationEvaluatorParameterSpec;
+    getDefaultValue(): string;
+    setDefaultValue(value: string): LlmEvaluationEvaluatorParameterSpec;
+    getRequired(): boolean;
+    setRequired(value: boolean): LlmEvaluationEvaluatorParameterSpec;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationEvaluatorParameterSpec.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationEvaluatorParameterSpec): LlmEvaluationEvaluatorParameterSpec.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationEvaluatorParameterSpec, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationEvaluatorParameterSpec;
+    static deserializeBinaryFromReader(message: LlmEvaluationEvaluatorParameterSpec, reader: jspb.BinaryReader): LlmEvaluationEvaluatorParameterSpec;
+}
+
+export namespace LlmEvaluationEvaluatorParameterSpec {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        valueType: string,
+        defaultValue: string,
+        required: boolean,
+    }
+}
+
+export class LlmEvaluationEvaluatorSpec extends jspb.Message { 
+    getEvaluatorName(): string;
+    setEvaluatorName(value: string): LlmEvaluationEvaluatorSpec;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationEvaluatorSpec;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationEvaluatorSpec;
+    getLlmEvaluationEvaluatorType(): LlmEvaluationEvaluatorType;
+    setLlmEvaluationEvaluatorType(value: LlmEvaluationEvaluatorType): LlmEvaluationEvaluatorSpec;
+    getLlmEvaluationEvaluatorCategory(): LlmEvaluationEvaluatorCategory;
+    setLlmEvaluationEvaluatorCategory(value: LlmEvaluationEvaluatorCategory): LlmEvaluationEvaluatorSpec;
+    clearRequiredExampleFieldsList(): void;
+    getRequiredExampleFieldsList(): Array<string>;
+    setRequiredExampleFieldsList(value: Array<string>): LlmEvaluationEvaluatorSpec;
+    addRequiredExampleFields(value: string, index?: number): string;
+    getMultiTurn(): boolean;
+    setMultiTurn(value: boolean): LlmEvaluationEvaluatorSpec;
+    getDefaultThreshold(): number;
+    setDefaultThreshold(value: number): LlmEvaluationEvaluatorSpec;
+    getRequiresJudge(): boolean;
+    setRequiresJudge(value: boolean): LlmEvaluationEvaluatorSpec;
+    clearLlmEvaluationEvaluatorParameterSpecsList(): void;
+    getLlmEvaluationEvaluatorParameterSpecsList(): Array<LlmEvaluationEvaluatorParameterSpec>;
+    setLlmEvaluationEvaluatorParameterSpecsList(value: Array<LlmEvaluationEvaluatorParameterSpec>): LlmEvaluationEvaluatorSpec;
+    addLlmEvaluationEvaluatorParameterSpecs(value?: LlmEvaluationEvaluatorParameterSpec, index?: number): LlmEvaluationEvaluatorParameterSpec;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationEvaluatorSpec.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationEvaluatorSpec): LlmEvaluationEvaluatorSpec.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationEvaluatorSpec, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationEvaluatorSpec;
+    static deserializeBinaryFromReader(message: LlmEvaluationEvaluatorSpec, reader: jspb.BinaryReader): LlmEvaluationEvaluatorSpec;
+}
+
+export namespace LlmEvaluationEvaluatorSpec {
+    export type AsObject = {
+        evaluatorName: string,
+        displayName: string,
+        description: string,
+        llmEvaluationEvaluatorType: LlmEvaluationEvaluatorType,
+        llmEvaluationEvaluatorCategory: LlmEvaluationEvaluatorCategory,
+        requiredExampleFieldsList: Array<string>,
+        multiTurn: boolean,
+        defaultThreshold: number,
+        requiresJudge: boolean,
+        llmEvaluationEvaluatorParameterSpecsList: Array<LlmEvaluationEvaluatorParameterSpec.AsObject>,
+    }
+}
+
+export class ListLlmEvaluationEvaluatorsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationEvaluatorsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationEvaluatorsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationEvaluatorsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationEvaluatorsRequest): ListLlmEvaluationEvaluatorsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationEvaluatorsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationEvaluatorsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationEvaluatorsRequest, reader: jspb.BinaryReader): ListLlmEvaluationEvaluatorsRequest;
+}
+
+export namespace ListLlmEvaluationEvaluatorsRequest {
+    export type AsObject = {
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class ListLlmEvaluationEvaluatorsResponse extends jspb.Message { 
+    clearLlmEvaluationEvaluatorSpecsList(): void;
+    getLlmEvaluationEvaluatorSpecsList(): Array<LlmEvaluationEvaluatorSpec>;
+    setLlmEvaluationEvaluatorSpecsList(value: Array<LlmEvaluationEvaluatorSpec>): ListLlmEvaluationEvaluatorsResponse;
+    addLlmEvaluationEvaluatorSpecs(value?: LlmEvaluationEvaluatorSpec, index?: number): LlmEvaluationEvaluatorSpec;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationEvaluatorsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationEvaluatorsResponse): ListLlmEvaluationEvaluatorsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationEvaluatorsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationEvaluatorsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationEvaluatorsResponse, reader: jspb.BinaryReader): ListLlmEvaluationEvaluatorsResponse;
+}
+
+export namespace ListLlmEvaluationEvaluatorsResponse {
+    export type AsObject = {
+        llmEvaluationEvaluatorSpecsList: Array<LlmEvaluationEvaluatorSpec.AsObject>,
+    }
+}
+
+export class CreateLlmEvaluationExamplesFromSessionRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationExamplesFromSessionRequest;
+    getSessionName(): string;
+    setSessionName(value: string): CreateLlmEvaluationExamplesFromSessionRequest;
+    getLlmEvaluationDatasetName(): string;
+    setLlmEvaluationDatasetName(value: string): CreateLlmEvaluationExamplesFromSessionRequest;
+    clearSessionStepNamesList(): void;
+    getSessionStepNamesList(): Array<string>;
+    setSessionStepNamesList(value: Array<string>): CreateLlmEvaluationExamplesFromSessionRequest;
+    addSessionStepNames(value: string, index?: number): string;
+    getLlmEvaluationExampleExtractionMode(): LlmEvaluationExampleExtractionMode;
+    setLlmEvaluationExampleExtractionMode(value: LlmEvaluationExampleExtractionMode): CreateLlmEvaluationExamplesFromSessionRequest;
+    getDisplayName(): string;
+    setDisplayName(value: string): CreateLlmEvaluationExamplesFromSessionRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationExamplesFromSessionRequest;
+    getIncludeToolCalls(): boolean;
+    setIncludeToolCalls(value: boolean): CreateLlmEvaluationExamplesFromSessionRequest;
+    getIncludeRetrievalContext(): boolean;
+    setIncludeRetrievalContext(value: boolean): CreateLlmEvaluationExamplesFromSessionRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationExamplesFromSessionRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationExamplesFromSessionRequest): CreateLlmEvaluationExamplesFromSessionRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationExamplesFromSessionRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationExamplesFromSessionRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationExamplesFromSessionRequest, reader: jspb.BinaryReader): CreateLlmEvaluationExamplesFromSessionRequest;
+}
+
+export namespace CreateLlmEvaluationExamplesFromSessionRequest {
+    export type AsObject = {
+        parent: string,
+        sessionName: string,
+        llmEvaluationDatasetName: string,
+        sessionStepNamesList: Array<string>,
+        llmEvaluationExampleExtractionMode: LlmEvaluationExampleExtractionMode,
+        displayName: string,
+        languageCode: string,
+        includeToolCalls: boolean,
+        includeRetrievalContext: boolean,
+    }
+}
+
+export class CreateLlmEvaluationExamplesFromSessionResponse extends jspb.Message { 
+    clearLlmEvaluationExamplesList(): void;
+    getLlmEvaluationExamplesList(): Array<LlmEvaluationExample>;
+    setLlmEvaluationExamplesList(value: Array<LlmEvaluationExample>): CreateLlmEvaluationExamplesFromSessionResponse;
+    addLlmEvaluationExamples(value?: LlmEvaluationExample, index?: number): LlmEvaluationExample;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationExamplesFromSessionResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationExamplesFromSessionResponse): CreateLlmEvaluationExamplesFromSessionResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationExamplesFromSessionResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationExamplesFromSessionResponse;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationExamplesFromSessionResponse, reader: jspb.BinaryReader): CreateLlmEvaluationExamplesFromSessionResponse;
+}
+
+export namespace CreateLlmEvaluationExamplesFromSessionResponse {
+    export type AsObject = {
+        llmEvaluationExamplesList: Array<LlmEvaluationExample.AsObject>,
+    }
+}
+
+export class LlmEvaluationSimulationPersona extends jspb.Message { 
+    getPersona(): string;
+    setPersona(value: string): LlmEvaluationSimulationPersona;
+    getScenario(): string;
+    setScenario(value: string): LlmEvaluationSimulationPersona;
+    getExpectedOutcome(): string;
+    setExpectedOutcome(value: string): LlmEvaluationSimulationPersona;
+    getUserDescription(): string;
+    setUserDescription(value: string): LlmEvaluationSimulationPersona;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationSimulationPersona.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationSimulationPersona): LlmEvaluationSimulationPersona.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationSimulationPersona, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationSimulationPersona;
+    static deserializeBinaryFromReader(message: LlmEvaluationSimulationPersona, reader: jspb.BinaryReader): LlmEvaluationSimulationPersona;
+}
+
+export namespace LlmEvaluationSimulationPersona {
+    export type AsObject = {
+        persona: string,
+        scenario: string,
+        expectedOutcome: string,
+        userDescription: string,
+    }
+}
+
+export class SimulateLlmEvaluationConversationsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): SimulateLlmEvaluationConversationsRequest;
+    getLlmEvaluationDatasetName(): string;
+    setLlmEvaluationDatasetName(value: string): SimulateLlmEvaluationConversationsRequest;
+    clearLlmEvaluationSimulationPersonasList(): void;
+    getLlmEvaluationSimulationPersonasList(): Array<LlmEvaluationSimulationPersona>;
+    setLlmEvaluationSimulationPersonasList(value: Array<LlmEvaluationSimulationPersona>): SimulateLlmEvaluationConversationsRequest;
+    addLlmEvaluationSimulationPersonas(value?: LlmEvaluationSimulationPersona, index?: number): LlmEvaluationSimulationPersona;
+    getNumConversations(): number;
+    setNumConversations(value: number): SimulateLlmEvaluationConversationsRequest;
+    getMaxTurns(): number;
+    setMaxTurns(value: number): SimulateLlmEvaluationConversationsRequest;
+    clearCcaiServiceNamesList(): void;
+    getCcaiServiceNamesList(): Array<string>;
+    setCcaiServiceNamesList(value: Array<string>): SimulateLlmEvaluationConversationsRequest;
+    addCcaiServiceNames(value: string, index?: number): string;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): SimulateLlmEvaluationConversationsRequest;
+
+    hasConfig(): boolean;
+    clearConfig(): void;
+    getConfig(): google_protobuf_struct_pb.Struct | undefined;
+    setConfig(value?: google_protobuf_struct_pb.Struct): SimulateLlmEvaluationConversationsRequest;
+    getLlmEvaluationSimulationKind(): LlmEvaluationSimulationKind;
+    setLlmEvaluationSimulationKind(value: LlmEvaluationSimulationKind): SimulateLlmEvaluationConversationsRequest;
+    clearAttackTypesList(): void;
+    getAttackTypesList(): Array<string>;
+    setAttackTypesList(value: Array<string>): SimulateLlmEvaluationConversationsRequest;
+    addAttackTypes(value: string, index?: number): string;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SimulateLlmEvaluationConversationsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: SimulateLlmEvaluationConversationsRequest): SimulateLlmEvaluationConversationsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SimulateLlmEvaluationConversationsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SimulateLlmEvaluationConversationsRequest;
+    static deserializeBinaryFromReader(message: SimulateLlmEvaluationConversationsRequest, reader: jspb.BinaryReader): SimulateLlmEvaluationConversationsRequest;
+}
+
+export namespace SimulateLlmEvaluationConversationsRequest {
+    export type AsObject = {
+        parent: string,
+        llmEvaluationDatasetName: string,
+        llmEvaluationSimulationPersonasList: Array<LlmEvaluationSimulationPersona.AsObject>,
+        numConversations: number,
+        maxTurns: number,
+        ccaiServiceNamesList: Array<string>,
+        languageCode: string,
+        config?: google_protobuf_struct_pb.Struct.AsObject,
+        llmEvaluationSimulationKind: LlmEvaluationSimulationKind,
+        attackTypesList: Array<string>,
+    }
+}
+
+export class LlmEvaluationSchedule extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationSchedule;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationSchedule;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationSchedule;
+    getCronExpression(): string;
+    setCronExpression(value: string): LlmEvaluationSchedule;
+    getIntervalSeconds(): number;
+    setIntervalSeconds(value: number): LlmEvaluationSchedule;
+    getEnabled(): boolean;
+    setEnabled(value: boolean): LlmEvaluationSchedule;
+    getLlmEvaluationScheduleAction(): LlmEvaluationScheduleAction;
+    setLlmEvaluationScheduleAction(value: LlmEvaluationScheduleAction): LlmEvaluationSchedule;
+
+    hasRunLlmEvaluationExperimentRequest(): boolean;
+    clearRunLlmEvaluationExperimentRequest(): void;
+    getRunLlmEvaluationExperimentRequest(): RunLlmEvaluationExperimentRequest | undefined;
+    setRunLlmEvaluationExperimentRequest(value?: RunLlmEvaluationExperimentRequest): LlmEvaluationSchedule;
+    getLlmEvaluationReleaseGateName(): string;
+    setLlmEvaluationReleaseGateName(value: string): LlmEvaluationSchedule;
+
+    hasLastRunAt(): boolean;
+    clearLastRunAt(): void;
+    getLastRunAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setLastRunAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationSchedule;
+
+    hasNextRunAt(): boolean;
+    clearNextRunAt(): void;
+    getNextRunAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setNextRunAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationSchedule;
+    getLastRunResourceName(): string;
+    setLastRunResourceName(value: string): LlmEvaluationSchedule;
+    getLastRunStatus(): LlmEvaluationExperimentStatus;
+    setLastRunStatus(value: LlmEvaluationExperimentStatus): LlmEvaluationSchedule;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationSchedule;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationSchedule;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationSchedule;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationSchedule;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationSchedule;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationSchedule;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationSchedule.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationSchedule): LlmEvaluationSchedule.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationSchedule, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationSchedule;
+    static deserializeBinaryFromReader(message: LlmEvaluationSchedule, reader: jspb.BinaryReader): LlmEvaluationSchedule;
+}
+
+export namespace LlmEvaluationSchedule {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        cronExpression: string,
+        intervalSeconds: number,
+        enabled: boolean,
+        llmEvaluationScheduleAction: LlmEvaluationScheduleAction,
+        runLlmEvaluationExperimentRequest?: RunLlmEvaluationExperimentRequest.AsObject,
+        llmEvaluationReleaseGateName: string,
+        lastRunAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        nextRunAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        lastRunResourceName: string,
+        lastRunStatus: LlmEvaluationExperimentStatus,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class CreateLlmEvaluationScheduleRequest extends jspb.Message { 
+
+    hasLlmEvaluationSchedule(): boolean;
+    clearLlmEvaluationSchedule(): void;
+    getLlmEvaluationSchedule(): LlmEvaluationSchedule | undefined;
+    setLlmEvaluationSchedule(value?: LlmEvaluationSchedule): CreateLlmEvaluationScheduleRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationScheduleRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationScheduleRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationScheduleRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationScheduleRequest): CreateLlmEvaluationScheduleRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationScheduleRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationScheduleRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationScheduleRequest, reader: jspb.BinaryReader): CreateLlmEvaluationScheduleRequest;
+}
+
+export namespace CreateLlmEvaluationScheduleRequest {
+    export type AsObject = {
+        llmEvaluationSchedule?: LlmEvaluationSchedule.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationScheduleRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationScheduleRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationScheduleRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationScheduleRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationScheduleRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationScheduleRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationScheduleRequest): GetLlmEvaluationScheduleRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationScheduleRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationScheduleRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationScheduleRequest, reader: jspb.BinaryReader): GetLlmEvaluationScheduleRequest;
+}
+
+export namespace GetLlmEvaluationScheduleRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationScheduleFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationScheduleFilter;
+    getEnabledOnly(): boolean;
+    setEnabledOnly(value: boolean): LlmEvaluationScheduleFilter;
+    getLlmEvaluationScheduleAction(): LlmEvaluationScheduleAction;
+    setLlmEvaluationScheduleAction(value: LlmEvaluationScheduleAction): LlmEvaluationScheduleFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationScheduleFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationScheduleFilter): LlmEvaluationScheduleFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationScheduleFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationScheduleFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationScheduleFilter, reader: jspb.BinaryReader): LlmEvaluationScheduleFilter;
+}
+
+export namespace LlmEvaluationScheduleFilter {
+    export type AsObject = {
+        displayName: string,
+        enabledOnly: boolean,
+        llmEvaluationScheduleAction: LlmEvaluationScheduleAction,
+    }
+}
+
+export class ListLlmEvaluationSchedulesRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationSchedulesRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationSchedulesRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationSchedulesRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationSchedulesRequest;
+
+    hasLlmEvaluationScheduleFilter(): boolean;
+    clearLlmEvaluationScheduleFilter(): void;
+    getLlmEvaluationScheduleFilter(): LlmEvaluationScheduleFilter | undefined;
+    setLlmEvaluationScheduleFilter(value?: LlmEvaluationScheduleFilter): ListLlmEvaluationSchedulesRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationSchedulesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationSchedulesRequest): ListLlmEvaluationSchedulesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationSchedulesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationSchedulesRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationSchedulesRequest, reader: jspb.BinaryReader): ListLlmEvaluationSchedulesRequest;
+}
+
+export namespace ListLlmEvaluationSchedulesRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationScheduleFilter?: LlmEvaluationScheduleFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationSchedulesResponse extends jspb.Message { 
+    clearLlmEvaluationSchedulesList(): void;
+    getLlmEvaluationSchedulesList(): Array<LlmEvaluationSchedule>;
+    setLlmEvaluationSchedulesList(value: Array<LlmEvaluationSchedule>): ListLlmEvaluationSchedulesResponse;
+    addLlmEvaluationSchedules(value?: LlmEvaluationSchedule, index?: number): LlmEvaluationSchedule;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationSchedulesResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationSchedulesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationSchedulesResponse): ListLlmEvaluationSchedulesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationSchedulesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationSchedulesResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationSchedulesResponse, reader: jspb.BinaryReader): ListLlmEvaluationSchedulesResponse;
+}
+
+export namespace ListLlmEvaluationSchedulesResponse {
+    export type AsObject = {
+        llmEvaluationSchedulesList: Array<LlmEvaluationSchedule.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationScheduleRequest extends jspb.Message { 
+
+    hasLlmEvaluationSchedule(): boolean;
+    clearLlmEvaluationSchedule(): void;
+    getLlmEvaluationSchedule(): LlmEvaluationSchedule | undefined;
+    setLlmEvaluationSchedule(value?: LlmEvaluationSchedule): UpdateLlmEvaluationScheduleRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationScheduleRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationScheduleRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationScheduleRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationScheduleRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationScheduleRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationScheduleRequest): UpdateLlmEvaluationScheduleRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationScheduleRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationScheduleRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationScheduleRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationScheduleRequest;
+}
+
+export namespace UpdateLlmEvaluationScheduleRequest {
+    export type AsObject = {
+        llmEvaluationSchedule?: LlmEvaluationSchedule.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class DeleteLlmEvaluationScheduleRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationScheduleRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationScheduleRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationScheduleRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationScheduleRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationScheduleRequest): DeleteLlmEvaluationScheduleRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationScheduleRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationScheduleRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationScheduleRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationScheduleRequest;
+}
+
+export namespace DeleteLlmEvaluationScheduleRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationReport extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationReport;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationReport;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationReport;
+    getReportType(): string;
+    setReportType(value: string): LlmEvaluationReport;
+    getMimeType(): string;
+    setMimeType(value: string): LlmEvaluationReport;
+    getPayload(): Uint8Array | string;
+    getPayload_asU8(): Uint8Array;
+    getPayload_asB64(): string;
+    setPayload(value: Uint8Array | string): LlmEvaluationReport;
+
+    hasMetadata(): boolean;
+    clearMetadata(): void;
+    getMetadata(): google_protobuf_struct_pb.Struct | undefined;
+    setMetadata(value?: google_protobuf_struct_pb.Struct): LlmEvaluationReport;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReport;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationReport;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationReport;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationReport;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationReport;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationReport;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReport.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReport): LlmEvaluationReport.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReport, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReport;
+    static deserializeBinaryFromReader(message: LlmEvaluationReport, reader: jspb.BinaryReader): LlmEvaluationReport;
+}
+
+export namespace LlmEvaluationReport {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        reportType: string,
+        mimeType: string,
+        payload: Uint8Array | string,
+        metadata?: google_protobuf_struct_pb.Struct.AsObject,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class CreateLlmEvaluationReportRequest extends jspb.Message { 
+
+    hasLlmEvaluationReport(): boolean;
+    clearLlmEvaluationReport(): void;
+    getLlmEvaluationReport(): LlmEvaluationReport | undefined;
+    setLlmEvaluationReport(value?: LlmEvaluationReport): CreateLlmEvaluationReportRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationReportRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationReportRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationReportRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationReportRequest): CreateLlmEvaluationReportRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationReportRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationReportRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationReportRequest, reader: jspb.BinaryReader): CreateLlmEvaluationReportRequest;
+}
+
+export namespace CreateLlmEvaluationReportRequest {
+    export type AsObject = {
+        llmEvaluationReport?: LlmEvaluationReport.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationReportRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationReportRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationReportRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationReportRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationReportRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationReportRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationReportRequest): GetLlmEvaluationReportRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationReportRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationReportRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationReportRequest, reader: jspb.BinaryReader): GetLlmEvaluationReportRequest;
+}
+
+export namespace GetLlmEvaluationReportRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationReportFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationReportFilter;
+    getReportType(): string;
+    setReportType(value: string): LlmEvaluationReportFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationReportFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationReportFilter): LlmEvaluationReportFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationReportFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationReportFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationReportFilter, reader: jspb.BinaryReader): LlmEvaluationReportFilter;
+}
+
+export namespace LlmEvaluationReportFilter {
+    export type AsObject = {
+        displayName: string,
+        reportType: string,
+    }
+}
+
+export class ListLlmEvaluationReportsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationReportsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationReportsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationReportsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationReportsRequest;
+
+    hasLlmEvaluationReportFilter(): boolean;
+    clearLlmEvaluationReportFilter(): void;
+    getLlmEvaluationReportFilter(): LlmEvaluationReportFilter | undefined;
+    setLlmEvaluationReportFilter(value?: LlmEvaluationReportFilter): ListLlmEvaluationReportsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReportsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReportsRequest): ListLlmEvaluationReportsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReportsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReportsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReportsRequest, reader: jspb.BinaryReader): ListLlmEvaluationReportsRequest;
+}
+
+export namespace ListLlmEvaluationReportsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationReportFilter?: LlmEvaluationReportFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationReportsResponse extends jspb.Message { 
+    clearLlmEvaluationReportsList(): void;
+    getLlmEvaluationReportsList(): Array<LlmEvaluationReport>;
+    setLlmEvaluationReportsList(value: Array<LlmEvaluationReport>): ListLlmEvaluationReportsResponse;
+    addLlmEvaluationReports(value?: LlmEvaluationReport, index?: number): LlmEvaluationReport;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationReportsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationReportsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationReportsResponse): ListLlmEvaluationReportsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationReportsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationReportsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationReportsResponse, reader: jspb.BinaryReader): ListLlmEvaluationReportsResponse;
+}
+
+export namespace ListLlmEvaluationReportsResponse {
+    export type AsObject = {
+        llmEvaluationReportsList: Array<LlmEvaluationReport.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class DeleteLlmEvaluationReportRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationReportRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationReportRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationReportRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationReportRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationReportRequest): DeleteLlmEvaluationReportRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationReportRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationReportRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationReportRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationReportRequest;
+}
+
+export namespace DeleteLlmEvaluationReportRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationAbTrafficConfig extends jspb.Message { 
+    getEnrollmentRate(): number;
+    setEnrollmentRate(value: number): LlmEvaluationAbTrafficConfig;
+    getAssignmentSalt(): string;
+    setAssignmentSalt(value: string): LlmEvaluationAbTrafficConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbTrafficConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbTrafficConfig): LlmEvaluationAbTrafficConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbTrafficConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbTrafficConfig;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbTrafficConfig, reader: jspb.BinaryReader): LlmEvaluationAbTrafficConfig;
+}
+
+export namespace LlmEvaluationAbTrafficConfig {
+    export type AsObject = {
+        enrollmentRate: number,
+        assignmentSalt: string,
+    }
+}
+
+export class RagVariantConfig extends jspb.Message { 
+    getChatAssistantLlmCcaiServiceName(): string;
+    setChatAssistantLlmCcaiServiceName(value: string): RagVariantConfig;
+    getTopK(): number;
+    setTopK(value: number): RagVariantConfig;
+    getSimilarityThreshold(): number;
+    setSimilarityThreshold(value: number): RagVariantConfig;
+    getVectorSimilarityWeight(): number;
+    setVectorSimilarityWeight(value: number): RagVariantConfig;
+    getRerankModelCcaiServiceName(): string;
+    setRerankModelCcaiServiceName(value: string): RagVariantConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RagVariantConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: RagVariantConfig): RagVariantConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RagVariantConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RagVariantConfig;
+    static deserializeBinaryFromReader(message: RagVariantConfig, reader: jspb.BinaryReader): RagVariantConfig;
+}
+
+export namespace RagVariantConfig {
+    export type AsObject = {
+        chatAssistantLlmCcaiServiceName: string,
+        topK: number,
+        similarityThreshold: number,
+        vectorSimilarityWeight: number,
+        rerankModelCcaiServiceName: string,
+    }
+}
+
+export class LlmEvaluationAbVariant extends jspb.Message { 
+    getVariantId(): string;
+    setVariantId(value: string): LlmEvaluationAbVariant;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationAbVariant;
+    clearCcaiServiceNamesList(): void;
+    getCcaiServiceNamesList(): Array<string>;
+    setCcaiServiceNamesList(value: Array<string>): LlmEvaluationAbVariant;
+    addCcaiServiceNames(value: string, index?: number): string;
+    getTrafficWeight(): number;
+    setTrafficWeight(value: number): LlmEvaluationAbVariant;
+    getIsControl(): boolean;
+    setIsControl(value: boolean): LlmEvaluationAbVariant;
+    getModelName(): string;
+    setModelName(value: string): LlmEvaluationAbVariant;
+    getPromptVersion(): string;
+    setPromptVersion(value: string): LlmEvaluationAbVariant;
+
+    hasConfig(): boolean;
+    clearConfig(): void;
+    getConfig(): google_protobuf_struct_pb.Struct | undefined;
+    setConfig(value?: google_protobuf_struct_pb.Struct): LlmEvaluationAbVariant;
+
+    hasRagVariantConfig(): boolean;
+    clearRagVariantConfig(): void;
+    getRagVariantConfig(): RagVariantConfig | undefined;
+    setRagVariantConfig(value?: RagVariantConfig): LlmEvaluationAbVariant;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbVariant.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbVariant): LlmEvaluationAbVariant.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbVariant, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbVariant;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbVariant, reader: jspb.BinaryReader): LlmEvaluationAbVariant;
+}
+
+export namespace LlmEvaluationAbVariant {
+    export type AsObject = {
+        variantId: string,
+        displayName: string,
+        ccaiServiceNamesList: Array<string>,
+        trafficWeight: number,
+        isControl: boolean,
+        modelName: string,
+        promptVersion: string,
+        config?: google_protobuf_struct_pb.Struct.AsObject,
+        ragVariantConfig?: RagVariantConfig.AsObject,
+    }
+}
+
+export class LlmEvaluationAbExperiment extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationAbExperiment;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationAbExperiment;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationAbExperiment;
+    getStatus(): LlmEvaluationAbExperimentStatus;
+    setStatus(value: LlmEvaluationAbExperimentStatus): LlmEvaluationAbExperiment;
+    clearVariantsList(): void;
+    getVariantsList(): Array<LlmEvaluationAbVariant>;
+    setVariantsList(value: Array<LlmEvaluationAbVariant>): LlmEvaluationAbExperiment;
+    addVariants(value?: LlmEvaluationAbVariant, index?: number): LlmEvaluationAbVariant;
+
+    hasTrafficConfig(): boolean;
+    clearTrafficConfig(): void;
+    getTrafficConfig(): LlmEvaluationAbTrafficConfig | undefined;
+    setTrafficConfig(value?: LlmEvaluationAbTrafficConfig): LlmEvaluationAbExperiment;
+
+    hasStartedAt(): boolean;
+    clearStartedAt(): void;
+    getStartedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStartedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbExperiment;
+
+    hasStoppedAt(): boolean;
+    clearStoppedAt(): void;
+    getStoppedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStoppedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbExperiment;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbExperiment;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationAbExperiment;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbExperiment;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationAbExperiment;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationAbExperiment;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationAbExperiment;
+    getLlmEvaluationAbRolloutDecisionName(): string;
+    setLlmEvaluationAbRolloutDecisionName(value: string): LlmEvaluationAbExperiment;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbExperiment.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbExperiment): LlmEvaluationAbExperiment.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbExperiment, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbExperiment;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbExperiment, reader: jspb.BinaryReader): LlmEvaluationAbExperiment;
+}
+
+export namespace LlmEvaluationAbExperiment {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        status: LlmEvaluationAbExperimentStatus,
+        variantsList: Array<LlmEvaluationAbVariant.AsObject>,
+        trafficConfig?: LlmEvaluationAbTrafficConfig.AsObject,
+        startedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        stoppedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+        llmEvaluationAbRolloutDecisionName: string,
+    }
+}
+
+export class LlmEvaluationAbVariantResult extends jspb.Message { 
+    getVariantId(): string;
+    setVariantId(value: string): LlmEvaluationAbVariantResult;
+    getSessionCount(): number;
+    setSessionCount(value: number): LlmEvaluationAbVariantResult;
+
+    hasTelemetry(): boolean;
+    clearTelemetry(): void;
+    getTelemetry(): google_protobuf_struct_pb.Struct | undefined;
+    setTelemetry(value?: google_protobuf_struct_pb.Struct): LlmEvaluationAbVariantResult;
+
+    hasDerivedMetrics(): boolean;
+    clearDerivedMetrics(): void;
+    getDerivedMetrics(): google_protobuf_struct_pb.Struct | undefined;
+    setDerivedMetrics(value?: google_protobuf_struct_pb.Struct): LlmEvaluationAbVariantResult;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbVariantResult.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbVariantResult): LlmEvaluationAbVariantResult.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbVariantResult, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbVariantResult;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbVariantResult, reader: jspb.BinaryReader): LlmEvaluationAbVariantResult;
+}
+
+export namespace LlmEvaluationAbVariantResult {
+    export type AsObject = {
+        variantId: string,
+        sessionCount: number,
+        telemetry?: google_protobuf_struct_pb.Struct.AsObject,
+        derivedMetrics?: google_protobuf_struct_pb.Struct.AsObject,
+    }
+}
+
+export class CreateLlmEvaluationAbExperimentRequest extends jspb.Message { 
+
+    hasLlmEvaluationAbExperiment(): boolean;
+    clearLlmEvaluationAbExperiment(): void;
+    getLlmEvaluationAbExperiment(): LlmEvaluationAbExperiment | undefined;
+    setLlmEvaluationAbExperiment(value?: LlmEvaluationAbExperiment): CreateLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationAbExperimentRequest): CreateLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): CreateLlmEvaluationAbExperimentRequest;
+}
+
+export namespace CreateLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        llmEvaluationAbExperiment?: LlmEvaluationAbExperiment.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAbExperimentRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationAbExperimentRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAbExperimentRequest): GetLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): GetLlmEvaluationAbExperimentRequest;
+}
+
+export namespace GetLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationAbExperimentFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationAbExperimentFilter;
+    getStatus(): LlmEvaluationAbExperimentStatus;
+    setStatus(value: LlmEvaluationAbExperimentStatus): LlmEvaluationAbExperimentFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbExperimentFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbExperimentFilter): LlmEvaluationAbExperimentFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbExperimentFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbExperimentFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbExperimentFilter, reader: jspb.BinaryReader): LlmEvaluationAbExperimentFilter;
+}
+
+export namespace LlmEvaluationAbExperimentFilter {
+    export type AsObject = {
+        displayName: string,
+        status: LlmEvaluationAbExperimentStatus,
+    }
+}
+
+export class ListLlmEvaluationAbExperimentsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationAbExperimentsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationAbExperimentsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationAbExperimentsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationAbExperimentsRequest;
+
+    hasLlmEvaluationAbExperimentFilter(): boolean;
+    clearLlmEvaluationAbExperimentFilter(): void;
+    getLlmEvaluationAbExperimentFilter(): LlmEvaluationAbExperimentFilter | undefined;
+    setLlmEvaluationAbExperimentFilter(value?: LlmEvaluationAbExperimentFilter): ListLlmEvaluationAbExperimentsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAbExperimentsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAbExperimentsRequest): ListLlmEvaluationAbExperimentsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAbExperimentsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAbExperimentsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAbExperimentsRequest, reader: jspb.BinaryReader): ListLlmEvaluationAbExperimentsRequest;
+}
+
+export namespace ListLlmEvaluationAbExperimentsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationAbExperimentFilter?: LlmEvaluationAbExperimentFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationAbExperimentsResponse extends jspb.Message { 
+    clearLlmEvaluationAbExperimentsList(): void;
+    getLlmEvaluationAbExperimentsList(): Array<LlmEvaluationAbExperiment>;
+    setLlmEvaluationAbExperimentsList(value: Array<LlmEvaluationAbExperiment>): ListLlmEvaluationAbExperimentsResponse;
+    addLlmEvaluationAbExperiments(value?: LlmEvaluationAbExperiment, index?: number): LlmEvaluationAbExperiment;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationAbExperimentsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAbExperimentsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAbExperimentsResponse): ListLlmEvaluationAbExperimentsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAbExperimentsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAbExperimentsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAbExperimentsResponse, reader: jspb.BinaryReader): ListLlmEvaluationAbExperimentsResponse;
+}
+
+export namespace ListLlmEvaluationAbExperimentsResponse {
+    export type AsObject = {
+        llmEvaluationAbExperimentsList: Array<LlmEvaluationAbExperiment.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationAbExperimentRequest extends jspb.Message { 
+
+    hasLlmEvaluationAbExperiment(): boolean;
+    clearLlmEvaluationAbExperiment(): void;
+    getLlmEvaluationAbExperiment(): LlmEvaluationAbExperiment | undefined;
+    setLlmEvaluationAbExperiment(value?: LlmEvaluationAbExperiment): UpdateLlmEvaluationAbExperimentRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationAbExperimentRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationAbExperimentRequest): UpdateLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationAbExperimentRequest;
+}
+
+export namespace UpdateLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        llmEvaluationAbExperiment?: LlmEvaluationAbExperiment.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class DeleteLlmEvaluationAbExperimentRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationAbExperimentRequest): DeleteLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationAbExperimentRequest;
+}
+
+export namespace DeleteLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class StartLlmEvaluationAbExperimentRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): StartLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): StartLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): StartLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): StartLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: StartLlmEvaluationAbExperimentRequest): StartLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: StartLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StartLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: StartLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): StartLlmEvaluationAbExperimentRequest;
+}
+
+export namespace StartLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class StopLlmEvaluationAbExperimentRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): StopLlmEvaluationAbExperimentRequest;
+    getParent(): string;
+    setParent(value: string): StopLlmEvaluationAbExperimentRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): StopLlmEvaluationAbExperimentRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): StopLlmEvaluationAbExperimentRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: StopLlmEvaluationAbExperimentRequest): StopLlmEvaluationAbExperimentRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: StopLlmEvaluationAbExperimentRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): StopLlmEvaluationAbExperimentRequest;
+    static deserializeBinaryFromReader(message: StopLlmEvaluationAbExperimentRequest, reader: jspb.BinaryReader): StopLlmEvaluationAbExperimentRequest;
+}
+
+export namespace StopLlmEvaluationAbExperimentRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAbExperimentResultsRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationAbExperimentResultsRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationAbExperimentResultsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationAbExperimentResultsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAbExperimentResultsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAbExperimentResultsRequest): GetLlmEvaluationAbExperimentResultsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAbExperimentResultsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAbExperimentResultsRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAbExperimentResultsRequest, reader: jspb.BinaryReader): GetLlmEvaluationAbExperimentResultsRequest;
+}
+
+export namespace GetLlmEvaluationAbExperimentResultsRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAbExperimentResultsResponse extends jspb.Message { 
+    getLlmEvaluationAbExperimentName(): string;
+    setLlmEvaluationAbExperimentName(value: string): GetLlmEvaluationAbExperimentResultsResponse;
+    clearVariantResultsList(): void;
+    getVariantResultsList(): Array<LlmEvaluationAbVariantResult>;
+    setVariantResultsList(value: Array<LlmEvaluationAbVariantResult>): GetLlmEvaluationAbExperimentResultsResponse;
+    addVariantResults(value?: LlmEvaluationAbVariantResult, index?: number): LlmEvaluationAbVariantResult;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAbExperimentResultsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAbExperimentResultsResponse): GetLlmEvaluationAbExperimentResultsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAbExperimentResultsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAbExperimentResultsResponse;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAbExperimentResultsResponse, reader: jspb.BinaryReader): GetLlmEvaluationAbExperimentResultsResponse;
+}
+
+export namespace GetLlmEvaluationAbExperimentResultsResponse {
+    export type AsObject = {
+        llmEvaluationAbExperimentName: string,
+        variantResultsList: Array<LlmEvaluationAbVariantResult.AsObject>,
+    }
+}
+
+export class LlmEvaluationAbRolloutRecommendation extends jspb.Message { 
+    getOptimizeMetric(): LlmEvaluationAbOptimizeMetric;
+    setOptimizeMetric(value: LlmEvaluationAbOptimizeMetric): LlmEvaluationAbRolloutRecommendation;
+    getWinnerVariantId(): string;
+    setWinnerVariantId(value: string): LlmEvaluationAbRolloutRecommendation;
+    getControlVariantId(): string;
+    setControlVariantId(value: string): LlmEvaluationAbRolloutRecommendation;
+    getPValue(): number;
+    setPValue(value: number): LlmEvaluationAbRolloutRecommendation;
+    getEffectSize(): number;
+    setEffectSize(value: number): LlmEvaluationAbRolloutRecommendation;
+    getIsSignificant(): boolean;
+    setIsSignificant(value: boolean): LlmEvaluationAbRolloutRecommendation;
+
+    getSessionsPerVariantMap(): jspb.Map<string, number>;
+    clearSessionsPerVariantMap(): void;
+    getNeedsMoreData(): boolean;
+    setNeedsMoreData(value: boolean): LlmEvaluationAbRolloutRecommendation;
+    getReason(): string;
+    setReason(value: string): LlmEvaluationAbRolloutRecommendation;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbRolloutRecommendation.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbRolloutRecommendation): LlmEvaluationAbRolloutRecommendation.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbRolloutRecommendation, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbRolloutRecommendation;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbRolloutRecommendation, reader: jspb.BinaryReader): LlmEvaluationAbRolloutRecommendation;
+}
+
+export namespace LlmEvaluationAbRolloutRecommendation {
+    export type AsObject = {
+        optimizeMetric: LlmEvaluationAbOptimizeMetric,
+        winnerVariantId: string,
+        controlVariantId: string,
+        pValue: number,
+        effectSize: number,
+        isSignificant: boolean,
+
+        sessionsPerVariantMap: Array<[string, number]>,
+        needsMoreData: boolean,
+        reason: string,
+    }
+}
+
+export class LlmEvaluationAbRolloutDecision extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationAbRolloutDecision;
+    getLlmEvaluationAbExperimentName(): string;
+    setLlmEvaluationAbExperimentName(value: string): LlmEvaluationAbRolloutDecision;
+    getAppliedVariantId(): string;
+    setAppliedVariantId(value: string): LlmEvaluationAbRolloutDecision;
+    getOptimizeMetric(): LlmEvaluationAbOptimizeMetric;
+    setOptimizeMetric(value: LlmEvaluationAbOptimizeMetric): LlmEvaluationAbRolloutDecision;
+    getPValue(): number;
+    setPValue(value: number): LlmEvaluationAbRolloutDecision;
+    getEffectSize(): number;
+    setEffectSize(value: number): LlmEvaluationAbRolloutDecision;
+
+    hasAppliedAt(): boolean;
+    clearAppliedAt(): void;
+    getAppliedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setAppliedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbRolloutDecision;
+    getAppliedBy(): string;
+    setAppliedBy(value: string): LlmEvaluationAbRolloutDecision;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbRolloutDecision;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAbRolloutDecision;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationAbRolloutDecision;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationAbRolloutDecision;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationAbRolloutDecision;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationAbRolloutDecision;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbRolloutDecision.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbRolloutDecision): LlmEvaluationAbRolloutDecision.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbRolloutDecision, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbRolloutDecision;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbRolloutDecision, reader: jspb.BinaryReader): LlmEvaluationAbRolloutDecision;
+}
+
+export namespace LlmEvaluationAbRolloutDecision {
+    export type AsObject = {
+        name: string,
+        llmEvaluationAbExperimentName: string,
+        appliedVariantId: string,
+        optimizeMetric: LlmEvaluationAbOptimizeMetric,
+        pValue: number,
+        effectSize: number,
+        appliedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        appliedBy: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAbRolloutRecommendationRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getOptimizeMetric(): LlmEvaluationAbOptimizeMetric;
+    setOptimizeMetric(value: LlmEvaluationAbOptimizeMetric): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getConfidenceLevel(): number;
+    setConfidenceLevel(value: number): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getMinSessionsPerVariant(): number;
+    setMinSessionsPerVariant(value: number): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getMinEffectSize(): number;
+    setMinEffectSize(value: number): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationAbRolloutRecommendationRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationAbRolloutRecommendationRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAbRolloutRecommendationRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAbRolloutRecommendationRequest): GetLlmEvaluationAbRolloutRecommendationRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAbRolloutRecommendationRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAbRolloutRecommendationRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAbRolloutRecommendationRequest, reader: jspb.BinaryReader): GetLlmEvaluationAbRolloutRecommendationRequest;
+}
+
+export namespace GetLlmEvaluationAbRolloutRecommendationRequest {
+    export type AsObject = {
+        name: string,
+        optimizeMetric: LlmEvaluationAbOptimizeMetric,
+        confidenceLevel: number,
+        minSessionsPerVariant: number,
+        minEffectSize: number,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class ApplyLlmEvaluationAbRolloutRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): ApplyLlmEvaluationAbRolloutRequest;
+    getVariantId(): string;
+    setVariantId(value: string): ApplyLlmEvaluationAbRolloutRequest;
+    getOptimizeMetric(): LlmEvaluationAbOptimizeMetric;
+    setOptimizeMetric(value: LlmEvaluationAbOptimizeMetric): ApplyLlmEvaluationAbRolloutRequest;
+    getParent(): string;
+    setParent(value: string): ApplyLlmEvaluationAbRolloutRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ApplyLlmEvaluationAbRolloutRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ApplyLlmEvaluationAbRolloutRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ApplyLlmEvaluationAbRolloutRequest): ApplyLlmEvaluationAbRolloutRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ApplyLlmEvaluationAbRolloutRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ApplyLlmEvaluationAbRolloutRequest;
+    static deserializeBinaryFromReader(message: ApplyLlmEvaluationAbRolloutRequest, reader: jspb.BinaryReader): ApplyLlmEvaluationAbRolloutRequest;
+}
+
+export namespace ApplyLlmEvaluationAbRolloutRequest {
+    export type AsObject = {
+        name: string,
+        variantId: string,
+        optimizeMetric: LlmEvaluationAbOptimizeMetric,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAbRolloutDecisionRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationAbRolloutDecisionRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationAbRolloutDecisionRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationAbRolloutDecisionRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationAbRolloutDecisionRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAbRolloutDecisionRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAbRolloutDecisionRequest): GetLlmEvaluationAbRolloutDecisionRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAbRolloutDecisionRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAbRolloutDecisionRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAbRolloutDecisionRequest, reader: jspb.BinaryReader): GetLlmEvaluationAbRolloutDecisionRequest;
+}
+
+export namespace GetLlmEvaluationAbRolloutDecisionRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationAbRolloutDecisionFilter extends jspb.Message { 
+    getLlmEvaluationAbExperimentName(): string;
+    setLlmEvaluationAbExperimentName(value: string): LlmEvaluationAbRolloutDecisionFilter;
+    getAppliedBy(): string;
+    setAppliedBy(value: string): LlmEvaluationAbRolloutDecisionFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAbRolloutDecisionFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAbRolloutDecisionFilter): LlmEvaluationAbRolloutDecisionFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAbRolloutDecisionFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAbRolloutDecisionFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationAbRolloutDecisionFilter, reader: jspb.BinaryReader): LlmEvaluationAbRolloutDecisionFilter;
+}
+
+export namespace LlmEvaluationAbRolloutDecisionFilter {
+    export type AsObject = {
+        llmEvaluationAbExperimentName: string,
+        appliedBy: string,
+    }
+}
+
+export class ListLlmEvaluationAbRolloutDecisionsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationAbRolloutDecisionsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationAbRolloutDecisionsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationAbRolloutDecisionsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationAbRolloutDecisionsRequest;
+
+    hasLlmEvaluationAbRolloutDecisionFilter(): boolean;
+    clearLlmEvaluationAbRolloutDecisionFilter(): void;
+    getLlmEvaluationAbRolloutDecisionFilter(): LlmEvaluationAbRolloutDecisionFilter | undefined;
+    setLlmEvaluationAbRolloutDecisionFilter(value?: LlmEvaluationAbRolloutDecisionFilter): ListLlmEvaluationAbRolloutDecisionsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAbRolloutDecisionsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAbRolloutDecisionsRequest): ListLlmEvaluationAbRolloutDecisionsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAbRolloutDecisionsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAbRolloutDecisionsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAbRolloutDecisionsRequest, reader: jspb.BinaryReader): ListLlmEvaluationAbRolloutDecisionsRequest;
+}
+
+export namespace ListLlmEvaluationAbRolloutDecisionsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationAbRolloutDecisionFilter?: LlmEvaluationAbRolloutDecisionFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationAbRolloutDecisionsResponse extends jspb.Message { 
+    clearLlmEvaluationAbRolloutDecisionsList(): void;
+    getLlmEvaluationAbRolloutDecisionsList(): Array<LlmEvaluationAbRolloutDecision>;
+    setLlmEvaluationAbRolloutDecisionsList(value: Array<LlmEvaluationAbRolloutDecision>): ListLlmEvaluationAbRolloutDecisionsResponse;
+    addLlmEvaluationAbRolloutDecisions(value?: LlmEvaluationAbRolloutDecision, index?: number): LlmEvaluationAbRolloutDecision;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationAbRolloutDecisionsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAbRolloutDecisionsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAbRolloutDecisionsResponse): ListLlmEvaluationAbRolloutDecisionsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAbRolloutDecisionsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAbRolloutDecisionsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAbRolloutDecisionsResponse, reader: jspb.BinaryReader): ListLlmEvaluationAbRolloutDecisionsResponse;
+}
+
+export namespace ListLlmEvaluationAbRolloutDecisionsResponse {
+    export type AsObject = {
+        llmEvaluationAbRolloutDecisionsList: Array<LlmEvaluationAbRolloutDecision.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class LlmEvaluationOnlineSessionFilter extends jspb.Message { 
+    clearLabelsList(): void;
+    getLabelsList(): Array<string>;
+    setLabelsList(value: Array<string>): LlmEvaluationOnlineSessionFilter;
+    addLabels(value: string, index?: number): string;
+    clearLanguageCodesList(): void;
+    getLanguageCodesList(): Array<string>;
+    setLanguageCodesList(value: Array<string>): LlmEvaluationOnlineSessionFilter;
+    addLanguageCodes(value: string, index?: number): string;
+    clearPlatformsList(): void;
+    getPlatformsList(): Array<string>;
+    setPlatformsList(value: Array<string>): LlmEvaluationOnlineSessionFilter;
+    addPlatforms(value: string, index?: number): string;
+    getRequireTelemetry(): boolean;
+    setRequireTelemetry(value: boolean): LlmEvaluationOnlineSessionFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationOnlineSessionFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationOnlineSessionFilter): LlmEvaluationOnlineSessionFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationOnlineSessionFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationOnlineSessionFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationOnlineSessionFilter, reader: jspb.BinaryReader): LlmEvaluationOnlineSessionFilter;
+}
+
+export namespace LlmEvaluationOnlineSessionFilter {
+    export type AsObject = {
+        labelsList: Array<string>,
+        languageCodesList: Array<string>,
+        platformsList: Array<string>,
+        requireTelemetry: boolean,
+    }
+}
+
+export class LlmEvaluationOnlineConfig extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationOnlineConfig;
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationOnlineConfig;
+    getDescription(): string;
+    setDescription(value: string): LlmEvaluationOnlineConfig;
+    clearEvaluatorNamesList(): void;
+    getEvaluatorNamesList(): Array<string>;
+    setEvaluatorNamesList(value: Array<string>): LlmEvaluationOnlineConfig;
+    addEvaluatorNames(value: string, index?: number): string;
+    getSampleRate(): number;
+    setSampleRate(value: number): LlmEvaluationOnlineConfig;
+    getEnabled(): boolean;
+    setEnabled(value: boolean): LlmEvaluationOnlineConfig;
+    getTargetDatasetName(): string;
+    setTargetDatasetName(value: string): LlmEvaluationOnlineConfig;
+    getFailThreshold(): number;
+    setFailThreshold(value: number): LlmEvaluationOnlineConfig;
+    getSettleSeconds(): number;
+    setSettleSeconds(value: number): LlmEvaluationOnlineConfig;
+    getRequireTelemetry(): boolean;
+    setRequireTelemetry(value: boolean): LlmEvaluationOnlineConfig;
+
+    hasLlmEvaluationOnlineSessionFilter(): boolean;
+    clearLlmEvaluationOnlineSessionFilter(): void;
+    getLlmEvaluationOnlineSessionFilter(): LlmEvaluationOnlineSessionFilter | undefined;
+    setLlmEvaluationOnlineSessionFilter(value?: LlmEvaluationOnlineSessionFilter): LlmEvaluationOnlineConfig;
+
+    hasLastEvaluatedAt(): boolean;
+    clearLastEvaluatedAt(): void;
+    getLastEvaluatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setLastEvaluatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationOnlineConfig;
+    getNSessionsEvaluated(): number;
+    setNSessionsEvaluated(value: number): LlmEvaluationOnlineConfig;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationOnlineConfig;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationOnlineConfig;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationOnlineConfig;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationOnlineConfig;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationOnlineConfig;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationOnlineConfig;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationOnlineConfig.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationOnlineConfig): LlmEvaluationOnlineConfig.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationOnlineConfig, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationOnlineConfig;
+    static deserializeBinaryFromReader(message: LlmEvaluationOnlineConfig, reader: jspb.BinaryReader): LlmEvaluationOnlineConfig;
+}
+
+export namespace LlmEvaluationOnlineConfig {
+    export type AsObject = {
+        name: string,
+        displayName: string,
+        description: string,
+        evaluatorNamesList: Array<string>,
+        sampleRate: number,
+        enabled: boolean,
+        targetDatasetName: string,
+        failThreshold: number,
+        settleSeconds: number,
+        requireTelemetry: boolean,
+        llmEvaluationOnlineSessionFilter?: LlmEvaluationOnlineSessionFilter.AsObject,
+        lastEvaluatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        nSessionsEvaluated: number,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class CreateLlmEvaluationOnlineConfigRequest extends jspb.Message { 
+
+    hasLlmEvaluationOnlineConfig(): boolean;
+    clearLlmEvaluationOnlineConfig(): void;
+    getLlmEvaluationOnlineConfig(): LlmEvaluationOnlineConfig | undefined;
+    setLlmEvaluationOnlineConfig(value?: LlmEvaluationOnlineConfig): CreateLlmEvaluationOnlineConfigRequest;
+    getParent(): string;
+    setParent(value: string): CreateLlmEvaluationOnlineConfigRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): CreateLlmEvaluationOnlineConfigRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateLlmEvaluationOnlineConfigRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateLlmEvaluationOnlineConfigRequest): CreateLlmEvaluationOnlineConfigRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateLlmEvaluationOnlineConfigRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateLlmEvaluationOnlineConfigRequest;
+    static deserializeBinaryFromReader(message: CreateLlmEvaluationOnlineConfigRequest, reader: jspb.BinaryReader): CreateLlmEvaluationOnlineConfigRequest;
+}
+
+export namespace CreateLlmEvaluationOnlineConfigRequest {
+    export type AsObject = {
+        llmEvaluationOnlineConfig?: LlmEvaluationOnlineConfig.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationOnlineConfigRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationOnlineConfigRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationOnlineConfigRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationOnlineConfigRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationOnlineConfigRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationOnlineConfigRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationOnlineConfigRequest): GetLlmEvaluationOnlineConfigRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationOnlineConfigRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationOnlineConfigRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationOnlineConfigRequest, reader: jspb.BinaryReader): GetLlmEvaluationOnlineConfigRequest;
+}
+
+export namespace GetLlmEvaluationOnlineConfigRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationOnlineConfigFilter extends jspb.Message { 
+    getDisplayName(): string;
+    setDisplayName(value: string): LlmEvaluationOnlineConfigFilter;
+    getEnabledOnly(): boolean;
+    setEnabledOnly(value: boolean): LlmEvaluationOnlineConfigFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationOnlineConfigFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationOnlineConfigFilter): LlmEvaluationOnlineConfigFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationOnlineConfigFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationOnlineConfigFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationOnlineConfigFilter, reader: jspb.BinaryReader): LlmEvaluationOnlineConfigFilter;
+}
+
+export namespace LlmEvaluationOnlineConfigFilter {
+    export type AsObject = {
+        displayName: string,
+        enabledOnly: boolean,
+    }
+}
+
+export class ListLlmEvaluationOnlineConfigsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationOnlineConfigsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationOnlineConfigsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationOnlineConfigsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationOnlineConfigsRequest;
+
+    hasLlmEvaluationOnlineConfigFilter(): boolean;
+    clearLlmEvaluationOnlineConfigFilter(): void;
+    getLlmEvaluationOnlineConfigFilter(): LlmEvaluationOnlineConfigFilter | undefined;
+    setLlmEvaluationOnlineConfigFilter(value?: LlmEvaluationOnlineConfigFilter): ListLlmEvaluationOnlineConfigsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationOnlineConfigsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationOnlineConfigsRequest): ListLlmEvaluationOnlineConfigsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationOnlineConfigsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationOnlineConfigsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationOnlineConfigsRequest, reader: jspb.BinaryReader): ListLlmEvaluationOnlineConfigsRequest;
+}
+
+export namespace ListLlmEvaluationOnlineConfigsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationOnlineConfigFilter?: LlmEvaluationOnlineConfigFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationOnlineConfigsResponse extends jspb.Message { 
+    clearLlmEvaluationOnlineConfigsList(): void;
+    getLlmEvaluationOnlineConfigsList(): Array<LlmEvaluationOnlineConfig>;
+    setLlmEvaluationOnlineConfigsList(value: Array<LlmEvaluationOnlineConfig>): ListLlmEvaluationOnlineConfigsResponse;
+    addLlmEvaluationOnlineConfigs(value?: LlmEvaluationOnlineConfig, index?: number): LlmEvaluationOnlineConfig;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationOnlineConfigsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationOnlineConfigsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationOnlineConfigsResponse): ListLlmEvaluationOnlineConfigsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationOnlineConfigsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationOnlineConfigsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationOnlineConfigsResponse, reader: jspb.BinaryReader): ListLlmEvaluationOnlineConfigsResponse;
+}
+
+export namespace ListLlmEvaluationOnlineConfigsResponse {
+    export type AsObject = {
+        llmEvaluationOnlineConfigsList: Array<LlmEvaluationOnlineConfig.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationOnlineConfigRequest extends jspb.Message { 
+
+    hasLlmEvaluationOnlineConfig(): boolean;
+    clearLlmEvaluationOnlineConfig(): void;
+    getLlmEvaluationOnlineConfig(): LlmEvaluationOnlineConfig | undefined;
+    setLlmEvaluationOnlineConfig(value?: LlmEvaluationOnlineConfig): UpdateLlmEvaluationOnlineConfigRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationOnlineConfigRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationOnlineConfigRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationOnlineConfigRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationOnlineConfigRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationOnlineConfigRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationOnlineConfigRequest): UpdateLlmEvaluationOnlineConfigRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationOnlineConfigRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationOnlineConfigRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationOnlineConfigRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationOnlineConfigRequest;
+}
+
+export namespace UpdateLlmEvaluationOnlineConfigRequest {
+    export type AsObject = {
+        llmEvaluationOnlineConfig?: LlmEvaluationOnlineConfig.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class DeleteLlmEvaluationOnlineConfigRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteLlmEvaluationOnlineConfigRequest;
+    getParent(): string;
+    setParent(value: string): DeleteLlmEvaluationOnlineConfigRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): DeleteLlmEvaluationOnlineConfigRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteLlmEvaluationOnlineConfigRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteLlmEvaluationOnlineConfigRequest): DeleteLlmEvaluationOnlineConfigRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteLlmEvaluationOnlineConfigRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteLlmEvaluationOnlineConfigRequest;
+    static deserializeBinaryFromReader(message: DeleteLlmEvaluationOnlineConfigRequest, reader: jspb.BinaryReader): DeleteLlmEvaluationOnlineConfigRequest;
+}
+
+export namespace DeleteLlmEvaluationOnlineConfigRequest {
+    export type AsObject = {
+        name: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationOnlineResult extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationOnlineResult;
+    getLlmEvaluationOnlineConfigName(): string;
+    setLlmEvaluationOnlineConfigName(value: string): LlmEvaluationOnlineResult;
+    getSessionName(): string;
+    setSessionName(value: string): LlmEvaluationOnlineResult;
+    getSessionStepName(): string;
+    setSessionStepName(value: string): LlmEvaluationOnlineResult;
+    clearLlmEvaluationFeedbacksList(): void;
+    getLlmEvaluationFeedbacksList(): Array<LlmEvaluationFeedback>;
+    setLlmEvaluationFeedbacksList(value: Array<LlmEvaluationFeedback>): LlmEvaluationOnlineResult;
+    addLlmEvaluationFeedbacks(value?: LlmEvaluationFeedback, index?: number): LlmEvaluationFeedback;
+    getPassed(): boolean;
+    setPassed(value: boolean): LlmEvaluationOnlineResult;
+    getAggregateScore(): number;
+    setAggregateScore(value: number): LlmEvaluationOnlineResult;
+
+    hasEvaluatedAt(): boolean;
+    clearEvaluatedAt(): void;
+    getEvaluatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEvaluatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationOnlineResult;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationOnlineResult;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationOnlineResult;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationOnlineResult;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationOnlineResult;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationOnlineResult.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationOnlineResult): LlmEvaluationOnlineResult.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationOnlineResult, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationOnlineResult;
+    static deserializeBinaryFromReader(message: LlmEvaluationOnlineResult, reader: jspb.BinaryReader): LlmEvaluationOnlineResult;
+}
+
+export namespace LlmEvaluationOnlineResult {
+    export type AsObject = {
+        name: string,
+        llmEvaluationOnlineConfigName: string,
+        sessionName: string,
+        sessionStepName: string,
+        llmEvaluationFeedbacksList: Array<LlmEvaluationFeedback.AsObject>,
+        passed: boolean,
+        aggregateScore: number,
+        evaluatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationOnlineResultRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationOnlineResultRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationOnlineResultRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationOnlineResultRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationOnlineResultRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationOnlineResultRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationOnlineResultRequest): GetLlmEvaluationOnlineResultRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationOnlineResultRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationOnlineResultRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationOnlineResultRequest, reader: jspb.BinaryReader): GetLlmEvaluationOnlineResultRequest;
+}
+
+export namespace GetLlmEvaluationOnlineResultRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationOnlineResultFilter extends jspb.Message { 
+    getLlmEvaluationOnlineConfigName(): string;
+    setLlmEvaluationOnlineConfigName(value: string): LlmEvaluationOnlineResultFilter;
+    getPassed(): boolean;
+    setPassed(value: boolean): LlmEvaluationOnlineResultFilter;
+    getFilterByPassed(): boolean;
+    setFilterByPassed(value: boolean): LlmEvaluationOnlineResultFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationOnlineResultFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationOnlineResultFilter): LlmEvaluationOnlineResultFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationOnlineResultFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationOnlineResultFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationOnlineResultFilter, reader: jspb.BinaryReader): LlmEvaluationOnlineResultFilter;
+}
+
+export namespace LlmEvaluationOnlineResultFilter {
+    export type AsObject = {
+        llmEvaluationOnlineConfigName: string,
+        passed: boolean,
+        filterByPassed: boolean,
+    }
+}
+
+export class ListLlmEvaluationOnlineResultsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationOnlineResultsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationOnlineResultsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationOnlineResultsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationOnlineResultsRequest;
+
+    hasLlmEvaluationOnlineResultFilter(): boolean;
+    clearLlmEvaluationOnlineResultFilter(): void;
+    getLlmEvaluationOnlineResultFilter(): LlmEvaluationOnlineResultFilter | undefined;
+    setLlmEvaluationOnlineResultFilter(value?: LlmEvaluationOnlineResultFilter): ListLlmEvaluationOnlineResultsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationOnlineResultsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationOnlineResultsRequest): ListLlmEvaluationOnlineResultsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationOnlineResultsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationOnlineResultsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationOnlineResultsRequest, reader: jspb.BinaryReader): ListLlmEvaluationOnlineResultsRequest;
+}
+
+export namespace ListLlmEvaluationOnlineResultsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationOnlineResultFilter?: LlmEvaluationOnlineResultFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationOnlineResultsResponse extends jspb.Message { 
+    clearLlmEvaluationOnlineResultsList(): void;
+    getLlmEvaluationOnlineResultsList(): Array<LlmEvaluationOnlineResult>;
+    setLlmEvaluationOnlineResultsList(value: Array<LlmEvaluationOnlineResult>): ListLlmEvaluationOnlineResultsResponse;
+    addLlmEvaluationOnlineResults(value?: LlmEvaluationOnlineResult, index?: number): LlmEvaluationOnlineResult;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationOnlineResultsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationOnlineResultsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationOnlineResultsResponse): ListLlmEvaluationOnlineResultsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationOnlineResultsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationOnlineResultsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationOnlineResultsResponse, reader: jspb.BinaryReader): ListLlmEvaluationOnlineResultsResponse;
+}
+
+export namespace ListLlmEvaluationOnlineResultsResponse {
+    export type AsObject = {
+        llmEvaluationOnlineResultsList: Array<LlmEvaluationOnlineResult.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class LlmEvaluationAnnotationQueueItem extends jspb.Message { 
+    getName(): string;
+    setName(value: string): LlmEvaluationAnnotationQueueItem;
+    getSessionName(): string;
+    setSessionName(value: string): LlmEvaluationAnnotationQueueItem;
+    getSessionStepName(): string;
+    setSessionStepName(value: string): LlmEvaluationAnnotationQueueItem;
+    getLlmEvaluationOnlineResultName(): string;
+    setLlmEvaluationOnlineResultName(value: string): LlmEvaluationAnnotationQueueItem;
+    getStatus(): LlmEvaluationAnnotationStatus;
+    setStatus(value: LlmEvaluationAnnotationStatus): LlmEvaluationAnnotationQueueItem;
+    getAssignedTo(): string;
+    setAssignedTo(value: string): LlmEvaluationAnnotationQueueItem;
+    getReason(): string;
+    setReason(value: string): LlmEvaluationAnnotationQueueItem;
+    getLlmEvaluationDatasetName(): string;
+    setLlmEvaluationDatasetName(value: string): LlmEvaluationAnnotationQueueItem;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAnnotationQueueItem;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): LlmEvaluationAnnotationQueueItem;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): LlmEvaluationAnnotationQueueItem;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): LlmEvaluationAnnotationQueueItem;
+    getParent(): string;
+    setParent(value: string): LlmEvaluationAnnotationQueueItem;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): LlmEvaluationAnnotationQueueItem;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAnnotationQueueItem.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAnnotationQueueItem): LlmEvaluationAnnotationQueueItem.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAnnotationQueueItem, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAnnotationQueueItem;
+    static deserializeBinaryFromReader(message: LlmEvaluationAnnotationQueueItem, reader: jspb.BinaryReader): LlmEvaluationAnnotationQueueItem;
+}
+
+export namespace LlmEvaluationAnnotationQueueItem {
+    export type AsObject = {
+        name: string,
+        sessionName: string,
+        sessionStepName: string,
+        llmEvaluationOnlineResultName: string,
+        status: LlmEvaluationAnnotationStatus,
+        assignedTo: string,
+        reason: string,
+        llmEvaluationDatasetName: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedBy: string,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class GetLlmEvaluationAnnotationQueueItemRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetLlmEvaluationAnnotationQueueItemRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetLlmEvaluationAnnotationQueueItemRequest;
+    getParent(): string;
+    setParent(value: string): GetLlmEvaluationAnnotationQueueItemRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): GetLlmEvaluationAnnotationQueueItemRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetLlmEvaluationAnnotationQueueItemRequest): GetLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetLlmEvaluationAnnotationQueueItemRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetLlmEvaluationAnnotationQueueItemRequest;
+    static deserializeBinaryFromReader(message: GetLlmEvaluationAnnotationQueueItemRequest, reader: jspb.BinaryReader): GetLlmEvaluationAnnotationQueueItemRequest;
+}
+
+export namespace GetLlmEvaluationAnnotationQueueItemRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class LlmEvaluationAnnotationQueueItemFilter extends jspb.Message { 
+    getStatus(): LlmEvaluationAnnotationStatus;
+    setStatus(value: LlmEvaluationAnnotationStatus): LlmEvaluationAnnotationQueueItemFilter;
+    getAssignedTo(): string;
+    setAssignedTo(value: string): LlmEvaluationAnnotationQueueItemFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmEvaluationAnnotationQueueItemFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmEvaluationAnnotationQueueItemFilter): LlmEvaluationAnnotationQueueItemFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmEvaluationAnnotationQueueItemFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmEvaluationAnnotationQueueItemFilter;
+    static deserializeBinaryFromReader(message: LlmEvaluationAnnotationQueueItemFilter, reader: jspb.BinaryReader): LlmEvaluationAnnotationQueueItemFilter;
+}
+
+export namespace LlmEvaluationAnnotationQueueItemFilter {
+    export type AsObject = {
+        status: LlmEvaluationAnnotationStatus,
+        assignedTo: string,
+    }
+}
+
+export class ListLlmEvaluationAnnotationQueueItemsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListLlmEvaluationAnnotationQueueItemsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListLlmEvaluationAnnotationQueueItemsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListLlmEvaluationAnnotationQueueItemsRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): ListLlmEvaluationAnnotationQueueItemsRequest;
+
+    hasLlmEvaluationAnnotationQueueItemFilter(): boolean;
+    clearLlmEvaluationAnnotationQueueItemFilter(): void;
+    getLlmEvaluationAnnotationQueueItemFilter(): LlmEvaluationAnnotationQueueItemFilter | undefined;
+    setLlmEvaluationAnnotationQueueItemFilter(value?: LlmEvaluationAnnotationQueueItemFilter): ListLlmEvaluationAnnotationQueueItemsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAnnotationQueueItemsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAnnotationQueueItemsRequest): ListLlmEvaluationAnnotationQueueItemsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAnnotationQueueItemsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAnnotationQueueItemsRequest;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAnnotationQueueItemsRequest, reader: jspb.BinaryReader): ListLlmEvaluationAnnotationQueueItemsRequest;
+}
+
+export namespace ListLlmEvaluationAnnotationQueueItemsRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        languageCode: string,
+        llmEvaluationAnnotationQueueItemFilter?: LlmEvaluationAnnotationQueueItemFilter.AsObject,
+    }
+}
+
+export class ListLlmEvaluationAnnotationQueueItemsResponse extends jspb.Message { 
+    clearLlmEvaluationAnnotationQueueItemsList(): void;
+    getLlmEvaluationAnnotationQueueItemsList(): Array<LlmEvaluationAnnotationQueueItem>;
+    setLlmEvaluationAnnotationQueueItemsList(value: Array<LlmEvaluationAnnotationQueueItem>): ListLlmEvaluationAnnotationQueueItemsResponse;
+    addLlmEvaluationAnnotationQueueItems(value?: LlmEvaluationAnnotationQueueItem, index?: number): LlmEvaluationAnnotationQueueItem;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListLlmEvaluationAnnotationQueueItemsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListLlmEvaluationAnnotationQueueItemsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListLlmEvaluationAnnotationQueueItemsResponse): ListLlmEvaluationAnnotationQueueItemsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListLlmEvaluationAnnotationQueueItemsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListLlmEvaluationAnnotationQueueItemsResponse;
+    static deserializeBinaryFromReader(message: ListLlmEvaluationAnnotationQueueItemsResponse, reader: jspb.BinaryReader): ListLlmEvaluationAnnotationQueueItemsResponse;
+}
+
+export namespace ListLlmEvaluationAnnotationQueueItemsResponse {
+    export type AsObject = {
+        llmEvaluationAnnotationQueueItemsList: Array<LlmEvaluationAnnotationQueueItem.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class UpdateLlmEvaluationAnnotationQueueItemRequest extends jspb.Message { 
+
+    hasLlmEvaluationAnnotationQueueItem(): boolean;
+    clearLlmEvaluationAnnotationQueueItem(): void;
+    getLlmEvaluationAnnotationQueueItem(): LlmEvaluationAnnotationQueueItem | undefined;
+    setLlmEvaluationAnnotationQueueItem(value?: LlmEvaluationAnnotationQueueItem): UpdateLlmEvaluationAnnotationQueueItemRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationAnnotationQueueItemRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateLlmEvaluationAnnotationQueueItemRequest;
+    getParent(): string;
+    setParent(value: string): UpdateLlmEvaluationAnnotationQueueItemRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): UpdateLlmEvaluationAnnotationQueueItemRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateLlmEvaluationAnnotationQueueItemRequest): UpdateLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateLlmEvaluationAnnotationQueueItemRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateLlmEvaluationAnnotationQueueItemRequest;
+    static deserializeBinaryFromReader(message: UpdateLlmEvaluationAnnotationQueueItemRequest, reader: jspb.BinaryReader): UpdateLlmEvaluationAnnotationQueueItemRequest;
+}
+
+export namespace UpdateLlmEvaluationAnnotationQueueItemRequest {
+    export type AsObject = {
+        llmEvaluationAnnotationQueueItem?: LlmEvaluationAnnotationQueueItem.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class PromoteLlmEvaluationAnnotationQueueItemRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getTargetDatasetName(): string;
+    setTargetDatasetName(value: string): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getLlmEvaluationExampleExtractionMode(): LlmEvaluationExampleExtractionMode;
+    setLlmEvaluationExampleExtractionMode(value: LlmEvaluationExampleExtractionMode): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getIncludeToolCalls(): boolean;
+    setIncludeToolCalls(value: boolean): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getIncludeRetrievalContext(): boolean;
+    setIncludeRetrievalContext(value: boolean): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getParent(): string;
+    setParent(value: string): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    getLanguageCode(): string;
+    setLanguageCode(value: string): PromoteLlmEvaluationAnnotationQueueItemRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PromoteLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: PromoteLlmEvaluationAnnotationQueueItemRequest): PromoteLlmEvaluationAnnotationQueueItemRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PromoteLlmEvaluationAnnotationQueueItemRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PromoteLlmEvaluationAnnotationQueueItemRequest;
+    static deserializeBinaryFromReader(message: PromoteLlmEvaluationAnnotationQueueItemRequest, reader: jspb.BinaryReader): PromoteLlmEvaluationAnnotationQueueItemRequest;
+}
+
+export namespace PromoteLlmEvaluationAnnotationQueueItemRequest {
+    export type AsObject = {
+        name: string,
+        targetDatasetName: string,
+        llmEvaluationExampleExtractionMode: LlmEvaluationExampleExtractionMode,
+        includeToolCalls: boolean,
+        includeRetrievalContext: boolean,
+        parent: string,
+        languageCode: string,
+    }
+}
+
+export class PromoteLlmEvaluationAnnotationQueueItemResponse extends jspb.Message { 
+    clearLlmEvaluationExamplesList(): void;
+    getLlmEvaluationExamplesList(): Array<LlmEvaluationExample>;
+    setLlmEvaluationExamplesList(value: Array<LlmEvaluationExample>): PromoteLlmEvaluationAnnotationQueueItemResponse;
+    addLlmEvaluationExamples(value?: LlmEvaluationExample, index?: number): LlmEvaluationExample;
+
+    hasLlmEvaluationAnnotationQueueItem(): boolean;
+    clearLlmEvaluationAnnotationQueueItem(): void;
+    getLlmEvaluationAnnotationQueueItem(): LlmEvaluationAnnotationQueueItem | undefined;
+    setLlmEvaluationAnnotationQueueItem(value?: LlmEvaluationAnnotationQueueItem): PromoteLlmEvaluationAnnotationQueueItemResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): PromoteLlmEvaluationAnnotationQueueItemResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: PromoteLlmEvaluationAnnotationQueueItemResponse): PromoteLlmEvaluationAnnotationQueueItemResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: PromoteLlmEvaluationAnnotationQueueItemResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): PromoteLlmEvaluationAnnotationQueueItemResponse;
+    static deserializeBinaryFromReader(message: PromoteLlmEvaluationAnnotationQueueItemResponse, reader: jspb.BinaryReader): PromoteLlmEvaluationAnnotationQueueItemResponse;
+}
+
+export namespace PromoteLlmEvaluationAnnotationQueueItemResponse {
+    export type AsObject = {
+        llmEvaluationExamplesList: Array<LlmEvaluationExample.AsObject>,
+        llmEvaluationAnnotationQueueItem?: LlmEvaluationAnnotationQueueItem.AsObject,
+    }
+}
+
 export enum LlmEvaluationExperimentStatus {
     LLM_EVALUATION_EXPERIMENT_STATUS_UNSPECIFIED = 0,
     LLM_EVALUATION_EXPERIMENT_STATUS_PENDING = 1,
@@ -1456,4 +5188,84 @@ export enum LlmEvaluationEvaluatorType {
     LLM_EVALUATION_EVALUATOR_TYPE_HEURISTIC = 3,
     LLM_EVALUATION_EVALUATOR_TYPE_CUSTOM_CODE = 4,
     LLM_EVALUATION_EVALUATOR_TYPE_PAIRWISE = 5,
+}
+
+export enum LlmEvaluationDatasetType {
+    LLM_EVALUATION_DATASET_TYPE_UNSPECIFIED = 0,
+    LLM_EVALUATION_DATASET_TYPE_SINGLE_TURN = 1,
+    LLM_EVALUATION_DATASET_TYPE_FLOW = 2,
+    LLM_EVALUATION_DATASET_TYPE_RAG = 3,
+    LLM_EVALUATION_DATASET_TYPE_RED_TEAM = 4,
+    LLM_EVALUATION_DATASET_TYPE_SIMULATED = 5,
+}
+
+export enum LlmEvaluationExperimentKind {
+    LLM_EVALUATION_EXPERIMENT_KIND_UNSPECIFIED = 0,
+    LLM_EVALUATION_EXPERIMENT_KIND_STANDARD = 1,
+    LLM_EVALUATION_EXPERIMENT_KIND_FLOW = 2,
+    LLM_EVALUATION_EXPERIMENT_KIND_RED_TEAM = 3,
+    LLM_EVALUATION_EXPERIMENT_KIND_GATE_CANDIDATE = 4,
+    LLM_EVALUATION_EXPERIMENT_KIND_GATE_SAFETY = 5,
+    LLM_EVALUATION_EXPERIMENT_KIND_SCHEDULED = 6,
+}
+
+export enum LlmEvaluationReleaseGateVerdict {
+    LLM_EVALUATION_RELEASE_GATE_VERDICT_UNSPECIFIED = 0,
+    LLM_EVALUATION_RELEASE_GATE_VERDICT_PENDING = 1,
+    LLM_EVALUATION_RELEASE_GATE_VERDICT_PASS = 2,
+    LLM_EVALUATION_RELEASE_GATE_VERDICT_FAIL = 3,
+    LLM_EVALUATION_RELEASE_GATE_VERDICT_STALE = 4,
+}
+
+export enum LlmEvaluationEvaluatorCategory {
+    LLM_EVALUATION_EVALUATOR_CATEGORY_UNSPECIFIED = 0,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_RAG = 1,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_AGENTIC = 2,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_CONVERSATIONAL = 3,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_SAFETY = 4,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_HEURISTIC = 5,
+    LLM_EVALUATION_EVALUATOR_CATEGORY_CUSTOM = 6,
+}
+
+export enum LlmEvaluationExampleExtractionMode {
+    LLM_EVALUATION_EXAMPLE_EXTRACTION_MODE_UNSPECIFIED = 0,
+    LLM_EVALUATION_EXAMPLE_EXTRACTION_MODE_SINGLE_TURN = 1,
+    LLM_EVALUATION_EXAMPLE_EXTRACTION_MODE_MULTI_TURN_FLOW = 2,
+}
+
+export enum LlmEvaluationSimulationKind {
+    LLM_EVALUATION_SIMULATION_KIND_UNSPECIFIED = 0,
+    LLM_EVALUATION_SIMULATION_KIND_STANDARD = 1,
+    LLM_EVALUATION_SIMULATION_KIND_ADVERSARIAL = 2,
+}
+
+export enum LlmEvaluationScheduleAction {
+    LLM_EVALUATION_SCHEDULE_ACTION_UNSPECIFIED = 0,
+    LLM_EVALUATION_SCHEDULE_ACTION_RUN_EXPERIMENT = 1,
+    LLM_EVALUATION_SCHEDULE_ACTION_RUN_RELEASE_GATE = 2,
+}
+
+export enum LlmEvaluationAbExperimentStatus {
+    LLM_EVALUATION_AB_EXPERIMENT_STATUS_UNSPECIFIED = 0,
+    LLM_EVALUATION_AB_EXPERIMENT_STATUS_DRAFT = 1,
+    LLM_EVALUATION_AB_EXPERIMENT_STATUS_RUNNING = 2,
+    LLM_EVALUATION_AB_EXPERIMENT_STATUS_STOPPED = 3,
+    LLM_EVALUATION_AB_EXPERIMENT_STATUS_ARCHIVED = 4,
+}
+
+export enum LlmEvaluationAbOptimizeMetric {
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_UNSPECIFIED = 0,
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_PASS_RATE = 1,
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_ERROR_RATE = 2,
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_MEAN_LATENCY = 3,
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_CRITERION_SCORE = 4,
+    LLM_EVALUATION_AB_OPTIMIZE_METRIC_SAFETY_SCORE = 5,
+}
+
+export enum LlmEvaluationAnnotationStatus {
+    LLM_EVALUATION_ANNOTATION_STATUS_UNSPECIFIED = 0,
+    LLM_EVALUATION_ANNOTATION_STATUS_PENDING = 1,
+    LLM_EVALUATION_ANNOTATION_STATUS_REVIEWED = 2,
+    LLM_EVALUATION_ANNOTATION_STATUS_PROMOTED = 3,
+    LLM_EVALUATION_ANNOTATION_STATUS_DISMISSED = 4,
 }

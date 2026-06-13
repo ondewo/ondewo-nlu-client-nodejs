@@ -585,6 +585,16 @@ export class LlmTelemetry extends jspb.Message {
     getCcaiServiceProvider(): ondewo_nlu_ccai_project_pb.CcaiServiceProvider;
     setCcaiServiceProvider(value: ondewo_nlu_ccai_project_pb.CcaiServiceProvider): LlmTelemetry;
 
+    hasLlmSafetyAssessment(): boolean;
+    clearLlmSafetyAssessment(): void;
+    getLlmSafetyAssessment(): LlmSafetyAssessment | undefined;
+    setLlmSafetyAssessment(value?: LlmSafetyAssessment): LlmTelemetry;
+
+    hasLlmRetrievalMetadata(): boolean;
+    clearLlmRetrievalMetadata(): void;
+    getLlmRetrievalMetadata(): LlmRetrievalMetadata | undefined;
+    setLlmRetrievalMetadata(value?: LlmRetrievalMetadata): LlmTelemetry;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmTelemetry.AsObject;
     static toObject(includeInstance: boolean, msg: LlmTelemetry): LlmTelemetry.AsObject;
@@ -657,6 +667,133 @@ export namespace LlmTelemetry {
         extraQuery?: google_protobuf_struct_pb.Struct.AsObject,
         extraBody?: google_protobuf_struct_pb.Struct.AsObject,
         ccaiServiceProvider: ondewo_nlu_ccai_project_pb.CcaiServiceProvider,
+        llmSafetyAssessment?: LlmSafetyAssessment.AsObject,
+        llmRetrievalMetadata?: LlmRetrievalMetadata.AsObject,
+    }
+}
+
+export class LlmSafetyFinding extends jspb.Message { 
+    getCategory(): string;
+    setCategory(value: string): LlmSafetyFinding;
+    getSeverity(): string;
+    setSeverity(value: string): LlmSafetyFinding;
+    getMatchedPattern(): string;
+    setMatchedPattern(value: string): LlmSafetyFinding;
+    getLocation(): LlmSafetyLocation;
+    setLocation(value: LlmSafetyLocation): LlmSafetyFinding;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmSafetyFinding.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmSafetyFinding): LlmSafetyFinding.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmSafetyFinding, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmSafetyFinding;
+    static deserializeBinaryFromReader(message: LlmSafetyFinding, reader: jspb.BinaryReader): LlmSafetyFinding;
+}
+
+export namespace LlmSafetyFinding {
+    export type AsObject = {
+        category: string,
+        severity: string,
+        matchedPattern: string,
+        location: LlmSafetyLocation,
+    }
+}
+
+export class LlmSafetyAssessment extends jspb.Message { 
+    clearFlaggedCategoriesList(): void;
+    getFlaggedCategoriesList(): Array<string>;
+    setFlaggedCategoriesList(value: Array<string>): LlmSafetyAssessment;
+    addFlaggedCategories(value: string, index?: number): string;
+    getHasPii(): boolean;
+    setHasPii(value: boolean): LlmSafetyAssessment;
+    getHasInjectionAttempt(): boolean;
+    setHasInjectionAttempt(value: boolean): LlmSafetyAssessment;
+    getHasJailbreakAttempt(): boolean;
+    setHasJailbreakAttempt(value: boolean): LlmSafetyAssessment;
+    getSafetyScore(): number;
+    setSafetyScore(value: number): LlmSafetyAssessment;
+    clearFindingsList(): void;
+    getFindingsList(): Array<LlmSafetyFinding>;
+    setFindingsList(value: Array<LlmSafetyFinding>): LlmSafetyAssessment;
+    addFindings(value?: LlmSafetyFinding, index?: number): LlmSafetyFinding;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmSafetyAssessment.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmSafetyAssessment): LlmSafetyAssessment.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmSafetyAssessment, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmSafetyAssessment;
+    static deserializeBinaryFromReader(message: LlmSafetyAssessment, reader: jspb.BinaryReader): LlmSafetyAssessment;
+}
+
+export namespace LlmSafetyAssessment {
+    export type AsObject = {
+        flaggedCategoriesList: Array<string>,
+        hasPii: boolean,
+        hasInjectionAttempt: boolean,
+        hasJailbreakAttempt: boolean,
+        safetyScore: number,
+        findingsList: Array<LlmSafetyFinding.AsObject>,
+    }
+}
+
+export class LlmRetrievedChunk extends jspb.Message { 
+    getDocumentId(): string;
+    setDocumentId(value: string): LlmRetrievedChunk;
+    getChunkId(): string;
+    setChunkId(value: string): LlmRetrievedChunk;
+    getScore(): number;
+    setScore(value: number): LlmRetrievedChunk;
+    getText(): string;
+    setText(value: string): LlmRetrievedChunk;
+    getSourceUri(): string;
+    setSourceUri(value: string): LlmRetrievedChunk;
+    getRank(): number;
+    setRank(value: number): LlmRetrievedChunk;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmRetrievedChunk.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmRetrievedChunk): LlmRetrievedChunk.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmRetrievedChunk, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmRetrievedChunk;
+    static deserializeBinaryFromReader(message: LlmRetrievedChunk, reader: jspb.BinaryReader): LlmRetrievedChunk;
+}
+
+export namespace LlmRetrievedChunk {
+    export type AsObject = {
+        documentId: string,
+        chunkId: string,
+        score: number,
+        text: string,
+        sourceUri: string,
+        rank: number,
+    }
+}
+
+export class LlmRetrievalMetadata extends jspb.Message { 
+    clearChunksList(): void;
+    getChunksList(): Array<LlmRetrievedChunk>;
+    setChunksList(value: Array<LlmRetrievedChunk>): LlmRetrievalMetadata;
+    addChunks(value?: LlmRetrievedChunk, index?: number): LlmRetrievedChunk;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmRetrievalMetadata.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmRetrievalMetadata): LlmRetrievalMetadata.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmRetrievalMetadata, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmRetrievalMetadata;
+    static deserializeBinaryFromReader(message: LlmRetrievalMetadata, reader: jspb.BinaryReader): LlmRetrievalMetadata;
+}
+
+export namespace LlmRetrievalMetadata {
+    export type AsObject = {
+        chunksList: Array<LlmRetrievedChunk.AsObject>,
     }
 }
 
@@ -1149,6 +1286,11 @@ export class LlmTelemetryReport extends jspb.Message {
     getToolCallDurationSecondsTotal(): number;
     setToolCallDurationSecondsTotal(value: number): LlmTelemetryReport;
 
+    hasSafetyStats(): boolean;
+    clearSafetyStats(): void;
+    getSafetyStats(): LlmSafetyStats | undefined;
+    setSafetyStats(value?: LlmSafetyStats): LlmTelemetryReport;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmTelemetryReport.AsObject;
     static toObject(includeInstance: boolean, msg: LlmTelemetryReport): LlmTelemetryReport.AsObject;
@@ -1180,6 +1322,64 @@ export namespace LlmTelemetryReport {
         thinkingDurationSecondsTotal: number,
         toolCallTokensTotal: number,
         toolCallDurationSecondsTotal: number,
+        safetyStats?: LlmSafetyStats.AsObject,
+    }
+}
+
+export class LlmSafetyCategoryStat extends jspb.Message { 
+    getCategory(): string;
+    setCategory(value: string): LlmSafetyCategoryStat;
+    getCount(): number;
+    setCount(value: number): LlmSafetyCategoryStat;
+    getRate(): number;
+    setRate(value: number): LlmSafetyCategoryStat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmSafetyCategoryStat.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmSafetyCategoryStat): LlmSafetyCategoryStat.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmSafetyCategoryStat, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmSafetyCategoryStat;
+    static deserializeBinaryFromReader(message: LlmSafetyCategoryStat, reader: jspb.BinaryReader): LlmSafetyCategoryStat;
+}
+
+export namespace LlmSafetyCategoryStat {
+    export type AsObject = {
+        category: string,
+        count: number,
+        rate: number,
+    }
+}
+
+export class LlmSafetyStats extends jspb.Message { 
+    getTotalAssessed(): number;
+    setTotalAssessed(value: number): LlmSafetyStats;
+    getFlaggedCount(): number;
+    setFlaggedCount(value: number): LlmSafetyStats;
+    getOverallSafetyScore(): number;
+    setOverallSafetyScore(value: number): LlmSafetyStats;
+    clearCategoryStatsList(): void;
+    getCategoryStatsList(): Array<LlmSafetyCategoryStat>;
+    setCategoryStatsList(value: Array<LlmSafetyCategoryStat>): LlmSafetyStats;
+    addCategoryStats(value?: LlmSafetyCategoryStat, index?: number): LlmSafetyCategoryStat;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): LlmSafetyStats.AsObject;
+    static toObject(includeInstance: boolean, msg: LlmSafetyStats): LlmSafetyStats.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: LlmSafetyStats, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): LlmSafetyStats;
+    static deserializeBinaryFromReader(message: LlmSafetyStats, reader: jspb.BinaryReader): LlmSafetyStats;
+}
+
+export namespace LlmSafetyStats {
+    export type AsObject = {
+        totalAssessed: number,
+        flaggedCount: number,
+        overallSafetyScore: number,
+        categoryStatsList: Array<LlmSafetyCategoryStat.AsObject>,
     }
 }
 
@@ -4307,6 +4507,12 @@ export enum ReasoningEffort {
     REASONING_EFFORT_LOW = 2,
     REASONING_EFFORT_MEDIUM = 3,
     REASONING_EFFORT_HIGH = 4,
+}
+
+export enum LlmSafetyLocation {
+    LLM_SAFETY_LOCATION_UNSPECIFIED = 0,
+    LLM_SAFETY_LOCATION_INPUT = 1,
+    LLM_SAFETY_LOCATION_OUTPUT = 2,
 }
 
 export enum AudioEncoding {
