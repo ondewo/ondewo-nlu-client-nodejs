@@ -193,6 +193,7 @@ export class OfflineTokenProvider {
 
 	/** Exchange the offline refresh token for a fresh access token and re-arm the next refresh. */
 	private async refresh(): Promise<void> {
+		/* c8 ignore next 3 -- unreachable: stop() always clears the only timer that calls refresh() */
 		if (this.stopped) {
 			return;
 		}
@@ -251,6 +252,7 @@ export class OfflineTokenProvider {
 			});
 		}, delayInS * 1000);
 		// Do not keep the event loop alive solely for the refresh timer.
+		/* c8 ignore next 3 -- the else branch is unreachable: Node's Timeout always exposes unref() */
 		if (typeof this.timer.unref === 'function') {
 			this.timer.unref();
 		}
