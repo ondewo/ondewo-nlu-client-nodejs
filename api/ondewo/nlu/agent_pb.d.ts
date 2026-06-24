@@ -2660,6 +2660,198 @@ export namespace ReindexAgentRequest {
     }
 }
 
+export class CreateProjectTechnicalUserRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): CreateProjectTechnicalUserRequest;
+    getName(): string;
+    setName(value: string): CreateProjectTechnicalUserRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateProjectTechnicalUserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateProjectTechnicalUserRequest): CreateProjectTechnicalUserRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateProjectTechnicalUserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateProjectTechnicalUserRequest;
+    static deserializeBinaryFromReader(message: CreateProjectTechnicalUserRequest, reader: jspb.BinaryReader): CreateProjectTechnicalUserRequest;
+}
+
+export namespace CreateProjectTechnicalUserRequest {
+    export type AsObject = {
+        parent: string,
+        name: string,
+    }
+}
+
+export class CreateProjectTechnicalUserResponse extends jspb.Message { 
+    getUserId(): string;
+    setUserId(value: string): CreateProjectTechnicalUserResponse;
+    getUsername(): string;
+    setUsername(value: string): CreateProjectTechnicalUserResponse;
+    getPassword(): string;
+    setPassword(value: string): CreateProjectTechnicalUserResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): CreateProjectTechnicalUserResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateProjectTechnicalUserResponse): CreateProjectTechnicalUserResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: CreateProjectTechnicalUserResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateProjectTechnicalUserResponse;
+    static deserializeBinaryFromReader(message: CreateProjectTechnicalUserResponse, reader: jspb.BinaryReader): CreateProjectTechnicalUserResponse;
+}
+
+export namespace CreateProjectTechnicalUserResponse {
+    export type AsObject = {
+        userId: string,
+        username: string,
+        password: string,
+    }
+}
+
+export class ListProjectTechnicalUsersRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListProjectTechnicalUsersRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListProjectTechnicalUsersRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListProjectTechnicalUsersRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListProjectTechnicalUsersRequest): ListProjectTechnicalUsersRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListProjectTechnicalUsersRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListProjectTechnicalUsersRequest;
+    static deserializeBinaryFromReader(message: ListProjectTechnicalUsersRequest, reader: jspb.BinaryReader): ListProjectTechnicalUsersRequest;
+}
+
+export namespace ListProjectTechnicalUsersRequest {
+    export type AsObject = {
+        parent: string,
+        pageToken: string,
+    }
+}
+
+export class ProjectTechnicalUser extends jspb.Message { 
+    getUserId(): string;
+    setUserId(value: string): ProjectTechnicalUser;
+    getUsername(): string;
+    setUsername(value: string): ProjectTechnicalUser;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ProjectTechnicalUser.AsObject;
+    static toObject(includeInstance: boolean, msg: ProjectTechnicalUser): ProjectTechnicalUser.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ProjectTechnicalUser, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ProjectTechnicalUser;
+    static deserializeBinaryFromReader(message: ProjectTechnicalUser, reader: jspb.BinaryReader): ProjectTechnicalUser;
+}
+
+export namespace ProjectTechnicalUser {
+    export type AsObject = {
+        userId: string,
+        username: string,
+    }
+}
+
+export class ListProjectTechnicalUsersResponse extends jspb.Message { 
+    clearTechnicalUsersList(): void;
+    getTechnicalUsersList(): Array<ProjectTechnicalUser>;
+    setTechnicalUsersList(value: Array<ProjectTechnicalUser>): ListProjectTechnicalUsersResponse;
+    addTechnicalUsers(value?: ProjectTechnicalUser, index?: number): ProjectTechnicalUser;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListProjectTechnicalUsersResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListProjectTechnicalUsersResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListProjectTechnicalUsersResponse): ListProjectTechnicalUsersResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListProjectTechnicalUsersResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListProjectTechnicalUsersResponse;
+    static deserializeBinaryFromReader(message: ListProjectTechnicalUsersResponse, reader: jspb.BinaryReader): ListProjectTechnicalUsersResponse;
+}
+
+export namespace ListProjectTechnicalUsersResponse {
+    export type AsObject = {
+        technicalUsersList: Array<ProjectTechnicalUser.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class DeleteProjectTechnicalUserRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): DeleteProjectTechnicalUserRequest;
+    getUserId(): string;
+    setUserId(value: string): DeleteProjectTechnicalUserRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteProjectTechnicalUserRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteProjectTechnicalUserRequest): DeleteProjectTechnicalUserRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteProjectTechnicalUserRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteProjectTechnicalUserRequest;
+    static deserializeBinaryFromReader(message: DeleteProjectTechnicalUserRequest, reader: jspb.BinaryReader): DeleteProjectTechnicalUserRequest;
+}
+
+export namespace DeleteProjectTechnicalUserRequest {
+    export type AsObject = {
+        parent: string,
+        userId: string,
+    }
+}
+
+export class RotateProjectTechnicalUserPasswordRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): RotateProjectTechnicalUserPasswordRequest;
+    getUserId(): string;
+    setUserId(value: string): RotateProjectTechnicalUserPasswordRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RotateProjectTechnicalUserPasswordRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: RotateProjectTechnicalUserPasswordRequest): RotateProjectTechnicalUserPasswordRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RotateProjectTechnicalUserPasswordRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RotateProjectTechnicalUserPasswordRequest;
+    static deserializeBinaryFromReader(message: RotateProjectTechnicalUserPasswordRequest, reader: jspb.BinaryReader): RotateProjectTechnicalUserPasswordRequest;
+}
+
+export namespace RotateProjectTechnicalUserPasswordRequest {
+    export type AsObject = {
+        parent: string,
+        userId: string,
+    }
+}
+
+export class RotateProjectTechnicalUserPasswordResponse extends jspb.Message { 
+    getUserId(): string;
+    setUserId(value: string): RotateProjectTechnicalUserPasswordResponse;
+    getUsername(): string;
+    setUsername(value: string): RotateProjectTechnicalUserPasswordResponse;
+    getPassword(): string;
+    setPassword(value: string): RotateProjectTechnicalUserPasswordResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): RotateProjectTechnicalUserPasswordResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: RotateProjectTechnicalUserPasswordResponse): RotateProjectTechnicalUserPasswordResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: RotateProjectTechnicalUserPasswordResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): RotateProjectTechnicalUserPasswordResponse;
+    static deserializeBinaryFromReader(message: RotateProjectTechnicalUserPasswordResponse, reader: jspb.BinaryReader): RotateProjectTechnicalUserPasswordResponse;
+}
+
+export namespace RotateProjectTechnicalUserPasswordResponse {
+    export type AsObject = {
+        userId: string,
+        username: string,
+        password: string,
+    }
+}
+
 export enum AgentView {
     AGENT_VIEW_UNSPECIFIED = 0,
     AGENT_VIEW_FULL = 1,

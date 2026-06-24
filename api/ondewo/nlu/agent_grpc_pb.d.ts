@@ -61,6 +61,10 @@ interface IAgentsService extends grpc.ServiceDefinition<grpc.UntypedServiceImple
     getFullTextSearchIntentResponse: IAgentsService_IGetFullTextSearchIntentResponse;
     getFullTextSearchIntentParameters: IAgentsService_IGetFullTextSearchIntentParameters;
     reindexAgent: IAgentsService_IReindexAgent;
+    createProjectTechnicalUser: IAgentsService_ICreateProjectTechnicalUser;
+    listProjectTechnicalUsers: IAgentsService_IListProjectTechnicalUsers;
+    deleteProjectTechnicalUser: IAgentsService_IDeleteProjectTechnicalUser;
+    rotateProjectTechnicalUserPassword: IAgentsService_IRotateProjectTechnicalUserPassword;
 }
 
 interface IAgentsService_ICreateAgent extends grpc.MethodDefinition<ondewo_nlu_agent_pb.CreateAgentRequest, ondewo_nlu_agent_pb.Agent> {
@@ -441,6 +445,42 @@ interface IAgentsService_IReindexAgent extends grpc.MethodDefinition<ondewo_nlu_
     responseSerialize: grpc.serialize<ondewo_nlu_operations_pb.Operation>;
     responseDeserialize: grpc.deserialize<ondewo_nlu_operations_pb.Operation>;
 }
+interface IAgentsService_ICreateProjectTechnicalUser extends grpc.MethodDefinition<ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse> {
+    path: "/ondewo.nlu.Agents/CreateProjectTechnicalUser";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse>;
+}
+interface IAgentsService_IListProjectTechnicalUsers extends grpc.MethodDefinition<ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse> {
+    path: "/ondewo.nlu.Agents/ListProjectTechnicalUsers";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse>;
+}
+interface IAgentsService_IDeleteProjectTechnicalUser extends grpc.MethodDefinition<ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, google_protobuf_empty_pb.Empty> {
+    path: "/ondewo.nlu.Agents/DeleteProjectTechnicalUser";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest>;
+    responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
+    responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
+}
+interface IAgentsService_IRotateProjectTechnicalUserPassword extends grpc.MethodDefinition<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse> {
+    path: "/ondewo.nlu.Agents/RotateProjectTechnicalUserPassword";
+    requestStream: false;
+    responseStream: false;
+    requestSerialize: grpc.serialize<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest>;
+    requestDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest>;
+    responseSerialize: grpc.serialize<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse>;
+    responseDeserialize: grpc.deserialize<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse>;
+}
 
 export const AgentsService: IAgentsService;
 
@@ -487,6 +527,10 @@ export interface IAgentsServer {
     getFullTextSearchIntentResponse: grpc.handleUnaryCall<ondewo_nlu_agent_pb.FullTextSearchRequest, ondewo_nlu_agent_pb.FullTextSearchResponseIntentResponse>;
     getFullTextSearchIntentParameters: grpc.handleUnaryCall<ondewo_nlu_agent_pb.FullTextSearchRequest, ondewo_nlu_agent_pb.FullTextSearchResponseIntentParameters>;
     reindexAgent: grpc.handleUnaryCall<ondewo_nlu_agent_pb.ReindexAgentRequest, ondewo_nlu_operations_pb.Operation>;
+    createProjectTechnicalUser: grpc.handleUnaryCall<ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse>;
+    listProjectTechnicalUsers: grpc.handleUnaryCall<ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse>;
+    deleteProjectTechnicalUser: grpc.handleUnaryCall<ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, google_protobuf_empty_pb.Empty>;
+    rotateProjectTechnicalUserPassword: grpc.handleUnaryCall<ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse>;
 }
 
 export interface IAgentsClient {
@@ -616,6 +660,18 @@ export interface IAgentsClient {
     reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
+    rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
+    rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
 }
 
 export class AgentsClient extends grpc.Client implements IAgentsClient {
@@ -746,4 +802,16 @@ export class AgentsClient extends grpc.Client implements IAgentsClient {
     public reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     public reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
     public reindexAgent(request: ondewo_nlu_agent_pb.ReindexAgentRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_operations_pb.Operation) => void): grpc.ClientUnaryCall;
+    public createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    public createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    public createProjectTechnicalUser(request: ondewo_nlu_agent_pb.CreateProjectTechnicalUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.CreateProjectTechnicalUserResponse) => void): grpc.ClientUnaryCall;
+    public listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    public listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    public listProjectTechnicalUsers(request: ondewo_nlu_agent_pb.ListProjectTechnicalUsersRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.ListProjectTechnicalUsersResponse) => void): grpc.ClientUnaryCall;
+    public deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public deleteProjectTechnicalUser(request: ondewo_nlu_agent_pb.DeleteProjectTechnicalUserRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
+    public rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
+    public rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
+    public rotateProjectTechnicalUserPassword(request: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordRequest, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: ondewo_nlu_agent_pb.RotateProjectTechnicalUserPasswordResponse) => void): grpc.ClientUnaryCall;
 }
