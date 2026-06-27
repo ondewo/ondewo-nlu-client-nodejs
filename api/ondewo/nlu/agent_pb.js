@@ -22820,7 +22820,9 @@ proto.ondewo.nlu.ProjectTechnicalUser.prototype.toObject = function(opt_includeI
 proto.ondewo.nlu.ProjectTechnicalUser.toObject = function(includeInstance, msg) {
   var f, obj = {
     userId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    username: jspb.Message.getFieldWithDefault(msg, 2, "")
+    username: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    createdBy: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -22865,6 +22867,15 @@ proto.ondewo.nlu.ProjectTechnicalUser.deserializeBinaryFromReader = function(msg
       var value = /** @type {string} */ (reader.readString());
       msg.setUsername(value);
       break;
+    case 3:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setCreatedAt(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCreatedBy(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -22908,6 +22919,21 @@ proto.ondewo.nlu.ProjectTechnicalUser.serializeBinaryToWriter = function(message
       f
     );
   }
+  f = message.getCreatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getCreatedBy();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -22944,6 +22970,61 @@ proto.ondewo.nlu.ProjectTechnicalUser.prototype.getUsername = function() {
  */
 proto.ondewo.nlu.ProjectTechnicalUser.prototype.setUsername = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp created_at = 3;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.getCreatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.ProjectTechnicalUser} returns this
+*/
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.setCreatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ProjectTechnicalUser} returns this
+ */
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.clearCreatedAt = function() {
+  return this.setCreatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.hasCreatedAt = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional string created_by = 4;
+ * @return {string}
+ */
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.getCreatedBy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ProjectTechnicalUser} returns this
+ */
+proto.ondewo.nlu.ProjectTechnicalUser.prototype.setCreatedBy = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
