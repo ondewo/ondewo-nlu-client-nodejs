@@ -113,7 +113,7 @@ runTestCase('fetchAgents attaches the bearer token, sends the paged request, and
 
 	const sentMetadata: grpc.Metadata | null = recording.getMetadata();
 	assert.ok(sentMetadata !== null);
-	assert.deepEqual(sentMetadata.get('authorization'), [authorizationHeader]);
+	assert.deepEqual(sentMetadata.get('Authorization'), [authorizationHeader]);
 });
 
 /** Asserts a gRPC error from the (mocked) client rejects the {@link fetchAgents} promise. */
@@ -165,7 +165,7 @@ runTestCase('example flow: offline-token login then listAgents carries the fresh
 
 		const sentMetadata: grpc.Metadata | null = recording.getMetadata();
 		assert.ok(sentMetadata !== null);
-		assert.deepEqual(sentMetadata.get('authorization'), [`Bearer ${accessToken}`]);
+		assert.deepEqual(sentMetadata.get('Authorization'), [`Bearer ${accessToken}`]);
 	} finally {
 		provider.stop();
 	}

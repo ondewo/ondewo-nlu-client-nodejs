@@ -86,7 +86,7 @@ export function fetchAgents(
 ): Promise<ListAgentsResponse> {
 	const request: ListAgentsRequest = buildListAgentsRequest(pageSize);
 	const metadata: grpc.Metadata = new grpc.Metadata();
-	metadata.add('authorization', authorizationHeader);
+	metadata.add('Authorization', authorizationHeader);
 	return new Promise<ListAgentsResponse>(
 		(resolve: (response: ListAgentsResponse) => void, reject: (reason: grpc.ServiceError) => void): void => {
 			client.listAgents(request, metadata, (error: grpc.ServiceError | null, response: ListAgentsResponse): void => {
