@@ -89,6 +89,27 @@ npm
 ├── public-api.d.ts
 └── README.md
 ```
+## Authentication
+
+All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper shipped in the package and attach it to each call as the `Authorization` gRPC metadata header.
+
+```ts
+import { login } from '@ondewo/nlu-client-nodejs/auth/offlineTokenProvider';
+
+const provider = await login({
+  keycloakUrl: 'https://auth.example.com/auth',
+  realm: 'ondewo-ccai-platform',
+  clientId: 'ondewo-nlu-cai-sdk-public',
+  username: 'tech-user@example.com',
+  password: '...'
+});
+
+// `Bearer <jwt>` — set this as the `Authorization` gRPC metadata on each request.
+const authorizationHeader = provider.getAuthorizationHeader();
+```
+
+`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
+
 [comment]: <> (START OF GITHUB README)
 ## Build
 

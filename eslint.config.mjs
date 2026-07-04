@@ -24,7 +24,9 @@ export default [
 			// generated from auth/*.ts by tsc (committed for npm packaging) — lint the .ts source, not the build output
 			'auth/*.js',
 			'auth/*.d.ts',
-			'dist/'
+			'dist/',
+			// tsc test output (package.json `pretest`); its .js are outside the tsconfig program, so lint the .ts source
+			'.test-build/'
 		]
 	},
 	...compat.extends(
