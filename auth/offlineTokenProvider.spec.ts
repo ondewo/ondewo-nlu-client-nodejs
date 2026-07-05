@@ -453,6 +453,103 @@ runTestCase('login falls back to the global fetch when no fetchImpl is provided'
 });
 
 /**
+ * Asserts that by default (flag omitted) the default transport uses the plain global `fetch` with NO
+ * dispatcher, so TLS verification stays ON (the secure, unchanged behaviour).
+ */
+runTestCase('keycloakVerifySsl default: the default transport attaches no dispatcher (TLS verify ON)', async () => {
+	const originalFetch: typeof globalThis.fetch = globalThis.fetch;
+	let capturedInit: TokenFetchInit | undefined;
+	globalThis.fetch = ((_url: string, init: TokenFetchInit): Promise<TokenFetchResponse> => {
+		capturedInit = init;
+		return Promise.resolve({
+			ok: true,
+			status: 200,
+			text: (): Promise<string> =>
+				Promise.resolve(
+					JSON.stringify({ access_token: 'access-secure', refresh_token: 'offline-secure', expires_in: 300 })
+				)
+		});
+	}) as unknown as typeof globalThis.fetch;
+	try {
+		// Omit fetchImpl (-> default transport) and keycloakVerifySsl (-> defaults to verify ON).
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS });
+		try {
+			assert.ok(capturedInit !== undefined);
+			// No undici dispatcher => undici's global dispatcher with TLS verification ON.
+			assert.equal(capturedInit.dispatcher, undefined);
+			assert.equal(provider.getAccessToken(), 'access-secure');
+		} finally {
+			provider.stop();
+		}
+	} finally {
+		globalThis.fetch = originalFetch;
+	}
+});
+
+/**
+ * Asserts that with `keycloakVerifySsl: false` the default transport attaches an undici `Agent`
+ * dispatcher, disabling TLS verification for the token call.
+ */
+runTestCase(
+	'keycloakVerifySsl false: the default transport attaches an undici Agent dispatcher (TLS verify OFF)',
+	async () => {
+		const originalFetch: typeof globalThis.fetch = globalThis.fetch;
+		let capturedInit: TokenFetchInit | undefined;
+		globalThis.fetch = ((_url: string, init: TokenFetchInit): Promise<TokenFetchResponse> => {
+			capturedInit = init;
+			return Promise.resolve({
+				ok: true,
+				status: 200,
+				text: (): Promise<string> =>
+					Promise.resolve(
+						JSON.stringify({ access_token: 'access-insecure', refresh_token: 'offline-insecure', expires_in: 300 })
+					)
+			});
+		}) as unknown as typeof globalThis.fetch;
+		try {
+			const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, keycloakVerifySsl: false });
+			try {
+				// eslint-disable-next-line @typescript-eslint/no-require-imports
+				const undici: { Agent: new (options: unknown) => unknown } = require('undici') as {
+					Agent: new (options: unknown) => unknown;
+				};
+				assert.ok(capturedInit !== undefined);
+				// The insecure undici Agent (rejectUnauthorized:false) reached the token POST.
+				assert.ok(capturedInit.dispatcher instanceof undici.Agent);
+				assert.equal(provider.getAccessToken(), 'access-insecure');
+			} finally {
+				provider.stop();
+			}
+		} finally {
+			globalThis.fetch = originalFetch;
+		}
+	}
+);
+
+/**
+ * Asserts an injected `fetchImpl` is used verbatim, so `keycloakVerifySsl: false` is a no-op (no
+ * dispatcher) for custom transports.
+ */
+runTestCase('keycloakVerifySsl false is ignored when a custom fetchImpl is injected', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+	const provider: OfflineTokenProvider = await login({
+		...BASE_OPTIONS,
+		keycloakVerifySsl: false,
+		fetchImpl: stub.fetchImpl
+	});
+	try {
+		assert.equal(stub.calls.length, 1);
+		// The injected transport receives the request unchanged — the flag never touches it.
+		assert.equal(stub.calls[0].init.dispatcher, undefined);
+		assert.equal(provider.getAccessToken(), 'access-1');
+	} finally {
+		provider.stop();
+	}
+});
+
+/**
  * Asserts that calling {@link OfflineTokenProvider.stop} while a refresh is in flight still applies
  * that refresh's token but suppresses re-arming any further refresh (`scheduleRefresh` sees
  * `stopped`), so no additional fetch occurs even after advancing the clock.
