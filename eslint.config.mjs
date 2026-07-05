@@ -17,6 +17,8 @@ const compat = new FlatCompat({
 export default [
 	{
 		ignores: [
+			'npm/auth/offlineTokenProvider.d.ts',
+			'npm/auth/offlineTokenProvider.js',
 			'**/api/',
 			'src/ondewo-nlu-api',
 			'**/ondewo-proto-compiler',
