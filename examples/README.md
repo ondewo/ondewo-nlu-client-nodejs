@@ -17,17 +17,13 @@ and `login()` together.
 
 ### Run against a server
 
-Set the connection + technical-user credentials in the environment, then execute the compiled file:
+Configuration is read from [`environment.env`](./environment.env), which each example loads via
+`dotenv` (path resolved relative to the script, so `cwd` does not matter). Copy your real connection
+and technical-user credentials into that file — it ships with non-secret placeholders and the
+canonical variable names (`ONDEWO_HOST`, `ONDEWO_PORT`, `KEYCLOAK_URL`, `KEYCLOAK_REALM`,
+`KEYCLOAK_CLIENT_ID`, `KEYCLOAK_USER_NAME`, `KEYCLOAK_PASSWORD`, ...). Then compile and run:
 
 ```sh
-export ONDEWO_NLU_HOST=localhost
-export ONDEWO_NLU_PORT=50055
-export ONDEWO_NLU_KEYCLOAK_URL=https://auth.example.com/auth
-export ONDEWO_NLU_KEYCLOAK_REALM=ondewo-ccai-platform
-export ONDEWO_NLU_KEYCLOAK_CLIENT_ID=ondewo-nlu-cai-sdk-public
-export ONDEWO_NLU_USER_NAME=tech-user@example.com
-export ONDEWO_NLU_PASSWORD=...
-
 tsc examples/listAgents.ts --ignoreConfig --module commonjs --target es2020 --strict \
   --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types
 node examples/listAgents.js
