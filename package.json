@@ -15,6 +15,15 @@
   ],
   "main": "public-api.js",
   "typings": "public-api.d.ts",
+  "scripts": {
+    "start": "npm run build",
+    "build": "docker run -it -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler ondewo-nlu-api ondewo",
+    "predebug": "# mv ondewo-nlu-api/google ondewo-nlu-api/google",
+    "debug": "docker run -it --entrypoint /bin/bash -v ${PWD}:/input-volume -v ${PWD}/..:/output-volume ondewo-nodejs-proto-compiler",
+    "pretest": "tsc auth/offlineTokenProvider.ts auth/offlineTokenProvider.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --sourceMap --types node --typeRoots ./node_modules/@types --outDir .test-build",
+    "test": "c8 --check-coverage --lines 100 --branches 100 --functions 100 --include '**/offlineTokenProvider.js' --exclude '**/*.spec.js' --reporter text node --test .test-build/offlineTokenProvider.spec.js",
+    "test:examples": "tsc examples/listAgents.ts examples/listAgents.spec.ts --ignoreConfig --module commonjs --target es2020 --strict --lib es2020,dom --skipLibCheck --types node --typeRoots ./node_modules/@types --outDir .test-build && ln -sfn ../api .test-build/api && node --test .test-build/examples/listAgents.spec.js"
+  },
   "repository": {
     "type": "git",
     "directory": "https://github.com/ondewo/ondewo-nlu-client-nodejs"
@@ -30,9 +39,11 @@
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^9.39.4",
     "@typescript-eslint/eslint-plugin": "^8.63.0",
+    "c8": "^11.0.0",
     "eslint": "^9.39.4",
     "global": "^4.4.0",
     "husky": "^9.1.7",
-    "prettier": "^3.9.4"
+    "prettier": "^3.9.4",
+    "typescript": "^6.0.3"
   }
 }
