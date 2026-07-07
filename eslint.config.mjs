@@ -16,7 +16,20 @@ const compat = new FlatCompat({
 
 export default [
 	{
-		ignores: ['**/api/', 'src/ondewo-nlu-api', '**/ondewo-proto-compiler', '**/*.mjs']
+		ignores: [
+			'npm/auth/offlineTokenProvider.d.ts',
+			'npm/auth/offlineTokenProvider.js',
+			'**/api/',
+			'src/ondewo-nlu-api',
+			'**/ondewo-proto-compiler',
+			'**/*.mjs',
+			// generated from auth/*.ts by tsc (committed for npm packaging) — lint the .ts source, not the build output
+			'auth/*.js',
+			'auth/*.d.ts',
+			'dist/',
+			// tsc test output (package.json `pretest`); its .js are outside the tsconfig program, so lint the .ts source
+			'.test-build/'
+		]
 	},
 	...compat.extends(
 		'plugin:@typescript-eslint/recommended',

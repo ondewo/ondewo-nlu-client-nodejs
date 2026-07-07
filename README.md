@@ -92,7 +92,28 @@ npm
 └── README.md
 ```
 
-[comment]: <> (START OF GITHUB README)
+## Authentication
+
+All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper shipped in the package and attach it to each call as the `Authorization` gRPC metadata header.
+
+```ts
+import { login } from '@ondewo/nlu-client-nodejs/auth/offlineTokenProvider';
+
+const provider = await login({
+	keycloakUrl: 'https://auth.example.com/auth',
+	realm: 'ondewo-ccai-platform',
+	clientId: 'ondewo-nlu-cai-sdk-public',
+	username: 'tech-user@example.com',
+	password: '...'
+});
+
+// `Bearer <jwt>` — set this as the `Authorization` gRPC metadata on each request.
+const authorizationHeader = provider.getAuthorizationHeader();
+```
+
+`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
+
+[comment]: <> 'START OF GITHUB README'
 
 ## Build
 
@@ -128,7 +149,6 @@ TODO after PR merge:
   ```
 - Adjust `ONDEWO_NLU_VERSION` in the `Makefile` <br><br>
 - Add new Release Notes to `src/RELEASE.md` in following format:
-
   ```
   ## Release ONDEWO NLU Nodejs Client X.X.X    <----- Beginning of Notes
 
@@ -136,13 +156,13 @@ TODO after PR merge:
 
   *****************                             <----- End of Notes
   ```
-
 - release
   ```shell
   make ondewo_release
   ```
-  <br>
-  The release process can be divided into 6 Steps:
+
+<br>
+The release process can be divided into 6 Steps:
 
 1. `build` specified version of the `ondewo-nlu-api`
 2. `commit and push` all changes in code resulting from the `build`
@@ -153,4 +173,4 @@ TODO after PR merge:
 
 > :warning: The Release Automation checks if the build has created all the proto-code files, but it does not check the code-integrity. Please build and test the generated code prior to starting the release process.
 
-[comment]: <> (END OF GITHUB README)
+[comment]: <> 'END OF GITHUB README'
