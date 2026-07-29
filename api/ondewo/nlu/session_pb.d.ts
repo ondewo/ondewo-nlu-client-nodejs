@@ -594,6 +594,8 @@ export class LlmTelemetry extends jspb.Message {
     clearLlmRetrievalMetadata(): void;
     getLlmRetrievalMetadata(): LlmRetrievalMetadata | undefined;
     setLlmRetrievalMetadata(value?: LlmRetrievalMetadata): LlmTelemetry;
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmTelemetry;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmTelemetry.AsObject;
@@ -669,6 +671,7 @@ export namespace LlmTelemetry {
         ccaiServiceProvider: ondewo_nlu_ccai_project_pb.CcaiServiceProvider,
         llmSafetyAssessment?: LlmSafetyAssessment.AsObject,
         llmRetrievalMetadata?: LlmRetrievalMetadata.AsObject,
+        llmCallId: string,
     }
 }
 
@@ -1075,6 +1078,15 @@ export class LlmToolUsage extends jspb.Message {
     getLlmTokenUsage(): LlmTokenUsage | undefined;
     setLlmTokenUsage(value?: LlmTokenUsage): LlmToolUsage;
 
+    hasArguments(): boolean;
+    clearArguments(): void;
+    getArguments(): google_protobuf_struct_pb.Struct | undefined;
+    setArguments(value?: google_protobuf_struct_pb.Struct): LlmToolUsage;
+    getLlmCallId(): string;
+    setLlmCallId(value: string): LlmToolUsage;
+    getToolCallId(): string;
+    setToolCallId(value: string): LlmToolUsage;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LlmToolUsage.AsObject;
     static toObject(includeInstance: boolean, msg: LlmToolUsage): LlmToolUsage.AsObject;
@@ -1094,6 +1106,9 @@ export namespace LlmToolUsage {
         durationSecondsTotal: number,
         meanDurationSeconds: number,
         llmTokenUsage?: LlmTokenUsage.AsObject,
+        arguments?: google_protobuf_struct_pb.Struct.AsObject,
+        llmCallId: string,
+        toolCallId: string,
     }
 }
 
@@ -3858,6 +3873,11 @@ export class ListSessionCommentsRequest extends jspb.Message {
     getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
     setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListSessionCommentsRequest;
 
+    hasIsResolved(): boolean;
+    clearIsResolved(): void;
+    getIsResolved(): boolean | undefined;
+    setIsResolved(value: boolean): ListSessionCommentsRequest;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListSessionCommentsRequest.AsObject;
     static toObject(includeInstance: boolean, msg: ListSessionCommentsRequest): ListSessionCommentsRequest.AsObject;
@@ -3873,6 +3893,48 @@ export namespace ListSessionCommentsRequest {
         sessionId: string,
         pageToken: string,
         fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        isResolved?: boolean,
+    }
+}
+
+export class ListSessionCommentsOfAllSessionsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListSessionCommentsOfAllSessionsRequest;
+
+    hasSessionFilter(): boolean;
+    clearSessionFilter(): void;
+    getSessionFilter(): SessionFilter | undefined;
+    setSessionFilter(value?: SessionFilter): ListSessionCommentsOfAllSessionsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListSessionCommentsOfAllSessionsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListSessionCommentsOfAllSessionsRequest;
+
+    hasIsResolved(): boolean;
+    clearIsResolved(): void;
+    getIsResolved(): boolean | undefined;
+    setIsResolved(value: boolean): ListSessionCommentsOfAllSessionsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListSessionCommentsOfAllSessionsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListSessionCommentsOfAllSessionsRequest): ListSessionCommentsOfAllSessionsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListSessionCommentsOfAllSessionsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListSessionCommentsOfAllSessionsRequest;
+    static deserializeBinaryFromReader(message: ListSessionCommentsOfAllSessionsRequest, reader: jspb.BinaryReader): ListSessionCommentsOfAllSessionsRequest;
+}
+
+export namespace ListSessionCommentsOfAllSessionsRequest {
+    export type AsObject = {
+        parent: string,
+        sessionFilter?: SessionFilter.AsObject,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        isResolved?: boolean,
     }
 }
 
@@ -3898,6 +3960,693 @@ export namespace ListSessionCommentsResponse {
     export type AsObject = {
         commentList: Array<ondewo_nlu_common_pb.Comment.AsObject>,
         pageToken: string,
+    }
+}
+
+export class SessionFeedback extends jspb.Message { 
+    getName(): string;
+    setName(value: string): SessionFeedback;
+    getSessionId(): string;
+    setSessionId(value: string): SessionFeedback;
+    getSessionStepId(): string;
+    setSessionStepId(value: string): SessionFeedback;
+    getResponseId(): string;
+    setResponseId(value: string): SessionFeedback;
+    getSessionStepLlmTelemetryId(): string;
+    setSessionStepLlmTelemetryId(value: string): SessionFeedback;
+    getRating(): FeedbackRating;
+    setRating(value: FeedbackRating): SessionFeedback;
+    getCategoricalValue(): string;
+    setCategoricalValue(value: string): SessionFeedback;
+
+    hasScore(): boolean;
+    clearScore(): void;
+    getScore(): number | undefined;
+    setScore(value: number): SessionFeedback;
+    getComment(): string;
+    setComment(value: string): SessionFeedback;
+    getCriterion(): string;
+    setCriterion(value: string): SessionFeedback;
+    getAuthorType(): FeedbackAuthorType;
+    setAuthorType(value: FeedbackAuthorType): SessionFeedback;
+    getAnnotatorUserId(): string;
+    setAnnotatorUserId(value: string): SessionFeedback;
+    getOriginId(): string;
+    setOriginId(value: string): SessionFeedback;
+    getIdentifiedUserId(): string;
+    setIdentifiedUserId(value: string): SessionFeedback;
+
+    hasRaw(): boolean;
+    clearRaw(): void;
+    getRaw(): google_protobuf_struct_pb.Struct | undefined;
+    setRaw(value?: google_protobuf_struct_pb.Struct): SessionFeedback;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionFeedback;
+
+    hasModifiedAt(): boolean;
+    clearModifiedAt(): void;
+    getModifiedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setModifiedAt(value?: google_protobuf_timestamp_pb.Timestamp): SessionFeedback;
+    getCreatedBy(): string;
+    setCreatedBy(value: string): SessionFeedback;
+    getModifiedBy(): string;
+    setModifiedBy(value: string): SessionFeedback;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): SessionFeedback.AsObject;
+    static toObject(includeInstance: boolean, msg: SessionFeedback): SessionFeedback.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: SessionFeedback, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): SessionFeedback;
+    static deserializeBinaryFromReader(message: SessionFeedback, reader: jspb.BinaryReader): SessionFeedback;
+}
+
+export namespace SessionFeedback {
+    export type AsObject = {
+        name: string,
+        sessionId: string,
+        sessionStepId: string,
+        responseId: string,
+        sessionStepLlmTelemetryId: string,
+        rating: FeedbackRating,
+        categoricalValue: string,
+        score?: number,
+        comment: string,
+        criterion: string,
+        authorType: FeedbackAuthorType,
+        annotatorUserId: string,
+        originId: string,
+        identifiedUserId: string,
+        raw?: google_protobuf_struct_pb.Struct.AsObject,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        modifiedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        createdBy: string,
+        modifiedBy: string,
+    }
+}
+
+export class AddSessionFeedbackRequest extends jspb.Message { 
+    getSessionId(): string;
+    setSessionId(value: string): AddSessionFeedbackRequest;
+
+    hasFeedback(): boolean;
+    clearFeedback(): void;
+    getFeedback(): SessionFeedback | undefined;
+    setFeedback(value?: SessionFeedback): AddSessionFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): AddSessionFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: AddSessionFeedbackRequest): AddSessionFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: AddSessionFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AddSessionFeedbackRequest;
+    static deserializeBinaryFromReader(message: AddSessionFeedbackRequest, reader: jspb.BinaryReader): AddSessionFeedbackRequest;
+}
+
+export namespace AddSessionFeedbackRequest {
+    export type AsObject = {
+        sessionId: string,
+        feedback?: SessionFeedback.AsObject,
+    }
+}
+
+export class AddSessionStepFeedbackRequest extends jspb.Message { 
+    getSessionId(): string;
+    setSessionId(value: string): AddSessionStepFeedbackRequest;
+    getSessionStepId(): string;
+    setSessionStepId(value: string): AddSessionStepFeedbackRequest;
+
+    hasFeedback(): boolean;
+    clearFeedback(): void;
+    getFeedback(): SessionFeedback | undefined;
+    setFeedback(value?: SessionFeedback): AddSessionStepFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): AddSessionStepFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: AddSessionStepFeedbackRequest): AddSessionStepFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: AddSessionStepFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): AddSessionStepFeedbackRequest;
+    static deserializeBinaryFromReader(message: AddSessionStepFeedbackRequest, reader: jspb.BinaryReader): AddSessionStepFeedbackRequest;
+}
+
+export namespace AddSessionStepFeedbackRequest {
+    export type AsObject = {
+        sessionId: string,
+        sessionStepId: string,
+        feedback?: SessionFeedback.AsObject,
+    }
+}
+
+export class GetSessionFeedbackRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): GetSessionFeedbackRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetSessionFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetSessionFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetSessionFeedbackRequest): GetSessionFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetSessionFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetSessionFeedbackRequest;
+    static deserializeBinaryFromReader(message: GetSessionFeedbackRequest, reader: jspb.BinaryReader): GetSessionFeedbackRequest;
+}
+
+export namespace GetSessionFeedbackRequest {
+    export type AsObject = {
+        name: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    }
+}
+
+export class UpdateSessionFeedbackRequest extends jspb.Message { 
+
+    hasFeedback(): boolean;
+    clearFeedback(): void;
+    getFeedback(): SessionFeedback | undefined;
+    setFeedback(value?: SessionFeedback): UpdateSessionFeedbackRequest;
+
+    hasUpdateMask(): boolean;
+    clearUpdateMask(): void;
+    getUpdateMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setUpdateMask(value?: google_protobuf_field_mask_pb.FieldMask): UpdateSessionFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateSessionFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateSessionFeedbackRequest): UpdateSessionFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateSessionFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateSessionFeedbackRequest;
+    static deserializeBinaryFromReader(message: UpdateSessionFeedbackRequest, reader: jspb.BinaryReader): UpdateSessionFeedbackRequest;
+}
+
+export namespace UpdateSessionFeedbackRequest {
+    export type AsObject = {
+        feedback?: SessionFeedback.AsObject,
+        updateMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    }
+}
+
+export class DeleteSessionFeedbackRequest extends jspb.Message { 
+    getName(): string;
+    setName(value: string): DeleteSessionFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteSessionFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteSessionFeedbackRequest): DeleteSessionFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteSessionFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteSessionFeedbackRequest;
+    static deserializeBinaryFromReader(message: DeleteSessionFeedbackRequest, reader: jspb.BinaryReader): DeleteSessionFeedbackRequest;
+}
+
+export namespace DeleteSessionFeedbackRequest {
+    export type AsObject = {
+        name: string,
+    }
+}
+
+export class ListSessionFeedbackRequest extends jspb.Message { 
+    getSessionId(): string;
+    setSessionId(value: string): ListSessionFeedbackRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListSessionFeedbackRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListSessionFeedbackRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListSessionFeedbackRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListSessionFeedbackRequest): ListSessionFeedbackRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListSessionFeedbackRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListSessionFeedbackRequest;
+    static deserializeBinaryFromReader(message: ListSessionFeedbackRequest, reader: jspb.BinaryReader): ListSessionFeedbackRequest;
+}
+
+export namespace ListSessionFeedbackRequest {
+    export type AsObject = {
+        sessionId: string,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+    }
+}
+
+export class ListSessionFeedbackOfAllSessionsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): ListSessionFeedbackOfAllSessionsRequest;
+
+    hasSessionFilter(): boolean;
+    clearSessionFilter(): void;
+    getSessionFilter(): SessionFilter | undefined;
+    setSessionFilter(value?: SessionFilter): ListSessionFeedbackOfAllSessionsRequest;
+    getPageToken(): string;
+    setPageToken(value: string): ListSessionFeedbackOfAllSessionsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): ListSessionFeedbackOfAllSessionsRequest;
+
+    hasFeedbackFilter(): boolean;
+    clearFeedbackFilter(): void;
+    getFeedbackFilter(): FeedbackFilter | undefined;
+    setFeedbackFilter(value?: FeedbackFilter): ListSessionFeedbackOfAllSessionsRequest;
+    getOrderBy(): string;
+    setOrderBy(value: string): ListSessionFeedbackOfAllSessionsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListSessionFeedbackOfAllSessionsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListSessionFeedbackOfAllSessionsRequest): ListSessionFeedbackOfAllSessionsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListSessionFeedbackOfAllSessionsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListSessionFeedbackOfAllSessionsRequest;
+    static deserializeBinaryFromReader(message: ListSessionFeedbackOfAllSessionsRequest, reader: jspb.BinaryReader): ListSessionFeedbackOfAllSessionsRequest;
+}
+
+export namespace ListSessionFeedbackOfAllSessionsRequest {
+    export type AsObject = {
+        parent: string,
+        sessionFilter?: SessionFilter.AsObject,
+        pageToken: string,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        feedbackFilter?: FeedbackFilter.AsObject,
+        orderBy: string,
+    }
+}
+
+export class ListSessionFeedbackResponse extends jspb.Message { 
+    clearFeedbackList(): void;
+    getFeedbackList(): Array<SessionFeedback>;
+    setFeedbackList(value: Array<SessionFeedback>): ListSessionFeedbackResponse;
+    addFeedback(value?: SessionFeedback, index?: number): SessionFeedback;
+    getNextPageToken(): string;
+    setNextPageToken(value: string): ListSessionFeedbackResponse;
+    getTotalCount(): number;
+    setTotalCount(value: number): ListSessionFeedbackResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListSessionFeedbackResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListSessionFeedbackResponse): ListSessionFeedbackResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListSessionFeedbackResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListSessionFeedbackResponse;
+    static deserializeBinaryFromReader(message: ListSessionFeedbackResponse, reader: jspb.BinaryReader): ListSessionFeedbackResponse;
+}
+
+export namespace ListSessionFeedbackResponse {
+    export type AsObject = {
+        feedbackList: Array<SessionFeedback.AsObject>,
+        nextPageToken: string,
+        totalCount: number,
+    }
+}
+
+export class FeedbackFilter extends jspb.Message { 
+    clearRatingsList(): void;
+    getRatingsList(): Array<FeedbackRating>;
+    setRatingsList(value: Array<FeedbackRating>): FeedbackFilter;
+    addRatings(value: FeedbackRating, index?: number): FeedbackRating;
+    clearAuthorTypesList(): void;
+    getAuthorTypesList(): Array<FeedbackAuthorType>;
+    setAuthorTypesList(value: Array<FeedbackAuthorType>): FeedbackFilter;
+    addAuthorTypes(value: FeedbackAuthorType, index?: number): FeedbackAuthorType;
+
+    hasHasComment(): boolean;
+    clearHasComment(): void;
+    getHasComment(): boolean | undefined;
+    setHasComment(value: boolean): FeedbackFilter;
+
+    hasEarliest(): boolean;
+    clearEarliest(): void;
+    getEarliest(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEarliest(value?: google_protobuf_timestamp_pb.Timestamp): FeedbackFilter;
+
+    hasLatest(): boolean;
+    clearLatest(): void;
+    getLatest(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setLatest(value?: google_protobuf_timestamp_pb.Timestamp): FeedbackFilter;
+    clearCriteriaList(): void;
+    getCriteriaList(): Array<string>;
+    setCriteriaList(value: Array<string>): FeedbackFilter;
+    addCriteria(value: string, index?: number): string;
+    clearLanguageCodesList(): void;
+    getLanguageCodesList(): Array<string>;
+    setLanguageCodesList(value: Array<string>): FeedbackFilter;
+    addLanguageCodes(value: string, index?: number): string;
+    clearAnnotatorUserIdsList(): void;
+    getAnnotatorUserIdsList(): Array<string>;
+    setAnnotatorUserIdsList(value: Array<string>): FeedbackFilter;
+    addAnnotatorUserIds(value: string, index?: number): string;
+    clearOriginIdsList(): void;
+    getOriginIdsList(): Array<string>;
+    setOriginIdsList(value: Array<string>): FeedbackFilter;
+    addOriginIds(value: string, index?: number): string;
+
+    hasScoreMin(): boolean;
+    clearScoreMin(): void;
+    getScoreMin(): number | undefined;
+    setScoreMin(value: number): FeedbackFilter;
+
+    hasScoreMax(): boolean;
+    clearScoreMax(): void;
+    getScoreMax(): number | undefined;
+    setScoreMax(value: number): FeedbackFilter;
+    getScope(): FeedbackScope;
+    setScope(value: FeedbackScope): FeedbackFilter;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FeedbackFilter.AsObject;
+    static toObject(includeInstance: boolean, msg: FeedbackFilter): FeedbackFilter.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FeedbackFilter, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FeedbackFilter;
+    static deserializeBinaryFromReader(message: FeedbackFilter, reader: jspb.BinaryReader): FeedbackFilter;
+}
+
+export namespace FeedbackFilter {
+    export type AsObject = {
+        ratingsList: Array<FeedbackRating>,
+        authorTypesList: Array<FeedbackAuthorType>,
+        hasComment?: boolean,
+        earliest?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        latest?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        criteriaList: Array<string>,
+        languageCodesList: Array<string>,
+        annotatorUserIdsList: Array<string>,
+        originIdsList: Array<string>,
+        scoreMin?: number,
+        scoreMax?: number,
+        scope: FeedbackScope,
+    }
+}
+
+export class FeedbackBreakdownBucket extends jspb.Message { 
+    getKey(): string;
+    setKey(value: string): FeedbackBreakdownBucket;
+    getThumbsUpCount(): number;
+    setThumbsUpCount(value: number): FeedbackBreakdownBucket;
+    getThumbsDownCount(): number;
+    setThumbsDownCount(value: number): FeedbackBreakdownBucket;
+    getTotal(): number;
+    setTotal(value: number): FeedbackBreakdownBucket;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FeedbackBreakdownBucket.AsObject;
+    static toObject(includeInstance: boolean, msg: FeedbackBreakdownBucket): FeedbackBreakdownBucket.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FeedbackBreakdownBucket, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FeedbackBreakdownBucket;
+    static deserializeBinaryFromReader(message: FeedbackBreakdownBucket, reader: jspb.BinaryReader): FeedbackBreakdownBucket;
+}
+
+export namespace FeedbackBreakdownBucket {
+    export type AsObject = {
+        key: string,
+        thumbsUpCount: number,
+        thumbsDownCount: number,
+        total: number,
+    }
+}
+
+export class FeedbackStatistics extends jspb.Message { 
+    getTotalFeedback(): number;
+    setTotalFeedback(value: number): FeedbackStatistics;
+    getThumbsUpCount(): number;
+    setThumbsUpCount(value: number): FeedbackStatistics;
+    getThumbsDownCount(): number;
+    setThumbsDownCount(value: number): FeedbackStatistics;
+    getSessionLevelCount(): number;
+    setSessionLevelCount(value: number): FeedbackStatistics;
+    getSessionStepLevelCount(): number;
+    setSessionStepLevelCount(value: number): FeedbackStatistics;
+    getCommentCount(): number;
+    setCommentCount(value: number): FeedbackStatistics;
+    getSessionReviewCount(): number;
+    setSessionReviewCount(value: number): FeedbackStatistics;
+    getSessionCommentCount(): number;
+    setSessionCommentCount(value: number): FeedbackStatistics;
+    clearByLanguageList(): void;
+    getByLanguageList(): Array<FeedbackBreakdownBucket>;
+    setByLanguageList(value: Array<FeedbackBreakdownBucket>): FeedbackStatistics;
+    addByLanguage(value?: FeedbackBreakdownBucket, index?: number): FeedbackBreakdownBucket;
+    clearByIntentList(): void;
+    getByIntentList(): Array<FeedbackBreakdownBucket>;
+    setByIntentList(value: Array<FeedbackBreakdownBucket>): FeedbackStatistics;
+    addByIntent(value?: FeedbackBreakdownBucket, index?: number): FeedbackBreakdownBucket;
+    clearByAuthorTypeList(): void;
+    getByAuthorTypeList(): Array<FeedbackBreakdownBucket>;
+    setByAuthorTypeList(value: Array<FeedbackBreakdownBucket>): FeedbackStatistics;
+    addByAuthorType(value?: FeedbackBreakdownBucket, index?: number): FeedbackBreakdownBucket;
+    getUnspecifiedRatingCount(): number;
+    setUnspecifiedRatingCount(value: number): FeedbackStatistics;
+    getScoredCount(): number;
+    setScoredCount(value: number): FeedbackStatistics;
+    getAverageScore(): number;
+    setAverageScore(value: number): FeedbackStatistics;
+    clearByOriginList(): void;
+    getByOriginList(): Array<FeedbackBreakdownBucket>;
+    setByOriginList(value: Array<FeedbackBreakdownBucket>): FeedbackStatistics;
+    addByOrigin(value?: FeedbackBreakdownBucket, index?: number): FeedbackBreakdownBucket;
+    clearByCriterionList(): void;
+    getByCriterionList(): Array<FeedbackBreakdownBucket>;
+    setByCriterionList(value: Array<FeedbackBreakdownBucket>): FeedbackStatistics;
+    addByCriterion(value?: FeedbackBreakdownBucket, index?: number): FeedbackBreakdownBucket;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FeedbackStatistics.AsObject;
+    static toObject(includeInstance: boolean, msg: FeedbackStatistics): FeedbackStatistics.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FeedbackStatistics, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FeedbackStatistics;
+    static deserializeBinaryFromReader(message: FeedbackStatistics, reader: jspb.BinaryReader): FeedbackStatistics;
+}
+
+export namespace FeedbackStatistics {
+    export type AsObject = {
+        totalFeedback: number,
+        thumbsUpCount: number,
+        thumbsDownCount: number,
+        sessionLevelCount: number,
+        sessionStepLevelCount: number,
+        commentCount: number,
+        sessionReviewCount: number,
+        sessionCommentCount: number,
+        byLanguageList: Array<FeedbackBreakdownBucket.AsObject>,
+        byIntentList: Array<FeedbackBreakdownBucket.AsObject>,
+        byAuthorTypeList: Array<FeedbackBreakdownBucket.AsObject>,
+        unspecifiedRatingCount: number,
+        scoredCount: number,
+        averageScore: number,
+        byOriginList: Array<FeedbackBreakdownBucket.AsObject>,
+        byCriterionList: Array<FeedbackBreakdownBucket.AsObject>,
+    }
+}
+
+export class GetFeedbackStatisticsRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): GetFeedbackStatisticsRequest;
+
+    hasSessionFilter(): boolean;
+    clearSessionFilter(): void;
+    getSessionFilter(): SessionFilter | undefined;
+    setSessionFilter(value?: SessionFilter): GetFeedbackStatisticsRequest;
+    getIncludeReviewAndCommentRollup(): boolean;
+    setIncludeReviewAndCommentRollup(value: boolean): GetFeedbackStatisticsRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetFeedbackStatisticsRequest;
+
+    hasFeedbackFilter(): boolean;
+    clearFeedbackFilter(): void;
+    getFeedbackFilter(): FeedbackFilter | undefined;
+    setFeedbackFilter(value?: FeedbackFilter): GetFeedbackStatisticsRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetFeedbackStatisticsRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetFeedbackStatisticsRequest): GetFeedbackStatisticsRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetFeedbackStatisticsRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetFeedbackStatisticsRequest;
+    static deserializeBinaryFromReader(message: GetFeedbackStatisticsRequest, reader: jspb.BinaryReader): GetFeedbackStatisticsRequest;
+}
+
+export namespace GetFeedbackStatisticsRequest {
+    export type AsObject = {
+        parent: string,
+        sessionFilter?: SessionFilter.AsObject,
+        includeReviewAndCommentRollup: boolean,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        feedbackFilter?: FeedbackFilter.AsObject,
+    }
+}
+
+export class GetFeedbackStatisticsResponse extends jspb.Message { 
+
+    hasStatistics(): boolean;
+    clearStatistics(): void;
+    getStatistics(): FeedbackStatistics | undefined;
+    setStatistics(value?: FeedbackStatistics): GetFeedbackStatisticsResponse;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetFeedbackStatisticsResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetFeedbackStatisticsResponse): GetFeedbackStatisticsResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetFeedbackStatisticsResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetFeedbackStatisticsResponse;
+    static deserializeBinaryFromReader(message: GetFeedbackStatisticsResponse, reader: jspb.BinaryReader): GetFeedbackStatisticsResponse;
+}
+
+export namespace GetFeedbackStatisticsResponse {
+    export type AsObject = {
+        statistics?: FeedbackStatistics.AsObject,
+    }
+}
+
+export class FeedbackTimeSeriesBucket extends jspb.Message { 
+
+    hasBucketStart(): boolean;
+    clearBucketStart(): void;
+    getBucketStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setBucketStart(value?: google_protobuf_timestamp_pb.Timestamp): FeedbackTimeSeriesBucket;
+    getThumbsUpCount(): number;
+    setThumbsUpCount(value: number): FeedbackTimeSeriesBucket;
+    getThumbsDownCount(): number;
+    setThumbsDownCount(value: number): FeedbackTimeSeriesBucket;
+    getTotal(): number;
+    setTotal(value: number): FeedbackTimeSeriesBucket;
+
+    hasBucketEnd(): boolean;
+    clearBucketEnd(): void;
+    getBucketEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setBucketEnd(value?: google_protobuf_timestamp_pb.Timestamp): FeedbackTimeSeriesBucket;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): FeedbackTimeSeriesBucket.AsObject;
+    static toObject(includeInstance: boolean, msg: FeedbackTimeSeriesBucket): FeedbackTimeSeriesBucket.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: FeedbackTimeSeriesBucket, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): FeedbackTimeSeriesBucket;
+    static deserializeBinaryFromReader(message: FeedbackTimeSeriesBucket, reader: jspb.BinaryReader): FeedbackTimeSeriesBucket;
+}
+
+export namespace FeedbackTimeSeriesBucket {
+    export type AsObject = {
+        bucketStart?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        thumbsUpCount: number,
+        thumbsDownCount: number,
+        total: number,
+        bucketEnd?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class GetFeedbackStatisticsTimeSeriesRequest extends jspb.Message { 
+    getParent(): string;
+    setParent(value: string): GetFeedbackStatisticsTimeSeriesRequest;
+
+    hasSessionFilter(): boolean;
+    clearSessionFilter(): void;
+    getSessionFilter(): SessionFilter | undefined;
+    setSessionFilter(value?: SessionFilter): GetFeedbackStatisticsTimeSeriesRequest;
+    getBucketWidthSeconds(): number;
+    setBucketWidthSeconds(value: number): GetFeedbackStatisticsTimeSeriesRequest;
+    getMaxBuckets(): number;
+    setMaxBuckets(value: number): GetFeedbackStatisticsTimeSeriesRequest;
+
+    hasFieldMask(): boolean;
+    clearFieldMask(): void;
+    getFieldMask(): google_protobuf_field_mask_pb.FieldMask | undefined;
+    setFieldMask(value?: google_protobuf_field_mask_pb.FieldMask): GetFeedbackStatisticsTimeSeriesRequest;
+
+    hasFeedbackFilter(): boolean;
+    clearFeedbackFilter(): void;
+    getFeedbackFilter(): FeedbackFilter | undefined;
+    setFeedbackFilter(value?: FeedbackFilter): GetFeedbackStatisticsTimeSeriesRequest;
+    getGranularity(): FeedbackTimeGranularity;
+    setGranularity(value: FeedbackTimeGranularity): GetFeedbackStatisticsTimeSeriesRequest;
+    getTimeZone(): string;
+    setTimeZone(value: string): GetFeedbackStatisticsTimeSeriesRequest;
+
+    hasStart(): boolean;
+    clearStart(): void;
+    getStart(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setStart(value?: google_protobuf_timestamp_pb.Timestamp): GetFeedbackStatisticsTimeSeriesRequest;
+
+    hasEnd(): boolean;
+    clearEnd(): void;
+    getEnd(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setEnd(value?: google_protobuf_timestamp_pb.Timestamp): GetFeedbackStatisticsTimeSeriesRequest;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetFeedbackStatisticsTimeSeriesRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetFeedbackStatisticsTimeSeriesRequest): GetFeedbackStatisticsTimeSeriesRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetFeedbackStatisticsTimeSeriesRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetFeedbackStatisticsTimeSeriesRequest;
+    static deserializeBinaryFromReader(message: GetFeedbackStatisticsTimeSeriesRequest, reader: jspb.BinaryReader): GetFeedbackStatisticsTimeSeriesRequest;
+}
+
+export namespace GetFeedbackStatisticsTimeSeriesRequest {
+    export type AsObject = {
+        parent: string,
+        sessionFilter?: SessionFilter.AsObject,
+        bucketWidthSeconds: number,
+        maxBuckets: number,
+        fieldMask?: google_protobuf_field_mask_pb.FieldMask.AsObject,
+        feedbackFilter?: FeedbackFilter.AsObject,
+        granularity: FeedbackTimeGranularity,
+        timeZone: string,
+        start?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        end?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+    }
+}
+
+export class GetFeedbackStatisticsTimeSeriesResponse extends jspb.Message { 
+    clearBucketsList(): void;
+    getBucketsList(): Array<FeedbackTimeSeriesBucket>;
+    setBucketsList(value: Array<FeedbackTimeSeriesBucket>): GetFeedbackStatisticsTimeSeriesResponse;
+    addBuckets(value?: FeedbackTimeSeriesBucket, index?: number): FeedbackTimeSeriesBucket;
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetFeedbackStatisticsTimeSeriesResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetFeedbackStatisticsTimeSeriesResponse): GetFeedbackStatisticsTimeSeriesResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetFeedbackStatisticsTimeSeriesResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetFeedbackStatisticsTimeSeriesResponse;
+    static deserializeBinaryFromReader(message: GetFeedbackStatisticsTimeSeriesResponse, reader: jspb.BinaryReader): GetFeedbackStatisticsTimeSeriesResponse;
+}
+
+export namespace GetFeedbackStatisticsTimeSeriesResponse {
+    export type AsObject = {
+        bucketsList: Array<FeedbackTimeSeriesBucket.AsObject>,
     }
 }
 
@@ -4583,6 +5332,34 @@ export enum ComparisonOperator {
     CONTAINS = 4,
     STARTS_WITH = 5,
     ENDS_WITH = 6,
+}
+
+export enum FeedbackRating {
+    FEEDBACK_RATING_UNSPECIFIED = 0,
+    FEEDBACK_RATING_THUMBS_UP = 1,
+    FEEDBACK_RATING_THUMBS_DOWN = 2,
+}
+
+export enum FeedbackAuthorType {
+    FEEDBACK_AUTHOR_TYPE_UNSPECIFIED = 0,
+    FEEDBACK_AUTHOR_TYPE_HUMAN_REVIEWER = 1,
+    FEEDBACK_AUTHOR_TYPE_TECHNICAL_USER = 2,
+    FEEDBACK_AUTHOR_TYPE_END_USER_ANONYMOUS = 3,
+}
+
+export enum FeedbackScope {
+    FEEDBACK_SCOPE_UNSPECIFIED = 0,
+    FEEDBACK_SCOPE_SESSION_LEVEL = 1,
+    FEEDBACK_SCOPE_STEP_LEVEL = 2,
+}
+
+export enum FeedbackTimeGranularity {
+    FEEDBACK_TIME_GRANULARITY_UNSPECIFIED = 0,
+    FEEDBACK_TIME_GRANULARITY_HOUR = 1,
+    FEEDBACK_TIME_GRANULARITY_DAY = 2,
+    FEEDBACK_TIME_GRANULARITY_WEEK = 3,
+    FEEDBACK_TIME_GRANULARITY_MONTH = 4,
+    FEEDBACK_TIME_GRANULARITY_YEAR = 5,
 }
 
 export enum ResourceView {

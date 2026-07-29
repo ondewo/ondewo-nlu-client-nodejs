@@ -6283,8 +6283,8 @@ proto.ondewo.nlu.LlmEvaluationFeedback.serializeBinaryToWriter = function(messag
       f
     );
   }
-  f = message.getScore();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeDouble(
       4,
       f
@@ -6441,7 +6441,25 @@ proto.ondewo.nlu.LlmEvaluationFeedback.prototype.getScore = function() {
  * @return {!proto.ondewo.nlu.LlmEvaluationFeedback} returns this
  */
 proto.ondewo.nlu.LlmEvaluationFeedback.prototype.setScore = function(value) {
-  return jspb.Message.setProto3FloatField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmEvaluationFeedback} returns this
+ */
+proto.ondewo.nlu.LlmEvaluationFeedback.prototype.clearScore = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmEvaluationFeedback.prototype.hasScore = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -15852,8 +15870,8 @@ proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds.serializeBinaryToWriter = fu
       f
     );
   }
-  f = message.getMaxRegressionPerCriterion();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 2));
+  if (f != null) {
     writer.writeDouble(
       2,
       f
@@ -15908,7 +15926,25 @@ proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds.prototype.getMaxRegressionPe
  * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds} returns this
  */
 proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds.prototype.setMaxRegressionPerCriterion = function(value) {
-  return jspb.Message.setProto3FloatField(this, 2, value);
+  return jspb.Message.setField(this, 2, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds} returns this
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds.prototype.clearMaxRegressionPerCriterion = function() {
+  return jspb.Message.setField(this, 2, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateThresholds.prototype.hasMaxRegressionPerCriterion = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -16098,15 +16134,15 @@ proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.serializeBinaryToWriter = 
       f
     );
   }
-  f = message.getMaxToxicity();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
     writer.writeDouble(
       4,
       f
     );
   }
-  f = message.getMaxBias();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
     writer.writeDouble(
       5,
       f
@@ -16202,7 +16238,25 @@ proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.getMaxToxicity =
  * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig} returns this
  */
 proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.setMaxToxicity = function(value) {
-  return jspb.Message.setProto3FloatField(this, 4, value);
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig} returns this
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.clearMaxToxicity = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.hasMaxToxicity = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
@@ -16220,7 +16274,25 @@ proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.getMaxBias = fun
  * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig} returns this
  */
 proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.setMaxBias = function(value) {
-  return jspb.Message.setProto3FloatField(this, 5, value);
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig} returns this
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.clearMaxBias = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmEvaluationReleaseGateSafetyConfig.prototype.hasMaxBias = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -38117,8 +38189,8 @@ proto.ondewo.nlu.LlmEvaluationOnlineConfig.serializeBinaryToWriter = function(me
       f
     );
   }
-  f = message.getFailThreshold();
-  if (f !== 0.0) {
+  f = /** @type {number} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
     writer.writeDouble(
       8,
       f
@@ -38367,7 +38439,25 @@ proto.ondewo.nlu.LlmEvaluationOnlineConfig.prototype.getFailThreshold = function
  * @return {!proto.ondewo.nlu.LlmEvaluationOnlineConfig} returns this
  */
 proto.ondewo.nlu.LlmEvaluationOnlineConfig.prototype.setFailThreshold = function(value) {
-  return jspb.Message.setProto3FloatField(this, 8, value);
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmEvaluationOnlineConfig} returns this
+ */
+proto.ondewo.nlu.LlmEvaluationOnlineConfig.prototype.clearFailThreshold = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmEvaluationOnlineConfig.prototype.hasFailThreshold = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 

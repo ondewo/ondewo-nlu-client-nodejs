@@ -359,7 +359,10 @@ export class LlmEvaluationFeedback extends jspb.Message {
     setDisplayName(value: string): LlmEvaluationFeedback;
     getCriterion(): string;
     setCriterion(value: string): LlmEvaluationFeedback;
-    getScore(): number;
+
+    hasScore(): boolean;
+    clearScore(): void;
+    getScore(): number | undefined;
     setScore(value: number): LlmEvaluationFeedback;
     getCategoricalValue(): string;
     setCategoricalValue(value: string): LlmEvaluationFeedback;
@@ -408,7 +411,7 @@ export namespace LlmEvaluationFeedback {
         name: string,
         displayName: string,
         criterion: string,
-        score: number,
+        score?: number,
         categoricalValue: string,
         comment: string,
         annotatorUserId: string,
@@ -1586,7 +1589,10 @@ export namespace LlmEvaluationTurnResult {
 export class LlmEvaluationReleaseGateThresholds extends jspb.Message { 
     getMinPassRate(): number;
     setMinPassRate(value: number): LlmEvaluationReleaseGateThresholds;
-    getMaxRegressionPerCriterion(): number;
+
+    hasMaxRegressionPerCriterion(): boolean;
+    clearMaxRegressionPerCriterion(): void;
+    getMaxRegressionPerCriterion(): number | undefined;
     setMaxRegressionPerCriterion(value: number): LlmEvaluationReleaseGateThresholds;
     getMaxP95LatencySeconds(): number;
     setMaxP95LatencySeconds(value: number): LlmEvaluationReleaseGateThresholds;
@@ -1606,7 +1612,7 @@ export class LlmEvaluationReleaseGateThresholds extends jspb.Message {
 export namespace LlmEvaluationReleaseGateThresholds {
     export type AsObject = {
         minPassRate: number,
-        maxRegressionPerCriterion: number,
+        maxRegressionPerCriterion?: number,
         maxP95LatencySeconds: number,
         acceptanceMustPass: boolean,
     }
@@ -1621,9 +1627,15 @@ export class LlmEvaluationReleaseGateSafetyConfig extends jspb.Message {
     getEvaluatorNamesList(): Array<string>;
     setEvaluatorNamesList(value: Array<string>): LlmEvaluationReleaseGateSafetyConfig;
     addEvaluatorNames(value: string, index?: number): string;
-    getMaxToxicity(): number;
+
+    hasMaxToxicity(): boolean;
+    clearMaxToxicity(): void;
+    getMaxToxicity(): number | undefined;
     setMaxToxicity(value: number): LlmEvaluationReleaseGateSafetyConfig;
-    getMaxBias(): number;
+
+    hasMaxBias(): boolean;
+    clearMaxBias(): void;
+    getMaxBias(): number | undefined;
     setMaxBias(value: number): LlmEvaluationReleaseGateSafetyConfig;
 
     serializeBinary(): Uint8Array;
@@ -1641,8 +1653,8 @@ export namespace LlmEvaluationReleaseGateSafetyConfig {
         enabled: boolean,
         adversarialDatasetName: string,
         evaluatorNamesList: Array<string>,
-        maxToxicity: number,
-        maxBias: number,
+        maxToxicity?: number,
+        maxBias?: number,
     }
 }
 
@@ -4415,7 +4427,10 @@ export class LlmEvaluationOnlineConfig extends jspb.Message {
     setEnabled(value: boolean): LlmEvaluationOnlineConfig;
     getTargetDatasetName(): string;
     setTargetDatasetName(value: string): LlmEvaluationOnlineConfig;
-    getFailThreshold(): number;
+
+    hasFailThreshold(): boolean;
+    clearFailThreshold(): void;
+    getFailThreshold(): number | undefined;
     setFailThreshold(value: number): LlmEvaluationOnlineConfig;
     getSettleSeconds(): number;
     setSettleSeconds(value: number): LlmEvaluationOnlineConfig;
@@ -4471,7 +4486,7 @@ export namespace LlmEvaluationOnlineConfig {
         sampleRate: number,
         enabled: boolean,
         targetDatasetName: string,
-        failThreshold: number,
+        failThreshold?: number,
         settleSeconds: number,
         requireTelemetry: boolean,
         llmEvaluationOnlineSessionFilter?: LlmEvaluationOnlineSessionFilter.AsObject,

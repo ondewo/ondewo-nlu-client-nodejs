@@ -50,7 +50,9 @@ goog.object.extend(proto, ondewo_nlu_llm_evaluation_pb);
 goog.exportSymbol('proto.ondewo.nlu.AddAudioFilesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AddAudioFilesResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AddSessionCommentRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.AddSessionFeedbackRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AddSessionLabelsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.AddSessionStepFeedbackRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AudioEncoding', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AudioFileResource', null, global);
 goog.exportSymbol('proto.ondewo.nlu.AudioFileResourceType', null, global);
@@ -62,6 +64,7 @@ goog.exportSymbol('proto.ondewo.nlu.CreateSessionStepRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteAudioFilesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteAudioFilesResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteSessionCommentsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.DeleteSessionFeedbackRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteSessionLabelsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteSessionRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DeleteSessionStepRequest', null, global);
@@ -70,12 +73,25 @@ goog.exportSymbol('proto.ondewo.nlu.DetectIntentResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DetectedIntent', null, global);
 goog.exportSymbol('proto.ondewo.nlu.DocumentFileResource', null, global);
 goog.exportSymbol('proto.ondewo.nlu.EventInput', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackAuthorType', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackBreakdownBucket', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackFilter', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackRating', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackScope', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackStatistics', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackTimeGranularity', null, global);
+goog.exportSymbol('proto.ondewo.nlu.FeedbackTimeSeriesBucket', null, global);
 goog.exportSymbol('proto.ondewo.nlu.FileResource', null, global);
 goog.exportSymbol('proto.ondewo.nlu.FileResource.FileResourceCase', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAudioFileOfSessionRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAudioFilesRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetAudioFilesResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetFeedbackStatisticsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetFeedbackStatisticsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetLatestSessionReviewRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.GetSessionFeedbackRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetSessionRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetSessionReviewRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.GetSessionStepRequest', null, global);
@@ -105,8 +121,12 @@ goog.exportSymbol('proto.ondewo.nlu.ListPlatformsOfAllSessionsRequest', null, gl
 goog.exportSymbol('proto.ondewo.nlu.ListPlatformsResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListPropertyIdsOfAllSessionsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListPropertyIdsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListSessionCommentsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListSessionCommentsResponse', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListSessionFeedbackRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.ListSessionFeedbackResponse', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListSessionLabelsOfAllSessionsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListSessionLabelsRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.ListSessionLabelsResponse', null, global);
@@ -157,6 +177,7 @@ goog.exportSymbol('proto.ondewo.nlu.ResourceView', null, global);
 goog.exportSymbol('proto.ondewo.nlu.S2tTranscription', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Session', null, global);
 goog.exportSymbol('proto.ondewo.nlu.Session.View', null, global);
+goog.exportSymbol('proto.ondewo.nlu.SessionFeedback', null, global);
 goog.exportSymbol('proto.ondewo.nlu.SessionFilter', null, global);
 goog.exportSymbol('proto.ondewo.nlu.SessionInfo', null, global);
 goog.exportSymbol('proto.ondewo.nlu.SessionInfo.ContextSteps', null, global);
@@ -172,6 +193,7 @@ goog.exportSymbol('proto.ondewo.nlu.StreamingRecognitionResult.MessageType', nul
 goog.exportSymbol('proto.ondewo.nlu.TextInput', null, global);
 goog.exportSymbol('proto.ondewo.nlu.TranscriptionType', null, global);
 goog.exportSymbol('proto.ondewo.nlu.UpdateSessionCommentsRequest', null, global);
+goog.exportSymbol('proto.ondewo.nlu.UpdateSessionFeedbackRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.UpdateSessionStepRequest', null, global);
 goog.exportSymbol('proto.ondewo.nlu.VideoFileResource', null, global);
 /**
@@ -2179,6 +2201,27 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.displayName = 'proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
 proto.ondewo.nlu.ListSessionCommentsResponse = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListSessionCommentsResponse.repeatedFields_, null);
 };
@@ -2189,6 +2232,363 @@ if (goog.DEBUG && !COMPILED) {
    * @override
    */
   proto.ondewo.nlu.ListSessionCommentsResponse.displayName = 'proto.ondewo.nlu.ListSessionCommentsResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.SessionFeedback = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.SessionFeedback, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.SessionFeedback.displayName = 'proto.ondewo.nlu.SessionFeedback';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.AddSessionFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.AddSessionFeedbackRequest.displayName = 'proto.ondewo.nlu.AddSessionFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.AddSessionStepFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.AddSessionStepFeedbackRequest.displayName = 'proto.ondewo.nlu.AddSessionStepFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetSessionFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetSessionFeedbackRequest.displayName = 'proto.ondewo.nlu.GetSessionFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.UpdateSessionFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.UpdateSessionFeedbackRequest.displayName = 'proto.ondewo.nlu.UpdateSessionFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.DeleteSessionFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.DeleteSessionFeedbackRequest.displayName = 'proto.ondewo.nlu.DeleteSessionFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListSessionFeedbackRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListSessionFeedbackRequest.displayName = 'proto.ondewo.nlu.ListSessionFeedbackRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.displayName = 'proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.ListSessionFeedbackResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.ListSessionFeedbackResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.ListSessionFeedbackResponse.displayName = 'proto.ondewo.nlu.ListSessionFeedbackResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FeedbackFilter = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.FeedbackFilter.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.FeedbackFilter, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FeedbackFilter.displayName = 'proto.ondewo.nlu.FeedbackFilter';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.FeedbackBreakdownBucket, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FeedbackBreakdownBucket.displayName = 'proto.ondewo.nlu.FeedbackBreakdownBucket';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FeedbackStatistics = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.FeedbackStatistics.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.FeedbackStatistics, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FeedbackStatistics.displayName = 'proto.ondewo.nlu.FeedbackStatistics';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetFeedbackStatisticsRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetFeedbackStatisticsRequest.displayName = 'proto.ondewo.nlu.GetFeedbackStatisticsRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetFeedbackStatisticsResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetFeedbackStatisticsResponse.displayName = 'proto.ondewo.nlu.GetFeedbackStatisticsResponse';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.FeedbackTimeSeriesBucket, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.FeedbackTimeSeriesBucket.displayName = 'proto.ondewo.nlu.FeedbackTimeSeriesBucket';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+};
+goog.inherits(proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.displayName = 'proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest';
+}
+/**
+ * Generated by JsPbCodeGenerator.
+ * @param {Array=} opt_data Optional initial data array, typically from a
+ * server response, or constructed directly in Javascript. The array is used
+ * in place and becomes part of the constructed object. It is not cloned.
+ * If no data is provided, the constructed object will be empty, but still
+ * valid.
+ * @extends {jspb.Message}
+ * @constructor
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse = function(opt_data) {
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.repeatedFields_, null);
+};
+goog.inherits(proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse, jspb.Message);
+if (goog.DEBUG && !COMPILED) {
+  /**
+   * @public
+   * @override
+   */
+  proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.displayName = 'proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse';
 }
 /**
  * Generated by JsPbCodeGenerator.
@@ -5684,7 +6084,8 @@ proto.ondewo.nlu.LlmTelemetry.toObject = function(includeInstance, msg) {
     extraBody: (f = msg.getExtraBody()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
     ccaiServiceProvider: jspb.Message.getFieldWithDefault(msg, 60, 0),
     llmSafetyAssessment: (f = msg.getLlmSafetyAssessment()) && proto.ondewo.nlu.LlmSafetyAssessment.toObject(includeInstance, f),
-    llmRetrievalMetadata: (f = msg.getLlmRetrievalMetadata()) && proto.ondewo.nlu.LlmRetrievalMetadata.toObject(includeInstance, f)
+    llmRetrievalMetadata: (f = msg.getLlmRetrievalMetadata()) && proto.ondewo.nlu.LlmRetrievalMetadata.toObject(includeInstance, f),
+    llmCallId: jspb.Message.getFieldWithDefault(msg, 63, "")
   };
 
   if (includeInstance) {
@@ -5985,6 +6386,10 @@ proto.ondewo.nlu.LlmTelemetry.deserializeBinaryFromReader = function(msg, reader
       var value = new proto.ondewo.nlu.LlmRetrievalMetadata;
       reader.readMessage(value,proto.ondewo.nlu.LlmRetrievalMetadata.deserializeBinaryFromReader);
       msg.setLlmRetrievalMetadata(value);
+      break;
+    case 63:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLlmCallId(value);
       break;
     default:
       reader.skipField();
@@ -6464,6 +6869,13 @@ proto.ondewo.nlu.LlmTelemetry.serializeBinaryToWriter = function(message, writer
       62,
       f,
       proto.ondewo.nlu.LlmRetrievalMetadata.serializeBinaryToWriter
+    );
+  }
+  f = message.getLlmCallId();
+  if (f.length > 0) {
+    writer.writeString(
+      63,
+      f
     );
   }
 };
@@ -8053,6 +8465,24 @@ proto.ondewo.nlu.LlmTelemetry.prototype.clearLlmRetrievalMetadata = function() {
  */
 proto.ondewo.nlu.LlmTelemetry.prototype.hasLlmRetrievalMetadata = function() {
   return jspb.Message.getField(this, 62) != null;
+};
+
+
+/**
+ * optional string llm_call_id = 63;
+ * @return {string}
+ */
+proto.ondewo.nlu.LlmTelemetry.prototype.getLlmCallId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 63, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.LlmTelemetry} returns this
+ */
+proto.ondewo.nlu.LlmTelemetry.prototype.setLlmCallId = function(value) {
+  return jspb.Message.setProto3StringField(this, 63, value);
 };
 
 
@@ -11220,7 +11650,10 @@ proto.ondewo.nlu.LlmToolUsage.toObject = function(includeInstance, msg) {
     errorRate: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
     durationSecondsTotal: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
     meanDurationSeconds: jspb.Message.getFloatingPointFieldWithDefault(msg, 6, 0.0),
-    llmTokenUsage: (f = msg.getLlmTokenUsage()) && proto.ondewo.nlu.LlmTokenUsage.toObject(includeInstance, f)
+    llmTokenUsage: (f = msg.getLlmTokenUsage()) && proto.ondewo.nlu.LlmTokenUsage.toObject(includeInstance, f),
+    arguments: (f = msg.getArguments()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
+    llmCallId: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    toolCallId: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -11285,6 +11718,19 @@ proto.ondewo.nlu.LlmToolUsage.deserializeBinaryFromReader = function(msg, reader
       var value = new proto.ondewo.nlu.LlmTokenUsage;
       reader.readMessage(value,proto.ondewo.nlu.LlmTokenUsage.deserializeBinaryFromReader);
       msg.setLlmTokenUsage(value);
+      break;
+    case 8:
+      var value = new google_protobuf_struct_pb.Struct;
+      reader.readMessage(value,google_protobuf_struct_pb.Struct.deserializeBinaryFromReader);
+      msg.setArguments(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLlmCallId(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setToolCallId(value);
       break;
     default:
       reader.skipField();
@@ -11363,6 +11809,28 @@ proto.ondewo.nlu.LlmToolUsage.serializeBinaryToWriter = function(message, writer
       7,
       f,
       proto.ondewo.nlu.LlmTokenUsage.serializeBinaryToWriter
+    );
+  }
+  f = message.getArguments();
+  if (f != null) {
+    writer.writeMessage(
+      8,
+      f,
+      google_protobuf_struct_pb.Struct.serializeBinaryToWriter
+    );
+  }
+  f = message.getLlmCallId();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getToolCallId();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
     );
   }
 };
@@ -11510,6 +11978,79 @@ proto.ondewo.nlu.LlmToolUsage.prototype.clearLlmTokenUsage = function() {
  */
 proto.ondewo.nlu.LlmToolUsage.prototype.hasLlmTokenUsage = function() {
   return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional google.protobuf.Struct arguments = 8;
+ * @return {?proto.google.protobuf.Struct}
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.getArguments = function() {
+  return /** @type{?proto.google.protobuf.Struct} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_struct_pb.Struct, 8));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Struct|undefined} value
+ * @return {!proto.ondewo.nlu.LlmToolUsage} returns this
+*/
+proto.ondewo.nlu.LlmToolUsage.prototype.setArguments = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.LlmToolUsage} returns this
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.clearArguments = function() {
+  return this.setArguments(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.hasArguments = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional string llm_call_id = 9;
+ * @return {string}
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.getLlmCallId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.LlmToolUsage} returns this
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.setLlmCallId = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string tool_call_id = 10;
+ * @return {string}
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.getToolCallId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.LlmToolUsage} returns this
+ */
+proto.ondewo.nlu.LlmToolUsage.prototype.setToolCallId = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -33079,7 +33620,8 @@ proto.ondewo.nlu.ListSessionCommentsRequest.toObject = function(includeInstance,
   var f, obj = {
     sessionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    isResolved: jspb.Message.getBooleanFieldWithDefault(msg, 4, false)
   };
 
   if (includeInstance) {
@@ -33128,6 +33670,10 @@ proto.ondewo.nlu.ListSessionCommentsRequest.deserializeBinaryFromReader = functi
       var value = new google_protobuf_field_mask_pb.FieldMask;
       reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
       msg.setFieldMask(value);
+      break;
+    case 4:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsResolved(value);
       break;
     default:
       reader.skipField();
@@ -33178,6 +33724,13 @@ proto.ondewo.nlu.ListSessionCommentsRequest.serializeBinaryToWriter = function(m
       3,
       f,
       google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 4));
+  if (f != null) {
+    writer.writeBool(
+      4,
+      f
     );
   }
 };
@@ -33253,6 +33806,352 @@ proto.ondewo.nlu.ListSessionCommentsRequest.prototype.clearFieldMask = function(
  */
 proto.ondewo.nlu.ListSessionCommentsRequest.prototype.hasFieldMask = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional bool is_resolved = 4;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsRequest.prototype.getIsResolved = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 4, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsRequest.prototype.setIsResolved = function(value) {
+  return jspb.Message.setField(this, 4, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsRequest.prototype.clearIsResolved = function() {
+  return jspb.Message.setField(this, 4, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsRequest.prototype.hasIsResolved = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionFilter: (f = msg.getSessionFilter()) && proto.ondewo.nlu.SessionFilter.toObject(includeInstance, f),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    isResolved: jspb.Message.getBooleanFieldWithDefault(msg, 5, false)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest;
+  return proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.SessionFilter;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader);
+      msg.setSessionFilter(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 5:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsResolved(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionFilter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 5));
+  if (f != null) {
+    writer.writeBool(
+      5,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional SessionFilter session_filter = 2;
+ * @return {?proto.ondewo.nlu.SessionFilter}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.getSessionFilter = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFilter, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFilter|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.setSessionFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.clearSessionFilter = function() {
+  return this.setSessionFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.hasSessionFilter = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string page_token = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional bool is_resolved = 5;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.getIsResolved = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 5, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.setIsResolved = function(value) {
+  return jspb.Message.setField(this, 5, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.clearIsResolved = function() {
+  return jspb.Message.setField(this, 5, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionCommentsOfAllSessionsRequest.prototype.hasIsResolved = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -33443,6 +34342,5460 @@ proto.ondewo.nlu.ListSessionCommentsResponse.prototype.getPageToken = function()
  */
 proto.ondewo.nlu.ListSessionCommentsResponse.prototype.setPageToken = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.SessionFeedback.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.SessionFeedback} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.SessionFeedback.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    sessionStepId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    responseId: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    sessionStepLlmTelemetryId: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    rating: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    categoricalValue: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    score: jspb.Message.getFloatingPointFieldWithDefault(msg, 8, 0.0),
+    comment: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    criterion: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    authorType: jspb.Message.getFieldWithDefault(msg, 11, 0),
+    annotatorUserId: jspb.Message.getFieldWithDefault(msg, 12, ""),
+    originId: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    identifiedUserId: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    raw: (f = msg.getRaw()) && google_protobuf_struct_pb.Struct.toObject(includeInstance, f),
+    createdAt: (f = msg.getCreatedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    modifiedAt: (f = msg.getModifiedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    createdBy: jspb.Message.getFieldWithDefault(msg, 18, ""),
+    modifiedBy: jspb.Message.getFieldWithDefault(msg, 19, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.SessionFeedback.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.SessionFeedback;
+  return proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.SessionFeedback} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionId(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionStepId(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setResponseId(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionStepLlmTelemetryId(value);
+      break;
+    case 6:
+      var value = /** @type {!proto.ondewo.nlu.FeedbackRating} */ (reader.readEnum());
+      msg.setRating(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCategoricalValue(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setScore(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setComment(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCriterion(value);
+      break;
+    case 11:
+      var value = /** @type {!proto.ondewo.nlu.FeedbackAuthorType} */ (reader.readEnum());
+      msg.setAuthorType(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAnnotatorUserId(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOriginId(value);
+      break;
+    case 14:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setIdentifiedUserId(value);
+      break;
+    case 15:
+      var value = new google_protobuf_struct_pb.Struct;
+      reader.readMessage(value,google_protobuf_struct_pb.Struct.deserializeBinaryFromReader);
+      msg.setRaw(value);
+      break;
+    case 16:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setCreatedAt(value);
+      break;
+    case 17:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setModifiedAt(value);
+      break;
+    case 18:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setCreatedBy(value);
+      break;
+    case 19:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setModifiedBy(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.SessionFeedback} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getSessionStepId();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getResponseId();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getSessionStepLlmTelemetryId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getRating();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      6,
+      f
+    );
+  }
+  f = message.getCategoricalValue();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 8));
+  if (f != null) {
+    writer.writeFloat(
+      8,
+      f
+    );
+  }
+  f = message.getComment();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
+      f
+    );
+  }
+  f = message.getCriterion();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
+      f
+    );
+  }
+  f = message.getAuthorType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      11,
+      f
+    );
+  }
+  f = message.getAnnotatorUserId();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
+    );
+  }
+  f = message.getOriginId();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
+  f = message.getIdentifiedUserId();
+  if (f.length > 0) {
+    writer.writeString(
+      14,
+      f
+    );
+  }
+  f = message.getRaw();
+  if (f != null) {
+    writer.writeMessage(
+      15,
+      f,
+      google_protobuf_struct_pb.Struct.serializeBinaryToWriter
+    );
+  }
+  f = message.getCreatedAt();
+  if (f != null) {
+    writer.writeMessage(
+      16,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getModifiedAt();
+  if (f != null) {
+    writer.writeMessage(
+      17,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getCreatedBy();
+  if (f.length > 0) {
+    writer.writeString(
+      18,
+      f
+    );
+  }
+  f = message.getModifiedBy();
+  if (f.length > 0) {
+    writer.writeString(
+      19,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string session_id = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getSessionId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setSessionId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string session_step_id = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getSessionStepId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setSessionStepId = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string response_id = 4;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getResponseId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setResponseId = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string session_step_llm_telemetry_id = 5;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getSessionStepLlmTelemetryId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setSessionStepLlmTelemetryId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional FeedbackRating rating = 6;
+ * @return {!proto.ondewo.nlu.FeedbackRating}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getRating = function() {
+  return /** @type {!proto.ondewo.nlu.FeedbackRating} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackRating} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setRating = function(value) {
+  return jspb.Message.setProto3EnumField(this, 6, value);
+};
+
+
+/**
+ * optional string categorical_value = 7;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getCategoricalValue = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setCategoricalValue = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional float score = 8;
+ * @return {number}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getScore = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 8, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setScore = function(value) {
+  return jspb.Message.setField(this, 8, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.clearScore = function() {
+  return jspb.Message.setField(this, 8, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.hasScore = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional string comment = 9;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getComment = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setComment = function(value) {
+  return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string criterion = 10;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getCriterion = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setCriterion = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * optional FeedbackAuthorType author_type = 11;
+ * @return {!proto.ondewo.nlu.FeedbackAuthorType}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getAuthorType = function() {
+  return /** @type {!proto.ondewo.nlu.FeedbackAuthorType} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackAuthorType} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setAuthorType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 11, value);
+};
+
+
+/**
+ * optional string annotator_user_id = 12;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getAnnotatorUserId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setAnnotatorUserId = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
+};
+
+
+/**
+ * optional string origin_id = 13;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getOriginId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setOriginId = function(value) {
+  return jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional string identified_user_id = 14;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getIdentifiedUserId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setIdentifiedUserId = function(value) {
+  return jspb.Message.setProto3StringField(this, 14, value);
+};
+
+
+/**
+ * optional google.protobuf.Struct raw = 15;
+ * @return {?proto.google.protobuf.Struct}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getRaw = function() {
+  return /** @type{?proto.google.protobuf.Struct} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_struct_pb.Struct, 15));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Struct|undefined} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+*/
+proto.ondewo.nlu.SessionFeedback.prototype.setRaw = function(value) {
+  return jspb.Message.setWrapperField(this, 15, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.clearRaw = function() {
+  return this.setRaw(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.hasRaw = function() {
+  return jspb.Message.getField(this, 15) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp created_at = 16;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getCreatedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+*/
+proto.ondewo.nlu.SessionFeedback.prototype.setCreatedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 16, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.clearCreatedAt = function() {
+  return this.setCreatedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.hasCreatedAt = function() {
+  return jspb.Message.getField(this, 16) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp modified_at = 17;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getModifiedAt = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 17));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+*/
+proto.ondewo.nlu.SessionFeedback.prototype.setModifiedAt = function(value) {
+  return jspb.Message.setWrapperField(this, 17, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.clearModifiedAt = function() {
+  return this.setModifiedAt(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.hasModifiedAt = function() {
+  return jspb.Message.getField(this, 17) != null;
+};
+
+
+/**
+ * optional string created_by = 18;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getCreatedBy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 18, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setCreatedBy = function(value) {
+  return jspb.Message.setProto3StringField(this, 18, value);
+};
+
+
+/**
+ * optional string modified_by = 19;
+ * @return {string}
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.getModifiedBy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 19, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.SessionFeedback} returns this
+ */
+proto.ondewo.nlu.SessionFeedback.prototype.setModifiedBy = function(value) {
+  return jspb.Message.setProto3StringField(this, 19, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.AddSessionFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.AddSessionFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    sessionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    feedback: (f = msg.getFeedback()) && proto.ondewo.nlu.SessionFeedback.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.AddSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.AddSessionFeedbackRequest;
+  return proto.ondewo.nlu.AddSessionFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.AddSessionFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.AddSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionId(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.SessionFeedback;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader);
+      msg.setFeedback(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.AddSessionFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.AddSessionFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSessionId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getFeedback();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string session_id = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.getSessionId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.AddSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.setSessionId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional SessionFeedback feedback = 2;
+ * @return {?proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.getFeedback = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFeedback} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFeedback, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFeedback|undefined} value
+ * @return {!proto.ondewo.nlu.AddSessionFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.setFeedback = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.AddSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.clearFeedback = function() {
+  return this.setFeedback(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.AddSessionFeedbackRequest.prototype.hasFeedback = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.AddSessionStepFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    sessionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionStepId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    feedback: (f = msg.getFeedback()) && proto.ondewo.nlu.SessionFeedback.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.AddSessionStepFeedbackRequest;
+  return proto.ondewo.nlu.AddSessionStepFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionStepId(value);
+      break;
+    case 3:
+      var value = new proto.ondewo.nlu.SessionFeedback;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader);
+      msg.setFeedback(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.AddSessionStepFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSessionId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionStepId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getFeedback();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string session_id = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.getSessionId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.setSessionId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string session_step_id = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.getSessionStepId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.setSessionStepId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional SessionFeedback feedback = 3;
+ * @return {?proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.getFeedback = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFeedback} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFeedback, 3));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFeedback|undefined} value
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.setFeedback = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.AddSessionStepFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.clearFeedback = function() {
+  return this.setFeedback(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.AddSessionStepFeedbackRequest.prototype.hasFeedback = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetSessionFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetSessionFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetSessionFeedbackRequest;
+  return proto.ondewo.nlu.GetSessionFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetSessionFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetSessionFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetSessionFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetSessionFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetSessionFeedbackRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.UpdateSessionFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    feedback: (f = msg.getFeedback()) && proto.ondewo.nlu.SessionFeedback.toObject(includeInstance, f),
+    updateMask: (f = msg.getUpdateMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.UpdateSessionFeedbackRequest;
+  return proto.ondewo.nlu.UpdateSessionFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.SessionFeedback;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader);
+      msg.setFeedback(value);
+      break;
+    case 2:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setUpdateMask(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.UpdateSessionFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getFeedback();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter
+    );
+  }
+  f = message.getUpdateMask();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional SessionFeedback feedback = 1;
+ * @return {?proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.getFeedback = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFeedback} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFeedback, 1));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFeedback|undefined} value
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.setFeedback = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.clearFeedback = function() {
+  return this.setFeedback(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.hasFeedback = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.FieldMask update_mask = 2;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.getUpdateMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 2));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.setUpdateMask = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.UpdateSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.clearUpdateMask = function() {
+  return this.setUpdateMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.UpdateSessionFeedbackRequest.prototype.hasUpdateMask = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.DeleteSessionFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.DeleteSessionFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    name: jspb.Message.getFieldWithDefault(msg, 1, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.DeleteSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.DeleteSessionFeedbackRequest;
+  return proto.ondewo.nlu.DeleteSessionFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.DeleteSessionFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.DeleteSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.DeleteSessionFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.DeleteSessionFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string name = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.DeleteSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.DeleteSessionFeedbackRequest.prototype.setName = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListSessionFeedbackRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    sessionId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListSessionFeedbackRequest;
+  return proto.ondewo.nlu.ListSessionFeedbackRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionId(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    case 3:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListSessionFeedbackRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getSessionId();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string session_id = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.getSessionId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.setSessionId = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 3;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionFeedbackRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionFilter: (f = msg.getSessionFilter()) && proto.ondewo.nlu.SessionFilter.toObject(includeInstance, f),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    feedbackFilter: (f = msg.getFeedbackFilter()) && proto.ondewo.nlu.FeedbackFilter.toObject(includeInstance, f),
+    orderBy: jspb.Message.getFieldWithDefault(msg, 6, "")
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest;
+  return proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.SessionFilter;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader);
+      msg.setSessionFilter(value);
+      break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 5:
+      var value = new proto.ondewo.nlu.FeedbackFilter;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackFilter.deserializeBinaryFromReader);
+      msg.setFeedbackFilter(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setOrderBy(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionFilter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getFeedbackFilter();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.ondewo.nlu.FeedbackFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getOrderBy();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional SessionFilter session_filter = 2;
+ * @return {?proto.ondewo.nlu.SessionFilter}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getSessionFilter = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFilter, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFilter|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setSessionFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.clearSessionFilter = function() {
+  return this.setSessionFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.hasSessionFilter = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional string page_token = 3;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional FeedbackFilter feedback_filter = 5;
+ * @return {?proto.ondewo.nlu.FeedbackFilter}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getFeedbackFilter = function() {
+  return /** @type{?proto.ondewo.nlu.FeedbackFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.FeedbackFilter, 5));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.FeedbackFilter|undefined} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+*/
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setFeedbackFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.clearFeedbackFilter = function() {
+  return this.setFeedbackFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.hasFeedbackFilter = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional string order_by = 6;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.getOrderBy = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackOfAllSessionsRequest.prototype.setOrderBy = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.ListSessionFeedbackResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    feedbackList: jspb.Message.toObjectList(msg.getFeedbackList(),
+    proto.ondewo.nlu.SessionFeedback.toObject, includeInstance),
+    nextPageToken: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    totalCount: jspb.Message.getFieldWithDefault(msg, 3, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.ListSessionFeedbackResponse;
+  return proto.ondewo.nlu.ListSessionFeedbackResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.SessionFeedback;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFeedback.deserializeBinaryFromReader);
+      msg.addFeedback(value);
+      break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNextPageToken(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotalCount(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.ListSessionFeedbackResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.ListSessionFeedbackResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getFeedbackList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.SessionFeedback.serializeBinaryToWriter
+    );
+  }
+  f = message.getNextPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
+  f = message.getTotalCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated SessionFeedback feedback = 1;
+ * @return {!Array<!proto.ondewo.nlu.SessionFeedback>}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.getFeedbackList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.SessionFeedback>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.SessionFeedback, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.SessionFeedback>} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse} returns this
+*/
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.setFeedbackList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.SessionFeedback=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.SessionFeedback}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.addFeedback = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.SessionFeedback, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.clearFeedbackList = function() {
+  return this.setFeedbackList([]);
+};
+
+
+/**
+ * optional string next_page_token = 2;
+ * @return {string}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.getNextPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.setNextPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional int32 total_count = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.getTotalCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.ListSessionFeedbackResponse} returns this
+ */
+proto.ondewo.nlu.ListSessionFeedbackResponse.prototype.setTotalCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.FeedbackFilter.repeatedFields_ = [1,2,6,7,8,9];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FeedbackFilter.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FeedbackFilter} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackFilter.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    ratingsList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    authorTypesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    hasComment: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    earliest: (f = msg.getEarliest()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    latest: (f = msg.getLatest()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    criteriaList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
+    languageCodesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    annotatorUserIdsList: (f = jspb.Message.getRepeatedField(msg, 8)) == null ? undefined : f,
+    originIdsList: (f = jspb.Message.getRepeatedField(msg, 9)) == null ? undefined : f,
+    scoreMin: jspb.Message.getFloatingPointFieldWithDefault(msg, 10, 0.0),
+    scoreMax: jspb.Message.getFloatingPointFieldWithDefault(msg, 11, 0.0),
+    scope: jspb.Message.getFieldWithDefault(msg, 12, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FeedbackFilter}
+ */
+proto.ondewo.nlu.FeedbackFilter.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FeedbackFilter;
+  return proto.ondewo.nlu.FeedbackFilter.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FeedbackFilter} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FeedbackFilter}
+ */
+proto.ondewo.nlu.FeedbackFilter.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var values = /** @type {!Array<!proto.ondewo.nlu.FeedbackRating>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addRatings(values[i]);
+      }
+      break;
+    case 2:
+      var values = /** @type {!Array<!proto.ondewo.nlu.FeedbackAuthorType>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addAuthorTypes(values[i]);
+      }
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setHasComment(value);
+      break;
+    case 4:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setEarliest(value);
+      break;
+    case 5:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setLatest(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addCriteria(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addLanguageCodes(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addAnnotatorUserIds(value);
+      break;
+    case 9:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addOriginIds(value);
+      break;
+    case 10:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setScoreMin(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setScoreMax(value);
+      break;
+    case 12:
+      var value = /** @type {!proto.ondewo.nlu.FeedbackScope} */ (reader.readEnum());
+      msg.setScope(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FeedbackFilter.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FeedbackFilter} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackFilter.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getRatingsList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      1,
+      f
+    );
+  }
+  f = message.getAuthorTypesList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      2,
+      f
+    );
+  }
+  f = /** @type {boolean} */ (jspb.Message.getField(message, 3));
+  if (f != null) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+  f = message.getEarliest();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getLatest();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getCriteriaList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      6,
+      f
+    );
+  }
+  f = message.getLanguageCodesList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      7,
+      f
+    );
+  }
+  f = message.getAnnotatorUserIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      8,
+      f
+    );
+  }
+  f = message.getOriginIdsList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      9,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 10));
+  if (f != null) {
+    writer.writeFloat(
+      10,
+      f
+    );
+  }
+  f = /** @type {number} */ (jspb.Message.getField(message, 11));
+  if (f != null) {
+    writer.writeFloat(
+      11,
+      f
+    );
+  }
+  f = message.getScope();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      12,
+      f
+    );
+  }
+};
+
+
+/**
+ * repeated FeedbackRating ratings = 1;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackRating>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getRatingsList = function() {
+  return /** @type {!Array<!proto.ondewo.nlu.FeedbackRating>} */ (jspb.Message.getRepeatedField(this, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackRating>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setRatingsList = function(value) {
+  return jspb.Message.setField(this, 1, value || []);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackRating} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addRatings = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearRatingsList = function() {
+  return this.setRatingsList([]);
+};
+
+
+/**
+ * repeated FeedbackAuthorType author_types = 2;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackAuthorType>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getAuthorTypesList = function() {
+  return /** @type {!Array<!proto.ondewo.nlu.FeedbackAuthorType>} */ (jspb.Message.getRepeatedField(this, 2));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackAuthorType>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setAuthorTypesList = function(value) {
+  return jspb.Message.setField(this, 2, value || []);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackAuthorType} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addAuthorTypes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearAuthorTypesList = function() {
+  return this.setAuthorTypesList([]);
+};
+
+
+/**
+ * optional bool has_comment = 3;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getHasComment = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setHasComment = function(value) {
+  return jspb.Message.setField(this, 3, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearHasComment = function() {
+  return jspb.Message.setField(this, 3, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.hasHasComment = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp earliest = 4;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getEarliest = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+*/
+proto.ondewo.nlu.FeedbackFilter.prototype.setEarliest = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearEarliest = function() {
+  return this.setEarliest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.hasEarliest = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp latest = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getLatest = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+*/
+proto.ondewo.nlu.FeedbackFilter.prototype.setLatest = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearLatest = function() {
+  return this.setLatest(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.hasLatest = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * repeated string criteria = 6;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getCriteriaList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setCriteriaList = function(value) {
+  return jspb.Message.setField(this, 6, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addCriteria = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearCriteriaList = function() {
+  return this.setCriteriaList([]);
+};
+
+
+/**
+ * repeated string language_codes = 7;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getLanguageCodesList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setLanguageCodesList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addLanguageCodes = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearLanguageCodesList = function() {
+  return this.setLanguageCodesList([]);
+};
+
+
+/**
+ * repeated string annotator_user_ids = 8;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getAnnotatorUserIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 8));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setAnnotatorUserIdsList = function(value) {
+  return jspb.Message.setField(this, 8, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addAnnotatorUserIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 8, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearAnnotatorUserIdsList = function() {
+  return this.setAnnotatorUserIdsList([]);
+};
+
+
+/**
+ * repeated string origin_ids = 9;
+ * @return {!Array<string>}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getOriginIdsList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 9));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setOriginIdsList = function(value) {
+  return jspb.Message.setField(this, 9, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.addOriginIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 9, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearOriginIdsList = function() {
+  return this.setOriginIdsList([]);
+};
+
+
+/**
+ * optional float score_min = 10;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getScoreMin = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 10, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setScoreMin = function(value) {
+  return jspb.Message.setField(this, 10, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearScoreMin = function() {
+  return jspb.Message.setField(this, 10, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.hasScoreMin = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional float score_max = 11;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getScoreMax = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 11, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setScoreMax = function(value) {
+  return jspb.Message.setField(this, 11, value);
+};
+
+
+/**
+ * Clears the field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.clearScoreMax = function() {
+  return jspb.Message.setField(this, 11, undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.hasScoreMax = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional FeedbackScope scope = 12;
+ * @return {!proto.ondewo.nlu.FeedbackScope}
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.getScope = function() {
+  return /** @type {!proto.ondewo.nlu.FeedbackScope} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackScope} value
+ * @return {!proto.ondewo.nlu.FeedbackFilter} returns this
+ */
+proto.ondewo.nlu.FeedbackFilter.prototype.setScope = function(value) {
+  return jspb.Message.setProto3EnumField(this, 12, value);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FeedbackBreakdownBucket.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    key: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    thumbsUpCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    thumbsDownCount: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    total: jspb.Message.getFieldWithDefault(msg, 4, 0)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+  return proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setKey(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsUpCount(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsDownCount(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotal(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getKey();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getThumbsUpCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getThumbsDownCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getTotal();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+};
+
+
+/**
+ * optional string key = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.getKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.setKey = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional int32 thumbs_up_count = 2;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.getThumbsUpCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.setThumbsUpCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int32 thumbs_down_count = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.getThumbsDownCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.setThumbsDownCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 total = 4;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.getTotal = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackBreakdownBucket.prototype.setTotal = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.FeedbackStatistics.repeatedFields_ = [9,10,11,15,16];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FeedbackStatistics.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FeedbackStatistics} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackStatistics.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    totalFeedback: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    thumbsUpCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    thumbsDownCount: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    sessionLevelCount: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    sessionStepLevelCount: jspb.Message.getFieldWithDefault(msg, 5, 0),
+    commentCount: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    sessionReviewCount: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    sessionCommentCount: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    byLanguageList: jspb.Message.toObjectList(msg.getByLanguageList(),
+    proto.ondewo.nlu.FeedbackBreakdownBucket.toObject, includeInstance),
+    byIntentList: jspb.Message.toObjectList(msg.getByIntentList(),
+    proto.ondewo.nlu.FeedbackBreakdownBucket.toObject, includeInstance),
+    byAuthorTypeList: jspb.Message.toObjectList(msg.getByAuthorTypeList(),
+    proto.ondewo.nlu.FeedbackBreakdownBucket.toObject, includeInstance),
+    unspecifiedRatingCount: jspb.Message.getFieldWithDefault(msg, 12, 0),
+    scoredCount: jspb.Message.getFieldWithDefault(msg, 13, 0),
+    averageScore: jspb.Message.getFloatingPointFieldWithDefault(msg, 14, 0.0),
+    byOriginList: jspb.Message.toObjectList(msg.getByOriginList(),
+    proto.ondewo.nlu.FeedbackBreakdownBucket.toObject, includeInstance),
+    byCriterionList: jspb.Message.toObjectList(msg.getByCriterionList(),
+    proto.ondewo.nlu.FeedbackBreakdownBucket.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics}
+ */
+proto.ondewo.nlu.FeedbackStatistics.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FeedbackStatistics;
+  return proto.ondewo.nlu.FeedbackStatistics.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FeedbackStatistics} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics}
+ */
+proto.ondewo.nlu.FeedbackStatistics.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotalFeedback(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsUpCount(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsDownCount(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSessionLevelCount(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSessionStepLevelCount(value);
+      break;
+    case 6:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setCommentCount(value);
+      break;
+    case 7:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSessionReviewCount(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setSessionCommentCount(value);
+      break;
+    case 9:
+      var value = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader);
+      msg.addByLanguage(value);
+      break;
+    case 10:
+      var value = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader);
+      msg.addByIntent(value);
+      break;
+    case 11:
+      var value = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader);
+      msg.addByAuthorType(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setUnspecifiedRatingCount(value);
+      break;
+    case 13:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setScoredCount(value);
+      break;
+    case 14:
+      var value = /** @type {number} */ (reader.readFloat());
+      msg.setAverageScore(value);
+      break;
+    case 15:
+      var value = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader);
+      msg.addByOrigin(value);
+      break;
+    case 16:
+      var value = new proto.ondewo.nlu.FeedbackBreakdownBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackBreakdownBucket.deserializeBinaryFromReader);
+      msg.addByCriterion(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FeedbackStatistics.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FeedbackStatistics} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackStatistics.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getTotalFeedback();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
+  f = message.getThumbsUpCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getThumbsDownCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getSessionLevelCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getSessionStepLevelCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      5,
+      f
+    );
+  }
+  f = message.getCommentCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      6,
+      f
+    );
+  }
+  f = message.getSessionReviewCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      7,
+      f
+    );
+  }
+  f = message.getSessionCommentCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      8,
+      f
+    );
+  }
+  f = message.getByLanguageList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      9,
+      f,
+      proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter
+    );
+  }
+  f = message.getByIntentList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      10,
+      f,
+      proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter
+    );
+  }
+  f = message.getByAuthorTypeList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      11,
+      f,
+      proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter
+    );
+  }
+  f = message.getUnspecifiedRatingCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      12,
+      f
+    );
+  }
+  f = message.getScoredCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      13,
+      f
+    );
+  }
+  f = message.getAverageScore();
+  if (f !== 0.0) {
+    writer.writeFloat(
+      14,
+      f
+    );
+  }
+  f = message.getByOriginList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      15,
+      f,
+      proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter
+    );
+  }
+  f = message.getByCriterionList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      16,
+      f,
+      proto.ondewo.nlu.FeedbackBreakdownBucket.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional int32 total_feedback = 1;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getTotalFeedback = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setTotalFeedback = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional int32 thumbs_up_count = 2;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getThumbsUpCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setThumbsUpCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int32 thumbs_down_count = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getThumbsDownCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setThumbsDownCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 session_level_count = 4;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getSessionLevelCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setSessionLevelCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional int32 session_step_level_count = 5;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getSessionStepLevelCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setSessionStepLevelCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
+};
+
+
+/**
+ * optional int32 comment_count = 6;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getCommentCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setCommentCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional int32 session_review_count = 7;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getSessionReviewCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setSessionReviewCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional int32 session_comment_count = 8;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getSessionCommentCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setSessionCommentCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * repeated FeedbackBreakdownBucket by_language = 9;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getByLanguageList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackBreakdownBucket, 9));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+*/
+proto.ondewo.nlu.FeedbackStatistics.prototype.setByLanguageList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 9, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.addByLanguage = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 9, opt_value, proto.ondewo.nlu.FeedbackBreakdownBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.clearByLanguageList = function() {
+  return this.setByLanguageList([]);
+};
+
+
+/**
+ * repeated FeedbackBreakdownBucket by_intent = 10;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getByIntentList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackBreakdownBucket, 10));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+*/
+proto.ondewo.nlu.FeedbackStatistics.prototype.setByIntentList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 10, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.addByIntent = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 10, opt_value, proto.ondewo.nlu.FeedbackBreakdownBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.clearByIntentList = function() {
+  return this.setByIntentList([]);
+};
+
+
+/**
+ * repeated FeedbackBreakdownBucket by_author_type = 11;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getByAuthorTypeList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackBreakdownBucket, 11));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+*/
+proto.ondewo.nlu.FeedbackStatistics.prototype.setByAuthorTypeList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 11, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.addByAuthorType = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 11, opt_value, proto.ondewo.nlu.FeedbackBreakdownBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.clearByAuthorTypeList = function() {
+  return this.setByAuthorTypeList([]);
+};
+
+
+/**
+ * optional int32 unspecified_rating_count = 12;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getUnspecifiedRatingCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setUnspecifiedRatingCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 12, value);
+};
+
+
+/**
+ * optional int32 scored_count = 13;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getScoredCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 13, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setScoredCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 13, value);
+};
+
+
+/**
+ * optional float average_score = 14;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getAverageScore = function() {
+  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 14, 0.0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.setAverageScore = function(value) {
+  return jspb.Message.setProto3FloatField(this, 14, value);
+};
+
+
+/**
+ * repeated FeedbackBreakdownBucket by_origin = 15;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getByOriginList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackBreakdownBucket, 15));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+*/
+proto.ondewo.nlu.FeedbackStatistics.prototype.setByOriginList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 15, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.addByOrigin = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 15, opt_value, proto.ondewo.nlu.FeedbackBreakdownBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.clearByOriginList = function() {
+  return this.setByOriginList([]);
+};
+
+
+/**
+ * repeated FeedbackBreakdownBucket by_criterion = 16;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.getByCriterionList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackBreakdownBucket, 16));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackBreakdownBucket>} value
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+*/
+proto.ondewo.nlu.FeedbackStatistics.prototype.setByCriterionList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 16, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackBreakdownBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackBreakdownBucket}
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.addByCriterion = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 16, opt_value, proto.ondewo.nlu.FeedbackBreakdownBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.FeedbackStatistics} returns this
+ */
+proto.ondewo.nlu.FeedbackStatistics.prototype.clearByCriterionList = function() {
+  return this.setByCriterionList([]);
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetFeedbackStatisticsRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionFilter: (f = msg.getSessionFilter()) && proto.ondewo.nlu.SessionFilter.toObject(includeInstance, f),
+    includeReviewAndCommentRollup: jspb.Message.getBooleanFieldWithDefault(msg, 3, false),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    feedbackFilter: (f = msg.getFeedbackFilter()) && proto.ondewo.nlu.FeedbackFilter.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetFeedbackStatisticsRequest;
+  return proto.ondewo.nlu.GetFeedbackStatisticsRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.SessionFilter;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader);
+      msg.setSessionFilter(value);
+      break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIncludeReviewAndCommentRollup(value);
+      break;
+    case 4:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 5:
+      var value = new proto.ondewo.nlu.FeedbackFilter;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackFilter.deserializeBinaryFromReader);
+      msg.setFeedbackFilter(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetFeedbackStatisticsRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionFilter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getIncludeReviewAndCommentRollup();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getFeedbackFilter();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto.ondewo.nlu.FeedbackFilter.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional SessionFilter session_filter = 2;
+ * @return {?proto.ondewo.nlu.SessionFilter}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.getSessionFilter = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFilter, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFilter|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.setSessionFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.clearSessionFilter = function() {
+  return this.setSessionFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.hasSessionFilter = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional bool include_review_and_comment_rollup = 3;
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.getIncludeReviewAndCommentRollup = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.setIncludeReviewAndCommentRollup = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 4;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional FeedbackFilter feedback_filter = 5;
+ * @return {?proto.ondewo.nlu.FeedbackFilter}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.getFeedbackFilter = function() {
+  return /** @type{?proto.ondewo.nlu.FeedbackFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.FeedbackFilter, 5));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.FeedbackFilter|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.setFeedbackFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.clearFeedbackFilter = function() {
+  return this.setFeedbackFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsRequest.prototype.hasFeedbackFilter = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetFeedbackStatisticsResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    statistics: (f = msg.getStatistics()) && proto.ondewo.nlu.FeedbackStatistics.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsResponse}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetFeedbackStatisticsResponse;
+  return proto.ondewo.nlu.GetFeedbackStatisticsResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsResponse}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.FeedbackStatistics;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackStatistics.deserializeBinaryFromReader);
+      msg.setStatistics(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetFeedbackStatisticsResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getStatistics();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      proto.ondewo.nlu.FeedbackStatistics.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional FeedbackStatistics statistics = 1;
+ * @return {?proto.ondewo.nlu.FeedbackStatistics}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.getStatistics = function() {
+  return /** @type{?proto.ondewo.nlu.FeedbackStatistics} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.FeedbackStatistics, 1));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.FeedbackStatistics|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsResponse} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.setStatistics = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsResponse} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.clearStatistics = function() {
+  return this.setStatistics(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsResponse.prototype.hasStatistics = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.FeedbackTimeSeriesBucket.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    bucketStart: (f = msg.getBucketStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    thumbsUpCount: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    thumbsDownCount: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    total: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    bucketEnd: (f = msg.getBucketEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.FeedbackTimeSeriesBucket;
+  return proto.ondewo.nlu.FeedbackTimeSeriesBucket.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setBucketStart(value);
+      break;
+    case 2:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsUpCount(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setThumbsDownCount(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTotal(value);
+      break;
+    case 5:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setBucketEnd(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.FeedbackTimeSeriesBucket.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getBucketStart();
+  if (f != null) {
+    writer.writeMessage(
+      1,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getThumbsUpCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      2,
+      f
+    );
+  }
+  f = message.getThumbsDownCount();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getTotal();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getBucketEnd();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional google.protobuf.Timestamp bucket_start = 1;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.getBucketStart = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 1));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+*/
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.setBucketStart = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.clearBucketStart = function() {
+  return this.setBucketStart(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.hasBucketStart = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional int32 thumbs_up_count = 2;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.getThumbsUpCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.setThumbsUpCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional int32 thumbs_down_count = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.getThumbsDownCount = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.setThumbsDownCount = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 total = 4;
+ * @return {number}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.getTotal = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.setTotal = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp bucket_end = 5;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.getBucketEnd = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+*/
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.setBucketEnd = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket} returns this
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.clearBucketEnd = function() {
+  return this.setBucketEnd(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.FeedbackTimeSeriesBucket.prototype.hasBucketEnd = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    parent: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sessionFilter: (f = msg.getSessionFilter()) && proto.ondewo.nlu.SessionFilter.toObject(includeInstance, f),
+    bucketWidthSeconds: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    maxBuckets: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    fieldMask: (f = msg.getFieldMask()) && google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, f),
+    feedbackFilter: (f = msg.getFeedbackFilter()) && proto.ondewo.nlu.FeedbackFilter.toObject(includeInstance, f),
+    granularity: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    timeZone: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    start: (f = msg.getStart()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    end: (f = msg.getEnd()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest;
+  return proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setParent(value);
+      break;
+    case 2:
+      var value = new proto.ondewo.nlu.SessionFilter;
+      reader.readMessage(value,proto.ondewo.nlu.SessionFilter.deserializeBinaryFromReader);
+      msg.setSessionFilter(value);
+      break;
+    case 3:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setBucketWidthSeconds(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setMaxBuckets(value);
+      break;
+    case 5:
+      var value = new google_protobuf_field_mask_pb.FieldMask;
+      reader.readMessage(value,google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+      msg.setFieldMask(value);
+      break;
+    case 6:
+      var value = new proto.ondewo.nlu.FeedbackFilter;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackFilter.deserializeBinaryFromReader);
+      msg.setFeedbackFilter(value);
+      break;
+    case 7:
+      var value = /** @type {!proto.ondewo.nlu.FeedbackTimeGranularity} */ (reader.readEnum());
+      msg.setGranularity(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTimeZone(value);
+      break;
+    case 9:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setStart(value);
+      break;
+    case 10:
+      var value = new google_protobuf_timestamp_pb.Timestamp;
+      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      msg.setEnd(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getParent();
+  if (f.length > 0) {
+    writer.writeString(
+      1,
+      f
+    );
+  }
+  f = message.getSessionFilter();
+  if (f != null) {
+    writer.writeMessage(
+      2,
+      f,
+      proto.ondewo.nlu.SessionFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getBucketWidthSeconds();
+  if (f !== 0) {
+    writer.writeInt32(
+      3,
+      f
+    );
+  }
+  f = message.getMaxBuckets();
+  if (f !== 0) {
+    writer.writeInt32(
+      4,
+      f
+    );
+  }
+  f = message.getFieldMask();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      google_protobuf_field_mask_pb.FieldMask.serializeBinaryToWriter
+    );
+  }
+  f = message.getFeedbackFilter();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      proto.ondewo.nlu.FeedbackFilter.serializeBinaryToWriter
+    );
+  }
+  f = message.getGranularity();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      7,
+      f
+    );
+  }
+  f = message.getTimeZone();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getStart();
+  if (f != null) {
+    writer.writeMessage(
+      9,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+  f = message.getEnd();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * optional string parent = 1;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getParent = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setParent = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional SessionFilter session_filter = 2;
+ * @return {?proto.ondewo.nlu.SessionFilter}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getSessionFilter = function() {
+  return /** @type{?proto.ondewo.nlu.SessionFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.SessionFilter, 2));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.SessionFilter|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setSessionFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.clearSessionFilter = function() {
+  return this.setSessionFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.hasSessionFilter = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional int32 bucket_width_seconds = 3;
+ * @return {number}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getBucketWidthSeconds = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setBucketWidthSeconds = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional int32 max_buckets = 4;
+ * @return {number}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getMaxBuckets = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setMaxBuckets = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional google.protobuf.FieldMask field_mask = 5;
+ * @return {?proto.google.protobuf.FieldMask}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getFieldMask = function() {
+  return /** @type{?proto.google.protobuf.FieldMask} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 5));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.FieldMask|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setFieldMask = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.clearFieldMask = function() {
+  return this.setFieldMask(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.hasFieldMask = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional FeedbackFilter feedback_filter = 6;
+ * @return {?proto.ondewo.nlu.FeedbackFilter}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getFeedbackFilter = function() {
+  return /** @type{?proto.ondewo.nlu.FeedbackFilter} */ (
+    jspb.Message.getWrapperField(this, proto.ondewo.nlu.FeedbackFilter, 6));
+};
+
+
+/**
+ * @param {?proto.ondewo.nlu.FeedbackFilter|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setFeedbackFilter = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.clearFeedbackFilter = function() {
+  return this.setFeedbackFilter(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.hasFeedbackFilter = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional FeedbackTimeGranularity granularity = 7;
+ * @return {!proto.ondewo.nlu.FeedbackTimeGranularity}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getGranularity = function() {
+  return /** @type {!proto.ondewo.nlu.FeedbackTimeGranularity} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackTimeGranularity} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setGranularity = function(value) {
+  return jspb.Message.setProto3EnumField(this, 7, value);
+};
+
+
+/**
+ * optional string time_zone = 8;
+ * @return {string}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getTimeZone = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setTimeZone = function(value) {
+  return jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional google.protobuf.Timestamp start = 9;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getStart = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 9));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setStart = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.clearStart = function() {
+  return this.setStart(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.hasStart = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional google.protobuf.Timestamp end = 10;
+ * @return {?proto.google.protobuf.Timestamp}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.getEnd = function() {
+  return /** @type{?proto.google.protobuf.Timestamp} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 10));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.setEnd = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.clearEnd = function() {
+  return this.setEnd(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesRequest.prototype.hasEnd = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.repeatedFields_ = [1];
+
+
+
+if (jspb.Message.GENERATE_TO_OBJECT) {
+/**
+ * Creates an object representation of this proto.
+ * Field names that are reserved in JavaScript and will be renamed to pb_name.
+ * Optional fields that are not set will be set to undefined.
+ * To access a reserved field use, foo.pb_<name>, eg, foo.pb_default.
+ * For the list of reserved names please see:
+ *     net/proto2/compiler/js/internal/generator.cc#kKeyword.
+ * @param {boolean=} opt_includeInstance Deprecated. whether to include the
+ *     JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @return {!Object}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.toObject = function(opt_includeInstance) {
+  return proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.toObject(opt_includeInstance, this);
+};
+
+
+/**
+ * Static version of the {@see toObject} method.
+ * @param {boolean|undefined} includeInstance Deprecated. Whether to include
+ *     the JSPB instance for transitional soy proto support:
+ *     http://goto/soy-param-migration
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse} msg The msg instance to transform.
+ * @return {!Object}
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.toObject = function(includeInstance, msg) {
+  var f, obj = {
+    bucketsList: jspb.Message.toObjectList(msg.getBucketsList(),
+    proto.ondewo.nlu.FeedbackTimeSeriesBucket.toObject, includeInstance)
+  };
+
+  if (includeInstance) {
+    obj.$jspbMessageInstance = msg;
+  }
+  return obj;
+};
+}
+
+
+/**
+ * Deserializes binary data (in protobuf wire format).
+ * @param {jspb.ByteSource} bytes The bytes to deserialize.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.deserializeBinary = function(bytes) {
+  var reader = new jspb.BinaryReader(bytes);
+  var msg = new proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse;
+  return proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.deserializeBinaryFromReader(msg, reader);
+};
+
+
+/**
+ * Deserializes binary data (in protobuf wire format) from the
+ * given reader into the given message object.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse} msg The message object to deserialize into.
+ * @param {!jspb.BinaryReader} reader The BinaryReader to use.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.deserializeBinaryFromReader = function(msg, reader) {
+  while (reader.nextField()) {
+    if (reader.isEndGroup()) {
+      break;
+    }
+    var field = reader.getFieldNumber();
+    switch (field) {
+    case 1:
+      var value = new proto.ondewo.nlu.FeedbackTimeSeriesBucket;
+      reader.readMessage(value,proto.ondewo.nlu.FeedbackTimeSeriesBucket.deserializeBinaryFromReader);
+      msg.addBuckets(value);
+      break;
+    default:
+      reader.skipField();
+      break;
+    }
+  }
+  return msg;
+};
+
+
+/**
+ * Serializes the message to binary data (in protobuf wire format).
+ * @return {!Uint8Array}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.serializeBinary = function() {
+  var writer = new jspb.BinaryWriter();
+  proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.serializeBinaryToWriter(this, writer);
+  return writer.getResultBuffer();
+};
+
+
+/**
+ * Serializes the given message to binary data (in protobuf wire
+ * format), writing to the given BinaryWriter.
+ * @param {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse} message
+ * @param {!jspb.BinaryWriter} writer
+ * @suppress {unusedLocalVariables} f is only used for nested messages
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.serializeBinaryToWriter = function(message, writer) {
+  var f = undefined;
+  f = message.getBucketsList();
+  if (f.length > 0) {
+    writer.writeRepeatedMessage(
+      1,
+      f,
+      proto.ondewo.nlu.FeedbackTimeSeriesBucket.serializeBinaryToWriter
+    );
+  }
+};
+
+
+/**
+ * repeated FeedbackTimeSeriesBucket buckets = 1;
+ * @return {!Array<!proto.ondewo.nlu.FeedbackTimeSeriesBucket>}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.getBucketsList = function() {
+  return /** @type{!Array<!proto.ondewo.nlu.FeedbackTimeSeriesBucket>} */ (
+    jspb.Message.getRepeatedWrapperField(this, proto.ondewo.nlu.FeedbackTimeSeriesBucket, 1));
+};
+
+
+/**
+ * @param {!Array<!proto.ondewo.nlu.FeedbackTimeSeriesBucket>} value
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse} returns this
+*/
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.setBucketsList = function(value) {
+  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+};
+
+
+/**
+ * @param {!proto.ondewo.nlu.FeedbackTimeSeriesBucket=} opt_value
+ * @param {number=} opt_index
+ * @return {!proto.ondewo.nlu.FeedbackTimeSeriesBucket}
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.addBuckets = function(opt_value, opt_index) {
+  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.ondewo.nlu.FeedbackTimeSeriesBucket, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse} returns this
+ */
+proto.ondewo.nlu.GetFeedbackStatisticsTimeSeriesResponse.prototype.clearBucketsList = function() {
+  return this.setBucketsList([]);
 };
 
 
@@ -38529,6 +44882,46 @@ proto.ondewo.nlu.ComparisonOperator = {
   CONTAINS: 4,
   STARTS_WITH: 5,
   ENDS_WITH: 6
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.FeedbackRating = {
+  FEEDBACK_RATING_UNSPECIFIED: 0,
+  FEEDBACK_RATING_THUMBS_UP: 1,
+  FEEDBACK_RATING_THUMBS_DOWN: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.FeedbackAuthorType = {
+  FEEDBACK_AUTHOR_TYPE_UNSPECIFIED: 0,
+  FEEDBACK_AUTHOR_TYPE_HUMAN_REVIEWER: 1,
+  FEEDBACK_AUTHOR_TYPE_TECHNICAL_USER: 2,
+  FEEDBACK_AUTHOR_TYPE_END_USER_ANONYMOUS: 3
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.FeedbackScope = {
+  FEEDBACK_SCOPE_UNSPECIFIED: 0,
+  FEEDBACK_SCOPE_SESSION_LEVEL: 1,
+  FEEDBACK_SCOPE_STEP_LEVEL: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.ondewo.nlu.FeedbackTimeGranularity = {
+  FEEDBACK_TIME_GRANULARITY_UNSPECIFIED: 0,
+  FEEDBACK_TIME_GRANULARITY_HOUR: 1,
+  FEEDBACK_TIME_GRANULARITY_DAY: 2,
+  FEEDBACK_TIME_GRANULARITY_WEEK: 3,
+  FEEDBACK_TIME_GRANULARITY_MONTH: 4,
+  FEEDBACK_TIME_GRANULARITY_YEAR: 5
 };
 
 /**
