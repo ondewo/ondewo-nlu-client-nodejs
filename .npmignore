@@ -1,1 +1,9 @@
 src/ondewo-nlu-api
+
+# Never publish test files or test build output.
+# The release publishes ./npm (see the Makefile's npm_release), and that directory gets its own
+# equivalent .npmignore written by create_npm_package -- these patterns keep a `npm publish` run
+# from the repo root safe too. Slash-free patterns match at any depth.
+*.spec.*
+*.test.*
+.test-build/

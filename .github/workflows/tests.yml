@@ -4,26 +4,80 @@ on:
   push:
     branches: ['**']
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   unit-tests:
+    name: tests (node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # Node 20 is the real floor of the installed toolchain (c8 11 declares engines
+        # "20 || >=22" and undici 7 declares ">=20.18.1", so 18 and 21 are both out); 22 is the
+        # current LTS; 24 is what this repo is developed on locally.
+        node-version: ['20', '22', '24']
     steps:
+      # No `submodules:` key on purpose (the default is false). The tests only need the COMMITTED
+      # api/ stubs, which are ordinary tracked files rather than a gitlink, and the
+      # ondewo-proto-compiler submodule is declared with an SSH URL (git@github.com:...) that a
+      # runner without a deploy key cannot clone -- fetching submodules would fail this step.
       - uses: actions/checkout@v5
 
-      - name: Set up Node.js 20
+      - name: Set up Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # caches ~/.npm (the download cache), auto-keyed on package-lock.json
 
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
+      # `npm ci`, never `npm install`: it installs exactly the lockfile (typescript 6.0.3,
+      # c8 11.0.0), never rewrites package.json or package-lock.json, and fails if the two
+      # disagree. A looser or stale install is precisely what once made these tests look broken.
+      - name: Install dependencies from the lockfile
+        run: npm ci --no-audit --no-fund
 
-      # The repo is ~95% generated gRPC/protobuf stubs; coverage is gated on the HAND-WRITTEN surface
-      # (the D18 Keycloak offline-token auth provider). The test compiles the TS provider + spec and runs
-      # node's built-in test runner under c8 with a 100% lines/branches/functions coverage gate.
-      - name: Unit tests + 100% coverage gate on hand-written code
+      # The release codegen REGENERATES the root package.json, wiping its test scripts and
+      # test-only devDependencies, and `make restore_ci_test_setup` merges .ci-package.json back in
+      # to repair it. That makes .ci-package.json -- not package.json -- the copy that survives a
+      # release: a test script edited in only one of the two is silently reverted to the stale
+      # mirrored value by the next release, and CI then breaks afterwards with no obvious cause.
+      # This step compares the two and turns that drift into a red build on the commit that
+      # introduced it. It runs BEFORE the tests so a mismatch fails fast.
+      - name: Guard the package.json <-> .ci-package.json mirror
+        run: npm run test:drift
+
+      # This repo is ~95% GENERATED gRPC/protobuf stubs, so the gate applies to the hand-written
+      # surface only -- both of its sources: auth/offlineTokenProvider.ts (the D18 Keycloak
+      # offline-token auth provider) and examples/listAgents.ts. `npm test` compiles those two plus
+      # their specs, runs every test case under node's built-in test runner and enforces 100%
+      # statements / branches / functions / lines on both. It subsumes `npm run test:examples`
+      # (same build, same spec file), so that script is not run separately here.
+      - name: All tests + 100% coverage gate on hand-written code
         run: npm test
 
-      - name: Example mock tests
-        run: npm run test:examples
+      # The type-information and documentation requirements are enforced by eslint, not by the
+      # tests: @typescript-eslint/typedef, explicit-function-return-type and
+      # explicit-module-boundary-types are what make a missing annotation an error. Running the
+      # repo's own `make eslint`/prettier targets keeps CI and the husky hooks in agreement.
+      - name: Lint (type annotations + repo conventions)
+        run: make eslint
+
+      - name: Format check
+        run: npx prettier --config .prettierrc --check --ignore-path .prettierignore ./
+
+      # auth/offlineTokenProvider.js and .d.ts are tsc output that is COMMITTED because the npm
+      # package ships them -- they are the files consumers actually execute and typecheck against,
+      # while the tests only ever exercise the .ts source. Nothing else stops them drifting from
+      # that source, so regenerate them here and fail if the result differs from what was committed.
+      - name: Committed auth build artifacts match their source
+        run: |
+          npm run build:auth
+          git diff --exit-code -- auth/

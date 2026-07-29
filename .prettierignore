@@ -18,5 +18,13 @@ ondewo-nlu-api
 package-lock.json
 package.json
 npm/
-.test-build/
-.test-build-examples/
+.test-build*/
+.c8-*/
+
+# Config files prettier would reformat on every `make prettier -w` run. Rewriting
+# .pre-commit-config.yaml mid-commit is fatal: the commit-msg hook then aborts with
+# "Your pre-commit configuration is unstaged" and the commit fails.
+.ci-package.json
+.markdownlint-cli2.yaml
+.pre-commit-config.yaml
+CLAUDE.md

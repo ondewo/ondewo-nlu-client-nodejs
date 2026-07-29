@@ -3,9 +3,43 @@
 set -e
 make eslint
 make prettier PRETTIER_WRITE=-w
-# Run pre-commit hooks on a normal dev commit, but SKIP during automated release
-# codegen, which leaves .pre-commit-config.yaml unstaged and makes `pre-commit run`
-# abort with "Your pre-commit configuration is unstaged".
+
+# Everything below this point runs ONLY for a real developer commit.
+#
+# WHY THE GUARD: `make release` invokes THIS hook directly via `make run_precommit_hooks` -- not
+# through a git commit -- on a working tree full of freshly generated code, and running the test
+# suite there can abort the release midway. Git always exports GIT_INDEX_FILE to a hook it invokes
+# itself, while a direct `sh .husky/pre-commit` leaves it unset, so its presence is a POSITIVE
+# discriminator that does not depend on any side effect of the codegen.
+#
+# It replaces the older heuristic "the codegen leaves .pre-commit-config.yaml unstaged", whose
+# premise no longer holds: that file is now listed in .prettierignore, so the `make prettier -w`
+# line above no longer rewrites it.
+#
+# To skip on purpose (e.g. committing a known-broken work in progress):  git commit --no-verify
+if [ -z "${GIT_INDEX_FILE:-}" ]; then
+  echo 'pre-commit: not invoked by git (release/codegen run) -> skipping pre-commit run and npm test'
+  exit 0
+fi
+
+# `pre-commit run` aborts with "Your pre-commit configuration is unstaged" while .pre-commit-config.yaml
+# has unstaged edits, so keep skipping it in that state.
 if command -v pre-commit >/dev/null 2>&1 && git diff --quiet -- .pre-commit-config.yaml 2>/dev/null; then
   pre-commit run
 fi
+
+# Full test suite + 100% coverage gate on a normal dev commit -- the commit-time counterpart of
+# .husky/pre-push and .github/workflows/tests.yml. `npm test` compiles every hand-written .ts, runs
+# every test case and enforces 100% statements/branches/functions/lines on
+# auth/offlineTokenProvider.ts and examples/listAgents.ts. A real test failure aborts the commit
+# (`set -e` above).
+#
+# Skipped when nothing staged could change the outcome, so a docs-only commit does not pay ~15s.
+# `git diff --cached` honours GIT_INDEX_FILE, so the temporary index of `git commit -a` is seen too.
+if ! git diff --cached --name-only |
+  grep -qE '^(auth/.*\.ts|examples/.*\.ts|api/.*|public-api\..*|package\.json|package-lock\.json|\.ci-package\.json|eslint\.config\.mjs|tsconfig.*\.json)$'; then
+  echo 'pre-commit: no source, api/ or build-input file staged -> skipping npm test'
+  exit 0
+fi
+
+npm test

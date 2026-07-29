@@ -13,15 +13,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OfflineTokenProvider = exports.TokenError = void 0;
 exports.login = login;
@@ -81,33 +72,31 @@ function buildTokenEndpoint(keycloakUrl, realm) {
  * @throws {@link TokenError} On a non-2xx response, an unparseable body, or a body without an
  *   `access_token`.
  */
-function postTokenRequest(tokenEndpoint, params, fetchImpl) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const body = new URLSearchParams(params).toString();
-        const response = yield fetchImpl(tokenEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                Accept: 'application/json'
-            },
-            body
-        });
-        const text = yield response.text();
-        if (!response.ok) {
-            throw new TokenError(`Keycloak token endpoint returned HTTP ${response.status}: ${text}`);
-        }
-        let parsed;
-        try {
-            parsed = JSON.parse(text);
-        }
-        catch (_a) {
-            throw new TokenError(`Keycloak token endpoint returned a non-JSON body: ${text}`);
-        }
-        if (typeof parsed.access_token !== 'string' || parsed.access_token.length === 0) {
-            throw new TokenError('Keycloak token response did not contain an access_token');
-        }
-        return parsed;
+async function postTokenRequest(tokenEndpoint, params, fetchImpl) {
+    const body = new URLSearchParams(params).toString();
+    const response = await fetchImpl(tokenEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Accept: 'application/json'
+        },
+        body
     });
+    const text = await response.text();
+    if (!response.ok) {
+        throw new TokenError(`Keycloak token endpoint returned HTTP ${response.status}: ${text}`);
+    }
+    let parsed;
+    try {
+        parsed = JSON.parse(text);
+    }
+    catch {
+        throw new TokenError(`Keycloak token endpoint returned a non-JSON body: ${text}`);
+    }
+    if (typeof parsed.access_token !== 'string' || parsed.access_token.length === 0) {
+        throw new TokenError('Keycloak token response did not contain an access_token');
+    }
+    return parsed;
 }
 /**
  * A live access-token holder backed by a bounded auto-refresh loop. Obtain one from {@link login};
@@ -143,27 +132,25 @@ class OfflineTokenProvider {
      * @throws {@link TokenError} If the token endpoint fails or the response carries no
      *   `refresh_token` (the SDK client lacks `directAccessGrants` + the `offline_access` scope).
      */
-    bootstrap(username, password) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const tokenResponse = yield postTokenRequest(this.tokenEndpoint, {
-                grant_type: 'password',
-                client_id: this.clientId,
-                username,
-                password,
-                scope: 'offline_access'
-            }, this.fetchImpl);
-            this.accessToken = tokenResponse.access_token;
-            this.refreshToken = typeof tokenResponse.refresh_token === 'string' ? tokenResponse.refresh_token : null;
-            if (this.refreshToken === null) {
-                throw new TokenError('Keycloak token response did not contain a refresh_token; the SDK client must have ' +
-                    'directAccessGrants + the offline_access scope (ondewo-nlu-cai-sdk-public)');
-            }
-            if (this.tokenExpirationInS !== undefined) {
-                const expirationInMs = this.tokenExpirationInS * 1000;
-                this.deadlineInMs = this.nowInMs() + expirationInMs;
-            }
-            this.scheduleRefresh(tokenResponse.expires_in);
-        });
+    async bootstrap(username, password) {
+        const tokenResponse = await postTokenRequest(this.tokenEndpoint, {
+            grant_type: 'password',
+            client_id: this.clientId,
+            username,
+            password,
+            scope: 'offline_access'
+        }, this.fetchImpl);
+        this.accessToken = tokenResponse.access_token;
+        this.refreshToken = typeof tokenResponse.refresh_token === 'string' ? tokenResponse.refresh_token : null;
+        if (this.refreshToken === null) {
+            throw new TokenError('Keycloak token response did not contain a refresh_token; the SDK client must have ' +
+                'directAccessGrants + the offline_access scope (ondewo-nlu-cai-sdk-public)');
+        }
+        if (this.tokenExpirationInS !== undefined) {
+            const expirationInMs = this.tokenExpirationInS * 1000;
+            this.deadlineInMs = this.nowInMs() + expirationInMs;
+        }
+        this.scheduleRefresh(tokenResponse.expires_in);
     }
     /**
      * Exchange the offline refresh token for a fresh access token and re-arm the next refresh.
@@ -175,30 +162,28 @@ class OfflineTokenProvider {
      *   once the loop has been stopped).
      * @throws {@link TokenError} If the refresh token endpoint call fails or returns an unusable body.
      */
-    refresh() {
-        return __awaiter(this, void 0, void 0, function* () {
-            /* c8 ignore next 3 -- unreachable: stop() always clears the only timer that calls refresh() */
-            if (this.stopped) {
-                return;
-            }
-            // Re-check the bounded deadline at fire time (not just at schedule time): once it has elapsed the
-            // loop stops with no further renewal -> the access token lapses -> re-login is required.
-            if (this.deadlineInMs !== null && this.nowInMs() >= this.deadlineInMs) {
-                this.stop();
-                return;
-            }
-            const tokenResponse = yield postTokenRequest(this.tokenEndpoint, {
-                grant_type: 'refresh_token',
-                client_id: this.clientId,
-                refresh_token: this.refreshToken
-            }, this.fetchImpl);
-            this.accessToken = tokenResponse.access_token;
-            // Keycloak may rotate the offline refresh token; keep the newest one when present.
-            if (typeof tokenResponse.refresh_token === 'string' && tokenResponse.refresh_token.length > 0) {
-                this.refreshToken = tokenResponse.refresh_token;
-            }
-            this.scheduleRefresh(tokenResponse.expires_in);
-        });
+    async refresh() {
+        /* c8 ignore next 3 -- unreachable: stop() always clears the only timer that calls refresh() */
+        if (this.stopped) {
+            return;
+        }
+        // Re-check the bounded deadline at fire time (not just at schedule time): once it has elapsed the
+        // loop stops with no further renewal -> the access token lapses -> re-login is required.
+        if (this.deadlineInMs !== null && this.nowInMs() >= this.deadlineInMs) {
+            this.stop();
+            return;
+        }
+        const tokenResponse = await postTokenRequest(this.tokenEndpoint, {
+            grant_type: 'refresh_token',
+            client_id: this.clientId,
+            refresh_token: this.refreshToken
+        }, this.fetchImpl);
+        this.accessToken = tokenResponse.access_token;
+        // Keycloak may rotate the offline refresh token; keep the newest one when present.
+        if (typeof tokenResponse.refresh_token === 'string' && tokenResponse.refresh_token.length > 0) {
+            this.refreshToken = tokenResponse.refresh_token;
+        }
+        this.scheduleRefresh(tokenResponse.expires_in);
     }
     /**
      * Arm a single timer for the next refresh, clamped to the bounded deadline. Stops silently once
@@ -252,8 +237,9 @@ class OfflineTokenProvider {
     /**
      * Return the current access token.
      *
-     * @returns The current access token, or `null` before bootstrap / after the bounded loop has
-     *   lapsed.
+     * @returns The current access token, or `null` only until {@link bootstrap} completes. The token is
+     *   never cleared afterwards: a stopped or lapsed provider keeps returning the last (eventually
+     *   expired) token, so callers must re-login once the server answers UNAUTHENTICATED.
      */
     getAccessToken() {
         return this.accessToken;
@@ -261,9 +247,12 @@ class OfflineTokenProvider {
     /**
      * Build the value for an `Authorization` gRPC metadata header.
      *
+     * Succeeds for the whole lifetime of the provider once {@link bootstrap} has completed: a stopped or
+     * lapsed provider still yields the last (eventually expired) token rather than throwing, so callers
+     * must re-login once the server answers UNAUTHENTICATED.
+     *
      * @returns The header value `Bearer <access_token>`.
-     * @throws {@link TokenError} If no access token is available (login has not completed or has
-     *   lapsed).
+     * @throws {@link TokenError} If no access token is available yet, i.e. login has not completed.
      */
     getAuthorizationHeader() {
         if (this.accessToken === null) {
@@ -291,22 +280,20 @@ exports.OfflineTokenProvider = OfflineTokenProvider;
  * @throws {@link TokenError} If `options` is missing, a required option is absent/empty, the token
  *   endpoint call fails, or the response lacks an `access_token` / `refresh_token`.
  */
-function login(options) {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (options === undefined || options === null) {
-            throw new TokenError('login() requires an options object');
+async function login(options) {
+    if (options === undefined || options === null) {
+        throw new TokenError('login() requires an options object');
+    }
+    const requiredKeys = ['keycloakUrl', 'realm', 'clientId', 'username', 'password'];
+    for (const key of requiredKeys) {
+        const value = options[key];
+        if (typeof value !== 'string' || value.length === 0) {
+            throw new TokenError(`login() option "${key}" is required and must be a non-empty string`);
         }
-        const requiredKeys = ['keycloakUrl', 'realm', 'clientId', 'username', 'password'];
-        for (const key of requiredKeys) {
-            const value = options[key];
-            if (typeof value !== 'string' || value.length === 0) {
-                throw new TokenError(`login() option "${key}" is required and must be a non-empty string`);
-            }
-        }
-        const provider = new OfflineTokenProvider(options);
-        yield provider.bootstrap(options.username, options.password);
-        return provider;
-    });
+    }
+    const provider = new OfflineTokenProvider(options);
+    await provider.bootstrap(options.username, options.password);
+    return provider;
 }
 /**
  * Build the default {@link TokenFetch}: delegate to the global `fetch` (Node >= 18).
@@ -323,11 +310,12 @@ function createDefaultFetch(verifySsl) {
     let dispatcher;
     if (!verifySsl) {
         // Lazy require keeps undici out of the default (secure) code path.
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
         const { Agent } = require('undici');
         dispatcher = new Agent({ connect: { rejectUnauthorized: false } });
     }
     return (url, init) => {
         const globalFetch = globalThis.fetch;
-        return globalFetch(url, dispatcher === undefined ? init : Object.assign(Object.assign({}, init), { dispatcher }));
+        return globalFetch(url, dispatcher === undefined ? init : { ...init, dispatcher });
     };
 }

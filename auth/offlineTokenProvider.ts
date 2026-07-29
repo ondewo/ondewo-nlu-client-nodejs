@@ -202,7 +202,7 @@ export class OfflineTokenProvider {
 	/** Clock returning epoch milliseconds; injectable so the bounded deadline is testable. */
 	private readonly nowInMs: () => number;
 
-	/** The current access token, or `null` before bootstrap / after the bounded loop has lapsed. */
+	/** The current access token, or `null` only until {@link bootstrap} completes; never cleared afterwards. */
 	private accessToken: string | null;
 	/** The current offline refresh token, or `null` before bootstrap. */
 	private refreshToken: string | null;
@@ -371,8 +371,9 @@ export class OfflineTokenProvider {
 	/**
 	 * Return the current access token.
 	 *
-	 * @returns The current access token, or `null` before bootstrap / after the bounded loop has
-	 *   lapsed.
+	 * @returns The current access token, or `null` only until {@link bootstrap} completes. The token is
+	 *   never cleared afterwards: a stopped or lapsed provider keeps returning the last (eventually
+	 *   expired) token, so callers must re-login once the server answers UNAUTHENTICATED.
 	 */
 	public getAccessToken(): string | null {
 		return this.accessToken;
@@ -381,9 +382,12 @@ export class OfflineTokenProvider {
 	/**
 	 * Build the value for an `Authorization` gRPC metadata header.
 	 *
+	 * Succeeds for the whole lifetime of the provider once {@link bootstrap} has completed: a stopped or
+	 * lapsed provider still yields the last (eventually expired) token rather than throwing, so callers
+	 * must re-login once the server answers UNAUTHENTICATED.
+	 *
 	 * @returns The header value `Bearer <access_token>`.
-	 * @throws {@link TokenError} If no access token is available (login has not completed or has
-	 *   lapsed).
+	 * @throws {@link TokenError} If no access token is available yet, i.e. login has not completed.
 	 */
 	public getAuthorizationHeader(): string {
 		if (this.accessToken === null) {

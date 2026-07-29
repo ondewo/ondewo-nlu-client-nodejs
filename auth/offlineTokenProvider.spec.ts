@@ -19,7 +19,8 @@
  *
  * @example
  * ```sh
- * node --test --experimental-strip-types auth/offlineTokenProvider.spec.ts
+ * # compiles the hand-written sources to .test-build and enforces the 100% coverage gate
+ * npm test
  * ```
  */
 
@@ -48,6 +49,18 @@ const BASE_OPTIONS: OfflineTokenLoginOptions = {
 /** The token endpoint URL {@link BASE_OPTIONS} is expected to resolve to. */
 const EXPECTED_TOKEN_ENDPOINT: string =
 	'https://auth.example.com/auth/realms/ondewo-ccai-platform/protocol/openid-connect/token';
+
+/**
+ * The {@link OfflineTokenLoginOptions} fields {@link login} must reject as absent/empty, in the order
+ * the implementation validates them.
+ */
+const REQUIRED_LOGIN_OPTION_KEYS: (keyof OfflineTokenLoginOptions)[] = [
+	'keycloakUrl',
+	'realm',
+	'clientId',
+	'username',
+	'password'
+];
 
 /** One scripted response in a {@link makeFetchStub} sequence. */
 interface StubResponse {
@@ -111,6 +124,87 @@ function flushMicrotasks(): Promise<void> {
 	return new Promise((resolve: () => void): void => {
 		process.nextTick(resolve);
 	});
+}
+
+/** A live `setTimeout` spy: the delays it has recorded plus the function that uninstalls it. */
+interface TimerDelayCapture {
+	/** The delays (in milliseconds) passed to `setTimeout` while the spy was installed, in order. */
+	delaysInMs: number[];
+	/** Uninstall the spy and reinstate the previously installed `setTimeout`. */
+	restore(): void;
+}
+
+/**
+ * Install a `setTimeout` spy that records every scheduled delay and then forwards to the previously
+ * installed `setTimeout`, so a test can assert the exact delay the refresh loop arms instead of only
+ * observing that *some* refresh eventually fired.
+ *
+ * @returns A {@link TimerDelayCapture} holding the recorded delays and its `restore` function.
+ */
+function captureTimerDelays(): TimerDelayCapture {
+	const delaysInMs: number[] = [];
+	const previousSetTimeout: typeof globalThis.setTimeout = globalThis.setTimeout;
+	globalThis.setTimeout = ((handler: () => void, delayInMs: number): ReturnType<typeof setTimeout> => {
+		delaysInMs.push(delayInMs);
+		return previousSetTimeout(handler, delayInMs);
+	}) as unknown as typeof globalThis.setTimeout;
+	return {
+		delaysInMs,
+		restore: (): void => {
+			globalThis.setTimeout = previousSetTimeout;
+		}
+	};
+}
+
+/** A live `clearTimeout` spy: the handles it has recorded plus the function that uninstalls it. */
+interface ClearedTimerCapture {
+	/** The timer handles passed to `clearTimeout` while the spy was installed, in order. */
+	handles: unknown[];
+	/** Uninstall the spy and reinstate the previously installed `clearTimeout`. */
+	restore(): void;
+}
+
+/**
+ * Install a `clearTimeout` spy that records every released timer handle and then forwards to the
+ * previously installed `clearTimeout`, so a test can assert `stop()` RELEASES the armed timer rather
+ * than merely dropping its reference. Nulling the private field alone leaves the timer pending, which
+ * no externally observable behaviour reveals: the `stopped` flag makes the fired refresh return early,
+ * so the fetch-call count stays identical either way.
+ *
+ * @returns A {@link ClearedTimerCapture} holding the recorded handles and its `restore` function.
+ */
+function captureClearedTimers(): ClearedTimerCapture {
+	const handles: unknown[] = [];
+	const previousClearTimeout: typeof globalThis.clearTimeout = globalThis.clearTimeout;
+	globalThis.clearTimeout = (handle: Parameters<typeof globalThis.clearTimeout>[0]): void => {
+		handles.push(handle);
+		previousClearTimeout(handle);
+	};
+	return {
+		handles,
+		restore: (): void => {
+			globalThis.clearTimeout = previousClearTimeout;
+		}
+	};
+}
+
+/** The subset of Node's `Timeout` needed to check whether a timer keeps the event loop alive. */
+interface RefCountedTimer {
+	/**
+	 * Report whether the timer still holds a reference on Node's event loop.
+	 *
+	 * @returns `true` while the timer is ref-ed, `false` once `unref()` has been called on it.
+	 */
+	hasRef(): boolean;
+}
+
+/**
+ * White-box view of an {@link OfflineTokenProvider}'s private refresh timer, so a test can assert the
+ * timer cannot keep a consumer's process alive (the symptom a missing `unref()` produces).
+ */
+interface ProviderTimerView {
+	/** The armed refresh timer, or `null` when no refresh is currently scheduled. */
+	timer: RefCountedTimer | null;
 }
 
 /**
@@ -216,57 +310,106 @@ runTestCase('the refresh loop stops after tokenExpirationInS elapses (no further
 	}
 });
 
-/** Asserts a non-2xx token response rejects {@link login} with a {@link TokenError}. */
+/**
+ * Asserts a non-2xx token response rejects {@link login} with a {@link TokenError} whose message
+ * reports the HTTP status, so this failure mode is distinguishable from the token-shape ones.
+ */
 runTestCase('login rejects a non-2xx token response with TokenError', async () => {
 	const stub: FetchStub = makeFetchStub([{ status: 401, body: { error: 'invalid_grant' } }]);
-	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), {
+		name: 'TokenError',
+		message: /returned HTTP 401/
+	});
 });
 
 /**
  * Asserts a 2xx token response without a `refresh_token` (the SDK client lacks `offline_access`)
- * rejects {@link login} with a {@link TokenError}.
+ * rejects {@link login} with a {@link TokenError} that names the MISSING `refresh_token` -- not the
+ * `access_token`, which this response does carry.
  */
 runTestCase('login rejects when the token response carries no refresh_token (missing offline_access)', async () => {
 	const stub: FetchStub = makeFetchStub([{ body: { access_token: 'access-1', expires_in: 300 } }]);
-	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
-});
-
-/** Asserts {@link login} rejects with a {@link TokenError} when a required option is empty. */
-runTestCase('login validates required options', async () => {
-	const stub: FetchStub = makeFetchStub([]);
-	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl, clientId: '' }), TokenError);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), {
+		name: 'TokenError',
+		message: /did not contain a refresh_token/
+	});
 });
 
 /**
- * Asserts {@link OfflineTokenProvider.getAuthorizationHeader} throws a {@link TokenError} (and
- * {@link OfflineTokenProvider.getAccessToken} returns `null`) before bootstrap has run.
+ * Asserts {@link login} rejects with a {@link TokenError} when a required option is empty, naming the
+ * offending option in the message.
+ */
+runTestCase('login validates required options', async () => {
+	const stub: FetchStub = makeFetchStub([]);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl, clientId: '' }), {
+		name: 'TokenError',
+		message: /option "clientId" is required/
+	});
+});
+
+/**
+ * Asserts {@link OfflineTokenProvider.getAuthorizationHeader} throws a {@link TokenError} reporting the
+ * absent token (and {@link OfflineTokenProvider.getAccessToken} returns `null`) before bootstrap has run.
  */
 runTestCase('getAuthorizationHeader throws before bootstrap when no token is available', () => {
 	const stub: FetchStub = makeFetchStub([]);
 	const provider: OfflineTokenProvider = new OfflineTokenProvider({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
-	assert.throws(() => provider.getAuthorizationHeader(), TokenError);
+	assert.throws(() => provider.getAuthorizationHeader(), {
+		name: 'TokenError',
+		message: /No access token available/
+	});
 	assert.equal(provider.getAccessToken(), null);
 });
 
-/** Asserts a 2xx token response with a non-JSON body rejects {@link login} with a {@link TokenError}. */
+/**
+ * Asserts a 2xx token response with a non-JSON body rejects {@link login} with a {@link TokenError}
+ * that identifies the body as unparseable (rather than as a missing field).
+ */
 runTestCase('login rejects a 2xx token response whose body is not valid JSON', async () => {
 	const stub: FetchStub = makeFetchStub([{ body: '<<<not-json>>>' }]);
-	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), {
+		name: 'TokenError',
+		message: /returned a non-JSON body/
+	});
 });
 
 /**
  * Asserts a parseable 2xx token response without an `access_token` rejects {@link login} with a
- * {@link TokenError}.
+ * {@link TokenError} that names the missing `access_token`.
  */
 runTestCase('login rejects a parseable token response that carries no access_token', async () => {
 	const stub: FetchStub = makeFetchStub([{ body: { refresh_token: 'offline-1', expires_in: 300 } }]);
-	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), TokenError);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), {
+		name: 'TokenError',
+		message: /did not contain an access_token/
+	});
 });
 
-/** Asserts {@link login} rejects with a {@link TokenError} for a `null` or `undefined` options object. */
+/**
+ * Asserts a 2xx token response whose `access_token` is present but EMPTY is rejected exactly like an
+ * absent one: a blank bearer token would otherwise be handed to gRPC and fail as UNAUTHENTICATED.
+ */
+runTestCase('login rejects a token response whose access_token is an empty string', async () => {
+	const stub: FetchStub = makeFetchStub([{ body: { access_token: '', refresh_token: 'offline-1', expires_in: 300 } }]);
+	await assert.rejects(() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl }), {
+		name: 'TokenError',
+		message: /did not contain an access_token/
+	});
+});
+
+/**
+ * Asserts {@link login} rejects with a {@link TokenError} naming the missing options object for both a
+ * `null` and an `undefined` argument.
+ */
 runTestCase('login rejects a missing options object', async () => {
-	await assert.rejects(() => login(null as unknown as OfflineTokenLoginOptions), TokenError);
-	await assert.rejects(() => login(undefined as unknown as OfflineTokenLoginOptions), TokenError);
+	await assert.rejects(() => login(null as unknown as OfflineTokenLoginOptions), {
+		name: 'TokenError',
+		message: /requires an options object/
+	});
+	await assert.rejects(() => login(undefined as unknown as OfflineTokenLoginOptions), {
+		name: 'TokenError',
+		message: /requires an options object/
+	});
 });
 
 /**
@@ -603,5 +746,414 @@ runTestCase('stop() during an in-flight refresh suppresses re-arming the next re
 		assert.equal(calls.length, 2);
 	} finally {
 		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts trailing slashes on `keycloakUrl` collapse to exactly one separator before `/realms`, so a
+ * `KEYCLOAK_URL` copied with a trailing slash cannot POST to a `//realms/...` path.
+ */
+runTestCase('a keycloakUrl with trailing slashes yields exactly one slash before /realms', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+
+	const provider: OfflineTokenProvider = await login({
+		...BASE_OPTIONS,
+		keycloakUrl: 'https://auth.example.com/auth///',
+		fetchImpl: stub.fetchImpl
+	});
+	try {
+		// Only the trailing slashes are stripped -- the `/auth` base path is preserved verbatim.
+		assert.equal(stub.calls[0].url, EXPECTED_TOKEN_ENDPOINT);
+	} finally {
+		provider.stop();
+	}
+});
+
+/**
+ * Asserts a realm whose name carries characters that are unsafe in a URL path is percent-encoded into
+ * the token endpoint instead of being injected raw.
+ */
+runTestCase('a realm needing percent-encoding is URL-encoded into the token endpoint path', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+
+	const provider: OfflineTokenProvider = await login({
+		...BASE_OPTIONS,
+		realm: 'ondewo ccai/platform',
+		fetchImpl: stub.fetchImpl
+	});
+	try {
+		assert.equal(
+			stub.calls[0].url,
+			'https://auth.example.com/auth/realms/ondewo%20ccai%2Fplatform/protocol/openid-connect/token'
+		);
+	} finally {
+		provider.stop();
+	}
+});
+
+/**
+ * Asserts the armed refresh delay is the token lifetime minus the 30s skew head-room -- i.e. a 300s
+ * token refreshes after 270s, not after its full lifetime and not on the 1s minimum.
+ */
+runTestCase('the armed refresh delay is the token lifetime minus the 30s skew', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+
+	const capture: TimerDelayCapture = captureTimerDelays();
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+		try {
+			// 300s lifetime - 30s skew = one timer armed at 270s.
+			assert.deepEqual(capture.delaysInMs, [270_000]);
+		} finally {
+			provider.stop();
+		}
+	} finally {
+		capture.restore();
+	}
+});
+
+/**
+ * Asserts a token whose lifetime is at or below the 30s skew floors the armed delay at the 1s minimum
+ * (a zero/negative delay would hammer the token endpoint in a hot loop).
+ */
+runTestCase('a token lifetime at or below the skew floors the armed refresh delay at the 1s minimum', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 30 } }
+	]);
+
+	const capture: TimerDelayCapture = captureTimerDelays();
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+		try {
+			// 30s lifetime - 30s skew = 0s -> clamped up to the 1s minimum, never to 0.
+			assert.deepEqual(capture.delaysInMs, [1_000]);
+		} finally {
+			provider.stop();
+		}
+	} finally {
+		capture.restore();
+	}
+});
+
+/**
+ * Asserts the armed delay is clamped to the time remaining before the `tokenExpirationInS` deadline,
+ * so a long-lived token cannot schedule a refresh beyond the end of the bounded loop.
+ */
+runTestCase('the armed refresh delay is clamped to the time remaining before the bounded deadline', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+
+	const frozenNowInMs: number = 7_000_000;
+	const nowInMs: () => number = (): number => frozenNowInMs;
+
+	const capture: TimerDelayCapture = captureTimerDelays();
+	try {
+		const provider: OfflineTokenProvider = await login({
+			...BASE_OPTIONS,
+			fetchImpl: stub.fetchImpl,
+			nowInMs,
+			tokenExpirationInS: 100
+		});
+		try {
+			// The token would allow 270s, but the bounded loop only has 100s left -> clamped to 100s.
+			assert.deepEqual(capture.delaysInMs, [100_000]);
+		} finally {
+			provider.stop();
+		}
+	} finally {
+		capture.restore();
+	}
+});
+
+/**
+ * Asserts the delay a REFRESH re-arms is derived from the lifetime of the REFRESHED token (minus the
+ * 30s skew), not from the lifetime bootstrap saw: Keycloak may hand out a shorter-lived access token on
+ * a refresh, and re-using the bootstrap delay would then schedule the next renewal after expiry.
+ */
+runTestCase('a refresh re-arms the next delay from the refreshed lifetime, not the bootstrap one', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } },
+		// A DELIBERATELY different lifetime on the refresh -- the re-armed delay must follow this one.
+		{ body: { access_token: 'access-2', refresh_token: 'offline-2', expires_in: 120 } }
+	]);
+
+	// Enable the fake clock FIRST, so the delay spy wraps (and forwards to) the mocked setTimeout.
+	mock.timers.enable({ apis: ['setTimeout'] });
+	const capture: TimerDelayCapture = captureTimerDelays();
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+		try {
+			// 300s lifetime - 30s skew = the single delay BOOTSTRAP armed.
+			assert.deepEqual(capture.delaysInMs, [270_000]);
+
+			mock.timers.tick(270_000);
+			await flushMicrotasks();
+
+			assert.equal(stub.calls.length, 2);
+			assert.equal(provider.getAccessToken(), 'access-2');
+			// 120s refreshed lifetime - 30s skew = 90s: the RE-ARMED delay, not another 270s.
+			assert.deepEqual(capture.delaysInMs, [270_000, 90_000]);
+		} finally {
+			provider.stop();
+		}
+	} finally {
+		capture.restore();
+		mock.timers.reset();
+	}
+});
+
+/** Asserts the armed refresh timer is unref-ed, so it can never keep a consumer's process alive. */
+runTestCase('the armed refresh timer is unref-ed and cannot hold the event loop open', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 300 } }
+	]);
+
+	const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+	try {
+		const armedTimer: RefCountedTimer | null = (provider as unknown as ProviderTimerView).timer;
+		assert.ok(armedTimer !== null, 'bootstrap must arm a refresh timer');
+		assert.equal(armedTimer.hasRef(), false);
+	} finally {
+		provider.stop();
+	}
+});
+
+/**
+ * Asserts a rotated offline `refresh_token` is adopted: the refresh that follows sends the NEW token,
+ * not the one login obtained (Keycloak invalidates the superseded token, so reusing it kills the
+ * session).
+ */
+runTestCase('a rotated refresh_token is the one the next refresh sends', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 31 } },
+		// Keycloak rotates the offline token on the first refresh.
+		{ body: { access_token: 'access-2', refresh_token: 'offline-2', expires_in: 31 } },
+		{ body: { access_token: 'access-3', refresh_token: 'offline-3', expires_in: 31 } }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+
+		assert.equal(stub.calls.length, 3);
+		assert.equal(stub.calls[1].params.get('refresh_token'), 'offline-1');
+		// The rotated token -- NOT offline-1 -- must be presented on the following refresh.
+		assert.equal(stub.calls[2].params.get('refresh_token'), 'offline-2');
+		assert.equal(provider.getAccessToken(), 'access-3');
+		provider.stop();
+	} finally {
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts an empty-string `refresh_token` in a refresh response does NOT clobber the stored offline
+ * token: the next refresh still presents the last usable one.
+ */
+runTestCase('an empty rotated refresh_token does not clobber the stored offline token', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 31 } },
+		// A refresh that succeeds but carries a blank rotated token must be ignored for rotation.
+		{ body: { access_token: 'access-2', refresh_token: '', expires_in: 31 } },
+		{ body: { access_token: 'access-3', refresh_token: 'offline-3', expires_in: 31 } }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+		assert.equal(provider.getAccessToken(), 'access-2');
+
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+		assert.equal(stub.calls[2].params.get('refresh_token'), 'offline-1');
+		assert.equal(provider.getAccessToken(), 'access-3');
+		provider.stop();
+	} finally {
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts {@link OfflineTokenProvider.stop} is safe (and idempotent) on a provider that never
+ * bootstrapped: it arms nothing, touches no token endpoint, and leaves the token unset.
+ */
+runTestCase('stop() before bootstrap is a safe, idempotent no-op', () => {
+	const stub: FetchStub = makeFetchStub([]);
+	const provider: OfflineTokenProvider = new OfflineTokenProvider({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+
+	assert.doesNotThrow((): void => {
+		provider.stop();
+		provider.stop();
+	});
+	assert.equal(provider.getAccessToken(), null);
+	assert.equal(stub.calls.length, 0);
+});
+
+/**
+ * Asserts {@link OfflineTokenProvider.stop} only halts the loop: repeated calls are harmless, no
+ * further refresh is ever issued, and the last token stays readable so the caller can keep using it
+ * until the server answers UNAUTHENTICATED and it re-logs in.
+ */
+runTestCase('after stop() the last access token is still served and no further refresh is issued', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 31 } }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+
+		provider.stop();
+		// Idempotent: a second (and third) stop() must neither throw nor re-arm anything.
+		provider.stop();
+		provider.stop();
+
+		mock.timers.tick(100_000);
+		await flushMicrotasks();
+
+		// Only the initial login call -- the armed timer was cleared and nothing re-armed it.
+		assert.equal(stub.calls.length, 1);
+		assert.equal(
+			(provider as unknown as ProviderTimerView).timer,
+			null,
+			'stop() must release the armed timer, not just ignore it'
+		);
+		assert.equal(provider.getAccessToken(), 'access-1');
+		assert.equal(provider.getAuthorizationHeader(), 'Bearer access-1');
+	} finally {
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts {@link OfflineTokenProvider.stop} hands the armed timer to `clearTimeout` instead of merely
+ * nulling the field that holds it. The source relies on this invariant: the early `if (this.stopped)`
+ * return in `refresh()` is annotated as unreachable precisely BECAUSE stop() clears the only timer
+ * that can call it, and a pending timer that still fires would falsify that claim.
+ */
+runTestCase('stop() releases the armed timer through clearTimeout, not just its reference', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 31 } }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	// Installed AFTER the timer mock so the spy wraps whichever clearTimeout is currently in place.
+	const cleared: ClearedTimerCapture = captureClearedTimers();
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+		const armedTimer: RefCountedTimer | null = (provider as unknown as ProviderTimerView).timer;
+		assert.notEqual(armedTimer, null, 'bootstrap must arm a refresh timer');
+		assert.equal(cleared.handles.length, 0, 'nothing may be cleared before stop() is called');
+
+		provider.stop();
+
+		assert.equal(cleared.handles.length, 1, 'stop() must pass the armed timer to clearTimeout');
+		assert.equal(cleared.handles[0], armedTimer, 'stop() must release the very timer it armed');
+
+		// Idempotent: with no timer left there is nothing further to release.
+		provider.stop();
+		assert.equal(cleared.handles.length, 1, 'a second stop() must not clear anything again');
+	} finally {
+		cleared.restore();
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts a second {@link OfflineTokenProvider.onRefreshError} registration REPLACES the first: only
+ * the most recently registered handler is invoked for a failed background refresh.
+ */
+runTestCase('onRefreshError replaces a previously registered handler (the later registration wins)', async () => {
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: 'access-1', refresh_token: 'offline-1', expires_in: 31 } },
+		{ status: 500, body: 'boom' }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+		let replacedHandlerCalls: number = 0;
+		let capturedByLatestHandler: unknown = null;
+		provider.onRefreshError((): void => {
+			replacedHandlerCalls += 1;
+		});
+		provider.onRefreshError((error: unknown): void => {
+			capturedByLatestHandler = error;
+		});
+
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+		await flushMicrotasks();
+
+		assert.equal(replacedHandlerCalls, 0, 'the replaced handler must never be invoked');
+		assert.ok(capturedByLatestHandler instanceof TokenError);
+		// The documented `name` contract is what a caller branches on across module instances.
+		assert.equal(capturedByLatestHandler.name, 'TokenError');
+		provider.stop();
+	} finally {
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts the `Authorization` value is exactly `"Bearer "` plus the access token, inserted verbatim
+ * (no URL-encoding, no trimming, no extra whitespace), and that it follows the token across a refresh.
+ */
+runTestCase('getAuthorizationHeader inserts the access token verbatim and follows it across a refresh', async () => {
+	const firstToken: string = 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZWNoLXVzZXIifQ.first+sig/one==';
+	const refreshedToken: string = 'eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZWNoLXVzZXIifQ.second+sig/two==';
+	const stub: FetchStub = makeFetchStub([
+		{ body: { access_token: firstToken, refresh_token: 'offline-1', expires_in: 31 } },
+		{ body: { access_token: refreshedToken, refresh_token: 'offline-1', expires_in: 31 } }
+	]);
+
+	mock.timers.enable({ apis: ['setTimeout'] });
+	try {
+		const provider: OfflineTokenProvider = await login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl });
+
+		// A JWT's `+`, `/` and `=` must survive untouched -- any encoding would break the gRPC header.
+		assert.equal(provider.getAuthorizationHeader(), `Bearer ${firstToken}`);
+		assert.equal(provider.getAuthorizationHeader().length, 'Bearer '.length + firstToken.length);
+
+		mock.timers.tick(1000);
+		await flushMicrotasks();
+
+		assert.equal(provider.getAccessToken(), refreshedToken);
+		assert.equal(provider.getAuthorizationHeader(), `Bearer ${refreshedToken}`);
+		provider.stop();
+	} finally {
+		mock.timers.reset();
+	}
+});
+
+/**
+ * Asserts EVERY required login option is validated (not just one) and that the rejection message
+ * names the offending option, so a misconfigured deployment fails fast and legibly before any network
+ * call.
+ */
+runTestCase('login rejects each required option when it is empty, naming it in the message', async () => {
+	for (const key of REQUIRED_LOGIN_OPTION_KEYS) {
+		const stub: FetchStub = makeFetchStub([]);
+		await assert.rejects(
+			() => login({ ...BASE_OPTIONS, fetchImpl: stub.fetchImpl, [key]: '' }),
+			{ name: 'TokenError', message: new RegExp(`"${key}"`) },
+			`login() must reject an empty "${key}" option`
+		);
+		assert.equal(stub.calls.length, 0, `login() must not call the token endpoint for an empty "${key}"`);
 	}
 });

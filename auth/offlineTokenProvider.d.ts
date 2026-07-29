@@ -23,8 +23,10 @@ export interface TokenFetchInit {
     /** The `application/x-www-form-urlencoded` request body. */
     body: string;
     /**
-     * Optional undici dispatcher (Node's non-standard `fetch` extension); set only on the
-     * default transport when `keycloakVerifySsl` is `false` to skip TLS verification.
+     * Optional undici dispatcher (Node's non-standard `fetch` extension). Set only
+     * on the default transport when `keycloakVerifySsl` is `false`; carries an
+     * `Agent({ connect: { rejectUnauthorized: false } })` so the token request skips
+     * TLS certificate verification. Left `undefined` on the secure default path.
      */
     dispatcher?: unknown;
 }
@@ -53,9 +55,11 @@ export interface OfflineTokenLoginOptions {
     /** Optional fetch override (tests inject a mock); defaults to the global fetch. */
     fetchImpl?: TokenFetch;
     /**
-     * When `false`, disable TLS certificate verification on the Keycloak token request
-     * (opt-in insecure, for a self-signed local Envoy). Defaults to `true` (secure).
-     * Ignored when a custom `fetchImpl` is injected. Node-only (undici dispatcher).
+     * When `false`, DISABLE TLS certificate verification on the Keycloak token
+     * request (opt-in insecure, for a self-signed local Envoy). Defaults to `true`
+     * (verify — secure, unchanged behaviour). Ignored when a custom `fetchImpl` is
+     * injected. Node-only: implemented via an undici dispatcher, so it is a no-op in
+     * a browser bundle.
      */
     keycloakVerifySsl?: boolean;
     /** Optional clock override returning epoch ms (tests); defaults to Date.now. */
@@ -85,7 +89,7 @@ export declare class OfflineTokenProvider {
     private readonly fetchImpl;
     /** Clock returning epoch milliseconds; injectable so the bounded deadline is testable. */
     private readonly nowInMs;
-    /** The current access token, or `null` before bootstrap / after the bounded loop has lapsed. */
+    /** The current access token, or `null` only until {@link bootstrap} completes; never cleared afterwards. */
     private accessToken;
     /** The current offline refresh token, or `null` before bootstrap. */
     private refreshToken;
@@ -147,16 +151,20 @@ export declare class OfflineTokenProvider {
     /**
      * Return the current access token.
      *
-     * @returns The current access token, or `null` before bootstrap / after the bounded loop has
-     *   lapsed.
+     * @returns The current access token, or `null` only until {@link bootstrap} completes. The token is
+     *   never cleared afterwards: a stopped or lapsed provider keeps returning the last (eventually
+     *   expired) token, so callers must re-login once the server answers UNAUTHENTICATED.
      */
     getAccessToken(): string | null;
     /**
      * Build the value for an `Authorization` gRPC metadata header.
      *
+     * Succeeds for the whole lifetime of the provider once {@link bootstrap} has completed: a stopped or
+     * lapsed provider still yields the last (eventually expired) token rather than throwing, so callers
+     * must re-login once the server answers UNAUTHENTICATED.
+     *
      * @returns The header value `Bearer <access_token>`.
-     * @throws {@link TokenError} If no access token is available (login has not completed or has
-     *   lapsed).
+     * @throws {@link TokenError} If no access token is available yet, i.e. login has not completed.
      */
     getAuthorizationHeader(): string;
     /** Stop the auto-refresh loop. Idempotent; safe to call from any state. */

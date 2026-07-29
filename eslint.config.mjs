@@ -17,8 +17,8 @@ const compat = new FlatCompat({
 export default [
 	{
 		ignores: [
-			'npm/auth/offlineTokenProvider.d.ts',
-			'npm/auth/offlineTokenProvider.js',
+			// the npm/ release package is a build artifact copied from files that are linted at their source
+			'npm/',
 			'**/api/',
 			'src/ondewo-nlu-api',
 			'**/ondewo-proto-compiler',
@@ -28,7 +28,8 @@ export default [
 			'auth/*.d.ts',
 			'dist/',
 			// tsc test output (package.json `pretest`); its .js are outside the tsconfig program, so lint the .ts source
-			'.test-build/'
+			'.test-build*/',
+			'.c8-*/'
 		]
 	},
 	...compat.extends(
