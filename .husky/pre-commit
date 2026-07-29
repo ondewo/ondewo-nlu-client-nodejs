@@ -37,7 +37,7 @@ fi
 # Skipped when nothing staged could change the outcome, so a docs-only commit does not pay ~15s.
 # `git diff --cached` honours GIT_INDEX_FILE, so the temporary index of `git commit -a` is seen too.
 if ! git diff --cached --name-only |
-  grep -qE '^(auth/.*\.ts|examples/.*\.ts|api/.*|public-api\..*|package\.json|package-lock\.json|\.ci-package\.json|eslint\.config\.mjs|tsconfig.*\.json)$'; then
+  grep -qE '^(auth/.*\.ts|examples/.*\.ts|api/.*|public-api\..*|package\.json|package-lock\.json|\.ci-package\.json|eslint\.config\.mjs|tsconfig.*\.json|Makefile)$'; then
   echo 'pre-commit: no source, api/ or build-input file staged -> skipping npm test'
   exit 0
 fi

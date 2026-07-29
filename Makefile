@@ -17,7 +17,7 @@ export
 ONDEWO_NLU_VERSION=6.14.0
 
 NLU_API_GIT_BRANCH=tags/7.0.0
-ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/5.10.0
+ONDEWO_PROTO_COMPILER_GIT_BRANCH=tags/5.11.0
 ONDEWO_PROTO_COMPILER_DIR=ondewo-proto-compiler
 NLU_APIS_DIR=src/ondewo-nlu-api
 NLU_PROTOS_DIR=${NLU_APIS_DIR}/ondewo
@@ -262,7 +262,14 @@ npm_run_build: ## Runs the build command in package.json
 
 restore_ci_test_setup: ## Re-add CI test scripts + devDeps (from .ci-package.json) stripped by the proto-compiler root regen
 	@node -e 'const fs=require("fs");if(!fs.existsSync(".ci-package.json")){console.log("no .ci-package.json, skipping");process.exit(0)}const p=JSON.parse(fs.readFileSync("package.json","utf8"));const c=JSON.parse(fs.readFileSync(".ci-package.json","utf8"));p.scripts=Object.assign({},p.scripts||{},c.scripts||{});p.dependencies=Object.assign({},p.dependencies||{},c.dependencies||{});p.devDependencies=Object.assign({},p.devDependencies||{},c.devDependencies||{});if(c.description)p.description=c.description;fs.writeFileSync("package.json",JSON.stringify(p,null,2)+"\n");console.log("restore-ci-package: merged CI test setup; scripts=["+Object.keys(p.scripts).join(",")+"]")'
-	# The regen strips the test devDeps from package-lock.json too, which would make CI's `npm ci`
-	# fail against the just-restored package.json. Re-sync the lockfile (no install, no node_modules).
-	@npm install --package-lock-only --no-audit --no-fund >/dev/null \
-		&& echo "restore-ci-package: re-synced package-lock.json with the merged package.json"
+	# The regen rewrites package-lock.json too, stripping the test devDeps, which would make CI's
+	# `npm ci` fail against the just-restored package.json. Prefer restoring the COMMITTED lockfile:
+	# it already matches the package.json this target reconstructs, so nothing is re-resolved. Only
+	# fall back to a real re-sync when that is genuinely not enough (e.g. src/package.json declared a
+	# new dependency), because `npm install --package-lock-only` refreshes every transitive version
+	# inside the declared ranges and would smuggle silent dependency upgrades into the release commit.
+	-@git checkout -- package-lock.json 2>/dev/null && echo "restore-ci-package: restored the committed package-lock.json"
+	@npm ci --dry-run --no-audit --no-fund >/dev/null 2>&1 \
+		&& echo "restore-ci-package: package-lock.json agrees with package.json" \
+		|| { echo "restore-ci-package: lockfile still out of sync -> re-resolving"; \
+			npm install --package-lock-only --no-audit --no-fund >/dev/null; }
