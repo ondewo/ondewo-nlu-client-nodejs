@@ -94,24 +94,24 @@ npm
 
 ## Authentication
 
-All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper shipped in the package and attach it to each call as the `Authorization` gRPC metadata header.
+All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper, which is re-exported from the package entry point, and attach it to each call as the `Authorization` gRPC metadata header.
 
 ```ts
-import { login } from '@ondewo/nlu-client-nodejs/auth/offlineTokenProvider';
+import { login } from '@ondewo/nlu-client-nodejs';
 
 const provider = await login({
-	keycloakUrl: 'https://auth.example.com/auth',
-	realm: 'ondewo-ccai-platform',
-	clientId: 'ondewo-nlu-cai-sdk-public',
-	username: 'tech-user@example.com',
-	password: '...'
+ keycloakUrl: 'https://auth.example.com/auth',
+ realm: 'ondewo-ccai-platform',
+ clientId: 'ondewo-nlu-cai-sdk-public',
+ username: 'tech-user@example.com',
+ password: '...'
 });
 
 // `Bearer <jwt>` — set this as the `Authorization` gRPC metadata on each request.
 const authorizationHeader = provider.getAuthorizationHeader();
 ```
 
-`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
+`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. Deep-importing `@ondewo/nlu-client-nodejs/auth/offlineTokenProvider` keeps working. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
 
 [comment]: <> 'START OF GITHUB README'
 
@@ -140,15 +140,20 @@ The repository is published to GitHub and NPM by the Automated Release Process o
 TODO after PR merge:
 
 - checkout master
+
   ```shell
   git checkout master
   ```
+
 - pull newest state
+
   ```shell
   git pull
   ```
+
 - Adjust `ONDEWO_NLU_VERSION` in the `Makefile` <br><br>
 - Add new Release Notes to `src/RELEASE.md` in following format:
+
   ```
   ## Release ONDEWO NLU Nodejs Client X.X.X    <----- Beginning of Notes
 
@@ -156,7 +161,9 @@ TODO after PR merge:
 
   *****************                             <----- End of Notes
   ```
+
 - release
+
   ```shell
   make ondewo_release
   ```
