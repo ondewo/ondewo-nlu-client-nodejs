@@ -9,6 +9,13 @@ esm2022/
 fesm2022/
 node_modules
 npm
+# README.md is prettier-ignored here as it already is in the typescript and js clients.
+# .prettierrc sets useTabs, so prettier re-tabs the fenced code blocks that markdownlint's
+# MD010 then de-tabs, and .husky/pre-commit runs `make prettier -w` before `pre-commit run`
+# -- so the two fight on every commit that touches the file and none of them can ever pass.
+# Prettier also rewrites the `[comment]: <> (START/END OF GITHUB README)` slice markers the
+# release Makefile cuts the published README with.
+README.md
 RELEASE.md
 src/
 
