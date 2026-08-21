@@ -28,7 +28,7 @@ IMAGE_UTILS_NAME=ondewo-nlu-client-utils-nodejs:${ONDEWO_NLU_VERSION}
 PRETTIER_WRITE?=
 
 CURRENT_RELEASE_NOTES=`cat RELEASE.md \
-	| perl -ne 'print if /Release ONDEWO NLU Nodejs Client ${ONDEWO_NLU_VERSION}/../\*\*/'`
+	| perl -ne 'print if /Release ONDEWO NLU Nodejs Client ${ONDEWO_NLU_VERSION}/../^\*{5}/'`
 
 GH_REPO="https://github.com/ondewo/ondewo-nlu-client-nodejs"
 DEVOPS_ACCOUNT_GIT="ondewo-devops-accounts"
