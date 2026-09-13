@@ -43,9 +43,7 @@ git clone https://github.com/ondewo/ondewo-nlu-client-nodejs.git ## Clone reposi
 cd ondewo-nlu-client-nodejs                                      ## Change into repo-directoy
 make setup_developer_environment_locally                         ## Install dependencies
 ```
-
 ## Package structure
-
 ```
 npm
 ├── api
@@ -91,46 +89,41 @@ npm
 ├── public-api.d.ts
 └── README.md
 ```
-
 ## Authentication
 
-All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper, which is re-exported from the package entry point, and attach it to each call as the `Authorization` gRPC metadata header.
+All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper shipped in the package and attach it to each call as the `Authorization` gRPC metadata header.
 
 ```ts
-import { login } from '@ondewo/nlu-client-nodejs';
+import { login } from '@ondewo/nlu-client-nodejs/auth/offlineTokenProvider';
 
 const provider = await login({
- keycloakUrl: 'https://auth.example.com/auth',
- realm: 'ondewo-ccai-platform',
- clientId: 'ondewo-nlu-cai-sdk-public',
- username: 'tech-user@example.com',
- password: '...'
+  keycloakUrl: 'https://auth.example.com/auth',
+  realm: 'ondewo-ccai-platform',
+  clientId: 'ondewo-nlu-cai-sdk-public',
+  username: 'tech-user@example.com',
+  password: '...'
 });
 
 // `Bearer <jwt>` — set this as the `Authorization` gRPC metadata on each request.
 const authorizationHeader = provider.getAuthorizationHeader();
 ```
 
-`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. Deep-importing `@ondewo/nlu-client-nodejs/auth/offlineTokenProvider` keeps working. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
+`login(...)` returns an `OfflineTokenProvider` whose access token is auto-refreshed in the background; call `provider.stop()` when you are done. The legacy `cai-token` / HTTP-basic credentials no longer exist. See the [`examples/`](https://github.com/ondewo/ondewo-nlu-client-nodejs/tree/master/examples) directory for a full `Agents.ListAgents` RPC example.
 
-[comment]: <> 'START OF GITHUB README'
-
+[comment]: <> (START OF GITHUB README)
 ## Build
 
 The `make build` command is dependent on 2 `repositories` and their speciefied `version`:
-
-- [ondewo-nlu-api](https://github.com/ondewo/ondewo-nlu-api) -- `NLU_API_GIT_BRANCH` in `Makefile`
-- [ondewo-proto-compiler](https://github.com/ondewo/ondewo-proto-compiler) -- `ONDEWO_PROTO_COMPILER_GIT_BRANCH` in `Makefile`
+  - [ondewo-nlu-api](https://github.com/ondewo/ondewo-nlu-api) -- `NLU_API_GIT_BRANCH` in `Makefile`
+  - [ondewo-proto-compiler](https://github.com/ondewo/ondewo-proto-compiler) -- `ONDEWO_PROTO_COMPILER_GIT_BRANCH` in `Makefile`
 
 Other than creating the proto-code, `build` also installs the `dev-dependencies` and changes the owner of the proto-code-files from `root` to the `current user`.
 
 In the case that some `google .protos` were not automatically generated, exists the option of creating a `proto-deps.txt` inside of the `src` folder. There, import statements can be written the same way as they are in `.proto` files.
-
-```
-import "google/api/http.proto"; //Example
-  <---- New Line
-```
-
+  ```
+  import "google/api/http.proto"; //Example
+    <---- New Line
+  ```
 > :warning: The last line in the `proto-deps.txt` needs to be an empty new line, otherwise the compiler will fail
 
 ## GitHub Repository - Release Automation
@@ -138,22 +131,16 @@ import "google/api/http.proto"; //Example
 The repository is published to GitHub and NPM by the Automated Release Process of ONDEWO.
 
 TODO after PR merge:
-
 - checkout master
-
   ```shell
   git checkout master
   ```
-
 - pull newest state
-
   ```shell
   git pull
   ```
-
 - Adjust `ONDEWO_NLU_VERSION` in the `Makefile` <br><br>
 - Add new Release Notes to `src/RELEASE.md` in following format:
-
   ```
   ## Release ONDEWO NLU Nodejs Client X.X.X    <----- Beginning of Notes
 
@@ -161,13 +148,10 @@ TODO after PR merge:
 
   *****************                             <----- End of Notes
   ```
-
 - release
-
   ```shell
   make ondewo_release
   ```
-
 <br>
 The release process can be divided into 6 Steps:
 
@@ -178,6 +162,7 @@ The release process can be divided into 6 Steps:
 5. Create and push the `release tag` e.g. `1.3.20`
 6. Create a new `Release` on GitHub
 
-> :warning: The Release Automation checks if the build has created all the proto-code files, but it does not check the code-integrity. Please build and test the generated code prior to starting the release process.
+> :warning:  The Release Automation checks if the build has created all the proto-code files, but it does not check the code-integrity. Please build and test the generated code prior to starting the release process.
 
-[comment]: <> 'END OF GITHUB README'
+
+[comment]: <> (END OF GITHUB README)
