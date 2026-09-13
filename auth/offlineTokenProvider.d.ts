@@ -64,6 +64,11 @@ export interface OfflineTokenLoginOptions {
     keycloakVerifySsl?: boolean;
     /** Optional clock override returning epoch ms (tests); defaults to Date.now. */
     nowInMs?: () => number;
+    /**
+     * Optional [0,1) random source for the failure-backoff jitter; defaults to `Math.random`.
+     * Tests inject a constant to make the retry delay exact.
+     */
+    randomFraction?: () => number;
 }
 /** Error raised on any token-endpoint or token-shape failure. */
 export declare class TokenError extends Error {
@@ -101,6 +106,10 @@ export declare class OfflineTokenProvider {
     private deadlineInMs;
     /** Optional callback invoked with the error of a failed background refresh. */
     private onRefreshErrorHandler;
+    /** Consecutive failed background refreshes; drives the retry backoff, reset on every success. */
+    private consecutiveRefreshFailures;
+    /** [0,1) random source used for the failure-backoff jitter (test-injectable). */
+    private readonly randomFraction;
     /**
      * Construct an inert provider from login options. No network call is made here; call
      * {@link bootstrap} (or use the {@link login} factory) to acquire the first token.
@@ -140,6 +149,23 @@ export declare class OfflineTokenProvider {
      *   non-positive value falls back to {@link MIN_REFRESH_DELAY_IN_S}.
      */
     private scheduleRefresh;
+    /**
+     * Arm the next attempt after a FAILED refresh, using bounded exponential backoff with full jitter.
+     *
+     * The ceiling grows `REFRESH_RETRY_BASE_DELAY_IN_S * 2 ** (failures - 1)` up to
+     * {@link REFRESH_RETRY_MAX_DELAY_IN_S}, and the actual wait is drawn uniformly from
+     * `[base, ceiling]`. The jitter is the load-bearing half: N call containers whose refreshes fail in
+     * the same instant would otherwise retry in lockstep for as long as the outage lasts.
+     */
+    private scheduleRetryAfterFailure;
+    /**
+     * Arm the single refresh timer `delayInS` from now, clamped to the bounded deadline. Shared by the
+     * success path ({@link scheduleRefresh}) and the failure path ({@link scheduleRetryAfterFailure}) so
+     * the `stopped` guard, the deadline clamp and the `unref` are written exactly once.
+     *
+     * @param delayInS - Seconds to wait before the next refresh attempt.
+     */
+    private armRefreshTimer;
     /**
      * Register a callback invoked with the error of a failed background refresh (optional diagnostics).
      *
