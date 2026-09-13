@@ -211,11 +211,14 @@ class OfflineTokenProvider {
         }
         this.timer = setTimeout(() => {
             this.refresh().catch((refreshError) => {
-                // Swallow a transient refresh failure but surface it so the caller can react; the next
-                // gRPC call gets the stale (possibly expired) token and re-logs in on UNAUTHENTICATED.
+                // Surface the failure so the caller can react; the next gRPC call gets the stale
+                // (possibly expired) token and re-logs in on UNAUTHENTICATED.
                 if (this.onRefreshErrorHandler !== null) {
                     this.onRefreshErrorHandler(refreshError);
                 }
+                // AND RE-ARM -- see the .ts source: refresh() reschedules after the await that threw,
+                // so without this one failed refresh ended proactive renewal for the provider's life.
+                this.scheduleRefresh(undefined);
             });
         }, delayInS * 1000);
         // Do not keep the event loop alive solely for the refresh timer.

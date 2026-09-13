@@ -2,6 +2,14 @@
 
 *****************
 
+## Release ONDEWO NLU NodeJS Client 7.1.1
+
+### Bug fixes
+
+* [[OND211-2418]](https://ondewo.atlassian.net/browse/OND211-2418) **A single failed background refresh permanently ended proactive token renewal.** `refresh()` re-arms the timer on its last line — after the `await` that performs the token request — so when that request threw, `scheduleRefresh()` was never reached and the timer callback's `catch` returned without re-arming. One transient answer from the token endpoint therefore ended background renewal for the life of the provider, leaving every later token to the stale-token/`UNAUTHENTICATED` fallback. The `catch` now re-arms via `scheduleRefresh(undefined)`, bounded by `MIN_REFRESH_DELAY_IN_S`; the `stopped` and deadline guards still apply. Fixed in both the `.ts` source and the committed `.js` build output, and the spec now asserts the re-arm and the recovery.
+
+*****************
+
 ## Release ONDEWO NLU Nodejs Client 7.1.0
 
 ### Improvements
