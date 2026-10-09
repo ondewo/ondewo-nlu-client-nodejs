@@ -97,7 +97,7 @@ npm
 All RPCs are authenticated with a Keycloak-issued **bearer token**. Obtain one with the offline-token login helper shipped in the package and attach it to each call as the `Authorization` gRPC metadata header.
 
 ```ts
-import { login } from '@ondewo/nlu-client-nodejs/auth/offlineTokenProvider';
+import { login } from '@ondewo/nlu-client-nodejs';
 
 const provider = await login({
   keycloakUrl: 'https://auth.example.com/auth',
@@ -115,7 +115,7 @@ const authorizationHeader = provider.getAuthorizationHeader();
 
 ## TLS, mutual TLS and certificates
 
-gRPC encrypts with **TLS** ("SSL" in names such as `credentials.createSsl` or `grpc.ssl_target_name_override` is legacy naming). The package ships a channel helper, `auth/grpcChannel`, that builds the `@grpc/grpc-js` credentials and channel options for every generated client:
+gRPC encrypts with **TLS** ("SSL" in names such as `credentials.createSsl` or `grpc.ssl_target_name_override` is legacy naming). The package ships a channel helper, `auth/grpcChannel` (exported from the package root), that builds the `@grpc/grpc-js` credentials and channel options for every generated client:
 
 | Mode                                    | `useSecureChannel` | Config fields                                                   |
 |-----------------------------------------|--------------------|-----------------------------------------------------------------|
@@ -137,8 +137,7 @@ Rules the code enforces:
 import { readFileSync } from 'fs';
 
 import * as grpc from '@grpc/grpc-js';
-import { createChannelCredentials, createGrpcClient, GrpcClientConfig } from '@ondewo/nlu-client-nodejs/auth/grpcChannel';
-import { AgentsClient } from '@ondewo/nlu-client-nodejs/api/ondewo/nlu/agent_grpc_pb';
+import { AgentsClient, createChannelCredentials, createGrpcClient, GrpcClientConfig } from '@ondewo/nlu-client-nodejs';
 
 const config = new GrpcClientConfig({
   host: '10.0.0.5',
