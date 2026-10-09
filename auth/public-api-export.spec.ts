@@ -20,7 +20,7 @@
 // package while nothing re-exported it: `import { login } from '@ondewo/nlu-client-nodejs'`
 // did not resolve and consumers could only deep-import the module.
 //
-// The line is emitted by ondewo-proto-compiler >= 5.13.0 (append-auth-exports.sh). This asserts
+// The lines are emitted by ondewo-proto-compiler >= 5.13.0 (append-auth-exports.sh; CommonJS .js barrel since 5.15.5). This asserts
 // the artifacts as text rather than importing them - importing would pull in every generated
 // protobuf module for no added signal - so a compiler downgrade that drops the re-export fails
 // here instead of silently shipping an unusable entry point.
@@ -33,26 +33,47 @@ import { join } from 'path';
 import { describe, it } from 'node:test';
 
 const REPO_ROOT: string = join(__dirname, '..', '..');
-const AUTH_EXPORTS: string[] = ["export * from './auth/offlineTokenProvider';", "export * from './auth/grpcChannel';"];
+const AUTH_MODULES: string[] = ['offlineTokenProvider', 'grpcChannel'];
+
+/**
+ * The line the proto compiler (>= 5.15.5) writes for an auth module: a star export in the
+ * `.d.ts` barrel, a `reexport(require(...))` in the CommonJS `.js` barrel.
+ *
+ * @param artifact - `public-api.d.ts` or `public-api.js`.
+ * @param module - Basename of the auth module.
+ * @returns The expected barrel line.
+ */
+function exportLine(artifact: string, module: string): string {
+	if (artifact.endsWith('.d.ts')) {
+		return `export * from './auth/${module}';`;
+	}
+	return `reexport(require('./auth/${module}'));`;
+}
 
 describe('package public API entry point', () => {
 	for (const artifact of ['public-api.d.ts', 'public-api.js']) {
-		for (const authExport of AUTH_EXPORTS) {
-			it(`contains ${authExport} in ${artifact}`, () => {
-				const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
+		for (const module of AUTH_MODULES) {
+			const line: string = exportLine(artifact, module);
 
-				assert.ok(
-					contents.includes(authExport),
-					`${artifact} must contain ${authExport} - regenerate with ondewo-proto-compiler >= 5.13.0`
+			it(`contains ${line} exactly once in ${artifact}`, () => {
+				const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
+				const occurrences: number = contents.split(line).length - 1;
+
+				assert.equal(
+					occurrences,
+					1,
+					`${artifact} must re-export auth/${module} exactly once - regenerate with ondewo-proto-compiler >= 5.15.5`
 				);
-			});
-
-			it(`contains ${authExport} exactly once in ${artifact}`, () => {
-				const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
-				const occurrences: number = contents.split(authExport).length - 1;
-
-				assert.equal(occurrences, 1, `${artifact} must re-export each auth module exactly once`);
 			});
 		}
 	}
+
+	it('public-api.js is CommonJS (no ES export lines)', () => {
+		const contents: string = readFileSync(join(REPO_ROOT, 'public-api.js'), 'utf8');
+
+		assert.deepEqual(
+			contents.split('\n').filter((line: string): boolean => line.startsWith('export ')),
+			[]
+		);
+	});
 });
