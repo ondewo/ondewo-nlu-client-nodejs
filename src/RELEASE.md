@@ -202,6 +202,16 @@
 
 *****************
 
+## Release ONDEWO NLU Nodejs Client 5.0.1
+
+### Improvements
+
+* Tracking API Version [5.0.0](https://github.com/ondewo/ondewo-nlu-api/releases/tag/5.0.0) ( [Documentation](https://ondewo.github.io/ondewo-nlu-api/) )
+* Regenerated the client with ONDEWO Proto Compiler 4.8.0
+* Release tooling image updated to Node.js 18.18.0
+
+*****************
+
 ## Release ONDEWO NLU Nodejs Client 5.0.0
 
 ### Improvements
@@ -354,7 +364,7 @@
 
 *****************
 
-## Release ONDEWO NLU Node.js Client 2.13.0
+## Release ONDEWO NLU Nodejs Client 2.13.0
 
 ### New Features
 
@@ -364,10 +374,12 @@
 
 *****************
 
-## Release ONDEWO NLU Node.js Client 1.1.0
+## Release ONDEWO NLU Nodejs Client 1.1.0
 
 ### New Features
 
 * Added first public release
 * Javascript and Typescript clients
 * Uses version 1.1.0 from <a href="https://github.com/ondewo/ondewo-nlu-api">ONDEWO NLU APIs</a>
+
+*****************

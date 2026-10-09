@@ -33,24 +33,26 @@ import { join } from 'path';
 import { describe, it } from 'node:test';
 
 const REPO_ROOT: string = join(__dirname, '..', '..');
-const AUTH_EXPORT: string = "export * from './auth/offlineTokenProvider';";
+const AUTH_EXPORTS: string[] = ["export * from './auth/offlineTokenProvider';", "export * from './auth/grpcChannel';"];
 
 describe('package public API entry point', () => {
 	for (const artifact of ['public-api.d.ts', 'public-api.js']) {
-		it(`re-exports the auth barrel from ${artifact}`, () => {
-			const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
+		for (const authExport of AUTH_EXPORTS) {
+			it(`contains ${authExport} in ${artifact}`, () => {
+				const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
 
-			assert.ok(
-				contents.includes(AUTH_EXPORT),
-				`${artifact} must contain ${AUTH_EXPORT} - regenerate with ondewo-proto-compiler >= 5.13.0`
-			);
-		});
+				assert.ok(
+					contents.includes(authExport),
+					`${artifact} must contain ${authExport} - regenerate with ondewo-proto-compiler >= 5.13.0`
+				);
+			});
 
-		it(`re-exports the auth barrel exactly once from ${artifact}`, () => {
-			const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
-			const occurrences: number = contents.split(AUTH_EXPORT).length - 1;
+			it(`contains ${authExport} exactly once in ${artifact}`, () => {
+				const contents: string = readFileSync(join(REPO_ROOT, artifact), 'utf8');
+				const occurrences: number = contents.split(authExport).length - 1;
 
-			assert.equal(occurrences, 1, `${artifact} must re-export the auth barrel exactly once`);
-		});
+				assert.equal(occurrences, 1, `${artifact} must re-export each auth module exactly once`);
+			});
+		}
 	}
 });
