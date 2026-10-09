@@ -104,3 +104,4 @@ export * from './api/google/cloud/support/common_pb.d';
 export * from './api/google/cloud/asset/v1beta1/assets_pb.d';
 export * from './api/google/privacy/dlp/v2/storage_pb.d';
 export * from './auth/offlineTokenProvider';
+export * from './auth/grpcChannel';
