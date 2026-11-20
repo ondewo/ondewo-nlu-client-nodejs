@@ -2,6 +2,15 @@
 
 *****************
 
+## Release ONDEWO NLU Nodejs Client 7.6.0
+
+### Improvements
+
+* Tracking API Version [7.6.0](https://github.com/ondewo/ondewo-nlu-api/releases/tag/7.6.0) ( [Documentation](https://ondewo.github.io/ondewo-nlu-api/) )
+* Generated with ondewo-proto-compiler 5.17.0 (protoc 35.1, `protoc-gen-js` 3.21.4, `grpc_node_plugin` from grpc-tools 1.13.1). New runtime floors: `@grpc/grpc-js` ^1.14.7 and `google-protobuf` 3.21.4.
+
+*****************
+
 ## Release ONDEWO NLU Nodejs Client 7.4.0
 
 ### Improvements
