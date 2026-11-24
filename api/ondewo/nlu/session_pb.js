@@ -16803,7 +16803,8 @@ proto.ondewo.nlu.ReferencedChunk.toObject = function(includeInstance, msg) {
     content: jspb.Message.getFieldWithDefault(msg, 6, ""),
     similarity: jspb.Message.getFloatingPointFieldWithDefault(msg, 7, 0.0),
     documentUrl: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    deepLinkUrl: jspb.Message.getFieldWithDefault(msg, 9, "")
+    deepLinkUrl: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    documentTitle: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -16875,6 +16876,10 @@ proto.ondewo.nlu.ReferencedChunk.deserializeBinaryFromReader = function(msg, rea
     case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setDeepLinkUrl(value);
+      break;
+    case 10:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDocumentTitle(value);
       break;
     default:
       reader.skipField();
@@ -16965,6 +16970,13 @@ proto.ondewo.nlu.ReferencedChunk.serializeBinaryToWriter = function(message, wri
   if (f.length > 0) {
     writer.writeString(
       9,
+      f
+    );
+  }
+  f = message.getDocumentTitle();
+  if (f.length > 0) {
+    writer.writeString(
+      10,
       f
     );
   }
@@ -17130,6 +17142,24 @@ proto.ondewo.nlu.ReferencedChunk.prototype.getDeepLinkUrl = function() {
  */
 proto.ondewo.nlu.ReferencedChunk.prototype.setDeepLinkUrl = function(value) {
   return jspb.Message.setProto3StringField(this, 9, value);
+};
+
+
+/**
+ * optional string document_title = 10;
+ * @return {string}
+ */
+proto.ondewo.nlu.ReferencedChunk.prototype.getDocumentTitle = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.ondewo.nlu.ReferencedChunk} returns this
+ */
+proto.ondewo.nlu.ReferencedChunk.prototype.setDocumentTitle = function(value) {
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
